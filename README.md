@@ -1,5 +1,6 @@
 # To check
 - [ ] Does @custom-media really work without installing anything?
+- [ ] Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 
 # Nuxt Minimal Starter
 
