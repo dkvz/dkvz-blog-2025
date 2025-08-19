@@ -2,9 +2,10 @@
 * Main entry point for CSS, imports the others
 */
 
-@layer reset, base, utilities;
+@layer reset, base, utilities, theme;
 
 @import '~/assets/styles/variables.css';
+@import '~/assets/styles/variables-default-colors.css';
 @import '~/assets/styles/reset.css';
 @import '~/assets/styles/base.css';
 @import '~/assets/styles/cards.css';

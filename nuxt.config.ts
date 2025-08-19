@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       title: "Blog des gens compliqués",
       htmlAttrs: {
         lang: "fr"
-      }
+      },
     }
   },
   css: [

@@ -3,6 +3,7 @@
 - [ ] Do I need "alt" on icons?
 - [ ] Does @custom-media really work without installing anything?
 - [ ] Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
+- [ ] Does the build process minify CSS?
 
 # Blog engine dkvz.eu - Revamp 2025 (Nuxt)
 
