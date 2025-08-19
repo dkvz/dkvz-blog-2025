@@ -1,5 +1,6 @@
 # To check
-- [ ] Replace the icons with nuxt-icon ones, start with the calendar on index vue
+- [ ] I think I have to change how I color icons if I'm to use the CSS ones (otherwise there's `mode="svg"`)
+- [ ] Do I need "alt" on icons?
 - [ ] Does @custom-media really work without installing anything?
 - [ ] Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 
