@@ -1,0 +1,184 @@
+@layer base {
+
+  .card-list {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+    max-width: 980px;
+    margin: 0 auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .card-list--single {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    position: relative;
+    background-color: var(--light-color);
+    /*border: 1px solid var(--secondary-color);*/
+    /*box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px, rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;*/
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, .2);
+    /* A very subtle border
+     radius just makes things 
+      better */
+    border-radius: 2px;
+    /** Flex is only needed if we want to use a grid as the parent 
+  Unless we tell that grid to not stretch things I guess **/
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Has to be here for cascade priority reasons */
+  .card--rounded-bottom {
+    border-bottom-right-radius: 10%;
+  }
+
+  .card__header {
+    overflow: hidden;
+    display: flex;
+    text-align: initial;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .comment-card__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card__date-pill {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 100%;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    padding: 0.8rem;
+    word-break: break-all;
+    width: 65px;
+    height: 65px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card__date-box {
+    position: absolute;
+    top: -2.4rem;
+    right: 0;
+    background-color: var(--light-color);
+    padding: 10px;
+    border: 2px solid var(--lighter-gray);
+  }
+
+  .card--hoverable {
+    transition: box-shadow .25s;
+  }
+
+  .card--hoverable:hover {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+  }
+
+  .card--hoverable:hover .card__large-img {
+    transform: scale(1.04);
+    opacity: 0.8;
+  }
+
+  .card--no-overflow {
+    overflow: visible;
+  }
+
+  .card__body {
+    flex: 1;
+    padding: var(--card-padding);
+    text-align: justify;
+  }
+
+  .card__large-img {
+    width: 100%;
+    transition: opacity 0.2s, transform 0.3s;
+  }
+
+  .card__img {
+    border-radius: 50%;
+    margin: 1rem;
+    margin-top: -30px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .6);
+    height: 110px;
+    background: var(--light-color);
+  }
+
+  .card__header h1,
+  .comment-card__header h1 {
+    padding: var(--card-padding);
+    margin: 0;
+    margin-top: 0.3rem;
+    font-size: 1.6rem;
+  }
+
+  .card__header h1::after,
+  .comment-card__header h1::after {
+    display: block;
+    margin-top: 1rem;
+    height: 6px;
+    width: 65px;
+    background-color: var(--accent-color);
+    content: "";
+  }
+
+  .card__body h1 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .card--border-top,
+  .card__footer {
+    border-top: 1px solid rgba(150, 150, 150, 0.35);
+  }
+
+  .card__footer {
+    padding: 1.2rem var(--card-padding);
+  }
+
+  .card__footer__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.82rem;
+    color: var(--accent-color);
+  }
+
+  .card__footer__link:hover {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--accent-color-lighter);
+    animation: none;
+  }
+
+  .card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.6rem;
+  }
+
+  .card__info>div,
+  .comment-card__info>div {
+    padding: var(--card-padding);
+    color: var(--grayed-color);
+    /*border-top: 4px solid var(--accent-color);*/
+  }
+
+  .card-list--single .card {
+    margin-top: 2rem;
+  }
+
+}

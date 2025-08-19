@@ -11,6 +11,9 @@ export default defineNuxtConfig({
       }
     }
   },
+  css: [
+    '~/assets/styles/style.css'
+  ],
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => tag.includes('-')

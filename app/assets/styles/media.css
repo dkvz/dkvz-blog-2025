@@ -1,0 +1,197 @@
+/**
+* Media queries here
+*
+* It would be better to use nesting into the actual classes
+* elsewhere but for now I'll copy paste my old media queries.
+*
+* Should be the latest file to load in the base layer.
+*/
+
+@layer base {
+
+  @media(--above-small) {
+    :root {
+      --content-padding: 1.6rem;
+    }
+
+    body>main {
+      padding: var(--main-padding);
+    }
+
+    dark-mode-toggle::part(toggleLabel) {
+      padding: 1rem;
+    }
+
+    .main-title {
+      font-size: 3rem;
+    }
+
+    .header__title {
+      font-size: 1.22rem;
+    }
+
+    .menu-btn {
+      font-size: 1rem;
+    }
+
+    .btn {
+      font-size: 1.2rem;
+    }
+
+    .search {
+      width: 320px;
+    }
+
+    .search__input {
+      font-size: 1.1rem;
+    }
+
+    .hero__img {
+      height: 65%;
+    }
+
+    .card-list {
+      padding: 1rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-list--single {
+      grid-template-columns: 1fr;
+    }
+
+    .card-list__btn {
+      grid-column: span 2;
+    }
+
+    .card__header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+
+    .content-card--page-card {
+      font-size: 1.2rem;
+    }
+
+    .footer-sections {
+      flex-direction: row;
+      align-self: stretch;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .footer-sections>section {
+      margin-right: 2rem;
+      max-width: 350px;
+    }
+
+    #menu {
+      left: 20%;
+      right: 20%;
+    }
+
+    .article-header__title {
+      font-size: 2.4rem;
+      line-height: 3.2rem;
+      max-width: 88%;
+    }
+
+    .article-toc {
+      display: inline-block;
+      min-width: 50%;
+    }
+
+    .section-title__big-title {
+      font-size: 2.4rem;
+    }
+
+    .section-title__title {
+      font-size: 2.1rem;
+    }
+
+    .article-content {
+      font-size: 1.4rem;
+    }
+
+    .pill {
+      font-size: 1rem;
+      padding: 0.4rem 1.2rem;
+    }
+
+    .hero__bottom {
+      bottom: -26px;
+    }
+
+    .sm-w-full {
+      width: initial;
+    }
+
+    .icon__medium {
+      height: 32px;
+    }
+
+  }
+
+  /** Ultra small screens **/
+  @media(--ultra-small) {
+
+    html {
+      font-size: 0.7rem;
+    }
+
+    .hero__bottom {
+      bottom: 50px;
+      right: 5px;
+    }
+
+    .cta {
+      width: 100%;
+    }
+
+    svg.socials {
+      height: 24px;
+    }
+
+  }
+
+  @media(--semi-med) {
+
+    .main-title {
+      font-size: 2.4rem;
+    }
+
+  }
+
+  @media(--semi-med-2) {
+
+    .content-card {
+      width: 95%;
+    }
+
+    .cta {
+      width: min-content;
+    }
+
+  }
+
+  /* Need a bunch of overrides for printing */
+  @media print {
+
+    .content-card {
+      width: 100%;
+      box-shadow: none;
+    }
+
+    .to-reveal,
+    .pre-animate {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    #comment-section {
+      display: none;
+    }
+
+  }
+
+}

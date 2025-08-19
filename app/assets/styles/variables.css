@@ -1,0 +1,37 @@
+:root {
+
+  @custom-media --above-small (min-width: 650px);
+  @custom-media --ultra-small (max-width: 440px);
+  @custom-media --semi-med ((min-width: 650px) and (max-width: 1024px));
+  /* lol */
+  @custom-media --semi-med-2 ((min-width: 800px) and (max-width: 1024px));
+
+  --primary-color: rgb(110, 96, 204);
+  --accent-color: rgb(182, 35, 150);
+  --accent-color-lighter: rgba(224, 66, 190, 0.7);
+  --ui-color: rgb(78, 205, 196);
+  --secondary-color: #edebed;
+  --secondary-color-transp: rgba(237, 235, 237, 0.86);
+  --grayed-color: #777;
+  --light-gray-color: #aaa;
+  --lighter-gray: #faf6f6;
+  --light-color: #fff;
+  --always-light-color: #fff;
+  --dark-color: rgb(68, 68, 68);
+  --dark-color-transp: rgba(68, 68, 68, 0.86);
+  --dark-color-extra-transp: rgb(68, 68, 68, 0.6);
+
+  --dark-color-quote: rgba(37, 6, 37, 0.15);
+  --main-padding: 0.6rem;
+  --content-padding: 0.6rem;
+  --card-padding: 0.7rem;
+  --ui-shadow: 0px 0px 4px var(--dark-color);
+  --text-shadow-1: 2px 2px 2px var(--accent-color);
+  --text-shadow-2: 0px 0px 8px var(--accent-color);
+  --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --article-font: 'Philosopher', medium-content-serif-font, Georgia, Cambria, serif;
+  --container-width: 1000px;
+  --hero-inset-shadow: inset 0px 0px 60px 10px rgba(0, 0, 0, .6);
+  --separator: solid 1px var(--lighter-gray);
+
+}

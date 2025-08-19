@@ -1,0 +1,158 @@
+/**
+* Should be at the end of the "base" layer files
+*/
+
+@layer base {
+
+  .scale-up {
+    transform: scale(0.6);
+    animation: scaleup 0.5s ease-in-out forwards;
+  }
+
+  @keyframes scaleup {
+    0% {}
+
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Simple page transition I'm using */
+  .trans-left {
+    animation: transleft 0.6s ease;
+  }
+
+  /* I use this for dialogs, maybe? */
+  .trans-top {
+    animation: transtop 0.3s ease-out;
+  }
+
+  /* Titles reveal animation for articles */
+  h1.pre-animate,
+  h2.pre-animate {
+    transform-origin: top left;
+    transform: rotate(-100deg) translateY(-500%);
+    opacity: 0;
+  }
+
+  h3.pre-animate,
+  h4.pre-animate,
+  h5.pre-animate {
+    transform: translateY(-200%);
+    opacity: 0;
+  }
+
+  .pre-animate-transition {
+    transition: transform 0.5s ease-out, opacity 0.8s ease-out;
+  }
+
+  .animation-placeholder {
+    /* Still works with intersection observer */
+    visibility: hidden;
+    position: absolute;
+    height: 16em;
+    width: 80%;
+  }
+
+  @keyframes transleft {
+    0% {
+      transform: translate3d(-20vw, 0, 0);
+    }
+
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes transtop {
+    0% {
+      transform: translate3d(0, -20vh, 0);
+    }
+
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes refill {
+
+    0%,
+    100% {
+      fill: #7ccdea;
+    }
+
+    16% {
+      fill: #0074d9;
+    }
+
+    32% {
+      fill: #2ecc40;
+    }
+
+    48% {
+      fill: #ffdc00;
+    }
+
+    64% {
+      fill: #b10dc9;
+    }
+
+    80% {
+      fill: #ff4136;
+    }
+  }
+
+  @keyframes zomg {
+
+    0%,
+    100% {
+      color: #7ccdea;
+    }
+
+    16% {
+      color: #0074d9;
+    }
+
+    32% {
+      color: #2ecc40;
+    }
+
+    48% {
+      color: #ffdc00;
+    }
+
+    64% {
+      color: #b10dc9;
+    }
+
+    80% {
+      color: #ff4136;
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 0%
+    }
+
+    50% {
+      background-position: 100% 100%
+    }
+
+    100% {
+      background-position: 0% 0%
+    }
+  }
+
+  /* .animate--scale-down {
+  animation: scale-down 0.6s;
+}
+
+@keyframes scale-down {
+  from {transform: scaleX(1)}
+  to {transform: scaleX(0.1)}
+} */
+
+}

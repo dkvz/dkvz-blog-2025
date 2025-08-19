@@ -1,0 +1,149 @@
+/**
+* Should probably be after the base file itself and cards
+* (after = more priority)
+**/
+
+@layer base {
+
+  .btn {
+    background-color: var(--light-gray-color);
+    color: var(--dark-color);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    padding: calc(0.4rem + 3px) calc(0.8rem + 3px);
+    border: 0;
+    font-size: 1.1rem;
+    box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    transition: transform .3s, background-color .3s;
+    font-weight: bold;
+  }
+
+  /* I also use this to generally align text and icons
+* WHICH IS BAD */
+  .icon__btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Reset stuff on a.btn */
+  a.btn:hover {
+    animation: none;
+  }
+
+  .btn:hover,
+  .btn:focus,
+  .btn:active,
+  a.btn:hover,
+  a.btn:focus,
+  a.btn:active {
+    background-color: var(--grayed-color);
+    color: var(--lighter-gray);
+  }
+
+  .btn:focus,
+  .btn:active,
+  a.btn:focus,
+  a.btn:active {
+    /* padding: 0.4rem 0.8rem; */
+    /* 
+    box-shadow doesn't work as an outline because windows
+    in high contrast mode disables box-shadow entirely 
+  */
+    outline: 2px solid var(--accent-color);
+  }
+
+  .btn--highlight {
+    padding: 3px 3px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 12px 4px var(--dark-color);
+  }
+
+  .btn--highlight:focus,
+  .btn--highlight:active {
+    padding: 0;
+  }
+
+  .menu-btn {
+    cursor: pointer;
+    font-family: var(--main-font);
+    border: none;
+    background-color: transparent;
+    /*padding: 0.3rem 0.5rem;*/
+    color: var(--light-color);
+    padding: 0.3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+
+  .header--sticky .menu-btn,
+  .header--sticky .header__title {
+    color: var(--dark-color);
+  }
+
+  .menu-btn__icon {
+    height: 26px;
+    padding: 0.2rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+    margin-left: 0.4rem;
+    border: 2px solid var(--light-color);
+  }
+
+  .header--sticky .menu-btn__icon {
+    border: 2px solid var(--dark-color);
+  }
+
+  .menu-btn span {
+    margin-right: 0.4rem;
+  }
+
+  .menu-btn__icon rect {
+    transition: opacity .6s, transform .6s;
+    fill: var(--light-color);
+  }
+
+  .header--sticky .menu-btn__icon rect {
+    fill: var(--dark-color);
+  }
+
+  .menu-btn.open .menu-btn__icon .line-2 {
+    opacity: 0;
+  }
+
+  .menu-btn:hover .menu-btn__icon .line-1 {
+    animation: refill 1s infinite;
+  }
+
+  .menu-btn:hover .menu-btn__icon .line-2 {
+    animation: refill 4s infinite;
+  }
+
+  .menu-btn:hover .menu-btn__icon .line-3 {
+    animation: refill 1s infinite 0.2s;
+  }
+
+  .menu-btn.open .menu-btn__icon .line-1 {
+    transform: rotate(45deg) translate(2px, -1px);
+  }
+
+  .menu-btn.open .menu-btn__icon .line-2 {
+    opacity: 0;
+  }
+
+  .menu-btn.open .menu-btn__icon .line-3 {
+    transform: rotate(-45deg) translate(-4px, -2px);
+  }
+
+  .card-list--single .card-list__btn {
+    grid-column: initial;
+  }
+
+}
