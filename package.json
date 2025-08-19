@@ -12,7 +12,6 @@
   "dependencies": {
     "@dkvz/img-lightbox": "^1.0.0",
     "@nuxt/icon": "2.0.0",
-    "dark-mode-toggle": "^0.17.0",
     "nuxt": "^4.0.3",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
