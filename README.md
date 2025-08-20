@@ -1,7 +1,6 @@
 # To check
-- [ ] I think I have to change how I color icons if I'm to use the CSS ones (otherwise there's `mode="svg"`)
+- [ ] I think I have to change how I color icons if I'm to use the CSS ones 
 - [ ] Do I need "alt" on icons?
-- [ ] Does @custom-media really work without installing anything?
 - [ ] Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - [ ] Does the build process minify CSS?
 
