@@ -5,6 +5,9 @@
 - [ ] Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - [ ] Does the build process minify CSS?
 
+# Useful links
+- [Icon list](https://icones.js.org/)
+
 # Blog engine dkvz.eu - Revamp 2025 (Nuxt)
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

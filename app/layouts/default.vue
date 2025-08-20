@@ -76,8 +76,11 @@
       <h1 class="main-title">Blog des Gens <span class="main-title__highlight">Compliqués</span></h1>
     </div>
     <div class="hero__bottom">
-      <dark-mode-toggle class="_js-only btn btn--highlight" title="Mode sombre / clair" id="dark-mode-toggle"
-        appearance="toggle" permanent></dark-mode-toggle>
+      <!--<dark-mode-toggle class="_js-only btn btn--highlight" title="Mode sombre / clair" id="dark-mode-toggle"
+appearance="toggle" permanent></dark-mode-toggle>-->
+      <ClientOnly>
+        <ThemeSwitcher />
+      </ClientOnly>
     </div>
   </header>
   <main class="trans-left">

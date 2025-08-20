@@ -18,10 +18,6 @@
       padding: var(--main-padding);
     }
 
-    dark-mode-toggle::part(toggleLabel) {
-      padding: 1rem;
-    }
-
     .main-title {
       font-size: 3rem;
     }
@@ -130,6 +126,9 @@
       height: 32px;
     }
 
+    .btn--highlight {
+      font-size: 40px;
+    }
   }
 
   /** Ultra small screens **/
