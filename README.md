@@ -5,6 +5,8 @@ I'll be using the Rest API still, keeping the older versions of the blog compati
 
 There's a good chance I'll be using static generation to avoid having to keep a useless Node process around on my server.
 
+I use a `dev` branch for this project, main sometimes gets squashed merges from there.
+
 ## TODO
 Just removing the items when done this time around.
 
