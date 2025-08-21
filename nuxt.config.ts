@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/icon'],
+  modules: ['@nuxt/icon', '@nuxtjs/color-mode'],
   app: {
     head: {
       title: "Blog des gens compliqués",
@@ -19,4 +19,9 @@ export default defineNuxtConfig({
       isCustomElement: (tag) => tag.includes('-')
     }
   },
+  postcss: {
+    plugins: {
+      "postcss-custom-media": {}
+    }
+  }
 })

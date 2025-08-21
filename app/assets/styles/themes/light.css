@@ -1,3 +1,10 @@
+/**
+* NO LONGER USED ANYWHERE
+* It made sense when I was using dark-mode-toggle and their
+* dual link tag with media query solution to theme switching.
+* The light theme is now default in the basic stylesheet.
+*/
+
 @import '~/assets/styles/variables-default-colors.css';
 
 /**

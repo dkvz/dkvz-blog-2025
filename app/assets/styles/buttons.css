@@ -58,14 +58,10 @@
   }
 
   .btn--highlight {
-    padding: 3px 3px;
+    padding: 10px 10px;
     border-radius: 50%;
     box-shadow: 0px 0px 12px 4px var(--dark-color);
-  }
-
-  .btn--highlight:focus,
-  .btn--highlight:active {
-    padding: 0;
+    font-size: 24px;
   }
 
   .menu-btn {
