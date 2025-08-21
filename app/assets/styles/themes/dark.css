@@ -6,7 +6,14 @@
 * Everything got nested into that as a result.
 */
 
-:root {
+/*
+* Since I put my variables out of any layers, the following
+* selector also has to be outside of layers.
+* Also :root shouldn't be mentioned in here.
+*/
+
+.dark-mode {
+
   /* --secondary-color: rgb(119, 119, 119); */
   --secondary-color: rgb(165, 173, 203);
   --secondary-color-transp: rgba(165, 173, 203, 0.3);
@@ -23,119 +30,124 @@
   --accent-color-lighter: rgb(139, 213, 202);
 
   --text-shadow-2: 0px 0px 8px var(--primary-color);
+
 }
 
 @layer theme {
 
-  .bg--gradient {
-    background-color: var(--light-color);
-    /*background: linear-gradient(to bottom, rgb(37, 6, 37) 0%,var(--light-color) 100%);*/
-    background: linear-gradient(to right, rgb(69, 71, 90) 0%, var(--light-gray-color) 100%);
-  }
+  .dark-mode {
 
-  .quote-card {
-    background-color: var(--dark-color-quote);
-  }
+    .bg--gradient {
+      background-color: var(--light-color);
+      /*background: linear-gradient(to bottom, rgb(37, 6, 37) 0%,var(--light-color) 100%);*/
+      background: linear-gradient(to right, rgb(69, 71, 90) 0%, var(--light-gray-color) 100%);
+    }
 
-  .invertable--img {
-    filter: invert();
-  }
+    .quote-card {
+      background-color: var(--dark-color-quote);
+    }
 
-  dialog {
-    background-color: var(--lighter-gray);
-  }
+    .invertable--img {
+      filter: invert();
+    }
 
-  .btn:hover,
-  .btn:focus,
-  .btn:active,
-  a.btn:hover,
-  a.btn:focus,
-  a.btn:active {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-  }
+    dialog {
+      background-color: var(--lighter-gray);
+    }
 
-  .btn:hover>img.icon,
-  .btn:focus>img.icon,
-  .btn:active>img.icon,
-  a.btn:hover>img.icon,
-  a.btn:focus>img.icon,
-  a.btn:active>img.icon {
-    filter: invert();
-  }
+    .btn:hover,
+    .btn:focus,
+    .btn:active,
+    a.btn:hover,
+    a.btn:focus,
+    a.btn:active {
+      background-color: var(--secondary-color);
+      color: var(--light-color);
+    }
 
-  body>footer {
-    color: var(--secondary-color);
-    /*background-color: var(--dark-color-quote);*/
-    background: linear-gradient(to bottom, var(--light-color) 0%, rgb(69, 71, 90) 100%);
-  }
+    .btn:hover>img.icon,
+    .btn:focus>img.icon,
+    .btn:active>img.icon,
+    a.btn:hover>img.icon,
+    a.btn:focus>img.icon,
+    a.btn:active>img.icon {
+      filter: invert();
+    }
 
-  .hero {
-    border-bottom: none;
-  }
+    body>footer {
+      color: var(--secondary-color);
+      /*background-color: var(--dark-color-quote);*/
+      background: linear-gradient(to bottom, var(--light-color) 0%, rgb(69, 71, 90) 100%);
+    }
 
-  .footer-sections p {
-    color: var(--dark-color);
-  }
+    .hero {
+      border-bottom: none;
+    }
 
-  .footer a:hover {
-    color: var(--lighter-gray);
-  }
+    .footer-sections p {
+      color: var(--dark-color);
+    }
 
-  .pill {
-    background-color: var(--light-gray-color);
-  }
+    .footer a:hover {
+      color: var(--lighter-gray);
+    }
 
-  .pill a {
-    color: var(--accent-color);
-  }
+    .pill {
+      background-color: var(--light-gray-color);
+    }
 
-  .pill a:hover {
-    color: var(--primary-color);
-  }
+    .pill a {
+      color: var(--accent-color);
+    }
 
-  .article-toc {
-    background-color: var(--light-gray-color);
-    color: var(--dark-color);
-  }
+    .pill a:hover {
+      color: var(--primary-color);
+    }
 
-  .article-header__desc span {
-    color: var(--secondary-color);
-  }
+    .article-toc {
+      background-color: var(--light-gray-color);
+      color: var(--dark-color);
+    }
 
-  blockquote {
-    background-color: var(--light-gray-color);
-  }
+    .article-header__desc span {
+      color: var(--secondary-color);
+    }
 
-  .header,
-  .header__title,
-  .menu-btn {
-    color: var(--grayed-color);
-  }
+    blockquote {
+      background-color: var(--light-gray-color);
+    }
 
-  .menu-btn__icon rect,
-  .header--sticky .menu-btn__icon rect {
-    fill: var(--grayed-color);
-  }
+    .header,
+    .header__title,
+    .menu-btn {
+      color: var(--grayed-color);
+    }
 
-  .menu-btn__icon {
-    border: 2px solid var(--dark-color);
-  }
+    .menu-btn__icon rect,
+    .header--sticky .menu-btn__icon rect {
+      fill: var(--grayed-color);
+    }
 
-  .main-title__highlight {
-    background: linear-gradient(90deg, var(--dark-color) 0%, var(--light-color) 60%);
-    background-clip: text;
-    text-shadow: var(--text-shadow-2);
-  }
+    .menu-btn__icon {
+      border: 2px solid var(--dark-color);
+    }
 
-  .only--on-light {
-    display: none;
-  }
+    .main-title__highlight {
+      background: linear-gradient(90deg, var(--dark-color) 0%, var(--light-color) 60%);
+      background-clip: text;
+      text-shadow: var(--text-shadow-2);
+    }
 
-  /* initial is not what we need here (always "inline")
+    .only--on-light {
+      display: none;
+    }
+
+    /* initial is not what we need here (always "inline")
   * though it works */
-  .only--on-dark {
-    display: revert;
+    .only--on-dark {
+      display: revert;
+    }
+
   }
 
 }
