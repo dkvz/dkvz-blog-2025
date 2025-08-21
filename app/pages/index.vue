@@ -84,9 +84,8 @@ useHead({
         <div class="card__header card--no-overflow">
           <div class="card__info">
             <h1>Un vraiment très très long titre d'article</h1>
-            <div>
-              <!-- <img src="img/calendar-alt.svg" class="icon invertable--img" alt="Publié le"> -->
-              <Icon name="uil:calendar" class="icon" alt="Publié le" />
+            <div class="simple-row">
+              <Icon name="uil:calendar" alt="Publié le" size="1.2em" />
               <span>11/12/2020 11:20:11</span>
             </div>
           </div>
@@ -100,13 +99,11 @@ useHead({
         <div class="card__footer">
           <a class="btn icon__btn" title="Ouvrir l'article...">
             Suite
-            <!--<img src="img/external-link-alt.svg" class="icon" alt="Ouvrir l'article">-->
-            <Icon class="icon" name="uil:external-link-alt" />
+            <Icon name="uil:external-link-alt" />
           </a>
           <a class="btn icon__btn">
             0
-            <!--<img src="img/comment-alt.svg" class="icon" alt="Commentaires">-->
-            <Icon class="icon" name="uil:comment" />
+            <Icon name="uil:comment" />
           </a>
         </div>
       </div>
@@ -115,8 +112,8 @@ useHead({
         <div class="card__header card--no-overflow">
           <div class="card__info">
             <h1>Moyen long titre</h1>
-            <div>
-              <Icon name="uil:calendar" class="icon" alt="Publié le" />
+            <div class="simple-row">
+              <Icon name="uil:calendar" alt="Publié le" size="1.2em" />
               <span>11/12/2020 11:20:11</span>
             </div>
           </div>
@@ -129,11 +126,11 @@ useHead({
         <div class="card__footer">
           <a class="btn icon__btn">
             Suite
-            <Icon class="icon" name="uil:external-link-alt" />
+            <Icon name="uil:external-link-alt" />
           </a>
           <a class="btn icon__btn">
             0
-            <Icon class="icon" name="uil:comment" />
+            <Icon name="uil:comment" />
           </a>
         </div>
       </div>

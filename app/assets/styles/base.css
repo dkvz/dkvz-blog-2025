@@ -510,11 +510,6 @@
     animation: none;
   }
 
-  .icon {
-    vertical-align: middle;
-    height: 20px;
-  }
-
   .icon__medium {
     height: 28px;
   }

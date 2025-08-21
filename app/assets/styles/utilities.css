@@ -77,6 +77,13 @@
     align-items: center;
   }
 
+  .simple-row {
+    display: flex;
+    gap: 0.3rem;
+    flex-direction: row;
+    align-items: center;
+  }
+
   /* TODO: RENAME THIS LOL */
   .mr--1 {
     margin-right: 0.5rem;
