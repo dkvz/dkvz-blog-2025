@@ -10,7 +10,7 @@
 @layer base {
 
   @media(--above-small) {
-    :root {
+    body {
       --content-padding: 1.6rem;
     }
 
