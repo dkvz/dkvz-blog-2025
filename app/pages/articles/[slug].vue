@@ -13,12 +13,10 @@ useHead({
         Analyse de transitions électophotoniques majeures à réaction
       </h1>
       <div class="article-header__desc mt-2">
-        <!--<img width="28" src="img/calendar-alt.svg" class="icon invertable--img" alt="Publié le">-->
-        <Icon name="uil:calendar" class="icon invertable--img" alt="Publié le" />
+        <Icon name="uil:calendar" alt="Publié le" />
         <span>11/12/2020 11:20:11</span>
         <span>|</span>
-        <!--<img width="28" src="img/edit.svg" class="icon invertable--img" alt="Ecrit par">-->
-        <Icon name="uil:edit" class="icon invertable--img" alt="Ecrit par" />
+        <Icon name="uil:edit" alt="Ecrit par" />
         <span>Par DkVZ</span>
       </div>
       <div class="article-header__desc">
@@ -124,8 +122,7 @@ useHead({
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
           <button id="comment-button" type="button" class="btn icon__btn sm-w-full">
-            <!--<img src="img/comment-alt.svg" class="icon" alt="Commentaires">-->
-            <Icon class="icon" name="uil:comment" />
+            <Icon name="uil:comment" />
             Ecrire un bon vieux commentaire...
           </button>
         </div>

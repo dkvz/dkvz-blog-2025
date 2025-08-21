@@ -86,7 +86,7 @@ useHead({
             <h1>Un vraiment très très long titre d'article</h1>
             <div>
               <!-- <img src="img/calendar-alt.svg" class="icon invertable--img" alt="Publié le"> -->
-              <Icon name="uil:calendar" class="icon invertable--img" alt="Publié le" />
+              <Icon name="uil:calendar" class="icon" alt="Publié le" />
               <span>11/12/2020 11:20:11</span>
             </div>
           </div>
@@ -116,7 +116,7 @@ useHead({
           <div class="card__info">
             <h1>Moyen long titre</h1>
             <div>
-              <Icon name="uil:calendar" class="icon invertable--img" alt="Publié le" />
+              <Icon name="uil:calendar" class="icon" alt="Publié le" />
               <span>11/12/2020 11:20:11</span>
             </div>
           </div>
