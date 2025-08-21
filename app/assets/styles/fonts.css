@@ -1,0 +1,39 @@
+/**
+* Loading fonts outside of layers. Not sure if that's a thing or not.
+*/
+
+@font-face {
+  font-family: "Philosopher";
+  src:
+    url("/fonts/Philosopher-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Philosopher";
+  src:
+    url("/fonts/Philosopher-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Philosopher";
+  src:
+    url("/fonts/Philosopher-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Philosopher";
+  src:
+    url("/fonts/Philosopher-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}

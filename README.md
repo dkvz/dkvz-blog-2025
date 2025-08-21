@@ -14,6 +14,8 @@ Just removing the items when done this time around.
 - Do I need "alt" on icons?
 - Do we still need the ._js-only CSS class in its noscript block?
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
+- Create woff or woff2 versions of the fonts?
+- No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Shadows shouldn't become bright white on dark mode I think it's a design faux pas
