@@ -88,7 +88,7 @@ appearance="toggle" permanent></dark-mode-toggle>-->
     <slot />
 
   </main>
-  <footer>
+  <footer class="footer-wrapper">
     <div class="footer">
       <div class="footer-sections">
         <section>

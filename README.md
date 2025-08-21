@@ -10,10 +10,13 @@ Just removing the items when done this time around.
 
 - I think I have to change how I color icons if I'm to use the CSS ones 
 - Do I need "alt" on icons?
+- Do we still need the ._js-only CSS class in its noscript block?
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Shadows shouldn't become bright white on dark mode I think it's a design faux pas
+- HTML comments in pages should be removed at some point.
+- Don't forget to add my robots.txt
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

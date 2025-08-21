@@ -74,7 +74,7 @@
       filter: invert();
     }
 
-    .footer {
+    .footer-wrapper {
       color: var(--secondary-color);
       /*background-color: var(--dark-color-quote);*/
       background: linear-gradient(to bottom, var(--light-color) 0%, rgb(69, 71, 90) 100%);
