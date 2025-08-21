@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- The jsonly thing can be moved from App.vue to nuxt.config.ts
 - I think I have to change how I color icons if I'm to use the CSS ones 
 - Do I need "alt" on icons?
 - Do we still need the ._js-only CSS class in its noscript block?
