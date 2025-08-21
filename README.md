@@ -1,9 +1,11 @@
 # Blog engine dkvz.eu - Revamp 2025 (Nuxt)
+Starting over.
 
-# Useful links
-- [Icon list](https://icones.js.org/)
+I'll be using the Rest API still, keeping the older versions of the blog compatible (why???).
 
-# TODO
+There's a good chance I'll be using static generation to avoid having to keep a useless Node process around on my server.
+
+## TODO
 Just removing the items when done this time around.
 
 - I think I have to change how I color icons if I'm to use the CSS ones 
@@ -11,8 +13,9 @@ Just removing the items when done this time around.
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
+- Shadows shouldn't become bright white on dark mode I think it's a design faux pas
 
-# Running the project
+## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
@@ -59,3 +62,7 @@ Both solutions can have a flash of changing themes when the user preference them
 Got two things to try:
 - Does the official module work without JS?
 - Can we use the "workarounds" provided in the Github issue above?
+
+## Useful links
+- [Icon list](https://icones.js.org/)
+

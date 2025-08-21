@@ -200,13 +200,7 @@
     fill: transparent;
   }
 
-  body>footer {
-    color: var(--light-color);
-    background-color: var(--dark-color);
-    box-shadow: 0 -4px 4px rgba(0, 0, 0, .6);
-  }
-
-  body>main {
+  .main {
     flex: 1;
     /** Required to display 
   inline-block elements
@@ -214,10 +208,6 @@
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
-  }
-
-  body>footer {
-    padding: var(--main-padding);
   }
 
   .header__title {
@@ -257,6 +247,13 @@
     width: 99.6%;
     padding: var(--content-padding);
     margin-bottom: 2.5rem;
+  }
+
+  .footer {
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    box-shadow: 0 -4px 4px rgba(0, 0, 0, .6);
+    padding: var(--main-padding);
   }
 
   .content-card,

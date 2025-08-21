@@ -14,7 +14,7 @@
       --content-padding: 1.6rem;
     }
 
-    body>main {
+    .main {
       padding: var(--main-padding);
     }
 

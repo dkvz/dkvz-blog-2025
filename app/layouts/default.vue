@@ -83,7 +83,7 @@ appearance="toggle" permanent></dark-mode-toggle>-->
       </ClientOnly>
     </div>
   </header>
-  <main class="trans-left">
+  <main class="trans-left main">
 
     <slot />
 
