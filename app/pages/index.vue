@@ -12,10 +12,11 @@ useHead({
     <div class="cta-buttons">
       <form class="search">
         <label class="search__label">
-          <img class="search__img only--on-light" alt="Search Icon" aria-hidden="true"
+          <Icon name="uil:search" class="search__img" mode="css" />
+          <!--<img class="search__img only--on-light" alt="Search Icon" aria-hidden="true"
             src="~/assets/img/search_white.svg">
           <img class="search__img only--on-dark" alt="Search Icon" aria-hidden="true"
-            src="~/assets/img/search_dark.svg">
+src="~/assets/img/search_dark.svg">-->
           <input class="input search__input" type="text" placeholder="Rechercher" aria-label="Rechercher" />
         </label>
       </form>
