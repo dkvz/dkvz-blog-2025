@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Implement the title template and title antics
 - Do I need "alt" on icons?
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - Create woff or woff2 versions of the fonts?
@@ -85,7 +86,7 @@ No idea what I should use, let's review some candidates:
 ```html
 <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="shortcut icon" href="/favicon.png" type="image/png">
-<link rel="alternate" type="application/rss+xml" href="https://dkvz.eu/rss.xml" title="Syntax RSS Feed">
+<link rel="alternate" type="application/rss+xml" href="https://dkvz.eu/rss.xml" title="Flux RSS de dkvz.eu">
 ```
 The "shortcut" before icon is allowed for historical reasons but I think I'll remove it.
 
@@ -95,4 +96,5 @@ Was in the previous site:
 <link rel="apple-touch-icon" href="/assets/touch/apple-touch-icon.png">
 <meta name="description" content="Blog expérimental d'un humble consultant en progress-bars.">
 ```
+
 

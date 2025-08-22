@@ -17,8 +17,27 @@ export default defineNuxtConfig({
           textContent: '<style>._js-only {display: none !important;}<\/style>'
         },
       ],
+      link: [
+        {
+          rel: "alternate",
+          type: "application/rss+xml",
+          href: "https://dkvz.eu/rss.xml",
+          title: "Flux RSS de dkvz.eu"
+        },
+        {
+          rel: "icon",
+          sizes: "192x192",
+          href: "/assets/touch/chrome-touch-icon-192x192.png"
+        },
+        {
+          rel: "apple-touch-icon",
+          href: "/assets/touch/apple-touch-icon.png"
+        }
+      ],
       meta: [
-        { name: "theme-color", content: "#184160" }
+        { name: "theme-color", content: "#184160" },
+        { name: "description", content: "Blog expérimental d'un humble consultant en progress-bars." },
+        { name: "application-name", content: "Blog dkvz.eu" },
       ]
     }
   },
