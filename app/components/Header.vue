@@ -1,9 +1,16 @@
 <script setup lang="ts">
+import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll';
+
+const header = useTemplateRef("header")
+const { isSticky, startDynamicHeader, opacity, transform } = useHideHeaderOnScroll(header.value)
+
+onMounted(() => {
+})
 
 </script>
 
 <template>
-  <aside class="header">
+  <aside class="header" ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" tabindex="0" role="button" aria-controls="menu" aria-label="Afficher le menu"
       for="menu-checkbox">
