@@ -10,10 +10,9 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
-- The jsonly thing can be moved from App.vue to nuxt.config.ts
-- I think I have to change how I color icons if I'm to use the CSS ones 
+- The way I define the site URL is suboptimal and should check if we're in dev - Also put it in a file I can import from client pages that need it as well - Think it's better than using "public" and a composable to get the values
+- Implement the title template and title antics
 - Do I need "alt" on icons?
-- Do we still need the ._js-only CSS class in its noscript block?
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
@@ -23,7 +22,8 @@ Just removing the items when done this time around.
 - HTML comments in pages should be removed at some point.
 - Don't forget to add my robots.txt
 - Footer links leave an empty spot on the right on medium screen, should space it better?
-- Swap the search SVG for an icon
+- Create the go to top button (could use `btn-highlight`)
+- Review other meta tags I'm missing (manifest.json?)
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -75,4 +75,47 @@ Got two things to try:
 
 ## Useful links
 - [Icon list](https://icones.js.org/)
+
+## CSS naming and bloat
+I initially used BEM to prototype the "design" and then went on to use CSS layers and other advanced features so that BEM is really more of a hindrance now.
+
+I'll keep some of the initial BEM styling but new styles shouldn't follow any specific convention.
+
+## Meta tags and stuff
+No idea what I should use, let's review some candidates:
+
+```html
+<link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="shortcut icon" href="/favicon.png" type="image/png">
+<link rel="alternate" type="application/rss+xml" href="https://dkvz.eu/rss.xml" title="Flux RSS de dkvz.eu">
+```
+The "shortcut" before icon is allowed for historical reasons but I think I'll remove it.
+
+Was in the previous site:
+```html
+<link rel="icon" sizes="192x192" href="/assets/touch/chrome-touch-icon-192x192.png">
+<link rel="apple-touch-icon" href="/assets/touch/apple-touch-icon.png">
+<meta name="description" content="Blog expérimental d'un humble consultant en progress-bars.">
+```
+
+For the og and twitter metas I need the full website URL, to replace in some of the values below with some variable.
+
+There's other repeat data in there that should be in a global thing. Apparently there's a SEO module that's supposed to auto-append your configured site URL to absolute URLs in meta tags that need it.
+
+In the end I just put redundant site info in `./data/site-info.ts` that can be re-used both in the Nuxt config or wherever the client might need it in some page or composable.
+
+I'm going to use these for now:
+
+```html
+<meta name="image" property="og:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dkvz.eu - Blog des gens compliqués">
+<meta property="og:description" content="Blog expérimental d'un humble consultant en progress-bars.">
+<meta property="og:url" content="https://dkvz.eu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="dkvz.eu - Blog des gens compliqués">
+<meta name="twitter:site" content="@MrSausageroll">
+<meta name="twitter:description" content="Blog expérimental d'un humble consultant en progress-bars.">
+<meta name="twitter:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
+```
 

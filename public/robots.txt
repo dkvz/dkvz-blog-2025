@@ -1,2 +1,8 @@
-User-Agent: *
-Disallow:
+# www.robotstxt.org
+
+User-agent: *
+Disallow: /stuff/blog-pof-2/
+Disallow: /wp-content/stuff/blog-pof-2/
+Disallow: /stuff/norobots/
+Disallow: /wp-content/stuff/norobots/
+Sitemap: https://dkvz.eu/sitemap.xml

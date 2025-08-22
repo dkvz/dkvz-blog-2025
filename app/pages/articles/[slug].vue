@@ -1,12 +1,28 @@
 <script setup lang="ts">
 useHead({
   bodyAttrs: {
-    class: "bg--gradient-clouds"
+    class: "bg-gradient-clouds"
   }
 })
 </script>
 
 <template>
+
+  <dialog id="comment-dialog">
+    <!--<form method="dialog">
+      <button aria-label="close" class="btn" style="float: right">X</button>
+      </form>-->
+    <h2 class="comment-form-title">Ajouter un commentaire</h2>
+    <form action="#" class="comment-form">
+      <input type="text" class="input" name="comment-author" id="comment-author" placeholder="Votre nom...">
+      <textarea class="input" placeholder="Votre commentaire..." name="comment-comment" id="comment-comment"></textarea>
+      <footer class="comment-form-footer">
+        <button aria-label="close" formmethod="dialog" class="btn">Annuler</button>
+        <button type="submit" class="btn">Envoyer</button>
+      </footer>
+    </form>
+  </dialog>
+
   <article class="content-card content-card--page-card">
     <div class="article-header">
       <h1 class="article-header__title">
@@ -122,7 +138,7 @@ useHead({
       <div class="content-card">
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
-          <button id="comment-button" type="button" class="btn icon__btn sm-w-full">
+          <button id="comment-button" type="button" class="btn btn-icon sm-w-full">
             <Icon name="uil:comment" />
             Ecrire un bon vieux commentaire...
           </button>
@@ -133,7 +149,7 @@ useHead({
         <div class="comment-card__header">
           <div class="comment-card__info">
             <h1>#1</h1>
-            <div class="icon__btn">
+            <div class="btn-icon">
               <img src="~/assets/img/user_duder.svg" class="icon__medium invertable--img"
                 alt="icône moche représentant l'auteur" aria-hidden="true">
               Par DkVZ

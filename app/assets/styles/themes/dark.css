@@ -37,7 +37,7 @@
 
   .dark-mode {
 
-    .bg--gradient {
+    .bg-gradient {
       background-color: var(--light-color);
       /*background: linear-gradient(to bottom, rgb(37, 6, 37) 0%,var(--light-color) 100%);*/
       background: linear-gradient(to right, rgb(69, 71, 90) 0%, var(--light-gray-color) 100%);
@@ -129,13 +129,13 @@
       text-shadow: var(--text-shadow-2);
     }
 
-    .only--on-light {
+    .only-on-light {
       display: none;
     }
 
     /* initial is not what we need here (always "inline")
-  * though it works */
-    .only--on-dark {
+    * though it works */
+    .only-on-dark {
       display: revert;
     }
 

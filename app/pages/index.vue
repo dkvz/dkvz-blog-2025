@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   bodyAttrs: {
-    class: "bg--gradient"
+    class: "bg-gradient"
   }
 })
 </script>
@@ -12,10 +12,7 @@ useHead({
     <div class="cta-buttons">
       <form class="search">
         <label class="search__label">
-          <img class="search__img only--on-light" alt="Search Icon" aria-hidden="true"
-            src="~/assets/img/search_white.svg">
-          <img class="search__img only--on-dark" alt="Search Icon" aria-hidden="true"
-            src="~/assets/img/search_dark.svg">
+          <Icon name="uil:search" class="search__img" mode="css" />
           <input class="input search__input" type="text" placeholder="Rechercher" aria-label="Rechercher" />
         </label>
       </form>
@@ -97,11 +94,11 @@ useHead({
           <p>Encore une ligne.</p>
         </div>
         <div class="card__footer">
-          <a class="btn icon__btn" title="Ouvrir l'article...">
+          <a class="btn btn-icon" title="Ouvrir l'article...">
             Suite
             <Icon name="uil:external-link-alt" />
           </a>
-          <a class="btn icon__btn">
+          <a class="btn btn-icon">
             0
             <Icon name="uil:comment" />
           </a>
@@ -124,11 +121,11 @@ useHead({
           <p>Encore une ligne.</p>
         </div>
         <div class="card__footer">
-          <a class="btn icon__btn">
+          <a class="btn btn-icon">
             Suite
             <Icon name="uil:external-link-alt" />
           </a>
-          <a class="btn icon__btn">
+          <a class="btn btn-icon">
             0
             <Icon name="uil:comment" />
           </a>

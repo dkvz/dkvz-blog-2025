@@ -4,7 +4,7 @@
 
 <template>
   <aside class="header">
-    <a class="header__title" href="/">Le BdGC <span class="text text--smaller">de DkVZ</span></a>
+    <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" tabindex="0" role="button" aria-controls="menu" aria-label="Afficher le menu"
       for="menu-checkbox">
       <svg class="menu-btn__icon" viewBox="0 0 7 7">
@@ -25,7 +25,7 @@
             <a href="#">Accueil</a>
           </li>
           <li>
-            <a href="article.html">Blog</a>
+            <a href="#">Blog</a>
           </li>
           <li>
             <a href="#">Contact</a>
@@ -78,8 +78,6 @@
       <h1 class="main-title">Blog des Gens <span class="main-title__highlight">Compliqués</span></h1>
     </div>
     <div class="hero__bottom">
-      <!--<dark-mode-toggle class="_js-only btn btn--highlight" title="Mode sombre / clair" id="dark-mode-toggle"
-appearance="toggle" permanent></dark-mode-toggle>-->
       <ClientOnly>
         <ThemeSwitcher />
       </ClientOnly>
