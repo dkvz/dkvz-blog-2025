@@ -97,4 +97,5 @@ Was in the previous site:
 <meta name="description" content="Blog expérimental d'un humble consultant en progress-bars.">
 ```
 
+For the og and twitter metas I need the full website URL.
 
