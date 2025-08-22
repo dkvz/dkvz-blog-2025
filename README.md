@@ -20,6 +20,7 @@ Just removing the items when done this time around.
 - HTML comments in pages should be removed at some point.
 - Don't forget to add my robots.txt
 - Footer links leave an empty spot on the right on medium screen, should space it better?
+- Create the go to top button (could use `btn-highlight`)
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

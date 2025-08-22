@@ -94,11 +94,11 @@ useHead({
           <p>Encore une ligne.</p>
         </div>
         <div class="card__footer">
-          <a class="btn icon__btn" title="Ouvrir l'article...">
+          <a class="btn btn-icon" title="Ouvrir l'article...">
             Suite
             <Icon name="uil:external-link-alt" />
           </a>
-          <a class="btn icon__btn">
+          <a class="btn btn-icon">
             0
             <Icon name="uil:comment" />
           </a>
@@ -121,11 +121,11 @@ useHead({
           <p>Encore une ligne.</p>
         </div>
         <div class="card__footer">
-          <a class="btn icon__btn">
+          <a class="btn btn-icon">
             Suite
             <Icon name="uil:external-link-alt" />
           </a>
-          <a class="btn icon__btn">
+          <a class="btn btn-icon">
             0
             <Icon name="uil:comment" />
           </a>

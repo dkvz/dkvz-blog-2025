@@ -138,7 +138,7 @@ useHead({
       <div class="content-card">
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
-          <button id="comment-button" type="button" class="btn icon__btn sm-w-full">
+          <button id="comment-button" type="button" class="btn btn-icon sm-w-full">
             <Icon name="uil:comment" />
             Ecrire un bon vieux commentaire...
           </button>
@@ -149,7 +149,7 @@ useHead({
         <div class="comment-card__header">
           <div class="comment-card__info">
             <h1>#1</h1>
-            <div class="icon__btn">
+            <div class="btn-icon">
               <img src="~/assets/img/user_duder.svg" class="icon__medium invertable--img"
                 alt="icône moche représentant l'auteur" aria-hidden="true">
               Par DkVZ
