@@ -100,7 +100,11 @@ Was in the previous site:
 
 For the og and twitter metas I need the full website URL, to replace in some of the values below with some variable.
 
-There's other repeat data in there that should be in a global thing (app object from config?).
+There's other repeat data in there that should be in a global thing. Apparently there's a SEO module that's supposed to auto-append your configured site URL to absolute URLs in meta tags that need it.
+
+In the end I just put redundant site info in `./data/site-info.ts` that can be re-used both in the Nuxt config or wherever the client might need it in some page or composable.
+
+I'm going to use these for now:
 
 ```html
 <meta name="image" property="og:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">

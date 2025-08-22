@@ -1,5 +1,5 @@
-// I have no idea where to put this
-const siteUrl = "https://dkvz.eu"
+// Importing site info I have to reuse from "data"
+import { siteInfo } from "./data/site-info"
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/icon', '@nuxtjs/color-mode'],
   app: {
     head: {
-      title: "Blog des gens compliqués",
+      title: siteInfo.title,
       htmlAttrs: {
         lang: "fr"
       },
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
         {
           rel: "alternate",
           type: "application/rss+xml",
-          href: `${siteUrl}/rss.xml`,
+          href: `${siteInfo.url}/rss.xml`,
           title: "Flux RSS de dkvz.eu"
         },
         {
@@ -43,9 +43,25 @@ export default defineNuxtConfig({
       ],
       meta: [
         { name: "theme-color", content: "#184160" },
-        { name: "description", content: "Blog expérimental d'un humble consultant en progress-bars." },
+        { name: "description", content: siteInfo.description },
         { name: "application-name", content: "Blog dkvz.eu" },
-        { name: "image", content: `${siteUrl}/assets/touch/chrome-splashscreen-icon-384x384.png`, property: "og:image" },
+        {
+          property: "og:image",
+          name: "image",
+          content: `${siteInfo.url}/assets/touch/chrome-splashscreen-icon-384x384.png`
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:title", content: `dkvz.eu - ${siteInfo.title}` },
+        { property: "og:description", content: siteInfo.description },
+        { property: "og:url", content: siteInfo.url },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: `dkvz.eu - ${siteInfo.title}` },
+        { name: "twitter:site", content: "@MrSausageroll" },
+        { name: "twitter:description", content: siteInfo.description },
+        {
+          name: "twitter:image",
+          content: `${siteInfo.url}/assets/touch/chrome-splashscreen-icon-384x384.png`
+        },
       ]
     }
   },
