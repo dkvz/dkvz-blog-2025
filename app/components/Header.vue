@@ -25,7 +25,7 @@
             <a href="#">Accueil</a>
           </li>
           <li>
-            <a href="article.html">Blog</a>
+            <a href="#">Blog</a>
           </li>
           <li>
             <a href="#">Contact</a>

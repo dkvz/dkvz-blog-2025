@@ -21,6 +21,7 @@ Just removing the items when done this time around.
 - Don't forget to add my robots.txt
 - Footer links leave an empty spot on the right on medium screen, should space it better?
 - Create the go to top button (could use `btn-highlight`)
+- Review other meta tags I'm missing (manifest.json?)
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -77,3 +78,21 @@ Got two things to try:
 I initially used BEM to prototype the "design" and then went on to use CSS layers and other advanced features so that BEM is really more of a hindrance now.
 
 I'll keep some of the initial BEM styling but new styles shouldn't follow any specific convention.
+
+## Meta tags and stuff
+No idea what I should use, let's review some candidates:
+
+```html
+<link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="shortcut icon" href="/favicon.png" type="image/png">
+<link rel="alternate" type="application/rss+xml" href="https://dkvz.eu/rss.xml" title="Syntax RSS Feed">
+```
+The "shortcut" before icon is allowed for historical reasons but I think I'll remove it.
+
+Was in the previous site:
+```html
+<link rel="icon" sizes="192x192" href="/assets/touch/chrome-touch-icon-192x192.png">
+<link rel="apple-touch-icon" href="/assets/touch/apple-touch-icon.png">
+<meta name="description" content="Blog expérimental d'un humble consultant en progress-bars.">
+```
+

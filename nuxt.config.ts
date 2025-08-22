@@ -16,6 +16,9 @@ export default defineNuxtConfig({
         {
           textContent: '<style>._js-only {display: none !important;}<\/style>'
         },
+      ],
+      meta: [
+        { name: "theme-color", content: "#184160" }
       ]
     }
   },
