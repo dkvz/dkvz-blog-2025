@@ -97,5 +97,20 @@ Was in the previous site:
 <meta name="description" content="Blog expérimental d'un humble consultant en progress-bars.">
 ```
 
-For the og and twitter metas I need the full website URL.
+For the og and twitter metas I need the full website URL, to replace in some of the values below with some variable.
+
+There's other repeat data in there that should be in a global thing (app object from config?).
+
+```html
+<meta name="image" property="og:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dkvz.eu - Blog des gens compliqués">
+<meta property="og:description" content="Blog expérimental d'un humble consultant en progress-bars.">
+<meta property="og:url" content="https://dkvz.eu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="dkvz.eu - Blog des gens compliqués">
+<meta name="twitter:site" content="@MrSausageroll">
+<meta name="twitter:description" content="Blog expérimental d'un humble consultant en progress-bars.">
+<meta name="twitter:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
+```
 

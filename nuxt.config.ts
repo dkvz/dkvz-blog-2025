@@ -1,3 +1,6 @@
+// I have no idea where to put this
+const siteUrl = "https://dkvz.eu"
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -21,7 +24,7 @@ export default defineNuxtConfig({
         {
           rel: "alternate",
           type: "application/rss+xml",
-          href: "https://dkvz.eu/rss.xml",
+          href: `${siteUrl}/rss.xml`,
           title: "Flux RSS de dkvz.eu"
         },
         {
@@ -42,6 +45,7 @@ export default defineNuxtConfig({
         { name: "theme-color", content: "#184160" },
         { name: "description", content: "Blog expérimental d'un humble consultant en progress-bars." },
         { name: "application-name", content: "Blog dkvz.eu" },
+        { name: "image", content: `${siteUrl}/assets/touch/chrome-splashscreen-icon-384x384.png`, property: "og:image" },
       ]
     }
   },
