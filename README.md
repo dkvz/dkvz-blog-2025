@@ -24,6 +24,8 @@ Just removing the items when done this time around.
 - Footer links leave an empty spot on the right on medium screen, should space it better?
 - Create the go to top button (could use `btn-highlight`)
 - Review other meta tags I'm missing (manifest.json?)
+- Add icons to every menu entry - Make sure it works on mobile screens
+- Can I put the article tags back into the menu? Maybe as an accordion?
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

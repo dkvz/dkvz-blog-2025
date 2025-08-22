@@ -22,16 +22,25 @@
         </div>
         <ul class="menu__list">
           <li>
-            <a href="#">Accueil</a>
+            <NuxtLink to="/">Accueil</NuxtLink>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a href="#">Rechercher</a>
+          </li>
+          <li>
+            <a href="#">Articles</a>
+          </li>
+          <li>
+            <a href="#">Brèves</a>
+          </li>
+          <li>
+            <a href="#">A propos</a>
           </li>
           <li>
             <a href="#">Contact</a>
           </li>
           <li>
-            <a href="#">About us</a>
+            <a href="#">Engagez-moi</a>
           </li>
         </ul>
         <div class="menu__socials">
