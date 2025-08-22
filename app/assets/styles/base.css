@@ -1,5 +1,5 @@
 /**
-* TODO: This file should be split 
+* TODO: We could probably split this file into different ones
 * - Refactor to use nesting
 * **/
 
@@ -466,7 +466,7 @@
     border: 0;
   }
 
-  .comment__form {
+  .comment-form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -475,22 +475,22 @@
     height: 100%;
   }
 
-  .comment__form>input[type="text"],
-  .comment__form>textarea {
+  .comment-form>input[type="text"],
+  .comment-form>textarea {
     font-size: 1rem;
   }
 
-  .comment__form>textarea {
+  .comment-form>textarea {
     flex: 1;
   }
 
-  .comment__form-footer {
+  .comment-form-footer {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
   }
 
-  .comment__form-title {
+  .comment-form-title {
     color: var(--light-color);
   }
 
