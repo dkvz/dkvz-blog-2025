@@ -12,7 +12,7 @@ const toggleTheme = () => {
 <template>
   <button aria-label="Basculer le mode sombre / clair" class="btn btn--highlight  flex--center"
     title="Basculer le mode sombre / clair" @click="toggleTheme">
-    <Icon v-if="colorMode.value === 'dark'" name="uil:moon" />
-    <Icon v-else name="uil:sun" />
+    <Icon v-if="colorMode.value === 'dark'" name="uil:sun" />
+    <Icon v-else name="uil:moon" />
   </button>
 </template>

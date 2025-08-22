@@ -5,18 +5,25 @@ I'll be using the Rest API still, keeping the older versions of the blog compati
 
 There's a good chance I'll be using static generation to avoid having to keep a useless Node process around on my server.
 
+I use a `dev` branch for this project, main sometimes gets squashed merges from there.
+
 ## TODO
 Just removing the items when done this time around.
 
+- The jsonly thing can be moved from App.vue to nuxt.config.ts
 - I think I have to change how I color icons if I'm to use the CSS ones 
 - Do I need "alt" on icons?
 - Do we still need the ._js-only CSS class in its noscript block?
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
+- Create woff or woff2 versions of the fonts?
+- No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Shadows shouldn't become bright white on dark mode I think it's a design faux pas
 - HTML comments in pages should be removed at some point.
 - Don't forget to add my robots.txt
+- Footer links leave an empty spot on the right on medium screen, should space it better?
+- Swap the search SVG for an icon
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

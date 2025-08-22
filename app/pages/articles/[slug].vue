@@ -13,12 +13,10 @@ useHead({
         Analyse de transitions électophotoniques majeures à réaction
       </h1>
       <div class="article-header__desc mt-2">
-        <!--<img width="28" src="img/calendar-alt.svg" class="icon invertable--img" alt="Publié le">-->
-        <Icon name="uil:calendar" class="icon invertable--img" alt="Publié le" />
+        <Icon name="uil:calendar" alt="Publié le" />
         <span>11/12/2020 11:20:11</span>
         <span>|</span>
-        <!--<img width="28" src="img/edit.svg" class="icon invertable--img" alt="Ecrit par">-->
-        <Icon name="uil:edit" class="icon invertable--img" alt="Ecrit par" />
+        <Icon name="uil:edit" alt="Ecrit par" />
         <span>Par DkVZ</span>
       </div>
       <div class="article-header__desc">
@@ -58,14 +56,15 @@ useHead({
     <div class="article-content">
       <h2>Introduction</h2>
 
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore soluta delectus perspiciatis quibusdam
+      <p>Lorem ipsum dolor sit amet consectetur, <b>adipisicing elit</b>. Labore soluta delectus perspiciatis quibusdam
         aspernatur nostrum quisquam, <a href="https://dkvz.eu" target="_blank" rel="noopener noreferrer">pantacourt
           sans slip</a> sunt doloremque, eveniet itaque quas suscipit.</p>
 
       <blockquote>
         <p>Si Gargamel mange tous les Schtroumpfs y a plus d'histoire.</p>
         <p>Aussi je sais pas comment on écrit Schdpotrutmgf. Et faut ajouter du texte sur plusieurs lignes Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Numquam consectetur expedita rem quaerat blanditiis? Quae atque
+          dolor sit amet consectetur adipisicing elit. <b><i>Froc sit amet</i></b> expedita rem quaerat blanditiis? Quae
+          atque
           reprehenderit doloribus excepturi dicta?</p>
       </blockquote>
 
@@ -124,8 +123,7 @@ useHead({
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
           <button id="comment-button" type="button" class="btn icon__btn sm-w-full">
-            <!--<img src="img/comment-alt.svg" class="icon" alt="Commentaires">-->
-            <Icon class="icon" name="uil:comment" />
+            <Icon name="uil:comment" />
             Ecrire un bon vieux commentaire...
           </button>
         </div>

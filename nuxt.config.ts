@@ -9,6 +9,14 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "fr"
       },
+      // It's better to use <ClientOnly> when possible except it's 
+      // got a big delay as it only enables after hydration.
+      // My noscript "hack" immediately detects when JS is disabled.
+      noscript: [
+        {
+          textContent: '<style>._js-only {display: none !important;}<\/style>'
+        },
+      ]
     }
   },
   css: [
