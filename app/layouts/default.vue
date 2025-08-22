@@ -23,7 +23,7 @@
             <li><a href="#">A propos</a></li>
             <li><a href="#">Articles</a></li>
             <li><a href="#">Brèves</a></li>
-            <li><a href="#" class="footer-sections__image-link"><img class="mr--1" src="~/assets/img/rss_feed.svg"
+            <li><a href="#" class="footer-sections__image-link"><img class="mr-1" src="~/assets/img/rss_feed.svg"
                   height="18" alt="RSS feed icon"> Flux RSS</a></li>
           </ul>
         </section>

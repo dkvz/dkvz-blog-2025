@@ -4,7 +4,7 @@
 
 <template>
   <aside class="header">
-    <a class="header__title" href="/">Le BdGC <span class="text text--smaller">de DkVZ</span></a>
+    <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" tabindex="0" role="button" aria-controls="menu" aria-label="Afficher le menu"
       for="menu-checkbox">
       <svg class="menu-btn__icon" viewBox="0 0 7 7">

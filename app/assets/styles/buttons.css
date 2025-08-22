@@ -23,7 +23,7 @@
   }
 
   /* I also use this to generally align text and icons
-* WHICH IS BAD */
+  * WHICH IS BAD */
   .icon__btn {
     display: flex;
     align-items: center;

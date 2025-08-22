@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   bodyAttrs: {
-    class: "bg--gradient-clouds"
+    class: "bg-gradient-clouds"
   }
 })
 </script>

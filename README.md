@@ -72,3 +72,7 @@ Got two things to try:
 ## Useful links
 - [Icon list](https://icones.js.org/)
 
+## CSS naming and bloat
+I initially used BEM to prototype the "design" and then went on to use CSS layers and other advanced features so that BEM is really more of a hindrance now.
+
+I'll keep some of the initial BEM styling but new styles shouldn't follow any specific convention.
