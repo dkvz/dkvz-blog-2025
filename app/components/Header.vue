@@ -77,8 +77,8 @@ onMounted(() => {
   <header class="hero">
     <div class="hero__inner">
       <noscript>
-        <img class="hero__img hero__img--v1" src="~/assets/img/shrimp_plain1.svg" alt="Brand logo 1">
-        <img class="hero__img hero__img--v2" src="~/assets/img/shrimp_plain2.svg" alt="Brand logo 2">
+        <img class="hero__img hero__img--v1" src="/assets/shrimp_plain1.svg" alt="Une crevette vectorielle">
+        <img class="hero__img hero__img--v2" src="/assets/shrimp_plain2.svg" alt="Une crevette vectorielle">
       </noscript>
       <svg class="hero__img hero__img--v1 _js-only" viewBox="0 0 587.5 386.1">
         <g fill="none" stroke="#000">
@@ -89,13 +89,16 @@ onMounted(() => {
           <path d="m15.26 146.6s118.7-4.896 125.4-33.02" stroke-width="1.875" />
         </g>
       </svg>
-      <svg class="hero__img hero__img--v2 _js-only" viewBox="0 0 216.5 117.7">
-        <g transform="translate(-137 -93.78)">
-          <path
-            d="m162.8 143.1c34.08-5.722 26.66-10.79 26.66-10.79m-16.41-8.322a3.018 3.018 0 0 1-3.018 3.018 3.018 3.018 0 0 1-3.018-3.018 3.018 3.018 0 0 1 3.018-3.018 3.018 3.018 0 0 1 3.018 3.018zm77.22 77.5s-13.44-23.57-0.7071-22.63c12.73 0.9428 45.49 13.67 45.49 13.67l27.98-6.439s-1.309-29.01-35.15-38.51c-33.84-9.5-50.58 1.107-50.58 1.107s-19.6 18.99-74.5-5.592c0 0-29.17-2.189-25.42-10.79 3.752-8.602 29.16-7.136 29.16-7.136s-1.652-8.133 20.65-7.039c22.3 1.095 106.2-8.535 106.2-8.535m27.33 97.55s-5.186 12.73-70.48-5.657m43.14-91.89s61.97-3.407 59.85 44.48c-2.113 47.89-32.52 53.07-32.52 53.07"
-            fill="none" stroke="#000" stroke-width=".5292" />
-        </g>
-      </svg>
+      <PlaceholderSvg src="/assets/shrimp_plain2.svg" img-class="hero__img hero__img--v2"
+        alt="Une crevette vectorielle">
+        <svg class="hero__img hero__img--v2" viewBox="0 0 216.5 117.7">
+          <g transform="translate(-137 -93.78)">
+            <path
+              d="m162.8 143.1c34.08-5.722 26.66-10.79 26.66-10.79m-16.41-8.322a3.018 3.018 0 0 1-3.018 3.018 3.018 3.018 0 0 1-3.018-3.018 3.018 3.018 0 0 1 3.018-3.018 3.018 3.018 0 0 1 3.018 3.018zm77.22 77.5s-13.44-23.57-0.7071-22.63c12.73 0.9428 45.49 13.67 45.49 13.67l27.98-6.439s-1.309-29.01-35.15-38.51c-33.84-9.5-50.58 1.107-50.58 1.107s-19.6 18.99-74.5-5.592c0 0-29.17-2.189-25.42-10.79 3.752-8.602 29.16-7.136 29.16-7.136s-1.652-8.133 20.65-7.039c22.3 1.095 106.2-8.535 106.2-8.535m27.33 97.55s-5.186 12.73-70.48-5.657m43.14-91.89s61.97-3.407 59.85 44.48c-2.113 47.89-32.52 53.07-32.52 53.07"
+              fill="none" stroke="#000" stroke-width=".5292" />
+          </g>
+        </svg>
+      </PlaceholderSvg>
     </div>
     <div class="hero__mid">
       <h1 class="main-title">Blog des Gens <span class="main-title__highlight">Compliqués</span></h1>
