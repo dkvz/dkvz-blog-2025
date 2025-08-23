@@ -1,9 +1,23 @@
 <script setup lang="ts">
+import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll';
+
+const header = useTemplateRef("header")
+const {
+  isSticky,
+  startDynamicHeader,
+  opacity,
+  transform
+} = useHideHeaderOnScroll(header)
+
+onMounted(() => {
+  startDynamicHeader()
+})
 
 </script>
 
 <template>
-  <aside class="header">
+  <aside class="header" :class="{ 'header--sticky': isSticky }" :style="{ opacity: opacity, transform: transform }"
+    ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" tabindex="0" role="button" aria-controls="menu" aria-label="Afficher le menu"
       for="menu-checkbox">
@@ -22,16 +36,25 @@
         </div>
         <ul class="menu__list">
           <li>
-            <a href="#">Accueil</a>
+            <NuxtLink to="/">Accueil</NuxtLink>
           </li>
           <li>
-            <a href="#">Blog</a>
+            <a href="#">Rechercher</a>
+          </li>
+          <li>
+            <a href="#">Articles</a>
+          </li>
+          <li>
+            <a href="#">Brèves</a>
+          </li>
+          <li>
+            <a href="#">A propos</a>
           </li>
           <li>
             <a href="#">Contact</a>
           </li>
           <li>
-            <a href="#">About us</a>
+            <a href="#">Engagez-moi</a>
           </li>
         </ul>
         <div class="menu__socials">
