@@ -1,3 +1,5 @@
+import type { ShallowRef } from "vue"
+
 interface useHideHeaderOnScrollOptions {
   stickyFactor?: number,
 }
@@ -6,7 +8,7 @@ interface useHideHeaderOnScrollOptions {
 // that isn't window but pageYOffset doesn't exist on other
 // elements. Or at least Typescript is telling me so.
 export const useHideHeaderOnScroll = (
-  headerElement: HTMLElement | null,
+  headerElement: Readonly<ShallowRef<HTMLElement | null>>,
   options?: useHideHeaderOnScrollOptions
 ) => {
   if (!options) options = {}
@@ -18,13 +20,14 @@ export const useHideHeaderOnScroll = (
   const defaultHeaderHeight = 150
 
   const isSticky = ref(false)
-  const opacity = ref(0)
+  const opacity = ref(1)
   const transform = ref("")
 
-  const stickT = headerElement.getBoundingClientRect ?
-    headerElement.getBoundingClientRect().height :
-    defaultHeaderHeight
-  const hideT = stickT * stickyFactor
+  // I can't compute these now because the header ref
+  // might not exist yet or we might be running on the
+  // server or god knows what
+  let stickT = 0
+  let hideT = 0
 
   const onScroll = () => {
     if (isSticky.value &&
@@ -47,7 +50,15 @@ export const useHideHeaderOnScroll = (
     }
   }
 
-  const startDynamicHeader = () => window.addEventListener('scroll', onScroll)
+  const startDynamicHeader = () => {
+    if (headerElement.value) {
+      stickT = headerElement.value.getBoundingClientRect ?
+        headerElement.value.getBoundingClientRect().height :
+        defaultHeaderHeight
+      hideT = stickT * stickyFactor
+      window.addEventListener('scroll', onScroll)
+    }
+  }
 
   // opacity and transform should be set to override 
   // these values in the style attribute
