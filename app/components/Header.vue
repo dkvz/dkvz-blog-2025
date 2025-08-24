@@ -76,19 +76,18 @@ onMounted(() => {
   </aside>
   <header class="hero">
     <div class="hero__inner">
-      <noscript>
-        <img class="hero__img hero__img--v1" src="/assets/shrimp_plain1.svg" alt="Une crevette vectorielle">
-        <img class="hero__img hero__img--v2" src="/assets/shrimp_plain2.svg" alt="Une crevette vectorielle">
-      </noscript>
-      <svg class="hero__img hero__img--v1 _js-only" viewBox="0 0 587.5 386.1">
-        <g fill="none" stroke="#000">
-          <path
-            d="m8.761 125.5s39.02-50.21 131.9-55.45c92.85-5.238 243.3-8.839 243.3-8.839s260.6-14.45 193.2 187.4c-67.48 201.8-323.3 107.4-323.3 107.4l-42.04-51.56 1.912-8.809s155.8 13.05 171.7 38.7c15.84 25.66 64.48-96.56 64.48-96.56s-38.02-61.14-74.13-45.8c-36.11 15.34-339.4-38.07-339.4-38.07s-32.77-2.435-27.47-28.42"
-            stroke-width="1.875" />
-          <ellipse cx="84.63" cy="89" rx="12.61" ry="9.085" stroke-width="1.875" />
-          <path d="m15.26 146.6s118.7-4.896 125.4-33.02" stroke-width="1.875" />
-        </g>
-      </svg>
+      <PlaceholderSvg src="/assets/shrimp_plain1.svg" img-class="hero__img hero__img--v1"
+        alt="Une crevette vectorielle">
+        <svg class="hero__img hero__img--v1" viewBox="0 0 587.5 386.1">
+          <g fill="none" stroke="#000">
+            <path
+              d="m8.761 125.5s39.02-50.21 131.9-55.45c92.85-5.238 243.3-8.839 243.3-8.839s260.6-14.45 193.2 187.4c-67.48 201.8-323.3 107.4-323.3 107.4l-42.04-51.56 1.912-8.809s155.8 13.05 171.7 38.7c15.84 25.66 64.48-96.56 64.48-96.56s-38.02-61.14-74.13-45.8c-36.11 15.34-339.4-38.07-339.4-38.07s-32.77-2.435-27.47-28.42"
+              stroke-width="1.875" />
+            <ellipse cx="84.63" cy="89" rx="12.61" ry="9.085" stroke-width="1.875" />
+            <path d="m15.26 146.6s118.7-4.896 125.4-33.02" stroke-width="1.875" />
+          </g>
+        </svg>
+      </PlaceholderSvg>
       <PlaceholderSvg src="/assets/shrimp_plain2.svg" img-class="hero__img hero__img--v2"
         alt="Une crevette vectorielle">
         <svg class="hero__img hero__img--v2" viewBox="0 0 216.5 117.7">

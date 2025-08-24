@@ -48,6 +48,10 @@
     margin-right: 0.8rem;
   }
 
+  .h-full {
+    height: 100%;
+  }
+
   .sm-w-full {
     width: 100%;
   }

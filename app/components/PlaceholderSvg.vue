@@ -12,6 +12,8 @@ const loaded = ref(false)
 const viewBox = ref<string | undefined>()
 const svgContent = ref("")
 
+// Should only run on client but I could also make it
+// react to the src prop change, which it does not.
 onMounted(async () => {
   // Let a possible error bubble up here
   // oFetch will throw an error if the request
@@ -29,7 +31,6 @@ onMounted(async () => {
     // Duplicate the viewBox:
     const newVb = svgEl.getAttribute("viewBox")
     if (newVb) viewBox.value = newVb
-    console.log("setting innerHTML to ", svgEl.innerHTML)
     svgContent.value = svgEl.innerHTML
   }
 
@@ -41,7 +42,7 @@ onMounted(async () => {
   <noscript>
     <img :class="props.imgClass" :src="props.src" :alt="props.alt">
   </noscript>
-  <div v-if="!loaded" ref="svg-slot" class="_js-only">
+  <div v-if="!loaded" ref="svg-slot" class="_js-only flex-center h-full">
     <slot></slot>
   </div>
   <svg v-else :viewBox="viewBox" :class="props.imgClass" v-html="svgContent"></svg>

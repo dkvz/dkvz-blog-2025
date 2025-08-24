@@ -26,6 +26,7 @@ Just removing the items when done this time around.
 - Review other meta tags I'm missing (manifest.json?)
 - Add icons to every menu entry - Make sure it works on mobile screens
 - Can I put the article tags back into the menu? Maybe as an accordion?
+- Is `svg.hero__img--v2-loaded` used anywhere? When the placeholder is loaded?
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
