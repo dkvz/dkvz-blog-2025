@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll';
 
+const isMenuOpened = ref(false)
+
 const header = useTemplateRef("header")
 const {
   isSticky,
@@ -9,9 +11,29 @@ const {
   transform
 } = useHideHeaderOnScroll(header)
 
+const menuText = computed(() => isMenuOpened.value ? "Fermer" : "Menu")
+
+// I don't know why but I really want to remove the event 
+// listener when not needed. I could just keep it around.
+const escMenuCallback = (e: any) => {
+  if (e.key === 'Escape') {
+    window.removeEventListener("keydown", escMenuCallback)
+    isMenuOpened.value = false
+  }
+}
+
+const onMenuCheckboxChange = () => {
+  // Bind Esc on the whole window to close the menu
+  window.addEventListener("keydown", escMenuCallback)
+  console.log("uh the menu checkbox changed ", isMenuOpened.value)
+}
+
 onMounted(() => {
   startDynamicHeader()
 })
+
+// TODO: DO I NEED TO CHANGE THE Z INDEX OF MENU like in the PoC?
+// - The animation for menu SVG no longer works
 
 </script>
 
@@ -19,16 +41,17 @@ onMounted(() => {
   <aside class="header" :class="{ 'header--sticky': isSticky }" :style="{ opacity: opacity, transform: transform }"
     ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
-    <label class="menu-btn input" tabindex="0" role="button" aria-controls="menu" aria-label="Afficher le menu"
-      for="menu-checkbox">
+    <label class="menu-btn input" :class="{ isMenuOpened: 'open' }" tabindex="0" role="button" aria-controls="menu"
+      aria-label="Afficher ou fermer le menu" for="menu-checkbox">
       <svg class="menu-btn__icon" viewBox="0 0 7 7">
         <rect class="line-1" y="0" width="7" height="1"></rect>
         <rect class="line-2" y="3" width="7" height="1"></rect>
         <rect class="line-3" y="6" width="7" height="1"></rect>
       </svg>
-      <span>Menu</span>
+      <span>{{ menuText }}</span>
     </label>
-    <input aria-hidden="true" type="checkbox" id="menu-checkbox" name="menu-checkbox">
+    <input @change="onMenuCheckboxChange" v-model="isMenuOpened" aria-hidden="true" type="checkbox" id="menu-checkbox"
+      name="menu-checkbox">
     <div id="menu">
       <nav class="menu">
         <div class="section-title">
