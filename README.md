@@ -19,10 +19,8 @@ Just removing the items when done this time around.
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Shadows shouldn't become bright white on dark mode I think it's a design faux pas
 - HTML comments in pages should be removed at some point.
-- Don't forget to add my robots.txt
 - Footer links leave an empty spot on the right on medium screen, should space it better?
 - Create the go to top button (could use `btn-highlight`)
-- Review other meta tags I'm missing (manifest.json?)
 - Add icons to every menu entry - Make sure it works on mobile screens
 - Can I put the article tags back into the menu? Maybe as an accordion?
 
