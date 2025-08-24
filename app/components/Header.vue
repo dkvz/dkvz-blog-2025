@@ -89,7 +89,7 @@ onMounted(() => {
         </svg>
       </PlaceholderSvg>
       <PlaceholderSvg src="/assets/shrimp_plain2.svg" img-class="hero__img hero__img--v2"
-        alt="Une crevette vectorielle">
+        loaded-class="hero__img--v2-loaded" alt="Une crevette vectorielle">
         <svg class="hero__img hero__img--v2" viewBox="0 0 216.5 117.7">
           <g transform="translate(-137 -93.78)">
             <path

@@ -4,6 +4,7 @@
 const props = defineProps<{
   src: string,
   imgClass?: string,
+  loadedClass?: string,
   alt?: string,
 }>()
 
@@ -45,5 +46,6 @@ onMounted(async () => {
   <div v-if="!loaded" ref="svg-slot" class="_js-only flex-center h-full">
     <slot></slot>
   </div>
-  <svg v-else :viewBox="viewBox" :class="`_js-only ${props.imgClass}`" v-html="svgContent"></svg>
+  <svg v-else :viewBox="viewBox" :class="`_js-only ${props.imgClass || ''} ${props.loadedClass || ''}`"
+    v-html="svgContent"></svg>
 </template>
