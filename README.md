@@ -10,6 +10,8 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Effects to add back in: intersection observers on cards, titles and images
+- Is there something to lower animation load on low spec machines? I've head of a property doing something like that
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Implement the title template and title antics

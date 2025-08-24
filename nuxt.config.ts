@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/icon', '@nuxtjs/color-mode'],
   app: {
     head: {
-      title: siteInfo.title,
+      // title is set in app.vue
       htmlAttrs: {
         lang: "fr"
       },
