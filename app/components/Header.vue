@@ -25,15 +25,14 @@ const escMenuCallback = (e: any) => {
 const onMenuCheckboxChange = () => {
   // Bind Esc on the whole window to close the menu
   window.addEventListener("keydown", escMenuCallback)
-  console.log("uh the menu checkbox changed ", isMenuOpened.value)
 }
 
 onMounted(() => {
   startDynamicHeader()
 })
 
-// TODO: DO I NEED TO CHANGE THE Z INDEX OF MENU like in the PoC?
-// - The animation for menu SVG no longer works
+// TODO: If an overlay gets involved the z-index of something has to 
+// change when menu is open
 
 </script>
 
@@ -41,7 +40,7 @@ onMounted(() => {
   <aside class="header" :class="{ 'header--sticky': isSticky }" :style="{ opacity: opacity, transform: transform }"
     ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
-    <label class="menu-btn input" :class="{ isMenuOpened: 'open' }" tabindex="0" role="button" aria-controls="menu"
+    <label class="menu-btn input" :class="{ open: isMenuOpened }" tabindex="0" role="button" aria-controls="menu"
       aria-label="Afficher ou fermer le menu" for="menu-checkbox">
       <svg class="menu-btn__icon" viewBox="0 0 7 7">
         <rect class="line-1" y="0" width="7" height="1"></rect>
