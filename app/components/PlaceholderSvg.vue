@@ -39,11 +39,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <noscript>
+  <noscript data-allow-mismatch="children">
     <img :class="props.imgClass" :src="props.src" :alt="props.alt">
   </noscript>
   <div v-if="!loaded" ref="svg-slot" class="_js-only flex-center h-full">
     <slot></slot>
   </div>
-  <svg v-else :viewBox="viewBox" :class="props.imgClass" v-html="svgContent"></svg>
+  <svg v-else :viewBox="viewBox" :class="`_js-only ${props.imgClass}`" v-html="svgContent"></svg>
 </template>
