@@ -17,7 +17,7 @@ Just removing the items when done this time around.
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Implement the title template and title antics
-- Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
+- Should probably remove NuxtLoadingIndicator, I don't think it's gonna work out
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
@@ -86,6 +86,19 @@ I initially used BEM to prototype the "design" and then went on to use CSS layer
 
 I'll keep some of the initial BEM styling but new styles shouldn't follow any specific convention.
 
+## Article snippets to remember
+
+### New image snippet
+```html
+<div class="center-image">
+    <img-lightbox class="article-image">
+        <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/gilleshead_350.png" alt="C'est Gilles. Je pense.">
+        </a>
+    </img-lightbox>
+</div>
+```
+
 ## Meta tags and stuff
 No idea what I should use, let's review some candidates:
 
@@ -123,4 +136,5 @@ I'm going to use these for now:
 <meta name="twitter:description" content="Blog expérimental d'un humble consultant en progress-bars.">
 <meta name="twitter:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
 ```
+
 
