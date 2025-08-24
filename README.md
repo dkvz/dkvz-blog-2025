@@ -10,9 +10,8 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
-- The way I define the site URL is suboptimal and should check if we're in dev - Also put it in a file I can import from client pages that need it as well - Think it's better than using "public" and a composable to get the values
+- I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Implement the title template and title antics
-- Do I need "alt" on icons?
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
