@@ -10,6 +10,8 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
+- Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal)
 - Effects to add back in: intersection observers on cards, titles and images
 - Is there something to lower animation load on low spec machines? I've head of a property doing something like that
 - At some point an overlay was drawn when the menu was open, should we bring that back?
@@ -26,6 +28,7 @@ Just removing the items when done this time around.
 - Create the go to top button (could use `btn-highlight`)
 - Add icons to every menu entry - Make sure it works on mobile screens
 - Can I put the article tags back into the menu? Maybe as an accordion?
+- The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

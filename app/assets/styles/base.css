@@ -518,6 +518,11 @@
     height: 28px;
   }
 
+  .responsive-img {
+    height: auto;
+    max-width: 100%;
+  }
+
   .quote-card {
     padding: 1rem;
     font-style: italic;
