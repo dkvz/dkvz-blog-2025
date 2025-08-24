@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Implement the title template and title antics
 - Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself

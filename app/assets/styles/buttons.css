@@ -109,6 +109,10 @@
     fill: var(--dark-color);
   }
 
+  .menu-btn.open {
+    z-index: 20;
+  }
+
   .menu-btn.open .menu-btn__icon .line-2 {
     opacity: 0;
   }

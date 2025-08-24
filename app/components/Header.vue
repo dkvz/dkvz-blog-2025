@@ -31,9 +31,6 @@ onMounted(() => {
   startDynamicHeader()
 })
 
-// TODO: If an overlay gets involved the z-index of something has to 
-// change when menu is open
-
 </script>
 
 <template>
