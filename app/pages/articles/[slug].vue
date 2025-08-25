@@ -13,6 +13,8 @@ useHead({
   }
 })
 
+// TODO: We have to watch the route param or going to a new 
+// URL doesn't do anything
 const { data, status, error } =
   await useDkvzApi<Article>(`/article/${route.params.slug}`, {
     lazy: true,
@@ -23,6 +25,7 @@ const { data, status, error } =
 // display it in the page below which as nothing to 
 // show for non-success (or loading) states.
 watch(error, (err) => {
+  console.log("Got new error: ", err)
   if (err && err.statusCode !== 404) {
     console.log("Error from API: ", err.message)
     throw createError({
