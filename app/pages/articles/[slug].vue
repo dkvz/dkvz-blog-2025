@@ -17,24 +17,26 @@ const { data, status, error } =
     deep: false,
   })
 
+// We force redirect in case of error and thus do not
+// display it in the page below which as nothing to 
+// show for non-success (or loading) states.
 if (!data.value) {
   if (error.value && error.value.statusCode !== 404) {
     console.log("Error from API: ", error.value.message)
     throw createError({
       statusCode: 500,
-      statusMessage: 'Erreur inconnue étrange',
+      statusMessage: 'Encountered unexpected error',
       fatal: true
     })
   } else {
     throw createError({
       statusCode: 404,
-      statusMessage: 'Article introuvable',
+      statusMessage: 'Article not found',
       fatal: true
     })
   }
 }
 
-// TODO: Change the title accordingly
 useSeoMeta({
   title: data.value ? data.value.title : ""
 })
@@ -43,17 +45,19 @@ useSeoMeta({
 <template>
   <CommentDialog></CommentDialog>
 
-  <article class="content-card content-card--page-card">
+  <article v-if="status === 'pending'" class="content-card content-card--page-card">
+    <LoadingSpinner></LoadingSpinner>
+  </article>
+
+  <article v-else-if="data && status === 'success'" class="content-card content-card--page-card">
     <div class="article-header">
-      <h1 class="article-header__title">
-        Analyse de transitions électophotoniques majeures à réaction
-      </h1>
+      <h1 class="article-header__title" v-html="data.title"></h1>
       <div class="article-header__desc mt-2">
         <Icon name="uil:calendar" alt="Publié le" />
-        <span>11/12/2020 11:20:11</span>
+        <span>{{ data.date }}</span>
         <span>|</span>
         <Icon name="uil:edit" alt="Ecrit par" />
-        <span>Par DkVZ</span>
+        <span>Par {{ data.author }}</span>
       </div>
       <div class="article-header__desc">
         <span class="pill mt-3">

@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Isn't the spinner too big on mobile?
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal)
 - Effects to add back in: intersection observers on cards, titles and images
