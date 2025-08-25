@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { evaluateReadingTime } from '~/utils/article-utils'
+
 definePageMeta({
   alias: "/breves/:slug",
 })
@@ -20,9 +22,9 @@ const { data, status, error } =
 // We force redirect in case of error and thus do not
 // display it in the page below which as nothing to 
 // show for non-success (or loading) states.
-if (!data.value) {
-  if (error.value && error.value.statusCode !== 404) {
-    console.log("Error from API: ", error.value.message)
+watch(error, (err) => {
+  if (err && err.statusCode !== 404) {
+    console.log("Error from API: ", err.message)
     throw createError({
       statusCode: 500,
       statusMessage: 'Encountered unexpected error',
@@ -35,7 +37,7 @@ if (!data.value) {
       fatal: true
     })
   }
-}
+})
 
 useSeoMeta({
   title: data.value ? data.value.title : ""
@@ -59,22 +61,17 @@ useSeoMeta({
         <Icon name="uil:edit" alt="Ecrit par" />
         <span>Par {{ data.author }}</span>
       </div>
+
       <div class="article-header__desc">
-        <span class="pill mt-3">
-          <a href="#">Science &amp; Quiche</a>
-        </span>
-        <span class="pill mt-3">
-          <a href="#">Art &amp; Beauté</a>
-        </span>
-        <span class="pill mt-3">
-          <a href="#">Pantalons</a>
-        </span>
-        <span class="pill mt-3">
-          <a href="#">Un autre tag</a>
+        <span v-for="tag in data.tags" class="pill mt-3">
+          <NuxtLink :to="{ name: 'tag-tag', params: { tag: tag.name } }">
+            {{ tag.name }}
+          </NuxtLink>
         </span>
       </div>
+
       <div class="article-header__desc text-muted mt-3">
-        15 minutes de lecture (désolé)
+        {{ evaluateReadingTime(data.content.length) }} minutes de lecture (désolé)
       </div>
     </div>
 
@@ -93,69 +90,7 @@ useSeoMeta({
       </ul>
     </div>
 
-    <div class="article-content">
-      <h2>Introduction</h2>
-
-      <p>Lorem ipsum dolor sit amet consectetur, <b>adipisicing elit</b>. Labore soluta delectus perspiciatis quibusdam
-        aspernatur nostrum quisquam, <a href="https://dkvz.eu" target="_blank" rel="noopener noreferrer">pantacourt
-          sans slip</a> sunt doloremque, eveniet itaque quas suscipit.</p>
-
-      <blockquote>
-        <p>Si Gargamel mange tous les Schtroumpfs y a plus d'histoire.</p>
-        <p>Aussi je sais pas comment on écrit Schdpotrutmgf. Et faut ajouter du texte sur plusieurs lignes Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. <b><i>Froc sit amet</i></b> expedita rem quaerat blanditiis? Quae
-          atque
-          reprehenderit doloribus excepturi dicta?</p>
-      </blockquote>
-
-      <h2>Autre section</h2>
-      <p>Patate magique.</p>
-
-      <img-lightbox class="article-image">
-        <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
-          <img src="/assets/gilleshead_350.png" alt="Une image que j'ai pris au hasard">
-        </a>
-      </img-lightbox>
-
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur vel quisquam eum. Dolores iusto ab
-        facilis sequi debitis fuga eius!</p>
-
-      <h3>Sous-section</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est laborum impedit temporibus consequatur.
-        Aspernatur aut ex cum quibusdam nesciunt odio numquam asperiores animi nam nisi repellendus, qui quisquam
-        pariatur deleniti.</p>
-
-      <p>Une autre image:</p>
-
-      <div class="center-image">
-        <img-lightbox class="article-image">
-          <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/gilleshead_350.png" alt="C'est Gilles. Je pense.">
-          </a>
-        </img-lightbox>
-      </div>
-
-      <h4>Sous-sous-section</h4>
-      <p>Lorem illum voluptatum optio odio ipsum voluptate cum facere laboriosam ut praesentium dignissimos rem
-        consectetur. Rerum, aliquid.</p>
-
-      <div class="right">
-        <img-lightbox class="article-image">
-          <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/gilleshead_350.png" alt="C'est Gilles. Je pense.">
-          </a>
-        </img-lightbox>
-      </div>
-
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo nostrum, laboriosam quos laudantium
-        pariatur ipsam accusamus quaerat? Provident, aliquid voluptas.</p>
-
-      <h4>Sousousous section</h4>
-      <p>On est loins là.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facilis minima a iste. Hic voluptatum
-        delectus ea quasi temporibus ipsa, laborum saepe eveniet similique pariatur sit dolor ipsum. Ab, neque dolore.
-        Itaque nemo repellendus praesentium mollitia illo pariatur voluptate earum.</p>
-    </div>
+    <div class="article-content" v-html="data.content"></div>
 
     <section id="comment-section" class="card-list card-list--single">
 

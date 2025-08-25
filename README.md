@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Isn't the spinner too big on mobile?
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal)
@@ -30,6 +31,7 @@ Just removing the items when done this time around.
 - Add icons to every menu entry - Make sure it works on mobile screens
 - Can I put the article tags back into the menu? Maybe as an accordion?
 - The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
+- Delete the fake article I created at some point from the backend using the delete endpoint
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
