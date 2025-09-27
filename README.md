@@ -14,6 +14,7 @@ Meta tags seoMeta for articles.
 Just removing the items when done this time around.
 
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
+- Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Isn't the spinner too big on mobile?
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal)

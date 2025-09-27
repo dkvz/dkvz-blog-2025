@@ -11,8 +11,8 @@ useHead({
   }
 })
 
-// TODO: We have to watch the route param or going to a new 
-// URL doesn't do anything
+// I thought I needed to watch the route param but it seems to 
+// work as is with the current version of Nuxt:
 const { data, status, error } =
   await useDkvzApi<Article>(`/article/${route.params.slug}`, {
     lazy: true,
@@ -43,6 +43,12 @@ watch(error, (err) => {
 useSeoMeta({
   title: data.value ? data.value.title : ""
 })
+
+if (import.meta.server) {
+  const isShort = isShortsPage(route.path)
+  console.log("isShort: ", isShort)
+  // TODO: Set the rest of the meta tags from SSR
+}
 </script>
 
 <template>
