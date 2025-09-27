@@ -74,7 +74,7 @@ useSeoMeta({
       </div>
 
       <div class="article-header__desc text-muted mt-3">
-        {{ evaluateReadingTime(data.content.length) }} minutes de lecture (désolé)
+        {{ readingTimeDescription(data.content.length) }}
       </div>
     </div>
 
