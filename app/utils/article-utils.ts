@@ -1,12 +1,20 @@
+
+// Semi-arbitrary measure of how many words per minute a human
+// can read
+const wordsPerMinute = 200
+// I use a linear regression model for the estimations
+// It's not AI but is a pretty good predictor that doesn't
+// require 4 RTX 5090 graphics cards.
+const beta = 0.12318806842671491
+const alpha = -23.450114456215488
+
 /**
  * Returns an estimation of the reading time in minutes based 
  * on the amount of characters given as argument
  */
 export const evaluateReadingTime = (length: number): number => {
-  // Normally we'd need the word count and divide that by an 
-  // average of about 200 WPM.
-  // Character length is way more wonky especially since I also
-  // have a WHOLE BUNCH of <p> tags in article content at the
-  // moment.
-  return Math.floor(length / 500)
+  // Based on a project I created to find a prediction model 
+  // for word count based on the UTF-16 length reported by JS:
+  // https://github.com/dkvz/blog-stats
+  return Math.round((beta * length + alpha) / wordsPerMinute)
 }
