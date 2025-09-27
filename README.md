@@ -7,6 +7,9 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Current plan
+Meta tags seoMeta for articles.
+
 ## TODO
 Just removing the items when done this time around.
 

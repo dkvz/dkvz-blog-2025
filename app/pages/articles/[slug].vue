@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { evaluateReadingTime } from '~/utils/article-utils'
-
 definePageMeta({
   alias: "/breves/:slug",
 })
