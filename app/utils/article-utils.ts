@@ -30,3 +30,4 @@ export const readingTimeDescription = (length: number): string => {
     return `${time} minutes de lecture${time > 30 ? ' (désolé)' : ' (facile)'}`
   }
 }
+

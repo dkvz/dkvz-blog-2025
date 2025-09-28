@@ -1,15 +1,16 @@
 <script setup lang="ts">
+
+import type { Link } from "@unhead/vue"
+
 definePageMeta({
   alias: "/breves/:slug",
 })
 
 const route = useRoute()
+// Chose to make canonical url dynamic so this has to be
+// known by the client as well:
+const isShort = isShortsPage(route.path)
 
-useHead({
-  bodyAttrs: {
-    class: "bg-gradient-clouds"
-  }
-})
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt:
@@ -40,12 +41,26 @@ watch(error, (err) => {
   }
 })
 
+useHead({
+  bodyAttrs: {
+    class: "bg-gradient-clouds"
+  },
+  link: () => {
+    if (data.value) {
+      const canonical: Link = { rel: "canonical" }
+      canonical.href = articleUrlFor(data.value, true)
+      return [canonical]
+    } else {
+      return []
+    }
+  }
+})
+
 useSeoMeta({
-  title: data.value ? data.value.title : ""
+  title: () => data.value ? data.value.title : "",
 })
 
 if (import.meta.server) {
-  const isShort = isShortsPage(route.path)
   console.log("isShort: ", isShort)
   // TODO: Set the rest of the meta tags from SSR
 }
