@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import type { Link } from "@unhead/vue"
+import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
   alias: "/breves/:slug",
@@ -61,8 +62,17 @@ useSeoMeta({
 })
 
 if (import.meta.server) {
-  console.log("isShort: ", isShort)
-  // TODO: Set the rest of the meta tags from SSR
+  // Set the rest of the meta tags from SSR Since I have 
+  // await in front of the useFetch above, I might not 
+  // need to watch for data. Maybe. Let's try that.
+  if (data.value) {
+    useSeoMeta({
+      ogDescription: siteInfo.articleDescription,
+      twitterDescription: siteInfo.articleDescription,
+      ogTitle: data.value.title,
+      twitterTitle: data.value.title
+    })
+  }
 }
 </script>
 
