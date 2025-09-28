@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type { Link } from "@unhead/vue"
+import type { Link, UseSeoMetaInput } from "@unhead/vue"
 import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
@@ -54,10 +54,7 @@ useHead({
     } else {
       return []
     }
-  }
-})
-
-useSeoMeta({
+  },
   title: () => data.value ? data.value.title : "",
 })
 
@@ -66,12 +63,18 @@ if (import.meta.server) {
   // await in front of the useFetch above, I might not 
   // need to watch for data. Maybe. Let's try that.
   if (data.value) {
-    useSeoMeta({
+    const url = articleUrlFor(data.value, true)
+
+    const seoMeta: UseSeoMetaInput = {
       ogDescription: siteInfo.articleDescription,
       twitterDescription: siteInfo.articleDescription,
       ogTitle: data.value.title,
-      twitterTitle: data.value.title
-    })
+      twitterTitle: data.value.title,
+      ogUrl: url,
+      ogType: "article",
+      articlePublishedTime: parseBlogDateFormat(data.value.date).toISOString()
+    }
+    useSeoMeta(seoMeta)
   }
 }
 </script>

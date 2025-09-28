@@ -4,7 +4,7 @@ import { siteInfo } from "../../data/site-info"
 // of article, but might false positive if "breves" is 
 // in the article slug.
 export const isShortsPage = (path: string): boolean => {
-  return path.indexOf(siteInfo.shortRootUrl) == 0
+  return path.indexOf(`/${siteInfo.shortRootUrl}`) == 0
 }
 
 export const articleUrlFor = (article: Article, absolute = false): string => {
@@ -14,5 +14,5 @@ export const articleUrlFor = (article: Article, absolute = false): string => {
   } else {
     url = `${siteInfo.articleRootUrl}/${article.articleURL}`
   }
-  return absolute ? `${siteInfo.url}/${url}` : url
+  return absolute ? `${siteInfo.url}/${url}` : `/${url}`
 }
