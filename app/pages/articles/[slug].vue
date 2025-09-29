@@ -8,10 +8,6 @@ definePageMeta({
 })
 
 const route = useRoute()
-// Chose to make canonical url dynamic so this has to be
-// known by the client as well:
-const isShort = isShortsPage(route.path)
-
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt:
