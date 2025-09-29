@@ -7,10 +7,17 @@ definePageMeta({
   alias: "/breves/:slug",
 })
 
+useHead({
+  bodyAttrs: {
+    class: "bg-gradient-clouds"
+  },
+})
+
 const route = useRoute()
 
 // I thought I needed to watch the route param but it seems to 
-// work as is with the current version of Nuxt:
+// work as is with the current version of Nuxt.
+// TODO: Try removing the await now that I use a big watch?
 const { data, status, error } =
   await useDkvzApi<Article>(`/article/${route.params.slug}`, {
     lazy: true,
@@ -38,49 +45,52 @@ watch(error, (err) => {
   }
 })
 
-useHead({
-  bodyAttrs: {
-    class: "bg-gradient-clouds"
-  },
-  link: () => {
-    if (data.value) {
-      const canonical: Link = { rel: "canonical" }
-      canonical.href = articleUrlFor(data.value, true)
-      return [canonical]
-    } else {
-      return []
+// At some point I decided to centralize everything 
+// related to updating the article-related data here
+// instead of having 100000 tests for data.value being
+// truthy.
+watch(data, (newData) => {
+  if (newData) {
+    useHead({
+      link: [
+        {
+          rel: "canonical",
+          href: articleUrlFor(newData, true)
+        }
+      ],
+      title: newData.title,
+    })
+
+    if (import.meta.server) {
+      // Set the rest of the meta tags from SSR Since I have 
+      // await in front of the useFetch above, I might not 
+      // need to watch for data. Maybe. Let's try that.
+      const url = articleUrlFor(newData, true)
+
+      const seoMeta: UseSeoMetaInput = {
+        ogDescription: siteInfo.articleDescription,
+        twitterDescription: siteInfo.articleDescription,
+        ogTitle: newData.title,
+        twitterTitle: newData.title,
+        ogUrl: url,
+        ogType: "article",
+        articlePublishedTime: parseBlogDateFormat(newData.date).toISOString(),
+        author: newData.author,
+        articleAuthor: [newData.author],
+      }
+
+      if (newData.thumbImage) {
+        seoMeta.ogImage = newData.thumbImage
+        seoMeta.twitterImage = newData.thumbImage
+      }
+
+      useSeoMeta(seoMeta)
     }
-  },
-  title: () => data.value ? data.value.title : "",
+
+  }
 })
 
-if (import.meta.server) {
-  // Set the rest of the meta tags from SSR Since I have 
-  // await in front of the useFetch above, I might not 
-  // need to watch for data. Maybe. Let's try that.
-  if (data.value) {
-    const url = articleUrlFor(data.value, true)
 
-    const seoMeta: UseSeoMetaInput = {
-      ogDescription: siteInfo.articleDescription,
-      twitterDescription: siteInfo.articleDescription,
-      ogTitle: data.value.title,
-      twitterTitle: data.value.title,
-      ogUrl: url,
-      ogType: "article",
-      articlePublishedTime: parseBlogDateFormat(data.value.date).toISOString(),
-      author: data.value.author,
-      articleAuthor: [data.value.author],
-    }
-
-    if (data.value.thumbImage) {
-      seoMeta.ogImage = data.value.thumbImage
-      seoMeta.twitterImage = data.value.thumbImage
-    }
-
-    useSeoMeta(seoMeta)
-  }
-}
 </script>
 
 <template>
