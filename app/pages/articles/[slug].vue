@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type { Link, UseSeoMetaInput } from "@unhead/vue"
+import type { UseSeoMetaInput } from "@unhead/vue"
 import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
