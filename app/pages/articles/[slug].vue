@@ -72,8 +72,16 @@ if (import.meta.server) {
       twitterTitle: data.value.title,
       ogUrl: url,
       ogType: "article",
-      articlePublishedTime: parseBlogDateFormat(data.value.date).toISOString()
+      articlePublishedTime: parseBlogDateFormat(data.value.date).toISOString(),
+      author: data.value.author,
+      articleAuthor: [data.value.author],
     }
+
+    if (data.value.thumbImage) {
+      seoMeta.ogImage = data.value.thumbImage
+      seoMeta.twitterImage = data.value.thumbImage
+    }
+
     useSeoMeta(seoMeta)
   }
 }
