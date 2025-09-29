@@ -1,56 +1,120 @@
 <script setup lang="ts">
+
+import type { Link, UseSeoMetaInput } from "@unhead/vue"
+import { siteInfo } from "~~/data/site-info"
+
+definePageMeta({
+  alias: "/breves/:slug",
+})
+
+const route = useRoute()
+// Chose to make canonical url dynamic so this has to be
+// known by the client as well:
+const isShort = isShortsPage(route.path)
+
+
+// I thought I needed to watch the route param but it seems to 
+// work as is with the current version of Nuxt:
+const { data, status, error } =
+  await useDkvzApi<Article>(`/article/${route.params.slug}`, {
+    lazy: true,
+    deep: false,
+  })
+
+// We force redirect in case of error and thus do not
+// display it in the page below which as nothing to 
+// show for non-success (or loading) states.
+watch(error, (err) => {
+  console.log("Got new error: ", err)
+  if (err && err.statusCode !== 404) {
+    console.log("Error from API: ", err.message)
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Encountered unexpected error',
+      fatal: true
+    })
+  } else {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Article not found',
+      fatal: true
+    })
+  }
+})
+
 useHead({
   bodyAttrs: {
     class: "bg-gradient-clouds"
-  }
+  },
+  link: () => {
+    if (data.value) {
+      const canonical: Link = { rel: "canonical" }
+      canonical.href = articleUrlFor(data.value, true)
+      return [canonical]
+    } else {
+      return []
+    }
+  },
+  title: () => data.value ? data.value.title : "",
 })
+
+if (import.meta.server) {
+  // Set the rest of the meta tags from SSR Since I have 
+  // await in front of the useFetch above, I might not 
+  // need to watch for data. Maybe. Let's try that.
+  if (data.value) {
+    const url = articleUrlFor(data.value, true)
+
+    const seoMeta: UseSeoMetaInput = {
+      ogDescription: siteInfo.articleDescription,
+      twitterDescription: siteInfo.articleDescription,
+      ogTitle: data.value.title,
+      twitterTitle: data.value.title,
+      ogUrl: url,
+      ogType: "article",
+      articlePublishedTime: parseBlogDateFormat(data.value.date).toISOString(),
+      author: data.value.author,
+      articleAuthor: [data.value.author],
+    }
+
+    if (data.value.thumbImage) {
+      seoMeta.ogImage = data.value.thumbImage
+      seoMeta.twitterImage = data.value.thumbImage
+    }
+
+    useSeoMeta(seoMeta)
+  }
+}
 </script>
 
 <template>
+  <CommentDialog></CommentDialog>
 
-  <dialog id="comment-dialog">
-    <!--<form method="dialog">
-      <button aria-label="close" class="btn" style="float: right">X</button>
-      </form>-->
-    <h2 class="comment-form-title">Ajouter un commentaire</h2>
-    <form action="#" class="comment-form">
-      <input type="text" class="input" name="comment-author" id="comment-author" placeholder="Votre nom...">
-      <textarea class="input" placeholder="Votre commentaire..." name="comment-comment" id="comment-comment"></textarea>
-      <footer class="comment-form-footer">
-        <button aria-label="close" formmethod="dialog" class="btn">Annuler</button>
-        <button type="submit" class="btn">Envoyer</button>
-      </footer>
-    </form>
-  </dialog>
+  <article v-if="status === 'pending'" class="content-card content-card--page-card">
+    <LoadingSpinner></LoadingSpinner>
+  </article>
 
-  <article class="content-card content-card--page-card">
+  <article v-else-if="data && status === 'success'" class="content-card content-card--page-card">
     <div class="article-header">
-      <h1 class="article-header__title">
-        Analyse de transitions électophotoniques majeures à réaction
-      </h1>
+      <h1 class="article-header__title" v-html="data.title"></h1>
       <div class="article-header__desc mt-2">
         <Icon name="uil:calendar" alt="Publié le" />
-        <span>11/12/2020 11:20:11</span>
+        <span>{{ data.date }}</span>
         <span>|</span>
         <Icon name="uil:edit" alt="Ecrit par" />
-        <span>Par DkVZ</span>
+        <span>Par {{ data.author }}</span>
       </div>
+
       <div class="article-header__desc">
-        <span class="pill mt-3">
-          <a href="#">Science &amp; Quiche</a>
-        </span>
-        <span class="pill mt-3">
-          <a href="#">Art &amp; Beauté</a>
-        </span>
-        <span class="pill mt-3">
-          <a href="#">Pantalons</a>
-        </span>
-        <span class="pill mt-3">
-          <a href="#">Un autre tag</a>
+        <span v-for="tag in data.tags" class="pill mt-3">
+          <NuxtLink :to="{ name: 'tag-tag', params: { tag: tag.name } }">
+            {{ tag.name }}
+          </NuxtLink>
         </span>
       </div>
+
       <div class="article-header__desc text-muted mt-3">
-        15 minutes de lecture (désolé)
+        {{ readingTimeDescription(data.content.length) }}
       </div>
     </div>
 
@@ -69,69 +133,7 @@ useHead({
       </ul>
     </div>
 
-    <div class="article-content">
-      <h2>Introduction</h2>
-
-      <p>Lorem ipsum dolor sit amet consectetur, <b>adipisicing elit</b>. Labore soluta delectus perspiciatis quibusdam
-        aspernatur nostrum quisquam, <a href="https://dkvz.eu" target="_blank" rel="noopener noreferrer">pantacourt
-          sans slip</a> sunt doloremque, eveniet itaque quas suscipit.</p>
-
-      <blockquote>
-        <p>Si Gargamel mange tous les Schtroumpfs y a plus d'histoire.</p>
-        <p>Aussi je sais pas comment on écrit Schdpotrutmgf. Et faut ajouter du texte sur plusieurs lignes Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. <b><i>Froc sit amet</i></b> expedita rem quaerat blanditiis? Quae
-          atque
-          reprehenderit doloribus excepturi dicta?</p>
-      </blockquote>
-
-      <h2>Autre section</h2>
-      <p>Patate magique.</p>
-
-      <img-lightbox class="article-image">
-        <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
-          <img src="/assets/gilleshead_350.png" alt="Une image que j'ai pris au hasard">
-        </a>
-      </img-lightbox>
-
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur vel quisquam eum. Dolores iusto ab
-        facilis sequi debitis fuga eius!</p>
-
-      <h3>Sous-section</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est laborum impedit temporibus consequatur.
-        Aspernatur aut ex cum quibusdam nesciunt odio numquam asperiores animi nam nisi repellendus, qui quisquam
-        pariatur deleniti.</p>
-
-      <p>Une autre image:</p>
-
-      <div class="center-image">
-        <img-lightbox class="article-image">
-          <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/gilleshead_350.png" alt="C'est Gilles. Je pense.">
-          </a>
-        </img-lightbox>
-      </div>
-
-      <h4>Sous-sous-section</h4>
-      <p>Lorem illum voluptatum optio odio ipsum voluptate cum facere laboriosam ut praesentium dignissimos rem
-        consectetur. Rerum, aliquid.</p>
-
-      <div class="right">
-        <img-lightbox class="article-image">
-          <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/gilleshead_350.png" alt="C'est Gilles. Je pense.">
-          </a>
-        </img-lightbox>
-      </div>
-
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo nostrum, laboriosam quos laudantium
-        pariatur ipsam accusamus quaerat? Provident, aliquid voluptas.</p>
-
-      <h4>Sousousous section</h4>
-      <p>On est loins là.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur facilis minima a iste. Hic voluptatum
-        delectus ea quasi temporibus ipsa, laborum saepe eveniet similique pariatur sit dolor ipsum. Ab, neque dolore.
-        Itaque nemo repellendus praesentium mollitia illo pariatur voluptate earum.</p>
-    </div>
+    <div class="article-content" v-html="data.content"></div>
 
     <section id="comment-section" class="card-list card-list--single">
 

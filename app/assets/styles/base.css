@@ -8,6 +8,13 @@
     box-shadow: var(--ui-shadow);
   }
 
+  .spinner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .to-reveal {
     opacity: 0.1;
     transition: opacity 0.5s;

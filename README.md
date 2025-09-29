@@ -7,9 +7,15 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Current plan
+Meta tags seoMeta for articles.
+
 ## TODO
 Just removing the items when done this time around.
 
+- Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
+- Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
+- Isn't the spinner too big on mobile?
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal)
 - Effects to add back in: intersection observers on cards, titles and images
@@ -17,7 +23,7 @@ Just removing the items when done this time around.
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Implement the title template and title antics
-- Added NuxtLoadingIndicator to the layout but no idea if it works or ruins the layout itself
+- Should probably remove NuxtLoadingIndicator, I don't think it's gonna work out
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
@@ -29,6 +35,7 @@ Just removing the items when done this time around.
 - Add icons to every menu entry - Make sure it works on mobile screens
 - Can I put the article tags back into the menu? Maybe as an accordion?
 - The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
+- Delete the fake article I created at some point from the backend using the delete endpoint
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -86,6 +93,19 @@ I initially used BEM to prototype the "design" and then went on to use CSS layer
 
 I'll keep some of the initial BEM styling but new styles shouldn't follow any specific convention.
 
+## Article snippets to remember
+
+### New image snippet
+```html
+<div class="center-image">
+    <img-lightbox class="article-image">
+        <a href="/assets/gilleshead_350.png" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/gilleshead_350.png" alt="C'est Gilles. Je pense.">
+        </a>
+    </img-lightbox>
+</div>
+```
+
 ## Meta tags and stuff
 No idea what I should use, let's review some candidates:
 
@@ -123,4 +143,5 @@ I'm going to use these for now:
 <meta name="twitter:description" content="Blog expérimental d'un humble consultant en progress-bars.">
 <meta name="twitter:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
 ```
+
 
