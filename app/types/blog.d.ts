@@ -16,7 +16,14 @@ declare global {
     id: number,
     articleURL: string,
     content: string,
-    tags: Tag[]
+    tags: Tag[],
+    articleExtras?: ArticleExtras
+  }
+
+  // Extra elements I compute when an article is received
+  // from the API
+  interface ArticleExtras {
+    readingTimeStr: string
   }
 
   interface Comment {

@@ -22,6 +22,14 @@ const { data, status, error } =
   await useDkvzApi<Article>(`/article/${route.params.slug}`, {
     lazy: true,
     deep: false,
+    transform: (article) => {
+      if (article.content !== undefined && article.content !== null) {
+        article.articleExtras = {
+          readingTimeStr: readingTimeDescription(article.content.length)
+        }
+      }
+      return article
+    }
   })
 
 // We force redirect in case of error and thus do not
@@ -120,7 +128,7 @@ watch(data, (newData) => {
       </div>
 
       <div class="article-header__desc text-muted mt-3">
-        {{ readingTimeDescription(data.content.length) }}
+        {{ data.articleExtras?.readingTimeStr }}
       </div>
     </div>
 
