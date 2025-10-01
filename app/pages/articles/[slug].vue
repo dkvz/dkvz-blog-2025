@@ -1,21 +1,47 @@
 <script setup lang="ts">
 
-import type { Link, UseSeoMetaInput } from "@unhead/vue"
+import type { UseSeoMetaInput } from "@unhead/vue"
+import { addTOC } from "~/utils/article-utils"
 import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
   alias: "/breves/:slug",
 })
 
+useHead({
+  bodyAttrs: {
+    class: "bg-gradient-clouds"
+  },
+})
+
 const route = useRoute()
 
 // I thought I needed to watch the route param but it seems to 
-// work as is with the current version of Nuxt:
-const { data, status, error } =
-  await useDkvzApi<Article>(`/article/${route.params.slug}`, {
+// work as is with the current version of Nuxt.
+// Omitting the await just seems to make things "lazy" by default
+// but with the watchers it has no other effetcs.
+const { data, status, error } = await useDkvzApi<Article>(
+  `/article/${route.params.slug}`,
+  {
     lazy: true,
     deep: false,
-  })
+    transform: (article) => {
+      // Adding costly processes here so that the loading spinner
+      // from the fetch stays up during those
+      if (article.content !== undefined && article.content !== null) {
+        // Generate the table of content:
+        const tocObj = { content: article.content, toc: "" }
+        addTOC(tocObj, 1, 4, 0, article.content.length, "toc")
+        article.content = tocObj.content
+        article.articleExtras = {
+          readingTimeStr: readingTimeDescription(article.content.length),
+          toc: tocObj.toc
+        }
+      }
+      return article
+    }
+  }
+)
 
 // We force redirect in case of error and thus do not
 // display it in the page below which as nothing to 
@@ -38,49 +64,52 @@ watch(error, (err) => {
   }
 })
 
-useHead({
-  bodyAttrs: {
-    class: "bg-gradient-clouds"
-  },
-  link: () => {
-    if (data.value) {
-      const canonical: Link = { rel: "canonical" }
-      canonical.href = articleUrlFor(data.value, true)
-      return [canonical]
-    } else {
-      return []
+// At some point I decided to centralize everything 
+// related to updating the article-related data here
+// instead of having 100000 tests for data.value being
+// truthy.
+watch(data, (newData) => {
+  if (newData) {
+    useHead({
+      link: [
+        {
+          rel: "canonical",
+          href: articleUrlFor(newData, true)
+        }
+      ],
+      title: newData.title,
+    })
+
+    if (import.meta.server) {
+      // Set the rest of the meta tags from SSR Since I have 
+      // await in front of the useFetch above, I might not 
+      // need to watch for data. Maybe. Let's try that.
+      const url = articleUrlFor(newData, true)
+
+      const seoMeta: UseSeoMetaInput = {
+        ogDescription: siteInfo.articleDescription,
+        twitterDescription: siteInfo.articleDescription,
+        ogTitle: newData.title,
+        twitterTitle: newData.title,
+        ogUrl: url,
+        ogType: "article",
+        articlePublishedTime: parseBlogDateFormat(newData.date).toISOString(),
+        author: newData.author,
+        articleAuthor: [newData.author],
+      }
+
+      if (newData.thumbImage) {
+        seoMeta.ogImage = newData.thumbImage
+        seoMeta.twitterImage = newData.thumbImage
+      }
+
+      useSeoMeta(seoMeta)
     }
-  },
-  title: () => data.value ? data.value.title : "",
+
+  }
 })
 
-if (import.meta.server) {
-  // Set the rest of the meta tags from SSR Since I have 
-  // await in front of the useFetch above, I might not 
-  // need to watch for data. Maybe. Let's try that.
-  if (data.value) {
-    const url = articleUrlFor(data.value, true)
 
-    const seoMeta: UseSeoMetaInput = {
-      ogDescription: siteInfo.articleDescription,
-      twitterDescription: siteInfo.articleDescription,
-      ogTitle: data.value.title,
-      twitterTitle: data.value.title,
-      ogUrl: url,
-      ogType: "article",
-      articlePublishedTime: parseBlogDateFormat(data.value.date).toISOString(),
-      author: data.value.author,
-      articleAuthor: [data.value.author],
-    }
-
-    if (data.value.thumbImage) {
-      seoMeta.ogImage = data.value.thumbImage
-      seoMeta.twitterImage = data.value.thumbImage
-    }
-
-    useSeoMeta(seoMeta)
-  }
-}
 </script>
 
 <template>
@@ -110,23 +139,13 @@ if (import.meta.server) {
       </div>
 
       <div class="article-header__desc text-muted mt-3">
-        {{ readingTimeDescription(data.content.length) }}
+        {{ data.articleExtras?.readingTimeStr }}
       </div>
     </div>
 
-    <div class="article-toc">
+    <div v-if="data.articleExtras?.toc" class="article-toc">
       <h2 class="article-toc__title">Table des matières</h2>
-      <ul>
-        <li>
-          <a href="#">Pomme de terre</a>
-        </li>
-        <li><a href="#">Slip de bain</a>
-          <ul>
-            <li><a href="#">Titre de niveau 2</a></li>
-            <li><a href="#">Un autre</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div v-html="data.articleExtras.toc"></div>
     </div>
 
     <div class="article-content" v-html="data.content"></div>
