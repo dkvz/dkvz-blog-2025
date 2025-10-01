@@ -7,12 +7,10 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
-## Current plan
-Meta tags seoMeta for articles.
-
 ## TODO
 Just removing the items when done this time around.
 
+- Table of content is a bit too tight
 - I should add the "smooth scrolling" CSS prop I had on the other blog
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
@@ -145,4 +143,8 @@ I'm going to use these for now:
 <meta name="twitter:image" content="https://dkvz.eu/assets/touch/chrome-splashscreen-icon-384x384.png">
 ```
 
+## Comments
+I'll keep infinite scrolling for loading more but we'll have some initial comments rendered with the response, mostly because I think search engines might like the comments I got on the blog.
+
+- Add the "captcha" back to the form
 

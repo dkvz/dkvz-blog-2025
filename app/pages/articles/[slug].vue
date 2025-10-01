@@ -155,10 +155,12 @@ watch(data, (newData) => {
       <div class="content-card">
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
-          <button id="comment-button" type="button" class="btn btn-icon sm-w-full">
-            <Icon name="uil:comment" />
-            Ecrire un bon vieux commentaire...
-          </button>
+          <ClientOnly fallback-tag="p" fallback="Il faut JavaScript activé pour écrire des commentaires ici">
+            <button id="comment-button" type="button" class="btn btn-icon sm-w-full">
+              <Icon name="uil:comment" />
+              Ecrire un bon vieux commentaire...
+            </button>
+          </ClientOnly>
         </div>
       </div>
 
