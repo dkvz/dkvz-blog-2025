@@ -17,12 +17,15 @@ const route = useRoute()
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt.
-// TODO: Try removing the await now that I use a big watch?
+// Omitting the await just seems to make things "lazy" by default
+// but with the watchers it has no other effetcs.
 const { data, status, error } =
   await useDkvzApi<Article>(`/article/${route.params.slug}`, {
     lazy: true,
     deep: false,
     transform: (article) => {
+      // Adding costly processes here so that the loading spinner
+      // from the fetch stays up during those
       if (article.content !== undefined && article.content !== null) {
         article.articleExtras = {
           readingTimeStr: readingTimeDescription(article.content.length)
