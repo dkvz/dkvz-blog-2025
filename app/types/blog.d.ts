@@ -23,7 +23,9 @@ declare global {
   // Extra elements I compute when an article is received
   // from the API
   interface ArticleExtras {
-    readingTimeStr: string
+    readingTimeStr: string,
+    // Table of content
+    toc: string
   }
 
   interface Comment {

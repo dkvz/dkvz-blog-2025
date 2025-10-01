@@ -25,7 +25,7 @@ export const readingTimeDescription = (length: number): string => {
   if (time > 50) {
     return "Beaucoup trop de minutes de lecture"
   } else if (time < 1) {
-    return "Quasi immédiat"
+    return "Temps de lecture extrêmement court"
   } else {
     return `${time} minutes de lecture${time > 30 ? ' (désolé)' : ' (facile)'}`
   }
@@ -50,3 +50,103 @@ export const parseBlogDateFormat = (d: string): Date => {
 
   return new Date(year, month - 1, day, hours, minutes, seconds)
 }
+
+/**
+ * I Recycled this hellish function from my previous blog.
+ * Which was recycled from the one before it.
+ * I have no idea what possessed me when I wrote this thing and
+ * I don't want to look at it for too long.
+ * I did TypeScript some stuff in there and left all the semicolons
+ *
+ * contentObj is the return value. Except it's not returned. Yeah
+ * The actual return value is the length of characters that were
+ * added to the content.
+ */
+export const addTOC = (
+  contentObj: { toc: string, content: string },
+  lvl: number,
+  maxLvl: number,
+  start: number,
+  end: number,
+  lvlStr: string
+): number => {
+  var count = 1;
+  var lookingFor = '<h' + lvl + '>';
+  var lookingForClose = '</h' + lvl + '>';
+  lvlStr = lvlStr + '_' + lvl;
+  var stopLooking = false;
+  var hasElements = false;
+  var addedChars = 0;
+  while (!stopLooking) {
+    var first = contentObj.content.indexOf(lookingFor, start);
+    // Check if we did find an hX element:
+    if (first >= 0 && first < end) {
+      // Extract the title.
+      // We have string.substring(start, end)
+      // Find the end tag first:
+      var closeTag = contentObj.content.indexOf(lookingForClose, first);
+      if (closeTag < 0 || closeTag >= end) {
+        closeTag = end;
+      }
+      // At this point we can add the <ul> to the TOC.
+      if (!hasElements) {
+        contentObj.toc += '<ul>';
+        hasElements = true;
+      }
+      var title = contentObj.content.substring(first + lookingFor.length, closeTag);
+      if (title.length === 0) {
+        title = 'Empty Title';
+      }
+      // Add this title to the TOC:
+      // <a onclick="app.scrollToItem('a1_1')">Go to top</a>
+      // var anchor = '<a onclick="app.scrollToItem(\'' + lvlStr + '_' + lvl + '\')"></a>';
+      // Let's do it generic first:
+      var addLvlStrPartial = lvlStr + '_' + count;
+      //contentObj.toc += '<li><a onclick="app.scrollToItem(\'' + addLvlStrPartial + '\')">' +
+      //  title + '</a></li>\n';
+      // With h element we can just use their id as an anchor:
+      contentObj.toc += '<li><a href="#' + addLvlStrPartial + '" target="_self">' +
+        title + '</a></li>\n';
+      // Add the anchor, will look like this:
+      // We need to add an id to the Hx element that we're working with here.
+      var addLvlStr = ' id="' + addLvlStrPartial + '"';
+      contentObj.content = contentObj.content.substring(0, first + 3) + addLvlStr +
+        contentObj.content.substring(first + 3, contentObj.content.length);
+      count++;
+      addedChars += addLvlStr.length;
+      // Now is time to make the recursion.
+      // We need to know if there is a next hx element, or just use the whole content
+      // length for this.
+      // content has changed: the length is now bigger due to the id="".
+      // Look for the next one. If no next one, we use the whole length of the content.
+      // The variable end changedd because we modified content.
+      end += addLvlStr.length;
+      var next = contentObj.content.indexOf(lookingFor, first +
+        lookingFor.length + addLvlStr.length);
+      if (next < 0 || next >= end) {
+        next = end;
+      }
+      if (lvl < maxLvl) {
+        var added = addTOC(
+          contentObj, lvl + 1, maxLvl, first, next, lvlStr + '_' + count
+        );
+        // When we get back here content may have changed a lot. The positions start
+        // and end need to change.
+        end += added;
+      }
+      // The variable start has to change for the loop to work.
+      start = closeTag + lookingForClose.length + addLvlStr.length;
+      if (start >= end) {
+        start = end;
+      }
+    } else {
+      // No more elements after this, we can stop looking.
+      stopLooking = true;
+      if (hasElements) {
+        // We need to close the <ul> in the TOC.
+        contentObj.toc += '</ul>';
+      }
+    }
+  }
+  return addedChars;
+};

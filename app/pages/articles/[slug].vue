@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import type { UseSeoMetaInput } from "@unhead/vue"
+import { addTOC } from "~/utils/article-utils"
 import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
@@ -19,21 +20,28 @@ const route = useRoute()
 // work as is with the current version of Nuxt.
 // Omitting the await just seems to make things "lazy" by default
 // but with the watchers it has no other effetcs.
-const { data, status, error } =
-  await useDkvzApi<Article>(`/article/${route.params.slug}`, {
+const { data, status, error } = await useDkvzApi<Article>(
+  `/article/${route.params.slug}`,
+  {
     lazy: true,
     deep: false,
     transform: (article) => {
       // Adding costly processes here so that the loading spinner
       // from the fetch stays up during those
       if (article.content !== undefined && article.content !== null) {
+        // Generate the table of content:
+        const tocObj = { content: article.content, toc: "" }
+        addTOC(tocObj, 1, 4, 0, article.content.length, "toc")
+        article.content = tocObj.content
         article.articleExtras = {
-          readingTimeStr: readingTimeDescription(article.content.length)
+          readingTimeStr: readingTimeDescription(article.content.length),
+          toc: tocObj.toc
         }
       }
       return article
     }
-  })
+  }
+)
 
 // We force redirect in case of error and thus do not
 // display it in the page below which as nothing to 
@@ -135,19 +143,9 @@ watch(data, (newData) => {
       </div>
     </div>
 
-    <div class="article-toc">
+    <div v-if="data.articleExtras?.toc" class="article-toc">
       <h2 class="article-toc__title">Table des matières</h2>
-      <ul>
-        <li>
-          <a href="#">Pomme de terre</a>
-        </li>
-        <li><a href="#">Slip de bain</a>
-          <ul>
-            <li><a href="#">Titre de niveau 2</a></li>
-            <li><a href="#">Un autre</a></li>
-          </ul>
-        </li>
-      </ul>
+      <div v-html="data.articleExtras.toc"></div>
     </div>
 
     <div class="article-content" v-html="data.content"></div>
