@@ -49,7 +49,9 @@ onMounted(() => {
       <input type="text" required class="input" name="comment-author" placeholder="Votre nom...">
       <textarea class="input" required placeholder="Votre commentaire..." name="comment-comment"></textarea>
       <div class="small-control">
-        <label for="testator">Combien font 2+4x0?</label>
+        <label for="testator">
+          Combien font 2+4x0?
+        </label>
         <input type="text" required class="input" id="testator" name="testator" placeholder="C'est pas 0">
       </div>
       <footer class="comment-form-footer">

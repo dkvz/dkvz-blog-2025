@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Missing styling for hr
 - Table of content is a bit too tight
 - I should add the "smooth scrolling" CSS prop I had on the other blog
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation

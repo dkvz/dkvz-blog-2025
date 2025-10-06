@@ -103,8 +103,9 @@ https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling
     border-radius: 4px;
     /* showModal uses margins to position vertically */
     margin-top: 10%;
-    min-height: 350px;
+    min-height: 400px;
     max-height: 80%;
+    box-shadow: 0px 10px 15px -3px rgb(0, 0, 0);
   }
 
   dialog[open] {
