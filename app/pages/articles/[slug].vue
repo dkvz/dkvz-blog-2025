@@ -110,15 +110,15 @@ watch(data, (newData) => {
   }
 })
 
-const openCommentForm = () => {
-  showCommentForm.value = true
+const openCommentForm = (open: boolean) => {
+  showCommentForm.value = open
 }
 
 
 </script>
 
 <template>
-  <CommentDialog :open="showCommentForm"></CommentDialog>
+  <CommentDialog :open="showCommentForm" @close="openCommentForm(false)"></CommentDialog>
 
   <article v-if="status === 'pending'" class="content-card content-card--page-card">
     <LoadingSpinner></LoadingSpinner>
@@ -161,7 +161,7 @@ const openCommentForm = () => {
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
           <ClientOnly fallback-tag="p" fallback="Il faut JavaScript activé pour écrire des commentaires ici">
-            <button id="comment-button" @click="openCommentForm()" type="button" class="btn btn-icon sm-w-full">
+            <button id="comment-button" @click="openCommentForm(true)" type="button" class="btn btn-icon sm-w-full">
               <Icon name="uil:comment" />
               Ecrire un bon vieux commentaire...
             </button>
