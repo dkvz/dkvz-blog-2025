@@ -12,7 +12,6 @@ Just removing the items when done this time around.
 
 - Missing styling for hr
 - Table of content is a bit too tight
-- I should add the "smooth scrolling" CSS prop I had on the other blog
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Isn't the spinner too big on mobile?

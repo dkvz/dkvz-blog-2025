@@ -14,6 +14,7 @@
   html,
   body {
     scrollbar-color: var(--primary-color) var(--light-color);
+    scroll-behavior: smooth;
   }
 
   body {
