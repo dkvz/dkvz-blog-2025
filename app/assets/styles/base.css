@@ -449,6 +449,7 @@
     border: none;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
+    border-radius: 4px;
   }
 
   input[type="text"],
@@ -495,6 +496,18 @@
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    padding-top: 1rem;
+  }
+
+  .small-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .small-control .input {
+    max-width: 130px;
   }
 
   .comment-form-title {

@@ -15,6 +15,7 @@ useHead({
 })
 
 const route = useRoute()
+const showCommentForm = ref(false)
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt.
@@ -109,11 +110,15 @@ watch(data, (newData) => {
   }
 })
 
+const openCommentForm = (open: boolean) => {
+  showCommentForm.value = open
+}
+
 
 </script>
 
 <template>
-  <CommentDialog></CommentDialog>
+  <CommentDialog :open="showCommentForm" @close="openCommentForm(false)"></CommentDialog>
 
   <article v-if="status === 'pending'" class="content-card content-card--page-card">
     <LoadingSpinner></LoadingSpinner>
@@ -155,10 +160,12 @@ watch(data, (newData) => {
       <div class="content-card">
         <h2 class="comments__title">Commentaires</h2>
         <div class="mb-2">
-          <button id="comment-button" type="button" class="btn btn-icon sm-w-full">
-            <Icon name="uil:comment" />
-            Ecrire un bon vieux commentaire...
-          </button>
+          <ClientOnly fallback-tag="p" fallback="Il faut JavaScript activé pour écrire des commentaires ici">
+            <button id="comment-button" @click="openCommentForm(true)" type="button" class="btn btn-icon sm-w-full">
+              <Icon name="uil:comment" />
+              Ecrire un bon vieux commentaire...
+            </button>
+          </ClientOnly>
         </div>
       </div>
 
