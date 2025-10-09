@@ -5,6 +5,7 @@
   --light-gray-color: #aaa;
   --lighter-gray: #faf6f6;
   --light-color: #fff;
+  --light-color-transp: rgba(255, 255, 255, 0.86);
   --dark-color: rgb(68, 68, 68);
   --dark-color-transp: rgba(68, 68, 68, 0.86);
   --dark-color-extra-transp: rgb(68, 68, 68, 0.6);

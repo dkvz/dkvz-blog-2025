@@ -13,7 +13,8 @@ useHead({
       <form class="search">
         <label class="search__label">
           <Icon name="uil:search" class="search__img" mode="css" />
-          <input class="input search__input" type="text" placeholder="Rechercher" aria-label="Rechercher" />
+          <input name="search-input" class="input search__input" type="text" placeholder="Rechercher"
+            aria-label="Rechercher" />
         </label>
       </form>
       <button class="btn cta-buttons__btn">Lire mes articles</button>

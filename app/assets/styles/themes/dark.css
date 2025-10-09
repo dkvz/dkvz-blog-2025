@@ -21,6 +21,7 @@
   --light-gray-color: #333;
   --lighter-gray: #999;
   --light-color: rgb(68, 68, 68);
+  --light-color-transp: rgba(68, 68, 68, 0.86);
   /* --dark-color: rgb(202, 190, 202); */
   --dark-color: rgb(243, 234, 211);
   --dark-color-transp: rgba(243, 234, 211, 0.86);
@@ -137,6 +138,13 @@
     * though it works */
     .only-on-dark {
       display: revert;
+    }
+
+    .warn {
+      background-color: var(--light-color);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-radius: 4px;
     }
 
   }
