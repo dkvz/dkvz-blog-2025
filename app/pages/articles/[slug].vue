@@ -118,8 +118,6 @@ const openCommentForm = (open: boolean) => {
 </script>
 
 <template>
-  <CommentDialog :open="showCommentForm" @close="openCommentForm(false)"></CommentDialog>
-
   <article v-if="status === 'pending'" class="content-card content-card--page-card">
     <LoadingSpinner></LoadingSpinner>
   </article>
@@ -189,6 +187,8 @@ const openCommentForm = (open: boolean) => {
       </div>
 
     </section>
+
+    <CommentDialog :article-id="data.id" :open="showCommentForm" @close="openCommentForm(false)"></CommentDialog>
 
   </article>
 </template>

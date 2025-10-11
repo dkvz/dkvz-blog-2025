@@ -1,10 +1,11 @@
 <script setup lang="ts">
 // This component is purely for the client side.
 
-// TODO: I should add icons everywhere in this thing
+// TODO: I should add more icons in here
 
 const props = defineProps<{
-  open?: boolean
+  open?: boolean,
+  articleId: number
 }>()
 
 // I forgot how cumbersome it is to do 
@@ -14,7 +15,13 @@ const emit = defineEmits<{
   (e: 'success'): void
 }>()
 
-const message = ref("Message de test")
+const message = ref("")
+const loading = ref(false)
+const formData = reactive({
+  author: "",
+  comment: "",
+  captcha: ""
+})
 const dialog = useTemplateRef("dialog")
 
 watch(() => props.open, (newVal) => {
@@ -29,7 +36,42 @@ watch(() => props.open, (newVal) => {
 
 const submitForm = async () => {
   // TODO: Reset the fields on success
-  console.log("Would submit the form")
+  message.value = ""
+
+  // Post object:
+  // - comment
+  // - author
+  // - article_id OR articleurl (both can be strings)
+  const trimComment = formData.comment.trim()
+  const trimAuthor = formData.author.trim()
+  if (trimComment === "" || trimAuthor === "") {
+    message.value = "Manque l'auteur ou le commentaire"
+    return
+  }
+
+  if (parseInt(formData.captcha) !== 2) {
+    message.value = "Les règles de priorité mathématiques n'ont pas été respectées"
+    return
+  }
+
+  loading.value = true
+  // I use site-info for almost everything but uh...
+  // Yeah the API URL is in the app config. I don't know man.
+  const config = useAppConfig()
+  try {
+    const resp = await $fetch(`${config.dkvzApiUrl}/comments`, {
+      method: "POST",
+      headers: { "ContentType": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        author: trimAuthor,
+        comment: trimComment
+      })
+    })
+  } catch (err: any) {
+
+  }
+
+  loading.value = false
 }
 
 onMounted(() => {
@@ -42,31 +84,39 @@ onMounted(() => {
 
 <template>
   <dialog ref="dialog">
-    <!--<form method="dialog">
+    <LoadingSpinner v-if="loading"></LoadingSpinner>
+
+    <template v-else="loading">
+      <!--<form method="dialog">
       <button aria-label="close" class="btn" style="float: right">X</button>
       </form>-->
-    <h2 class="comment-form-title">Ajouter un commentaire</h2>
-    <form action="#" @submit.prevent="submitForm" class="comment-form">
+      <h2 class="comment-form-title">Ajouter un commentaire</h2>
+      <form action="#" @submit.prevent="submitForm" class="comment-form">
 
-      <div v-if="message" class="simple-row flex-center warn">
-        <Icon name="uil:exclamation-triangle" /> {{ message }}
-      </div>
+        <div v-if="message" class="simple-row flex-center warn">
+          <Icon name="uil:exclamation-triangle" /> {{ message }}
+        </div>
 
-      <input type="text" required class="input" name="comment-author" placeholder="Votre nom...">
+        <input v-model="formData.author" type="text" required class="input" name="comment-author"
+          placeholder="Votre nom...">
 
-      <textarea class="input" required placeholder="Votre commentaire..." name="comment-comment"></textarea>
+        <textarea v-model="formData.comment" class="input" required placeholder="Votre commentaire..."
+          name="comment-comment"></textarea>
 
-      <div class="small-control">
-        <label for="testator">
-          Combien font 2+4x0?
-        </label>
-        <input type="text" required class="input" id="testator" name="testator" placeholder="C'est pas 0">
-      </div>
+        <div class="small-control">
+          <label for="testator">
+            Combien font 2+4x0?
+          </label>
+          <input v-model="formData.captcha" type="text" required class="input" id="testator" name="testator"
+            placeholder="C'est pas 0">
+        </div>
 
-      <footer class="comment-form-footer">
-        <button aria-label="close" formmethod="dialog" @click="emit('close')" type="button" class="btn">Annuler</button>
-        <button type="submit" class="btn">Envoyer</button>
-      </footer>
-    </form>
+        <footer class="comment-form-footer">
+          <button aria-label="close" formmethod="dialog" @click="emit('close')" type="button"
+            class="btn">Annuler</button>
+          <button type="submit" class="btn">Envoyer</button>
+        </footer>
+      </form>
+    </template>
   </dialog>
 </template>
