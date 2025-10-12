@@ -10,6 +10,9 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Use the comment I return from CommentDialog and add it to the list immediately?
+- The comment dialog should not resize when the warning message appears
+- It's a backend issue but the post dates for comments are wrong
 - Missing styling for hr
 - Table of content is a bit too tight
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation

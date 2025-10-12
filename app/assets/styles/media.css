@@ -31,7 +31,8 @@
     }
 
     dialog {
-      min-width: 600px;
+      min-width: 630px;
+      width: 630px;
     }
 
     .btn {

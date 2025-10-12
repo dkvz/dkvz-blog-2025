@@ -563,6 +563,7 @@
 
   .warn {
     color: var(--warn-color);
+    font-size: 1rem;
     font-weight: bold;
   }
 

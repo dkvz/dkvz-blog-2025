@@ -114,6 +114,11 @@ const openCommentForm = (open: boolean) => {
   showCommentForm.value = open
 }
 
+const commentPosted = (comment: Comment) => {
+  console.log("Comment posted: ", comment)
+  openCommentForm(false)
+}
+
 
 </script>
 
@@ -188,7 +193,9 @@ const openCommentForm = (open: boolean) => {
 
     </section>
 
-    <CommentDialog :article-id="data.id" :open="showCommentForm" @close="openCommentForm(false)"></CommentDialog>
+    <CommentDialog :article-id="data.id" :open="showCommentForm" @close="openCommentForm(false)"
+      @success="commentPosted">
+    </CommentDialog>
 
   </article>
 </template>

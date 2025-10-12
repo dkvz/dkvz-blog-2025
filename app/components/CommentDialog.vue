@@ -11,8 +11,8 @@ const props = defineProps<{
 // I forgot how cumbersome it is to do 
 // "reactive" frontend
 const emit = defineEmits<{
-  (e: 'close'): void
-  (e: 'success'): void
+  (e: "close"): void
+  (e: "success", comment: Comment): void
 }>()
 
 const message = ref("")
@@ -50,7 +50,7 @@ const submitForm = async () => {
   }
 
   if (parseInt(formData.captcha) !== 2) {
-    message.value = "Les règles de priorité mathématiques n'ont pas été respectées"
+    message.value = "Les règles de priorités mathématiques n'ont pas été respectées"
     return
   }
 
@@ -59,19 +59,26 @@ const submitForm = async () => {
   // Yeah the API URL is in the app config. I don't know man.
   const config = useAppConfig()
   try {
-    const resp = await $fetch(`${config.dkvzApiUrl}/comments`, {
+    // My API expects a classic form POST like nobody does anymore
+    const resp = await $fetch<Comment>(`${config.dkvzApiUrl}/comments`, {
       method: "POST",
       headers: { "ContentType": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
+        article_id: props.articleId.toString(),
         author: trimAuthor,
         comment: trimComment
       })
     })
+    // Reset the fields and send success event:
+    formData.author = ""
+    formData.comment = ""
+    // We'll let the parent close the modal.
+    emit("success", resp)
   } catch (err: any) {
-
+    message.value = "Quelque chose a capoté pour l'envoi du commentaire (c'est pas normal)"
+  } finally {
+    loading.value = false
   }
-
-  loading.value = false
 }
 
 onMounted(() => {
@@ -94,7 +101,7 @@ onMounted(() => {
       <form action="#" @submit.prevent="submitForm" class="comment-form">
 
         <div v-if="message" class="simple-row flex-center warn">
-          <Icon name="uil:exclamation-triangle" /> {{ message }}
+          <Icon name="uil:exclamation-triangle" size="2.1rem" /> {{ message }}
         </div>
 
         <input v-model="formData.author" type="text" required class="input" name="comment-author"
