@@ -428,6 +428,7 @@
     width: 100%;
     border: 3px solid var(--dark-color);
     padding: 0;
+    padding-right: 2px;
     margin: 0;
     display: flex;
     align-items: center;
@@ -464,6 +465,7 @@
     min-width: 0;
     font-size: 1rem;
     flex: 1;
+    border-radius: 0;
   }
 
   .input:focus {
@@ -490,6 +492,10 @@
 
   .comment-form>textarea {
     flex: 1;
+  }
+
+  .comment-form label {
+    color: var(--light-color);
   }
 
   .comment-form-footer {
@@ -553,6 +559,12 @@
   .text-muted {
     color: var(--grayed-color);
     font-size: 0.94rem;
+  }
+
+  .warn {
+    color: var(--warn-color);
+    font-size: 1rem;
+    font-weight: bold;
   }
 
 }
