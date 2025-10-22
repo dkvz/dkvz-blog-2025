@@ -16,6 +16,7 @@ useHead({
 
 const route = useRoute()
 const showCommentForm = ref(false)
+const showCommentSuccess = ref(false)
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt.
@@ -196,6 +197,16 @@ const commentPosted = (comment: Comment) => {
     <CommentDialog :article-id="data.id" :open="showCommentForm" @close="openCommentForm(false)"
       @success="commentPosted">
     </CommentDialog>
+
+    <GenericDialog :open="showCommentSuccess" @close="showCommentSuccess = false">
+      <div class="flex-center flex-col p-4">
+        <marquee class="comment-form-title">Votre commentaire a été ajouté (enfin, je pense)</marquee>
+        <blockquote>
+          <p>N'utilisez jamais de tag <b>marquee</b> sur votre site web</p>
+          <p><i>Le Wiki du W3C</i></p>
+        </blockquote>
+      </div>
+    </GenericDialog>
 
   </article>
 </template>
