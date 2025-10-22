@@ -22,17 +22,6 @@ const formData = reactive({
   comment: "",
   captcha: ""
 })
-const dialog = useTemplateRef("dialog")
-
-watch(() => props.open, (newVal) => {
-  if (dialog.value) {
-    if (newVal) {
-      dialog.value.showModal()
-    } else {
-      dialog.value.close()
-    }
-  }
-})
 
 const submitForm = async () => {
   // TODO: Reset the fields on success
@@ -81,16 +70,12 @@ const submitForm = async () => {
   }
 }
 
-onMounted(() => {
-  dialog.value?.addEventListener("cancel", () => {
-    // Cancel button or Esc has been pressed
-    emit("close")
-  })
-})
+const handleSelfClose = () => emit("close")
+
 </script>
 
 <template>
-  <dialog ref="dialog">
+  <GenericDialog :open="open" :modal="true" @close="handleSelfClose">
     <LoadingSpinner v-if="loading"></LoadingSpinner>
 
     <template v-else="loading">
@@ -125,5 +110,5 @@ onMounted(() => {
         </footer>
       </form>
     </template>
-  </dialog>
+  </GenericDialog>
 </template>
