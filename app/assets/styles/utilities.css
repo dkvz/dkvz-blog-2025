@@ -46,6 +46,10 @@
     padding: 1.6rem;
   }
 
+  .gap-4 {
+    gap: 1.6rem;
+  }
+
   .mb-1 {
     margin-bottom: 0.4rem;
   }

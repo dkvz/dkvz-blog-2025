@@ -6,8 +6,6 @@ const props = defineProps<{
   modal?: boolean
 }>()
 
-// I forgot how cumbersome it is to do 
-// "reactive" frontend
 const emit = defineEmits<{
   (e: "close"): void
 }>()
@@ -33,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <dialog ref="dialog">
+  <dialog :class="{ 'modal-dialog': modal }" ref="dialog">
     <slot></slot>
   </dialog>
 </template>

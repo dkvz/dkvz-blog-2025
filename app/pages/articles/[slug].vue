@@ -116,8 +116,11 @@ const openCommentForm = (open: boolean) => {
 }
 
 const commentPosted = (comment: Comment) => {
+  // I'm keeping the comment because we can immediately add it to 
+  // the list
   console.log("Comment posted: ", comment)
   openCommentForm(false)
+  showCommentSuccess.value = true
 }
 
 
@@ -199,12 +202,14 @@ const commentPosted = (comment: Comment) => {
     </CommentDialog>
 
     <GenericDialog :open="showCommentSuccess" @close="showCommentSuccess = false">
-      <div class="flex-center flex-col p-4">
-        <marquee class="comment-form-title">Votre commentaire a été ajouté (enfin, je pense)</marquee>
-        <blockquote>
-          <p>N'utilisez jamais de tag <b>marquee</b> sur votre site web</p>
-          <p><i>Le Wiki du W3C</i></p>
-        </blockquote>
+      <div class="flex-center flex-col p-2 gap-4">
+        <div class="comment-success-msg scaler">
+          <div>Votre commentaire a été ajouté</div>
+          <div>(enfin, je pense)</div>
+        </div>
+        <button autofocus class="btn btn-icon" @click="showCommentSuccess = false">
+          <Icon name="uil:thumbs-up" /> Merci papa
+        </button>
       </div>
     </GenericDialog>
 
