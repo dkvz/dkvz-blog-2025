@@ -22,12 +22,28 @@
     margin-top: 0.4rem;
   }
 
+  .p-1 {
+    padding: 0.4rem;
+  }
+
   .mt-2 {
     margin-top: 0.8rem;
   }
 
+  .p-2 {
+    padding: 0.8rem;
+  }
+
   .mt-3 {
     margin-top: 1.2rem;
+  }
+
+  .p-3 {
+    padding: 1.2rem;
+  }
+
+  .p-4 {
+    padding: 1.6rem;
   }
 
   .mb-1 {
@@ -91,6 +107,10 @@
     gap: 0.5rem;
     flex-direction: row;
     align-items: center;
+  }
+
+  .flex-col {
+    flex-direction: column;
   }
 
   .mr-1 {
