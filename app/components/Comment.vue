@@ -23,7 +23,9 @@ const props = defineProps<{
       </div>
     </div>
     <div class="card__body">
-      {{ comment.comment }}
+      <div class="comment-text">
+        {{ comment.comment }}
+      </div>
     </div>
   </div>
 </template>
