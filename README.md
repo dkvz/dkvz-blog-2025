@@ -10,6 +10,8 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Comment body has to be a pre element or behave like one I think
+- Put maxComments back to a realistic value (used to be 10)
 - My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
 - Test all the dialog stuff on Firefox, not super sure about the positionning antics
 - Use the comment I return from CommentDialog and add it to the list immediately?

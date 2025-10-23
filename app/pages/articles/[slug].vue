@@ -45,6 +45,23 @@ const { data, status, error } = await useDkvzApi<Article>(
   }
 )
 
+// Had to load the comments here to render a first set 
+// server side.
+// The comments end point sends a 404 when no comments 
+// or no more comments are to be found. Not sure what the
+// data will be set to in that case.
+const { data: comments } = await useDkvzApi<Comment[]>(
+  `/comments-starting-from/${route.params.slug}`,
+  {
+    lazy: true,
+    deep: false,
+    params: {
+      start: 0,
+      max: siteInfo.maxComments
+    }
+  }
+)
+
 // We force redirect in case of error and thus do not
 // display it in the page below which as nothing to 
 // show for non-success (or loading) states.
@@ -176,23 +193,8 @@ const commentPosted = (comment: Comment) => {
         </div>
       </div>
 
-      <div class="card">
-        <div class="comment-card__header">
-          <div class="comment-card__info">
-            <h1>#1</h1>
-            <div class="btn-icon">
-              <img src="~/assets/img/user_duder.svg" class="icon__medium invertable--img"
-                alt="icône moche représentant l'auteur" aria-hidden="true">
-              Par DkVZ
-            </div>
-          </div>
-          <div class="card__date-box">
-            02/08/2025 10:25:00
-          </div>
-        </div>
-        <div class="card__body">
-          Comment content would go here. I think.
-        </div>
+      <div v-for="(comment, index) in comments">
+        <Comment :comment="comment" :id="index + 1"></Comment>
       </div>
 
     </section>
