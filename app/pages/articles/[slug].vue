@@ -177,7 +177,7 @@ const commentPosted = (comment: Comment) => {
       <div v-html="data.articleExtras.toc"></div>
     </div>
 
-    <div class="article-content" v-html="data.content"></div>
+    <ArticleContent :content="data.content"></ArticleContent>
 
     <section id="comment-section" class="card-list card-list--single">
 
