@@ -16,6 +16,7 @@ useHead({
 
 const route = useRoute()
 const showCommentForm = ref(false)
+const showCommentSuccess = ref(false)
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt.
@@ -40,6 +41,23 @@ const { data, status, error } = await useDkvzApi<Article>(
         }
       }
       return article
+    }
+  }
+)
+
+// Had to load the comments here to render a first set 
+// server side.
+// The comments end point sends a 404 when no comments 
+// or no more comments are to be found. Not sure what the
+// data will be set to in that case.
+const { data: comments } = await useDkvzApi<Comment[]>(
+  `/comments-starting-from/${route.params.slug}`,
+  {
+    lazy: true,
+    deep: false,
+    params: {
+      start: 0,
+      max: siteInfo.maxComments
     }
   }
 )
@@ -115,8 +133,11 @@ const openCommentForm = (open: boolean) => {
 }
 
 const commentPosted = (comment: Comment) => {
+  // I'm keeping the comment because we can immediately add it to 
+  // the list
   console.log("Comment posted: ", comment)
   openCommentForm(false)
+  showCommentSuccess.value = true
 }
 
 
@@ -172,23 +193,8 @@ const commentPosted = (comment: Comment) => {
         </div>
       </div>
 
-      <div class="card">
-        <div class="comment-card__header">
-          <div class="comment-card__info">
-            <h1>#1</h1>
-            <div class="btn-icon">
-              <img src="~/assets/img/user_duder.svg" class="icon__medium invertable--img"
-                alt="icône moche représentant l'auteur" aria-hidden="true">
-              Par DkVZ
-            </div>
-          </div>
-          <div class="card__date-box">
-            02/08/2025 10:25:00
-          </div>
-        </div>
-        <div class="card__body">
-          Comment content would go here. I think.
-        </div>
+      <div v-for="(comment, index) in comments">
+        <Comment :comment="comment" :id="index + 1"></Comment>
       </div>
 
     </section>
@@ -196,6 +202,18 @@ const commentPosted = (comment: Comment) => {
     <CommentDialog :article-id="data.id" :open="showCommentForm" @close="openCommentForm(false)"
       @success="commentPosted">
     </CommentDialog>
+
+    <GenericDialog :open="showCommentSuccess" @close="showCommentSuccess = false">
+      <div class="flex-center flex-col p-2 gap-4">
+        <div class="comment-success-msg scaler">
+          <div>Votre commentaire a été ajouté</div>
+          <div>(enfin, je pense)</div>
+        </div>
+        <button autofocus class="btn btn-icon" @click="showCommentSuccess = false">
+          <Icon name="uil:thumbs-up" /> Merci papa
+        </button>
+      </div>
+    </GenericDialog>
 
   </article>
 </template>

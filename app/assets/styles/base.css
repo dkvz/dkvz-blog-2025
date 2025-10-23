@@ -476,6 +476,13 @@
     border: 0;
   }
 
+  .modal-dialog {
+    /* showModal uses margins to position vertically */
+    margin: 10% auto 0 auto;
+    top: 0;
+    min-height: 450px;
+  }
+
   .comment-form {
     display: flex;
     flex-direction: column;
@@ -517,6 +524,12 @@
   }
 
   .comment-form-title {
+    color: var(--light-color);
+  }
+
+  .comment-success-msg {
+    font-size: 1.2rem;
+    text-align: center;
     color: var(--light-color);
   }
 

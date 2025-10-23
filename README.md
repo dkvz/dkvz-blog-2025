@@ -10,6 +10,9 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Put maxComments back to a realistic value (used to be 10)
+- My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
+- Test all the dialog stuff on Firefox, not super sure about the positionning antics
 - Use the comment I return from CommentDialog and add it to the list immediately?
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
@@ -19,6 +22,7 @@ Just removing the items when done this time around.
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Isn't the spinner too big on mobile?
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
+- Are unused CSS classes still included in the bundle?
 - Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal)
 - Effects to add back in: intersection observers on cards, titles and images
 - Is there something to lower animation load on low spec machines? I've head of a property doing something like that

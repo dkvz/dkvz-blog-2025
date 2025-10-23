@@ -56,6 +56,10 @@
     width: 80%;
   }
 
+  .zomg {
+    animation: zomg 3s infinite;
+  }
+
   @keyframes transleft {
     0% {
       transform: translate3d(-20vw, 0, 0);
@@ -177,5 +181,23 @@
     from {transform: scaleX(1)}
     to {transform: scaleX(0.1)}
   } */
+
+  .scaler {
+    animation: scaler 0.6s infinite;
+  }
+
+  @keyframes scaler {
+    0% {
+      transform: scale(1)
+    }
+
+    50% {
+      transform: scale(1.25)
+    }
+
+    100% {
+      transform: scale(1)
+    }
+  }
 
 }

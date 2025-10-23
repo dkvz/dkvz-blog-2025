@@ -134,6 +134,10 @@
     .btn-highlight {
       font-size: 40px;
     }
+
+    .comment-success-msg {
+      font-size: 1.6rem;
+    }
   }
 
   /** Ultra small screens **/
