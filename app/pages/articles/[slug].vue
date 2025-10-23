@@ -17,6 +17,7 @@ useHead({
 const route = useRoute()
 const showCommentForm = ref(false)
 const showCommentSuccess = ref(false)
+const commentsLoading = ref(false)
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt.
@@ -140,6 +141,10 @@ const commentPosted = (comment: Comment) => {
   showCommentSuccess.value = true
 }
 
+const loadMoreComments = () => {
+  console.log("Would load more comments...")
+}
+
 
 </script>
 
@@ -196,6 +201,9 @@ const commentPosted = (comment: Comment) => {
       <div v-for="(comment, index) in comments">
         <Comment :comment="comment" :id="index + 1"></Comment>
       </div>
+
+      <IntersectionPlaceholder :disabled="commentsLoading" @intersected="loadMoreComments">
+      </IntersectionPlaceholder>
 
     </section>
 
