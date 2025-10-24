@@ -18,6 +18,7 @@ Just removing the items when done this time around.
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - Missing styling for hr
+- I need styling for tables
 - Table of content is a bit too tight
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
