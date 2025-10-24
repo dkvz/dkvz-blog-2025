@@ -15,8 +15,10 @@ useHead({
 })
 
 const route = useRoute()
+const config = useAppConfig()
 const showCommentForm = ref(false)
 const showCommentSuccess = ref(false)
+const commentsLoading = ref(false)
 
 // I thought I needed to watch the route param but it seems to 
 // work as is with the current version of Nuxt.
@@ -123,6 +125,9 @@ watch(data, (newData) => {
       }
 
       useSeoMeta(seoMeta)
+    } else {
+      // Reset comments loading just in case:
+      commentsLoading.value = false
     }
 
   }
@@ -132,12 +137,46 @@ const openCommentForm = (open: boolean) => {
   showCommentForm.value = open
 }
 
-const commentPosted = (comment: Comment) => {
-  // I'm keeping the comment because we can immediately add it to 
-  // the list
-  console.log("Comment posted: ", comment)
+// The dialog also gives the comment object but I don't use it
+// for now.
+const commentPosted = () => {
   openCommentForm(false)
   showCommentSuccess.value = true
+  loadMoreComments()
+}
+
+const loadMoreComments = async () => {
+  console.log("Loading more comments...")
+  commentsLoading.value = true
+
+  let start = 0
+  if (comments.value !== undefined && comments.value.length > 0) {
+    start = comments.value.length
+  }
+
+  try {
+    const coms = await $fetch<Comment[]>(
+      `${config.dkvzApiUrl}/comments-starting-from/${route.params.slug}`, {
+      params: {
+        start,
+        max: siteInfo.maxComments
+      }
+    })
+    if (coms && Array.isArray(coms)) {
+      comments.value = comments.value !== undefined ?
+        comments.value.concat(coms) : coms
+    }
+  } catch (ex: any) {
+    // We ignore errors for comments at the moment but 
+    // my API sends a 404 when no more or no comments 
+    // were found.
+    if (ex.statusCode !== 404) {
+      // Not supposed to happen
+      console.log("error loading comments: ", ex)
+    }
+  }
+
+  commentsLoading.value = false
 }
 
 
@@ -177,7 +216,7 @@ const commentPosted = (comment: Comment) => {
       <div v-html="data.articleExtras.toc"></div>
     </div>
 
-    <div class="article-content" v-html="data.content"></div>
+    <ArticleContent :content="data.content"></ArticleContent>
 
     <section id="comment-section" class="card-list card-list--single">
 
@@ -195,6 +234,15 @@ const commentPosted = (comment: Comment) => {
 
       <div v-for="(comment, index) in comments">
         <Comment :comment="comment" :id="index + 1"></Comment>
+      </div>
+
+      <ClientOnly>
+        <IntersectionPlaceholder :disabled="commentsLoading" @intersected="loadMoreComments">
+        </IntersectionPlaceholder>
+      </ClientOnly>
+
+      <div class="card" v-if="commentsLoading">
+        <LoadingSpinner></LoadingSpinner>
       </div>
 
     </section>
