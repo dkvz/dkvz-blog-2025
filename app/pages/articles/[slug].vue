@@ -236,8 +236,10 @@ const loadMoreComments = async () => {
         <Comment :comment="comment" :id="index + 1"></Comment>
       </div>
 
-      <IntersectionPlaceholder :disabled="commentsLoading" @intersected="loadMoreComments">
-      </IntersectionPlaceholder>
+      <ClientOnly>
+        <IntersectionPlaceholder :disabled="commentsLoading" @intersected="loadMoreComments">
+        </IntersectionPlaceholder>
+      </ClientOnly>
 
       <div class="card" v-if="commentsLoading">
         <LoadingSpinner></LoadingSpinner>
