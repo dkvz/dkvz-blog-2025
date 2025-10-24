@@ -2,7 +2,7 @@
 
 const props = defineProps<{
   comment: Comment,
-  id: Number
+  id: number
 }>()
 
 </script>

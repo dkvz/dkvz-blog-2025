@@ -8,5 +8,5 @@ export const siteInfo = {
   // No leading slash for these, we add them when needed:
   shortRootUrl: "breves",
   articleRootUrl: "articles",
-  maxComments: 10
+  maxComments: 2
 }
