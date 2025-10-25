@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { codeToHtml } from "shiki"
 
 const props = defineProps<{
   content?: string
 }>()
 
 const contentDiv = useTemplateRef("content-div")
+
+const shikiTheme = "catppuccin-mocha"
 
 // Don't ask me what this is I forgot
 const steps = 5
@@ -22,9 +25,7 @@ const placeholderTag = "HR"
 // Thought I needed onUpdated but it looks like onMounted
 // is called everytime I need to update all of these completely
 // over the top intersection observers. Cool.
-onMounted(() => {
-  // TODO: Use contentDiv to access the content DOM
-
+onMounted(async () => {
   if (contentDiv.value !== null) {
 
     const artImgs = contentDiv.value.querySelectorAll(".article-image")
@@ -47,9 +48,9 @@ onMounted(() => {
       imgObserver.observe(img)
     }
 
-    const titles = Array.from(contentDiv.value.querySelectorAll(
+    const titles = contentDiv.value.querySelectorAll(
       "h1, h2, h3, h4"
-    ))
+    )
 
     const titleObserver = new IntersectionObserver((entries, observer) => {
       for (const en of entries) {
@@ -89,6 +90,23 @@ onMounted(() => {
       }
     }
 
+    // Syntax highlighting: get all the code elements
+    const codeEls = contentDiv.value.querySelectorAll("code")
+    for (const c of codeEls) {
+      const opts: any = { theme: shikiTheme }
+      // Try to get the language:
+      const classes = c.classList
+      for (const cla of classes) {
+        if (cla.startsWith("language-")) {
+          opts.language = cla.substring(9, cla.length)
+          break
+        }
+      }
+      if (c.textContent !== null) {
+        const html = await codeToHtml(c.textContent, opts)
+        c.innerHTML = html
+      }
+    }
 
   }
 
@@ -97,5 +115,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="content-div" class="article-content" v-html="props.content"></div>
+  <div ref="content-div" class="article-content" v-html="props.content">
+  </div>
 </template>

@@ -156,3 +156,9 @@ I'll keep infinite scrolling for loading more but we'll have some initial commen
 
 - Add the "captcha" back to the form
 
+## Syntax highlighting
+We'll use Shiki this time around and try to also syntax highlight server-side.
+
+There's a nuxt module but I'd like to try having better code splitting and only syntax highlight in the actual article page.
+
+Previous blog uses highlight.js with the `atom-one-dark` theme.
