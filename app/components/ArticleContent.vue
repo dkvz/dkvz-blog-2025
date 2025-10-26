@@ -98,7 +98,7 @@ onMounted(async () => {
       const classes = c.classList
       for (const cla of classes) {
         if (cla.startsWith("language-")) {
-          opts.language = cla.substring(9, cla.length)
+          opts.lang = cla.substring(9, cla.length)
           break
         }
       }
