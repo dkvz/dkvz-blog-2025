@@ -1,3 +1,6 @@
+import { codeToHtml } from "shiki"
+
+const shikiTheme = "catppuccin-mocha"
 
 // Semi-arbitrary measure of how many words per minute a human
 // can read
@@ -7,6 +10,10 @@ const wordsPerMinute = 200
 // require 4 RTX 5090 graphics cards.
 const beta = 0.12318806842671491
 const alpha = -23.450114456215488
+
+// Regex to look for code blocks:
+const codeReg = /<pre[^>]*><code([^>]*)>([^<]*)<\/code><\/pre>/gi
+const langReg = /language-([a-z]+)/
 
 /**
  * Returns an estimation of the reading time in minutes based 
@@ -49,6 +56,35 @@ export const parseBlogDateFormat = (d: string): Date => {
   const seconds = parseInt(d.substring(17, 19))
 
   return new Date(year, month - 1, day, hours, minutes, seconds)
+}
+
+export const syntaxHighlight = async (text: string): Promise<string> => {
+  // Look for code blocks in the text:
+  const matches = text.matchAll(codeReg)
+  for (const m of matches) {
+    // Match 1 is the language, if any:
+    const opts: any = { theme: shikiTheme }
+    if (m[1] !== undefined && m[1] !== "") {
+      const lang = m[1].match(langReg)
+      if (lang !== null) {
+        opts.lang = lang[1]
+      }
+    }
+
+    if (m[2] !== undefined && m[2] !== "") {
+      // We have to do something with shiki errors, a non existing
+      // language will generate one.
+      try {
+        const html = await codeToHtml(m[2], opts)
+        // Splice that into the string:
+        text = text.substring(0, m.index) + html + text.substring(m.index + m[0].length)
+      } catch (ex) {
+        // Nothing here for now
+      }
+    }
+  }
+
+  return text
 }
 
 /**

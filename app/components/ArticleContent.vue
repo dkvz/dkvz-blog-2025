@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { codeToHtml } from "shiki"
-
 const props = defineProps<{
   content?: string
 }>()
 
 const contentDiv = useTemplateRef("content-div")
-
-const shikiTheme = "catppuccin-mocha"
 
 // Don't ask me what this is I forgot
 const steps = 5
@@ -90,23 +86,26 @@ onMounted(async () => {
       }
     }
 
-    // Syntax highlighting: get all the code elements
-    const codeEls = contentDiv.value.querySelectorAll("code")
-    for (const c of codeEls) {
-      const opts: any = { theme: shikiTheme }
-      // Try to get the language:
-      const classes = c.classList
-      for (const cla of classes) {
-        if (cla.startsWith("language-")) {
-          opts.lang = cla.substring(9, cla.length)
-          break
-        }
-      }
-      if (c.textContent !== null) {
-        const html = await codeToHtml(c.textContent, opts)
-        c.innerHTML = html
-      }
-    }
+    // Syntax highlighting has been moved to the transform method
+    // for article fetching, so it also works server-side.
+    // const codeEls = contentDiv.value.querySelectorAll("code")
+    // for (const c of codeEls) {
+    //   const opts: any = { theme: shikiTheme }
+    //   // Try to get the language:
+    //   const classes = c.classList
+    //   for (const cla of classes) {
+    //     if (cla.startsWith("language-")) {
+    //       opts.lang = cla.substring(9, cla.length)
+    //       break
+    //     }
+    //   }
+    //   if (c.textContent !== null) {
+    //     const html = await codeToHtml(c.textContent, opts)
+    //     // TODO: We actually need to get the pre sibling, and replace its 
+    //     // outer HTML
+    //     c.innerHTML = html
+    //   }
+    // }
 
   }
 
