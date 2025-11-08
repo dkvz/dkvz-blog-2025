@@ -13,8 +13,10 @@ useHead({
   title: `Erreur | ${siteInfo.title}`
 })
 
-// TODO: If we're in dev mode, I could output the error 
-// in the non-404 case.
+// Output the error in dev mode, in the non-404 case.
+if (import.meta.dev && props.error?.statusCode !== 404) {
+  console.log(props.error)
+}
 
 </script>
 

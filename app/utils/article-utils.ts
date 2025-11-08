@@ -78,7 +78,7 @@ export const syntaxHighlight = async (text: string): Promise<string> => {
       try {
         const html = await codeToHtml(m[2], opts)
         // Splice that into the string:
-        text = text.substring(0, m.index) + html + text.substring(m.index + extraChars + m[0].length)
+        text = text.substring(0, m.index + extraChars) + html + text.substring(m.index + extraChars + m[0].length)
         extraChars += (html.length - m[0].length)
       } catch (ex) {
         // Nothing here for now
