@@ -104,9 +104,7 @@ watch(data, (newData) => {
     })
 
     if (import.meta.server) {
-      // Set the rest of the meta tags from SSR Since I have 
-      // await in front of the useFetch above, I might not 
-      // need to watch for data. Maybe. Let's try that.
+      // Set the rest of the meta tags from SSR
       const url = articleUrlFor(newData, true)
 
       const seoMeta: UseSeoMetaInput = {

@@ -74,10 +74,12 @@ export const syntaxHighlight = async (text: string): Promise<string> => {
     if (m[2] !== undefined && m[2] !== "") {
       // We have to do something with shiki errors, a non existing
       // language will generate one.
+      let extraChars = 0
       try {
         const html = await codeToHtml(m[2], opts)
         // Splice that into the string:
-        text = text.substring(0, m.index) + html + text.substring(m.index + m[0].length)
+        text = text.substring(0, m.index) + html + text.substring(m.index + extraChars + m[0].length)
+        extraChars += (html.length - m[0].length)
       } catch (ex) {
         // Nothing here for now
       }
