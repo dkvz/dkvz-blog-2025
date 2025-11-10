@@ -305,6 +305,10 @@
     font-family: var(--main-font);
   }
 
+  .first-card {
+    margin-top: 210px;
+  }
+
   .cta {
     position: relative;
     z-index: 1;
