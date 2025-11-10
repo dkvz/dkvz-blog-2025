@@ -60,6 +60,9 @@ export const useHideHeaderOnScroll = (
     }
   }
 
+  // You're supposed to clean up composables on unmount:
+  onUnmounted(() => window.removeEventListener('scroll', onScroll))
+
   // opacity and transform should be set to override 
   // these values in the style attribute
   return {
