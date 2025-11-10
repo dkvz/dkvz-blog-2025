@@ -8,7 +8,9 @@ interface ArticleTypeParams {
   // For instance "brèves"
   descriptionPlural: string,
   // For instance "breves"
-  urlPart: string
+  urlPart: string,
+  // For instance "shorts" (always in english)
+  apiDescription: string
 }
 
 // Fast way to know if we're on a "breves" page instead
@@ -23,15 +25,24 @@ export const paramsForArticleType = (isShort: boolean): ArticleTypeParams => {
     return {
       urlPart: "breves",
       descriptionSingular: "brève",
-      descriptionPlural: "brèves"
+      descriptionPlural: "brèves",
+      apiDescription: "shorts"
     }
   }
 
   return {
     urlPart: "articles",
     descriptionSingular: "article",
-    descriptionPlural: "articles"
+    descriptionPlural: "articles",
+    apiDescription: "articles"
   }
+}
+
+export const extractLastPageFromLink = (link: string): number => {
+  const reg = /.+\/(\d+)/
+  const m = link.match(reg)
+  if (m && m.length > 1) return Number(m[1])
+  return 0
 }
 
 export const articleUrlFor = (article: Article, absolute = false): string => {

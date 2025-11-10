@@ -179,7 +179,6 @@ const loadMoreComments = async () => {
   commentsLoading.value = false
 }
 
-
 </script>
 
 <template>
