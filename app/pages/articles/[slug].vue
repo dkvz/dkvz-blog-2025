@@ -128,6 +128,12 @@ watch(data, (newData) => {
     } else {
       // Reset comments loading just in case:
       commentsLoading.value = false
+
+      if (route.hash) {
+        // Current URL has a hash in it
+        console.log(`Current URL has a hash, attempt scrolling to it: ${route.hash}`)
+        location.href = route.hash
+      }
     }
 
   }
