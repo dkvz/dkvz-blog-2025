@@ -39,7 +39,7 @@ useHead({
 // Not sure the URL will work dynamically here, I might need it 
 // in a function in the useFetch
 const url = `/${articleTypeApiDesc}-starting-from/${(page - 1) * siteInfo.maxArticles}?max=${siteInfo.maxArticles}`
-const { data: articles, status, error } = useDkvzApi<Article[]>(
+const { data: articles, status, error } = await useDkvzApi<Article[]>(
   url,
   {
     lazy: true,
@@ -91,74 +91,26 @@ watch(error, (err) => {
     })
   }
 })
+
 </script>
 
 <template>
-  <article v-if="status === 'pending'" class="content-card content-card--page-card">
-    <LoadingSpinner></LoadingSpinner>
-  </article>
-
   <!-- TODO: Shorts use a different layout, to figure out later? -->
-  <div v-else class="content-card content-card--transp content-card--page-card">
+  <div class="content-card content-card--transp content-card--page-card">
     <div class="section-title">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
     </div>
 
-    <div class="card-list card-list--single">
+    <div v-if="status === 'pending'">
+      <LoadingSpinner></LoadingSpinner>
+    </div>
 
-      <div class="card card--hoverable">
-        <div class="card__header card--no-overflow">
-          <div class="card__info">
-            <h1>Un vraiment très très long titre d'article</h1>
-            <div class="simple-row">
-              <Icon name="uil:calendar" alt="Publié le" size="1.2em" />
-              <span>11/12/2020 11:20:11</span>
-            </div>
-          </div>
-          <img class="card__img" src="~/assets/img/js_logo_110.png" alt="Un logo">
-        </div>
-        <div class="card__body card--border-top">
-          <p>Lorem ipsum machin bidule.</p>
-          <p>Encore une ligne.</p>
-        </div>
-        <div class="card__footer">
-          <a class="btn btn-icon" title="Ouvrir l'article...">
-            Suite
-            <Icon name="uil:external-link-alt" />
-          </a>
-          <a class="btn btn-icon">
-            0
-            <Icon name="uil:comment" />
-          </a>
-        </div>
-      </div>
+    <div v-else class="card-list card-list--single">
 
-      <div class="card card--hoverable">
-        <div class="card__header card--no-overflow">
-          <div class="card__info">
-            <h1>Moyen long titre</h1>
-            <div class="simple-row">
-              <Icon name="uil:calendar" alt="Publié le" size="1.2em" />
-              <span>11/12/2020 11:20:11</span>
-            </div>
-          </div>
-          <img class="card__img" src="~/assets/img/php_logo_110.png" alt="Un logo">
-        </div>
-        <div class="card__body card--border-top">
-          <p>Lorem ipsum machin bidule.</p>
-          <p>Encore une ligne.</p>
-        </div>
-        <div class="card__footer">
-          <a class="btn btn-icon">
-            Suite
-            <Icon name="uil:external-link-alt" />
-          </a>
-          <a class="btn btn-icon">
-            0
-            <Icon name="uil:comment" />
-          </a>
-        </div>
-      </div>
+      <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
+        :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
+        :thumb-image="article.thumbImage" :title="article.title">
+      </ArticleCard>
 
     </div>
   </div>

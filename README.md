@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Direct link to comments in article cards doesn't seem to work
 - Remove the possible console logs for syntax highlighting errors
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?
 - My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
