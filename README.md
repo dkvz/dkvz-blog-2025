@@ -10,14 +10,15 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Remove the possible console logs for syntax highlighting errors
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?
-- Put maxComments back to a realistic value (used to be 10)
 - My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
 - Test all the dialog stuff on Firefox, not super sure about the positionning antics
 - Use the comment I return from CommentDialog and add it to the list immediately?
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - Missing styling for hr
+- I need styling for tables
 - Table of content is a bit too tight
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
@@ -156,3 +157,9 @@ I'll keep infinite scrolling for loading more but we'll have some initial commen
 
 - Add the "captcha" back to the form
 
+## Syntax highlighting
+We'll use Shiki this time around and try to also syntax highlight server-side.
+
+There's a nuxt module but I'd like to try having better code splitting and only syntax highlight in the actual article page.
+
+Previous blog uses highlight.js with the `atom-one-dark` theme.

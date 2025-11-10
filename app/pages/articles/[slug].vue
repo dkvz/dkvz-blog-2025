@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import type { UseSeoMetaInput } from "@unhead/vue"
-import { addTOC } from "~/utils/article-utils"
+import { addTOC, syntaxHighlight } from "~/utils/article-utils"
 import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
@@ -29,7 +29,7 @@ const { data, status, error } = await useDkvzApi<Article>(
   {
     lazy: true,
     deep: false,
-    transform: (article) => {
+    transform: async (article) => {
       // Adding costly processes here so that the loading spinner
       // from the fetch stays up during those
       if (article.content !== undefined && article.content !== null) {
@@ -41,6 +41,8 @@ const { data, status, error } = await useDkvzApi<Article>(
           readingTimeStr: readingTimeDescription(article.content.length),
           toc: tocObj.toc
         }
+        // Modify article content for the syntax highlighting:
+        article.content = await syntaxHighlight(article.content)
       }
       return article
     }
@@ -102,9 +104,7 @@ watch(data, (newData) => {
     })
 
     if (import.meta.server) {
-      // Set the rest of the meta tags from SSR Since I have 
-      // await in front of the useFetch above, I might not 
-      // need to watch for data. Maybe. Let's try that.
+      // Set the rest of the meta tags from SSR
       const url = articleUrlFor(newData, true)
 
       const seoMeta: UseSeoMetaInput = {

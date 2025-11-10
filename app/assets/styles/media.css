@@ -138,6 +138,11 @@
     .comment-success-msg {
       font-size: 1.6rem;
     }
+
+    pre.screen,
+    pre.shiki {
+      font-size: 1.2rem;
+    }
   }
 
   /** Ultra small screens **/
