@@ -59,8 +59,12 @@ export const parseBlogDateFormat = (d: string): Date => {
 }
 
 export const syntaxHighlight = async (text: string): Promise<string> => {
+  console.log("Starting syntax highlighting...")
+
   // Look for code blocks in the text:
   const matches = text.matchAll(codeReg)
+  let extraChars = 0
+
   for (const m of matches) {
     // Match 1 is the language, if any:
     const opts: any = { theme: shikiTheme }
@@ -74,7 +78,6 @@ export const syntaxHighlight = async (text: string): Promise<string> => {
     if (m[2] !== undefined && m[2] !== "") {
       // We have to do something with shiki errors, a non existing
       // language will generate one.
-      let extraChars = 0
       try {
         const html = await codeToHtml(m[2], opts)
         // Splice that into the string:
