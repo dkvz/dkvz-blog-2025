@@ -5,7 +5,7 @@
 
 const props = defineProps<{
   open?: boolean,
-  articleId: number
+  articleId?: number
 }>()
 
 // I forgot how cumbersome it is to do 
@@ -24,8 +24,12 @@ const formData = reactive({
 })
 
 const submitForm = async () => {
-  // TODO: Reset the fields on success
   message.value = ""
+
+  if (props.articleId === undefined) {
+    message.value = "Il s'est passé un truc pas normal, vérifiez que l'article est bien chargé et essayez à nouveau"
+    return
+  }
 
   // Post object:
   // - comment

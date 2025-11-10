@@ -182,40 +182,41 @@ const loadMoreComments = async () => {
 </script>
 
 <template>
-  <article v-if="status === 'pending'" class="content-card content-card--page-card">
-    <LoadingSpinner></LoadingSpinner>
-  </article>
+  <article class="content-card content-card--page-card">
 
-  <article v-else-if="data && status === 'success'" class="content-card content-card--page-card">
-    <div class="article-header">
-      <h1 class="article-header__title" v-html="data.title"></h1>
-      <div class="article-header__desc mt-2">
-        <Icon name="uil:calendar" alt="Publié le" />
-        <span>{{ data.date }}</span>
-        <span>|</span>
-        <Icon name="uil:edit" alt="Ecrit par" />
-        <span>Par {{ data.author }}</span>
+    <LoadingSpinner v-if="status === 'pending'"></LoadingSpinner>
+
+    <div v-else-if="data && status === 'success'">
+      <div class="article-header">
+        <h1 class="article-header__title" v-html="data.title"></h1>
+        <div class="article-header__desc mt-2">
+          <Icon name="uil:calendar" alt="Publié le" />
+          <span>{{ data.date }}</span>
+          <span>|</span>
+          <Icon name="uil:edit" alt="Ecrit par" />
+          <span>Par {{ data.author }}</span>
+        </div>
+
+        <div class="article-header__desc">
+          <span v-for="tag in data.tags" class="pill mt-3">
+            <NuxtLink :to="{ name: 'tag-tag', params: { tag: tag.name } }">
+              {{ tag.name }}
+            </NuxtLink>
+          </span>
+        </div>
+
+        <div class="article-header__desc text-muted mt-3">
+          {{ data.articleExtras?.readingTimeStr }}
+        </div>
       </div>
 
-      <div class="article-header__desc">
-        <span v-for="tag in data.tags" class="pill mt-3">
-          <NuxtLink :to="{ name: 'tag-tag', params: { tag: tag.name } }">
-            {{ tag.name }}
-          </NuxtLink>
-        </span>
+      <div v-if="data.articleExtras?.toc" class="article-toc">
+        <h2 class="article-toc__title">Table des matières</h2>
+        <div v-html="data.articleExtras.toc"></div>
       </div>
 
-      <div class="article-header__desc text-muted mt-3">
-        {{ data.articleExtras?.readingTimeStr }}
-      </div>
+      <ArticleContent :content="data.content"></ArticleContent>
     </div>
-
-    <div v-if="data.articleExtras?.toc" class="article-toc">
-      <h2 class="article-toc__title">Table des matières</h2>
-      <div v-html="data.articleExtras.toc"></div>
-    </div>
-
-    <ArticleContent :content="data.content"></ArticleContent>
 
     <section id="comment-section" class="card-list card-list--single">
 
@@ -246,7 +247,7 @@ const loadMoreComments = async () => {
 
     </section>
 
-    <CommentDialog :article-id="data.id" :open="showCommentForm" @close="openCommentForm(false)"
+    <CommentDialog :article-id="data?.id" :open="showCommentForm" @close="openCommentForm(false)"
       @success="commentPosted">
     </CommentDialog>
 
