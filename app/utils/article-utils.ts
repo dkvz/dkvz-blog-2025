@@ -1,6 +1,7 @@
 import { codeToHtml } from "shiki"
 
-const shikiTheme = "catppuccin-mocha"
+const shikiThemeDark = "catppuccin-mocha"
+const shikiThemeLight = "catppuccin-latte"
 
 // Semi-arbitrary measure of how many words per minute a human
 // can read
@@ -59,15 +60,18 @@ export const parseBlogDateFormat = (d: string): Date => {
 }
 
 export const syntaxHighlight = async (text: string): Promise<string> => {
-  console.log("Starting syntax highlighting...")
-
   // Look for code blocks in the text:
   const matches = text.matchAll(codeReg)
   let extraChars = 0
 
   for (const m of matches) {
     // Match 1 is the language, if any:
-    const opts: any = { theme: shikiTheme }
+    const opts: any = {
+      themes: {
+        light: shikiThemeLight,
+        dark: shikiThemeDark
+      }
+    }
     if (m[1] !== undefined && m[1] !== "") {
       const lang = m[1].match(langReg)
       if (lang !== null) {

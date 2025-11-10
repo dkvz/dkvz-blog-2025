@@ -43,8 +43,6 @@ const { data, status, error } = await useDkvzApi<Article>(
         }
         // Modify article content for the syntax highlighting:
         article.content = await syntaxHighlight(article.content)
-
-        console.log("Syntax highlighting done")
       }
       return article
     }
