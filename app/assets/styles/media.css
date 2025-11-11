@@ -143,6 +143,11 @@
     pre.shiki {
       font-size: 1.2rem;
     }
+
+    .pagination {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
   }
 
   /** Ultra small screens **/
