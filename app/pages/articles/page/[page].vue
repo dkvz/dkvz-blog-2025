@@ -75,21 +75,27 @@ const { data: articles, status, error } = await useDkvzApi<Article[]>(
 // display it in the page below which as nothing to 
 // show for non-success (or loading) states.
 watch(error, (err) => {
-  console.log("Got articles listing error: ", err)
-  if (err && err.statusCode !== 404) {
-    console.log("Error from API: ", err.message)
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'Encountered unexpected error',
-      fatal: true
-    })
-  } else {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'Article not found',
-      fatal: true
-    })
+  if (status.value === "error") {
+    console.log("Got articles listing error: ", err)
+    if (err && err.statusCode !== 404) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Encountered unexpected error',
+        fatal: true
+      })
+    } else {
+      throw createError({
+        statusCode: 404,
+        statusMessage: 'Article not found',
+        fatal: true
+      })
+    }
   }
+}, {
+  // watch doesn't tigger at all server side unless we make
+  // it "immediate", so this is required for server side 
+  // errors to work.
+  immediate: true
 })
 
 </script>
