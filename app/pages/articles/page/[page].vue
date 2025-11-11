@@ -113,5 +113,25 @@ watch(error, (err) => {
       </ArticleCard>
 
     </div>
+
+    <!-- Pagination could be a component -->
+    <!-- TODO: Could use icons instead of chars -->
+    <div class="flex-end">
+      <div id="pagination" class="grid-flow-col gap-4 pagination">
+        <NuxtLink v-if="page > 1" :to="{ path: `/${urlPart}/page/${page - 1}` }">
+          &lt;
+        </NuxtLink>
+        <span>{{ page }}</span>
+        <span>/</span>
+        <span v-if="lastPage === null">?</span>
+        <NuxtLink v-else :to="{ path: `/${urlPart}/page/${lastPage}` }">
+          {{ lastPage }}
+        </NuxtLink>
+        <NuxtLink v-if="lastPage === null || page < lastPage" :to="{ path: `/${urlPart}/page/${page + 1}` }">
+          &gt;
+        </NuxtLink>
+      </div>
+    </div>
+
   </div>
 </template>

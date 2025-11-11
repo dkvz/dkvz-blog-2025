@@ -591,4 +591,28 @@
     tab-size: 2;
   }
 
+  .pagination {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 2px;
+    box-shadow: var(--card-shadow);
+    background-color: var(--light-color);
+    font-weight: bold;
+  }
+
+  .pagination a,
+  .pagination span {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 0.5rem 0.3rem 0.5rem 0.3rem;
+  }
+
+  .pagination a:hover,
+  .pagination a:active,
+  .pagination a:focus {
+    background-color: var(--secondary-color);
+  }
+
 }
