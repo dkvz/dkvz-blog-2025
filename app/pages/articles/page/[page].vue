@@ -105,8 +105,8 @@ watch(error, (err) => {
   <div class="content-card content-card--transp content-card--page-card">
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
-      <ToggleButton aria-label="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
-        name="order-toggle-btn" disabled-label="Croissant" enabled-label="Décroissant">
+      <ToggleButton ariaLabel="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
+        name="order-toggle-btn" disabledLabel="Décroissant" enabledLabel="Croissant">
       </ToggleButton>
     </div>
 

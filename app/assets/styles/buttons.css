@@ -161,7 +161,7 @@
   .toggle-indicator {
     transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0.4rem;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     border-radius: 5px;
     background-color: var(--light-gray-color);
     color: var(--dark-color);
