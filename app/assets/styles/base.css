@@ -370,12 +370,12 @@
   .section-title__title,
   .section-title__big-title,
   .article-header {
-    padding: 0 0 1.2rem 0;
+    padding: 0 0 0.8rem 0;
     /*border-bottom: solid 6px var(--primary-color);*/
     border-bottom-width: 6px;
     border-bottom-style: solid;
     border-color: var(--primary-color);
-    border-image: linear-gradient(to right, var(--ui-color), var(--accent-color)) 50;
+    border-image: linear-gradient(to right, var(--ui-color), var(--accent-color)) 5;
   }
 
   .section-title__title,
@@ -613,6 +613,15 @@
   .pagination a:active,
   .pagination a:focus {
     background-color: var(--secondary-color);
+  }
+
+  /** Direction column by default with media query **/
+  .two-items-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
   }
 
 }

@@ -159,6 +159,11 @@
       text-decoration: var(--shiki-dark-text-decoration) !important;
     }
 
+    .toggle-indicator {
+      border-color: var(--light-gray-color);
+    }
+
+
   }
 
 }

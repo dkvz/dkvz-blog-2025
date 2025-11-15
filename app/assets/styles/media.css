@@ -70,6 +70,10 @@
       align-items: stretch;
     }
 
+    .card__header h1 {
+      font-size: 1.6rem;
+    }
+
     .content-card--page-card {
       font-size: 1.2rem;
     }
@@ -110,6 +114,11 @@
       font-size: 2.1rem;
     }
 
+    .section-title__title,
+    .section-title__big-title {
+      padding: 0 0 1.2rem 0;
+    }
+
     .article-content {
       font-size: 1.4rem;
     }
@@ -148,6 +157,27 @@
       margin-left: 1rem;
       margin-right: 1rem;
     }
+
+    /* This one ended up way more convoluted than planned */
+    .two-items-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .two-items-grid>*:nth-child(1) {
+      grid-column-start: 2;
+    }
+
+    .two-items-grid>*:nth-child(2) {
+      justify-self: flex-end;
+    }
+
+    .toggle-indicator {
+      font-size: 0.7rem;
+    }
+
   }
 
   /** Ultra small screens **/

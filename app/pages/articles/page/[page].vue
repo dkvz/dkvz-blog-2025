@@ -29,6 +29,15 @@ const capitalizedArticleType = capitalizeFirst(articleTypeDescriptionPlural)
 // request.
 const lastPage = useState<number | null>("lastPage", () => null)
 
+// If true, order by date descending (default behavior)
+// Could be controlled by a URL param as well, for now it's strictly
+// JS-based and works on client only.
+// TODO: I should really replace this thing by a param in the router
+// so it's kept page to page without having to use "useState".
+const isOrderAsc = useState("isOrderAsc", () => false)
+// const isOrderAsc = ref(false)
+console.log("isOrderAsc has been re-initialized to ", isOrderAsc.value)
+
 useHead({
   bodyAttrs: {
     class: "bg-gradient"
@@ -36,9 +45,9 @@ useHead({
   title: `${capitalizedArticleType} - Page ${page}`
 })
 
-// Not sure the URL will work dynamically here, I might need it 
-// in a function in the useFetch
-const url = `/${articleTypeApiDesc}-starting-from/${(page - 1) * siteInfo.maxArticles}?max=${siteInfo.maxArticles}`
+const url = computed(
+  () => `/${articleTypeApiDesc}-starting-from/${(page - 1) * siteInfo.maxArticles}?max=${siteInfo.maxArticles}&order=${isOrderAsc.value ? "asc" : "desc"}`
+)
 const { data: articles, status, error } = await useDkvzApi<Article[]>(
   url,
   {
@@ -98,13 +107,21 @@ watch(error, (err) => {
   immediate: true
 })
 
+const handleToggleOrder = (asc: boolean) => {
+  isOrderAsc.value = asc
+}
+
 </script>
 
 <template>
   <!-- TODO: Shorts use a different layout, to figure out later? -->
   <div class="content-card content-card--transp content-card--page-card">
-    <div class="section-title">
+    <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
+      <ToggleButton @change="handleToggleOrder" :value="isOrderAsc" class="_js-only"
+        ariaLabel="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
+        name="order-toggle-btn" disabledLabel="Décroissant" enabledLabel="Croissant">
+      </ToggleButton>
     </div>
 
     <div v-if="status === 'pending'">
