@@ -13,10 +13,10 @@ const props = defineProps<{
   <div>
     <input :name="props.name" :id="props.name" class="toggle-checkbox" type="checkbox" />
     <label class="toggle-label" :for="props.name" :aria-label="props['aria-label']">
-      <div class="toggle-indicator transitionner flex-center">
+      <div class="toggle-indicator flex-center">
         {{ props['disabled-label'] ? props['disabled-label'] : "&lArr;" }}
       </div>
-      <div class="toggle-indicator transitionner flex-center">
+      <div class="toggle-indicator flex-center">
         {{ props['enabled-label'] ? props['enabled-label'] : "&rArr;" }}
       </div>
     </label>

@@ -103,10 +103,10 @@ watch(error, (err) => {
 <template>
   <!-- TODO: Shorts use a different layout, to figure out later? -->
   <div class="content-card content-card--transp content-card--page-card">
-    <div class="section-title flex-center flex-col-to-row">
+    <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
       <ToggleButton aria-label="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
-        name="order-toggle-btn">
+        name="order-toggle-btn" disabled-label="Croissant" enabled-label="Décroissant">
       </ToggleButton>
     </div>
 
