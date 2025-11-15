@@ -25,7 +25,7 @@ const handleChange = (e: any) => {
 
 <template>
   <div>
-    <input @change="handleChange" :checked="props.value !== undefined ? false : props.value" :name="props.name"
+    <input @change="handleChange" :checked="props.value !== undefined ? props.value : false" :name="props.name"
       :id="props.name" class="toggle-checkbox" type="checkbox" />
     <label class="toggle-label" :for="props.name" :aria-label="props.ariaLabel">
       <div class="toggle-indicator flex-center">
