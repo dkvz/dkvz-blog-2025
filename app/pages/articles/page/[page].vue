@@ -103,8 +103,11 @@ watch(error, (err) => {
 <template>
   <!-- TODO: Shorts use a different layout, to figure out later? -->
   <div class="content-card content-card--transp content-card--page-card">
-    <div class="section-title">
+    <div class="section-title flex-center flex-col-to-row">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
+      <ToggleButton aria-label="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
+        name="order-toggle-btn">
+      </ToggleButton>
     </div>
 
     <div v-if="status === 'pending'">
