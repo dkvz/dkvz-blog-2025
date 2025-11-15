@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- For some reason my LSP doesn't let me use kebab-case prop names on my components from the template (they do work though)
 - Add title attributes on pagination stuff
 - Remove the possible console logs for syntax highlighting errors
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?

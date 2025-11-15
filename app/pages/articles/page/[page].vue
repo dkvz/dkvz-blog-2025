@@ -29,6 +29,11 @@ const capitalizedArticleType = capitalizeFirst(articleTypeDescriptionPlural)
 // request.
 const lastPage = useState<number | null>("lastPage", () => null)
 
+// If true, order by date descending (default behavior)
+// Could be controlled by a URL param as well, for now it's strictly
+// JS-based and works on client only.
+const isOrderDesc = ref(true)
+
 useHead({
   bodyAttrs: {
     class: "bg-gradient"
@@ -38,7 +43,7 @@ useHead({
 
 // Not sure the URL will work dynamically here, I might need it 
 // in a function in the useFetch
-const url = `/${articleTypeApiDesc}-starting-from/${(page - 1) * siteInfo.maxArticles}?max=${siteInfo.maxArticles}`
+const url = `/${articleTypeApiDesc}-starting-from/${(page - 1) * siteInfo.maxArticles}?max=${siteInfo.maxArticles}&order=${isOrderDesc.value ? "desc" : "asc"}`
 const { data: articles, status, error } = await useDkvzApi<Article[]>(
   url,
   {
@@ -98,6 +103,11 @@ watch(error, (err) => {
   immediate: true
 })
 
+const handleToggleOrder = (desc: boolean) => {
+  console.log("Changing sort order, desc is ", desc)
+  isOrderDesc.value = desc
+}
+
 </script>
 
 <template>
@@ -105,7 +115,8 @@ watch(error, (err) => {
   <div class="content-card content-card--transp content-card--page-card">
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
-      <ToggleButton ariaLabel="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
+      <ToggleButton @change="handleToggleOrder" :value="isOrderDesc" class="_js-only"
+        ariaLabel="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
         name="order-toggle-btn" disabledLabel="Décroissant" enabledLabel="Croissant">
       </ToggleButton>
     </div>
