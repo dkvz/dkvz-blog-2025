@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import type { RouteLocationNormalizedGeneric } from 'vue-router'
 import { siteInfo } from '~~/data/site-info'
 
-// Do some validation on the route param
-const validatePage = (route: RouteLocationNormalizedGeneric): boolean => {
-  const page = Number(route.params.page)
-  return page > 0 && !isNaN(page);
-}
+// There's an unusual amount of composables on this page
+// because the "tags" page is almost the same but I couldn't
+// have it as an alias of this one because tags has an extra
+// route param.
 
 definePageMeta({
-  validate: validatePage,
+  validate: validatePageNumber,
   alias: "/breves/page/:page",
 })
 
@@ -26,12 +24,7 @@ const capitalizedArticleType = capitalizeFirst(articleTypeDescriptionPlural)
 // Not the same thing depending on article type
 const maxItems = isShorts ? siteInfo.maxShorts : siteInfo.maxArticles
 
-// If true, order by date descending (default behavior)
-// Could be controlled by a URL param as well, for now it's strictly
-// JS-based and works on client only.
-// TODO: I should really replace this thing by a param in the router
-// so it's kept page to page without having to use "useState".
-const isOrderAsc = useState("isOrderAsc", () => false)
+const { isOrderAsc, handleToggleOrder } = useOrderToggle()
 // const isOrderAsc = ref(false)
 
 useHead({
@@ -51,10 +44,6 @@ const {
   isOrderAsc,
   page
 })
-
-const handleToggleOrder = (asc: boolean) => {
-  isOrderAsc.value = asc
-}
 
 </script>
 

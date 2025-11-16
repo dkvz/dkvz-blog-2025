@@ -20,6 +20,7 @@ export const isShortsPage = (path: string): boolean => {
   return path.indexOf(`/${siteInfo.shortRootUrl}`) == 0
 }
 
+// TODO: These values should be in site-info.
 export const paramsForArticleType = (isShort: boolean): ArticleTypeParams => {
   if (isShort) {
     return {
