@@ -9,5 +9,6 @@ export const siteInfo = {
   shortRootUrl: "breves",
   articleRootUrl: "articles",
   maxComments: 10,
-  maxArticles: 8
+  maxArticles: 8,
+  maxShorts: 20
 }

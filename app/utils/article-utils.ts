@@ -59,6 +59,25 @@ export const parseBlogDateFormat = (d: string): Date => {
   return new Date(year, month - 1, day, hours, minutes, seconds)
 }
 
+// Create a shorter date (without the time) based on what
+// the backend is sending.
+// The format is super specific with one of the slashes
+// replaced by a space so that it works in the small
+// circles I use on shorts.
+export const shortDate = (d: string): string => {
+  const spl = d.split(" ")
+
+  if (spl.length < 2) return d
+  if (!spl[0]) return d
+
+  const lastSlash = spl[0].lastIndexOf("/")
+  if (lastSlash > 0) {
+    return spl[0].substring(0, lastSlash) + spl[0].substring(lastSlash + 1)
+  }
+
+  return spl[0]
+}
+
 export const syntaxHighlight = async (text: string): Promise<string> => {
   // Look for code blocks in the text:
   const matches = text.matchAll(codeReg)
