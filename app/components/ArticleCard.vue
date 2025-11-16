@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { siteInfo } from '~~/data/site-info'
 
-// TODO: Can I re-use it for shorts?
-// What happens if there is no thumb image, does it work?
+// TODO: What happens if there is no thumb image, does it work?
 // Does the title arg work on NuxtLink?
 
 // Should have some alt for the image, wasn't in my plans
@@ -38,7 +37,7 @@ const url = computed(() => `/${siteInfo.articleRootUrl}/${props.articleUrl}`)
         Suite
         <Icon name="uil:external-link-alt" />
       </NuxtLink>
-      <NuxtLink :to="{ path: `${url}`, hash: '#comment-section' }" class="btn btn-icon">
+      <NuxtLink :to="{ path: url, hash: '#comment-section' }" class="btn btn-icon">
         {{ commentsCount }}
         <Icon name="uil:comment" />
       </NuxtLink>

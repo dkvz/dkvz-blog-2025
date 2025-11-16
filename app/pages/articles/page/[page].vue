@@ -14,7 +14,7 @@ definePageMeta({
 })
 
 const route = useRoute()
-const page = Number(route.params.page)
+const page = Number(route.params.page) || 1
 const isShorts = isShortsPage(route.path)
 const {
   urlPart,
@@ -36,7 +36,6 @@ const lastPage = useState<number | null>("lastPage", () => null)
 // so it's kept page to page without having to use "useState".
 const isOrderAsc = useState("isOrderAsc", () => false)
 // const isOrderAsc = ref(false)
-console.log("isOrderAsc has been re-initialized to ", isOrderAsc.value)
 
 useHead({
   bodyAttrs: {
@@ -46,7 +45,13 @@ useHead({
 })
 
 const url = computed(
-  () => `/${articleTypeApiDesc}-starting-from/${(page - 1) * siteInfo.maxArticles}?max=${siteInfo.maxArticles}&order=${isOrderAsc.value ? "asc" : "desc"}`
+  () => {
+    const maxItems = isShorts ? siteInfo.maxShorts : siteInfo.maxArticles
+    const start = (page - 1) * maxItems
+    const order = isOrderAsc.value ? "asc" : "desc"
+
+    return `/${articleTypeApiDesc}-starting-from/${start}?max=${maxItems}&order=${order}`
+  }
 )
 const { data: articles, status, error } = await useDkvzApi<Article[]>(
   url,
@@ -114,7 +119,6 @@ const handleToggleOrder = (asc: boolean) => {
 </script>
 
 <template>
-  <!-- TODO: Shorts use a different layout, to figure out later? -->
   <div class="content-card content-card--transp content-card--page-card">
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
@@ -128,14 +132,26 @@ const handleToggleOrder = (asc: boolean) => {
       <LoadingSpinner></LoadingSpinner>
     </div>
 
-    <div v-else class="card-list card-list--single">
+    <template v-else>
 
-      <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
-        :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
-        :thumb-image="article.thumbImage" :title="article.title">
-      </ArticleCard>
+      <div v-if="isShorts" class="card-list">
 
-    </div>
+        <ShortCard v-for="article in articles" :key="article.id" :id="article.id" :date="article.date"
+          :summary="article.summary" :thumb-image="article.thumbImage" :title="article.title">
+        </ShortCard>
+
+      </div>
+
+      <div v-else class="card-list card-list--single">
+
+        <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
+          :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
+          :thumb-image="article.thumbImage" :title="article.title">
+        </ArticleCard>
+
+      </div>
+
+    </template>
 
     <!-- Pagination could be a component -->
     <!-- TODO: Could use icons instead of chars -->
