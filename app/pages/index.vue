@@ -33,7 +33,7 @@ useHead({
 
     <div class="card-list">
 
-      <div class="card card--hoverable card--rounded-bottom">
+      <div class="card card--hoverable card-short">
         <div class="card__header">
           <img class="card__large-img" src="https://dkvz.eu/assets/shorts/shorts_linux2.png">
           <div class="card__date-pill">22/11 2019</div>
@@ -48,7 +48,7 @@ useHead({
         </div>
       </div>
 
-      <div class="card card--hoverable card--rounded-bottom">
+      <div class="card card--hoverable card-short">
         <div class="card__header">
           <img class="card__large-img" src="https://dkvz.eu/assets/shorts/shorts_linux1.png">
           <div class="card__date-pill">31/12 2020</div>

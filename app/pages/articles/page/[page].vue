@@ -29,6 +29,9 @@ const capitalizedArticleType = capitalizeFirst(articleTypeDescriptionPlural)
 // request.
 const lastPage = useState<number | null>("lastPage", () => null)
 
+// Not the same thing depending on article type
+const maxItems = isShorts ? siteInfo.maxShorts : siteInfo.maxArticles
+
 // If true, order by date descending (default behavior)
 // Could be controlled by a URL param as well, for now it's strictly
 // JS-based and works on client only.
@@ -46,7 +49,6 @@ useHead({
 
 const url = computed(
   () => {
-    const maxItems = isShorts ? siteInfo.maxShorts : siteInfo.maxArticles
     const start = (page - 1) * maxItems
     const order = isOrderAsc.value ? "asc" : "desc"
 
@@ -71,9 +73,8 @@ const { data: articles, status, error } = await useDkvzApi<Article[]>(
           if (l.includes("rel=\"last\"")) {
             // Attempt to extract the last offset from it:
             const lp = extractLastPageFromLink(l)
-            // TODO: Do something if we're already past 
-            // last page for the current URL.
-            if (lp) lastPage.value = lp / siteInfo.maxArticles
+            // Being past the last page will redirect to a 404 page
+            if (lp) lastPage.value = Math.floor(lp / maxItems) + 1
             break;
           }
         }
@@ -120,6 +121,7 @@ const handleToggleOrder = (asc: boolean) => {
 
 <template>
   <div class="content-card content-card--transp content-card--page-card">
+
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
       <ToggleButton @change="handleToggleOrder" :value="isOrderAsc" class="_js-only"

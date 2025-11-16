@@ -32,7 +32,7 @@
   }
 
   /* Has to be here for cascade priority reasons */
-  .card--rounded-bottom {
+  .card-short {
     border-bottom-right-radius: 10%;
   }
 
@@ -186,6 +186,11 @@
 
   .card-list--single .card {
     margin-top: 2rem;
+  }
+
+  /* Horrible hack that looks bad */
+  .content-card--page-card .card-short {
+    height: fit-content;
   }
 
 }
