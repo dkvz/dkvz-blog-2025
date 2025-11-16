@@ -25,7 +25,7 @@ const shorterDate = computed(() => shortDate(props.date))
 
 
 <template>
-  <article class="card card--hoverable card--rounded-bottom">
+  <article class="card card--hoverable card-short">
     <div class="card__header">
       <img v-if="thumbImage" class="card__large-img" :src="thumbImage">
       <div class="card__date-pill">{{ shorterDate }}</div>

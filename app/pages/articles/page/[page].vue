@@ -120,6 +120,7 @@ const handleToggleOrder = (asc: boolean) => {
 
 <template>
   <div class="content-card content-card--transp content-card--page-card">
+
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
       <ToggleButton @change="handleToggleOrder" :value="isOrderAsc" class="_js-only"

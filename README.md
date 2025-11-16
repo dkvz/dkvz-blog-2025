@@ -13,6 +13,7 @@ Just removing the items when done this time around.
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - I got problems with text justified in cards, it shouldn't be
 - Check the myriad todos inside the code
+- Shorts on larger screens would look better by wrapping more tightly, not sure how to do it
 - For some reason my LSP doesn't let me use kebab-case prop names on my components from the template (they do work though)
 - Add title attributes on pagination stuff
 - Remove the possible console logs for syntax highlighting errors
