@@ -4,7 +4,7 @@ const props = defineProps<{
   name: string,
   disabledLabel?: string,
   enabledLabel?: string,
-  ariaLabel: string,
+  description: string,
   // If false, default state with "disabledLabel" shown
   value?: boolean
 }>()
@@ -27,7 +27,7 @@ const handleChange = (e: any) => {
   <div>
     <input @change="handleChange" :checked="props.value !== undefined ? props.value : false" :name="props.name"
       :id="props.name" class="toggle-checkbox" type="checkbox" />
-    <label class="toggle-label" :for="props.name" :aria-label="props.ariaLabel">
+    <label class="toggle-label" :for="props.name" :aria-label="props.description">
       <div class="toggle-indicator flex-center">
         {{ props.disabledLabel ? props.disabledLabel : "&lArr;" }}
       </div>

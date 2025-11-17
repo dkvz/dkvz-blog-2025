@@ -14,7 +14,6 @@ Just removing the items when done this time around.
 - I got problems with text justified in cards, it shouldn't be
 - Check the myriad todos inside the code
 - Shorts on larger screens would look better by wrapping more tightly, not sure how to do it
-- For some reason my LSP doesn't let me use kebab-case prop names on my components from the template (they do work though)
 - Add title attributes on pagination stuff
 - Remove the possible console logs for syntax highlighting errors
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?

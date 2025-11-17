@@ -53,8 +53,8 @@ const {
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
       <ToggleButton @change="handleToggleOrder" :value="isOrderAsc" class="_js-only"
-        ariaLabel="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
-        name="order-toggle-btn" disabledLabel="Décroissant" enabledLabel="Croissant">
+        description="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
+        name="order-toggle-btn" disabled-label="Décroissant" enabled-label="Croissant">
       </ToggleButton>
     </div>
 
@@ -83,23 +83,9 @@ const {
 
     </template>
 
-    <!-- Pagination could be a component -->
-    <!-- TODO: Could use icons instead of chars -->
     <div class="flex-end">
-      <div id="pagination" class="grid-flow-col gap-4 pagination">
-        <NuxtLink v-if="page > 1" :to="{ path: `/${urlPart}/page/${page - 1}` }">
-          &lt;
-        </NuxtLink>
-        <span>{{ page }}</span>
-        <span>/</span>
-        <span v-if="lastPage === null">?</span>
-        <NuxtLink v-else :to="{ path: `/${urlPart}/page/${lastPage}` }">
-          {{ lastPage }}
-        </NuxtLink>
-        <NuxtLink v-if="lastPage === null || page < lastPage" :to="{ path: `/${urlPart}/page/${page + 1}` }">
-          &gt;
-        </NuxtLink>
-      </div>
+      <Paginator :base-url="urlPart" :last-page="lastPage" :page="page">
+      </Paginator>
     </div>
 
   </div>
