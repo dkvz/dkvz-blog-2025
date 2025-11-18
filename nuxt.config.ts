@@ -70,7 +70,8 @@ export default defineNuxtConfig({
   ],
   routeRules: {
     '/articles': { redirect: '/articles/page/1' },
-    '/breves': { redirect: '/breves/page/1' }
+    '/breves': { redirect: '/breves/page/1' },
+    '/tag/:tag': { redirect: '/tag/:tag/page/1' }
   },
   vue: {
     compilerOptions: {
