@@ -29,10 +29,10 @@ const handleChange = (e: any) => {
       :id="props.name" class="toggle-checkbox" type="checkbox" />
     <label class="toggle-label" :for="props.name" :aria-label="props.description">
       <div class="toggle-indicator flex-center">
-        {{ props.disabledLabel ? props.disabledLabel : "&lArr;" }}
+        {{ props.disabledLabel || "&lArr;" }}
       </div>
       <div class="toggle-indicator flex-center">
-        {{ props.enabledLabel ? props.enabledLabel : "&rArr;" }}
+        {{ props.enabledLabel || "&rArr;" }}
       </div>
     </label>
   </div>
