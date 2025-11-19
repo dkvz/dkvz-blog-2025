@@ -10,6 +10,7 @@ export interface UseFetchArticlesOptions {
   page: number,
   maxItems: number,
   isOrderAsc: Ref<boolean>,
+  tag?: string
 }
 
 export interface UseFetchArticlesResponse {
@@ -29,7 +30,13 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
       const start = (opts.page - 1) * opts.maxItems
       const order = opts.isOrderAsc.value ? "asc" : "desc"
 
-      return `/${opts.articleType}-starting-from/${start}?max=${opts.maxItems}&order=${order}`
+      let url = `/${opts.articleType}-starting-from/${start}?max=${opts.maxItems}&order=${order}`
+      if (opts.tag) {
+        // API allows multiple tags but the site only allows 1.
+        // Yeah whatever, no one uses the tags page
+        url += `&tags=${encodeURIComponent(opts.tag)}`
+      }
+      return url
     }
   )
 
