@@ -5,14 +5,12 @@ export const validatePageNumber = (route: RouteLocationNormalizedGeneric): boole
   return page > 0 && !isNaN(page);
 }
 
-export const validateTagPage = (route: RouteLocationNormalizedGeneric): boolean => {
-  let tagValid = false
+export const validateTag = (route: RouteLocationNormalizedGeneric): boolean => {
   if (route.params.tag) {
     const tag = route.params.toString()
     if (tag.trim().length > 0) {
-      tagValid = true
+      return true
     }
   }
-
-  return validatePageNumber(route) && tagValid
+  return false
 }
