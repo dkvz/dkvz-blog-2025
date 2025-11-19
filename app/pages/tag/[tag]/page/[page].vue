@@ -21,7 +21,6 @@ useHead({
   title: `Catégorie ${tag} - Page ${page}`
 })
 
-
 </script>
 
 <template>
