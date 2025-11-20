@@ -1,5 +1,4 @@
 <template>
-  <NuxtLoadingIndicator />
   <Header />
 
   <main class="trans-left main">

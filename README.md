@@ -38,7 +38,6 @@ Just removing the items when done this time around.
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Implement the title template and title antics
-- Should probably remove NuxtLoadingIndicator, I don't think it's gonna work out
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
