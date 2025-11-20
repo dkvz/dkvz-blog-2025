@@ -61,10 +61,10 @@ onMounted(() => {
             <a href="#">Rechercher</a>
           </li>
           <li>
-            <a href="#">Articles</a>
+            <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
           </li>
           <li>
-            <a href="#">Brèves</a>
+            <NuxtLink to="/articles/page/1">Articles</NuxtLink>
           </li>
           <li>
             <a href="#">A propos</a>
