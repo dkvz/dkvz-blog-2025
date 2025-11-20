@@ -21,7 +21,6 @@ Just removing the items when done this time around.
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?
 - My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
 - Test all the dialog stuff on Firefox, not super sure about the positionning antics
-- Use the comment I return from CommentDialog and add it to the list immediately?
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - Missing styling for hr
