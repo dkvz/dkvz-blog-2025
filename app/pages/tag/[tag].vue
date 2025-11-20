@@ -8,11 +8,12 @@ definePageMeta({
 const route = useRoute()
 // The tag has been validated as non empty string above
 const tag = (route.params.tag || "").toString()
+const baseUrl = `tag/${encodeURIComponent(tag.toString())}`
 
 const page = Number(route.params.page)
 if (!page) {
   // Only redirect antics that work here (I think)
-  await navigateTo(`/tag/${encodeURIComponent(tag.toString())}/page/1`)
+  await navigateTo(`/${baseUrl}/page/1`)
 }
 
 const maxItems = siteInfo.maxArticles
@@ -68,7 +69,7 @@ const {
     </div>
 
     <div class="flex-end">
-      <Paginator base-url="articles" :last-page="lastPage" :page="page">
+      <Paginator :base-url="baseUrl" :last-page="lastPage" :page="page">
       </Paginator>
     </div>
 

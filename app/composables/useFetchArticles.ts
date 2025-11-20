@@ -59,7 +59,7 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
               // Attempt to extract the last offset from it:
               const lp = extractLastPageFromLink(l)
               // Being past the last page will redirect to a 404 page
-              if (lp) lastPage.value = Math.floor(lp / opts.maxItems) + 1
+              lastPage.value = Math.floor(lp / opts.maxItems) + 1
               break;
             }
           }
