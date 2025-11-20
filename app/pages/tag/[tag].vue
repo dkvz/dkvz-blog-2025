@@ -7,10 +7,11 @@ definePageMeta({
 
 const route = useRoute()
 // The tag has been validated as non empty string above
-const tag = route.params.tag || ""
+const tag = (route.params.tag || "").toString()
 
 const page = Number(route.params.page)
 if (!page) {
+  // Only redirect antics that work here (I think)
   await navigateTo(`/tag/${encodeURIComponent(tag.toString())}/page/1`)
 }
 
@@ -18,7 +19,6 @@ const maxItems = siteInfo.maxArticles
 
 const { isOrderAsc, handleToggleOrder } = useOrderToggle()
 
-// TODO: Does the tag print as it should even with URL encoded chars?
 useHead({
   bodyAttrs: {
     class: "bg-gradient"
@@ -26,10 +26,51 @@ useHead({
   title: `Catégorie ${tag} - Page ${page}`
 })
 
+const {
+  articles,
+  lastPage,
+  status
+} = await useFetchArticles({
+  articleType: 'articles',
+  maxItems,
+  isOrderAsc,
+  page,
+  tag
+})
+
 </script>
 
 <template>
-  <section class="content-card content-card--page-card">
-    <h1>Nothing here yet</h1>
-  </section>
+  <div class="content-card content-card--transp content-card--page-card">
+
+    <div class="section-title two-items-grid">
+      <div>
+        <h2 class="section-title__title">Articles</h2>
+        <h3>{{ tag }}</h3>
+      </div>
+      <ToggleButton @change="handleToggleOrder" :value="isOrderAsc" class="_js-only"
+        description="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
+        name="order-toggle-btn" disabled-label="Décroissant" enabled-label="Croissant">
+      </ToggleButton>
+    </div>
+
+    <div v-if="status === 'pending'">
+      <LoadingSpinner></LoadingSpinner>
+    </div>
+
+    <div v-else class="card-list card-list--single">
+
+      <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
+        :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
+        :thumb-image="article.thumbImage" :title="article.title">
+      </ArticleCard>
+
+    </div>
+
+    <div class="flex-end">
+      <Paginator base-url="articles" :last-page="lastPage" :page="page">
+      </Paginator>
+    </div>
+
+  </div>
 </template>
