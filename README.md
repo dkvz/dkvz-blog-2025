@@ -10,7 +10,6 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
-- Sometimes there is legitimately no last page because max articles is larger than the total count, happens on the tag page
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Page numbers could be decimals, we don't check for those in any way. Maybe I should use parseInt or some Math rouding
 - Test the redirect from `/tags/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
