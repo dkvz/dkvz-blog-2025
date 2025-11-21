@@ -10,7 +10,8 @@ const route = useRoute()
 // But it can be an array for some reason so here we are
 const tag = (route.params.tag || "").toString()
 const baseUrl = `tag/${encodeURIComponent(tag.toString())}`
-const page = Number(route.params.page) || 1
+const page = route.params.page !== undefined ?
+  parseInt(route.params.page.toString()) : 1
 const maxItems = siteInfo.maxArticles
 const { isOrderAsc, handleToggleOrder } = useOrderToggle()
 

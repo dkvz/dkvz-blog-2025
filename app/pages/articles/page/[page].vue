@@ -12,8 +12,10 @@ definePageMeta({
 })
 
 const route = useRoute()
-const page = Number(route.params.page) || 1
+const page = route.params.page !== undefined ?
+  parseInt(route.params.page.toString()) : 1
 const isShorts = isShortsPage(route.path)
+
 const {
   urlPart,
   descriptionPlural: articleTypeDescriptionPlural,
