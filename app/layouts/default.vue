@@ -13,7 +13,7 @@
         <section>
           <h1>Blog dkvz.eu</h1>
           <p>© 2018 &rarr; AnnéeEnCours dkvz.eu &mdash; I probably won't sue you</p>
-          <p>-&gt; Ajouter un web component ici pour le bg</p>
+          <p>Ajouter un web component ici pour le bg</p>
         </section>
         <section>
           <h1>Liens</h1>
