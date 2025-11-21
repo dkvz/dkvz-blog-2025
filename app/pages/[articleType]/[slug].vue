@@ -5,7 +5,7 @@ import { addTOC, syntaxHighlight } from "~/utils/article-utils"
 import { siteInfo } from "~~/data/site-info"
 
 definePageMeta({
-  alias: "/breves/:slug",
+  validate: validateArticleType
 })
 
 useHead({

@@ -7,13 +7,17 @@ import { siteInfo } from '~~/data/site-info'
 // route param.
 
 definePageMeta({
-  validate: validatePageNumber,
-  alias: "/breves/page/:page",
+  validate: (r) => validatePageNumber(r) && validateArticleType(r),
 })
 
 const route = useRoute()
-const page = Number(route.params.page) || 1
-const isShorts = isShortsPage(route.path)
+const page = route.params.page !== undefined ?
+  parseInt(route.params.page.toString()) : 1
+const articleType = route.params.articleType ?
+  route.params.articleType.toString() : siteInfo.articleRootUrl
+const isShorts = articleType === siteInfo.shortRootUrl
+
+// A bit convoluted due to multiple refactoring of routing antics
 const {
   urlPart,
   descriptionPlural: articleTypeDescriptionPlural,

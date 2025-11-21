@@ -69,8 +69,11 @@ export default defineNuxtConfig({
     '~/assets/styles/style.css'
   ],
   routeRules: {
-    '/articles': { redirect: '/articles/page/1' },
-    '/breves': { redirect: '/breves/page/1' },
+    // Doesn't work at all lol
+    // '/:articleType': { redirect: '/:articleType()/page/1' }
+    // OLD STUFF
+    // '/articles': { redirect: '/articles/page/1' },
+    // '/breves': { redirect: '/breves/page/1' },
   },
   vue: {
     compilerOptions: {
