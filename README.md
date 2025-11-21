@@ -10,6 +10,8 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Does this work for aliases: `"/:articleType()/page/:page()"`
+- Shouldn't I add the redirect for the tag page also in nuxt.config.ts? Does it do any harm?
 - Switching from the shorts page to the articles page from the menu doesn't seem to work
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
