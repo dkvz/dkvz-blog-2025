@@ -27,6 +27,10 @@ const onMenuCheckboxChange = () => {
   window.addEventListener("keydown", escMenuCallback)
 }
 
+const onMenuItemClick = () => {
+  isMenuOpened.value = false
+}
+
 onMounted(() => {
   startDynamicHeader()
 })
@@ -53,7 +57,7 @@ onMounted(() => {
         <div class="section-title">
           <h1 class="section-title__big-title">Menu</h1>
         </div>
-        <ul class="menu__list">
+        <ul class="menu__list" @click="onMenuItemClick">
           <li>
             <NuxtLink to="/">Accueil</NuxtLink>
           </li>
