@@ -14,3 +14,6 @@ export const validateTag = (route: RouteLocationNormalizedGeneric): boolean => {
   }
   return false
 }
+
+export const validateTagPage = (route: RouteLocationNormalizedGeneric): boolean =>
+  validateTag(route) && validatePageNumber(route)

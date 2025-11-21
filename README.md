@@ -12,12 +12,10 @@ Just removing the items when done this time around.
 
 - Switching from the shorts page to the articles page from the menu doesn't seem to work
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
-- Page numbers could be decimals, we don't check for those in any way. Maybe I should use parseInt or some Math rouding
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - I got problems with text justified in cards, it shouldn't be
 - Check the myriad todos inside the code
 - Shorts on larger screens would look better by wrapping more tightly, not sure how to do it
-- Add title attributes on pagination stuff
 - Remove the possible console logs for syntax highlighting errors
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?
 - My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)

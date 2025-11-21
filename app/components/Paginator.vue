@@ -15,16 +15,17 @@ const props = defineProps<{
 <template>
   <!-- TODO: Could use icons instead of chars -->
   <div id="pagination" class="grid-flow-col gap-4 pagination">
-    <NuxtLink v-if="page > 1" :to="{ path: `/${baseUrl}/page/${page - 1}` }">
+    <NuxtLink title="Page précédente" v-if="page > 1" :to="{ path: `/${baseUrl}/page/${page - 1}` }">
       &lt;
     </NuxtLink>
     <span>{{ page }}</span>
     <span>/</span>
     <span v-if="lastPage === null">?</span>
-    <NuxtLink v-else :to="{ path: `/${baseUrl}/page/${lastPage}` }">
+    <NuxtLink title="Se rendre à la dernière page" v-else :to="{ path: `/${baseUrl}/page/${lastPage}` }">
       {{ lastPage }}
     </NuxtLink>
-    <NuxtLink v-if="lastPage === null || page < lastPage" :to="{ path: `/${baseUrl}/page/${page + 1}` }">
+    <NuxtLink title="Page suivante" v-if="lastPage === null || page < lastPage"
+      :to="{ path: `/${baseUrl}/page/${page + 1}` }">
       &gt;
     </NuxtLink>
   </div>
