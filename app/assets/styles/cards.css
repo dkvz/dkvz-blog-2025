@@ -12,9 +12,10 @@
   }
 
   .card-list--small-cards {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-auto-columns: auto; */
+    grid-gap: 0.7rem;
+    /* grid-auto-flow: column; */
   }
 
   .card-list--single {
