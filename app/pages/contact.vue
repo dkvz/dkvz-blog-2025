@@ -16,6 +16,13 @@ useHead({
 
     <div class="card-list card-list--small-cards">
 
+      <!-- 
+      Not making a "contact card" component or whatnot, there's no 
+      logic in it and it'll just take more bundle space and processing
+      time for nothing, I'm copy pasting baby!
+      Doesn't matter because I use vim, btw
+      -->
+
       <article class="card card--hoverable card-short">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
@@ -27,7 +34,8 @@ useHead({
           </div>
         </div>
         <div class="card__footer">
-          Je sais pas encore que mettre ici, une icone?
+          <a href="https://bsky.app/profile/dkvz.eu" class="card__footer__link" rel="noopener noreferrer"
+            target="_blank">@dkvz</a>
         </div>
       </article>
 
@@ -37,10 +45,12 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Twitter</h1>
-          <div>Je suis plus vraiment dessus</div>
+          <div>Je suis plus vraiment dessus mais bon, comme ça vous pouvez creuser dans mon passé pour me <i>cancel</i>.
+          </div>
         </div>
         <div class="card__footer">
-          Je sais pas encore que mettre ici, une icone?
+          <a href="https://x.com/MrSausageroll" class="card__footer__link" rel="noopener noreferrer"
+            target="_blank">@MrSausageroll</a>
         </div>
       </article>
 

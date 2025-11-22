@@ -63,6 +63,7 @@
     .card-list--small-cards {
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 1.4rem;
+      font-size: 1.1rem;
     }
 
     .card-list__btn {
@@ -215,6 +216,7 @@
 
     .card-list--small-cards {
       grid-template-columns: repeat(3, 1fr);
+      font-size: 1rem;
     }
 
   }

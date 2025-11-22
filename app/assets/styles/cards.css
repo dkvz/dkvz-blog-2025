@@ -13,9 +13,8 @@
 
   .card-list--small-cards {
     grid-template-columns: repeat(3, 1fr);
-    /* grid-auto-columns: auto; */
     grid-gap: 0.7rem;
-    /* grid-auto-flow: column; */
+    font-size: 0.8rem;
   }
 
   .card-list--single {
@@ -106,7 +105,6 @@
   .card__body {
     flex: 1;
     padding: var(--card-padding);
-    text-align: justify;
   }
 
   .card__large-img {
