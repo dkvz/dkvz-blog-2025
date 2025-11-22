@@ -34,8 +34,11 @@ useHead({
           </div>
         </div>
         <div class="card__footer">
-          <a href="https://bsky.app/profile/dkvz.eu" class="card__footer__link" rel="noopener noreferrer"
-            target="_blank">@dkvz</a>
+          <a href="https://bsky.app/profile/dkvz.eu" class="card__footer__link simple-row" rel="noopener noreferrer"
+            target="_blank">
+            @dkvz
+            <Icon mode="svg" name="uil:external-link-alt" />
+          </a>
         </div>
       </article>
 
@@ -49,8 +52,11 @@ useHead({
           </div>
         </div>
         <div class="card__footer">
-          <a href="https://x.com/MrSausageroll" class="card__footer__link" rel="noopener noreferrer"
-            target="_blank">@MrSausageroll</a>
+          <a href="https://x.com/MrSausageroll" class="card__footer__link simple-row" rel="noopener noreferrer"
+            target="_blank">
+            @MrSausageroll
+            <Icon mode="svg" name="uil:external-link-alt" />
+          </a>
         </div>
       </article>
 
@@ -60,10 +66,14 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Github</h1>
-          <div>Trop chouette</div>
+          <div>Vous pouvez aussi regarder mon Github par curiosité morbide.</div>
         </div>
         <div class="card__footer">
-          Je sais pas encore que mettre ici, une icone?
+          <a href="https://github.com/dkvz" class="card__footer__link simple-row" rel="noopener noreferrer"
+            target="_blank">
+            dkvz
+            <Icon mode="svg" name="uil:external-link-alt" />
+          </a>
         </div>
       </article>
 
@@ -73,10 +83,11 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Email</h1>
-          <div>Je suis plus vraiment dessus</div>
+          <div>Qui utilise encore ce vieux truc? Je vous laisse quelques adresses en vrac</div>
         </div>
         <div class="card__footer">
-          Je sais pas encore que mettre ici, une icone?
+          <a href="mailto:je-suis-un-gros-pot-de-miel@dkvz.eu"
+            class="card__footer__link">je-suis-un-gros-pot-de-miel@dkvz.eu</a>
         </div>
       </article>
 
