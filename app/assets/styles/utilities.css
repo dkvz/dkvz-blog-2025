@@ -46,6 +46,10 @@
     padding: 1.6rem;
   }
 
+  .gap-2 {
+    gap: 0.8rem;
+  }
+
   .gap-4 {
     gap: 1.6rem;
   }

@@ -88,11 +88,9 @@ useHead({
             <p>Je vous laisse quelques adresses en vrac.</p>
           </div>
         </div>
-        <div class="card__footer flex-col">
-          <a href="mailto:je-suis-un-gros-pot-de-miel@dkvz.eu"
-            class="card-footer-normal-link">je-suis-un-gros-pot-de-miel@dkvz.eu</a>
-          <a href="mailto:auguste.du.blanc.roc.de.la.sinte@dkvz.eu"
-            class="card-footer-normal-link">auguste.du.blanc.roc.de.la.sinte@dkvz.eu</a>
+        <div class="card__footer flex-col gap-2">
+          <a href="mailto:pot-de-miel@dkvz.eu" class="card-footer-normal-link">pot-de-mieil@dkvz.eu</a>
+          <a href="mailto:miel-en-pot@dkvz.eu" class="card-footer-normal-link">miel-en-pot@dkvz.eu</a>
         </div>
       </article>
 
