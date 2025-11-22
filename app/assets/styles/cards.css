@@ -160,9 +160,12 @@
     color: var(--accent-color);
   }
 
+  .card-footer-normal-link {
+    display: block;
+    color: var(--accent-color);
+  }
+
   .card__footer__link:hover {
-    text-transform: uppercase;
-    text-decoration: none;
     color: var(--accent-color-lighter);
     animation: none;
   }

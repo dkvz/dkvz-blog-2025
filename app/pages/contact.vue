@@ -34,8 +34,8 @@ useHead({
           </div>
         </div>
         <div class="card__footer">
-          <a href="https://bsky.app/profile/dkvz.eu" class="card__footer__link simple-row" rel="noopener noreferrer"
-            target="_blank">
+          <a href="https://bsky.app/profile/dkvz.eu" class="card-footer-normal-link simple-row"
+            rel="noopener noreferrer" target="_blank">
             @dkvz
             <Icon mode="svg" name="uil:external-link-alt" />
           </a>
@@ -52,7 +52,7 @@ useHead({
           </div>
         </div>
         <div class="card__footer">
-          <a href="https://x.com/MrSausageroll" class="card__footer__link simple-row" rel="noopener noreferrer"
+          <a href="https://x.com/MrSausageroll" class="card-footer-normal-link simple-row" rel="noopener noreferrer"
             target="_blank">
             @MrSausageroll
             <Icon mode="svg" name="uil:external-link-alt" />
@@ -69,7 +69,7 @@ useHead({
           <div>Vous pouvez aussi regarder mon Github par curiosité morbide.</div>
         </div>
         <div class="card__footer">
-          <a href="https://github.com/dkvz" class="card__footer__link simple-row" rel="noopener noreferrer"
+          <a href="https://github.com/dkvz" class="card-footer-normal-link simple-row" rel="noopener noreferrer"
             target="_blank">
             dkvz
             <Icon mode="svg" name="uil:external-link-alt" />
@@ -83,11 +83,16 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Email</h1>
-          <div>Qui utilise encore ce vieux truc? Je vous laisse quelques adresses en vrac</div>
+          <div>
+            <p>Qui utilise encore ce vieux truc?</p>
+            <p>Je vous laisse quelques adresses en vrac.</p>
+          </div>
         </div>
-        <div class="card__footer">
+        <div class="card__footer flex-col">
           <a href="mailto:je-suis-un-gros-pot-de-miel@dkvz.eu"
-            class="card__footer__link">je-suis-un-gros-pot-de-miel@dkvz.eu</a>
+            class="card-footer-normal-link">je-suis-un-gros-pot-de-miel@dkvz.eu</a>
+          <a href="mailto:auguste.du.blanc.roc.de.la.sinte@dkvz.eu"
+            class="card-footer-normal-link">auguste.du.blanc.roc.de.la.sinte@dkvz.eu</a>
         </div>
       </article>
 
@@ -97,10 +102,14 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Codepen</h1>
-          <div>Je suis plus vraiment dessus</div>
+          <div>C'est encore plus bizarre que suivre mon Github mais bon je juge pas. Trop.</div>
         </div>
         <div class="card__footer">
-          Je sais pas encore que mettre ici, une icone?
+          <a href="https://codepen.io/dkvz" class="card-footer-normal-link simple-row" rel="noopener noreferrer"
+            target="_blank">
+            dkvz
+            <Icon mode="svg" name="uil:external-link-alt" />
+          </a>
         </div>
       </article>
 
@@ -110,10 +119,14 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Youtube</h1>
-          <div>Je suis plus vraiment dessus</div>
+          <div>Là ça devient vraiment déconné...</div>
         </div>
         <div class="card__footer">
-          Je sais pas encore que mettre ici, une icone?
+          <a href="https://www.youtube.com/user/DickVanZand" class="card-footer-normal-link simple-row"
+            rel="noopener noreferrer" target="_blank">
+            DickVanZand
+            <Icon mode="svg" name="uil:external-link-alt" />
+          </a>
         </div>
       </article>
 
