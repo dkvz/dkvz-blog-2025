@@ -11,6 +11,12 @@
     padding-bottom: 1rem;
   }
 
+  .card-list--small-cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    grid-auto-flow: column;
+  }
+
   .card-list--single {
     grid-template-columns: 1fr;
   }
