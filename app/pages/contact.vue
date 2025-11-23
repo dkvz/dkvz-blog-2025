@@ -23,7 +23,7 @@ useHead({
       Doesn't matter because I use vim, btw
       -->
 
-      <article class="card card--hoverable card-short">
+      <article class="card card--hoverable">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
         </div>
@@ -42,7 +42,7 @@ useHead({
         </div>
       </article>
 
-      <article class="card card--hoverable card-short">
+      <article class="card card--hoverable">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
         </div>
@@ -60,7 +60,7 @@ useHead({
         </div>
       </article>
 
-      <article class="card card--hoverable card-short">
+      <article class="card card--hoverable">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
         </div>
@@ -77,7 +77,7 @@ useHead({
         </div>
       </article>
 
-      <article class="card card--hoverable card-short">
+      <article class="card card--hoverable">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
         </div>
@@ -94,7 +94,7 @@ useHead({
         </div>
       </article>
 
-      <article class="card card--hoverable card-short">
+      <article class="card card--hoverable">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
         </div>
@@ -111,7 +111,7 @@ useHead({
         </div>
       </article>
 
-      <article class="card card--hoverable card-short">
+      <article class="card card--hoverable">
         <div class="card__header">
           <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
         </div>
