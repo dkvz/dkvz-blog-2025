@@ -27,7 +27,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/bluesky.svg">
+          <img class="card__large-img" src="~/assets/img/bluesky.svg">
         </div>
         <div class="card__body">
           <h1>Bluesky</h1>
@@ -46,7 +46,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/twitter.svg">
+          <img class="card__large-img" src="~/assets/img/twitter.svg">
         </div>
         <div class="card__body">
           <h1>Twitter</h1>
@@ -66,7 +66,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/github.svg">
+          <img class="card__large-img" src="~/assets/img/github.svg">
         </div>
         <div class="card__body">
           <h1>Github</h1>
@@ -85,7 +85,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/email.svg">
+          <img class="card__large-img" src="~/assets/img/email.svg">
         </div>
         <div class="card__body">
           <h1>Email</h1>
@@ -102,7 +102,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/codepen.svg">
+          <img class="card__large-img" src="~/assets/img/codepen.svg">
         </div>
         <div class="card__body">
           <h1>Codepen</h1>
@@ -121,7 +121,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/youtube.svg">
+          <img class="card__large-img" src="~/assets/img/youtube.svg">
         </div>
         <div class="card__body">
           <h1>Youtube</h1>
