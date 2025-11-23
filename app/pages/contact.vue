@@ -12,7 +12,9 @@ useHead({
 <template>
   <article class="content-card content-card--page-card content-card--transp">
 
-    <h1>Comment me contacter?</h1>
+    <div class="section-title mb-4">
+      <h1 class="section-title__title">Comment me contacter?</h1>
+    </div>
 
     <div class="card-list card-list--small-cards">
 
