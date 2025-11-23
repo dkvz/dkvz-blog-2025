@@ -48,7 +48,9 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Twitter</h1>
-          <div>Je suis plus vraiment dessus mais bon, comme ça vous pouvez creuser dans mon passé pour me <i>cancel</i>.
+          <div>
+            <p>Je suis plus vraiment dessus mais bon, comme ça vous pouvez creuser dans mon passé pour me <i>cancel</i>.
+            </p>
           </div>
         </div>
         <div class="card__footer">
@@ -66,7 +68,9 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Github</h1>
-          <div>Vous pouvez aussi regarder mon Github par curiosité morbide.</div>
+          <div>
+            <p>Vous pouvez aussi regarder mon Github par curiosité morbide.</p>
+          </div>
         </div>
         <div class="card__footer">
           <a href="https://github.com/dkvz" class="card-footer-normal-link simple-row" rel="noopener noreferrer"
@@ -100,7 +104,9 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Codepen</h1>
-          <div>C'est encore plus bizarre que suivre mon Github mais bon je juge pas. Trop.</div>
+          <div>
+            <p>C'est encore plus bizarre que suivre mon Github mais bon je juge pas. Trop.</p>
+          </div>
         </div>
         <div class="card__footer">
           <a href="https://codepen.io/dkvz" class="card-footer-normal-link simple-row" rel="noopener noreferrer"
@@ -117,7 +123,9 @@ useHead({
         </div>
         <div class="card__body">
           <h1>Youtube</h1>
-          <div>Là ça devient vraiment déconné...</div>
+          <div>
+            <p>Là ça devient vraiment déconné...</p>
+          </div>
         </div>
         <div class="card__footer">
           <a href="https://www.youtube.com/user/DickVanZand" class="card-footer-normal-link simple-row"

@@ -10,7 +10,9 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- The theme toggle icon covers the end of the blog title on small screen (try simulating Galaxy S8)
 - I should use a wrapping flex layout on the contact page instead of that weird grid
+- Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - Combine validators like I did on the `[page]` page for articles
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
