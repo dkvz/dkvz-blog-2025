@@ -10,8 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
-- The theme toggle icon covers the end of the blog title on small screen (try simulating Galaxy S8)
-- I should use a wrapping flex layout on the contact page instead of that weird grid
+- I should try a wrapping flex layout on the contact page instead of that weird grid
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - Combine validators like I did on the `[page]` page for articles
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
