@@ -25,7 +25,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
+          <img class="card__large-img" src="/assets/bluesky.svg">
         </div>
         <div class="card__body">
           <h1>Bluesky</h1>
@@ -44,7 +44,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
+          <img class="card__large-img" src="/assets/twitter.svg">
         </div>
         <div class="card__body">
           <h1>Twitter</h1>
@@ -62,7 +62,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
+          <img class="card__large-img" src="/assets/github.svg">
         </div>
         <div class="card__body">
           <h1>Github</h1>
@@ -79,7 +79,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
+          <img class="card__large-img" src="/assets/email.svg">
         </div>
         <div class="card__body">
           <h1>Email</h1>
@@ -96,7 +96,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
+          <img class="card__large-img" src="/assets/codepen.svg">
         </div>
         <div class="card__body">
           <h1>Codepen</h1>
@@ -113,7 +113,7 @@ useHead({
 
       <article class="card card--hoverable">
         <div class="card__header">
-          <img class="card__large-img" src="/assets/touch/chrome-touch-icon-192x192.png">
+          <img class="card__large-img" src="/assets/youtube.svg">
         </div>
         <div class="card__body">
           <h1>Youtube</h1>
