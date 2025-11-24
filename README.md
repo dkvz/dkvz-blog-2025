@@ -87,7 +87,7 @@ Locally preview production build:
 pnpm preview
 ```
 
-# Theme switcher woes
+## Theme switcher woes
 The `dark-mode-toggle` web component needs to have two link tags in head with media queries to work. It will then work even without JS (user preference won't work).
 
 However there's apparently no way to easily set a bundled asset into a header link tag with Nuxt. What I'd like to do is sort of discussed [in this issue](https://github.com/nuxt/nuxt/issues/14681) and is still open.
@@ -170,3 +170,17 @@ We'll use Shiki this time around and try to also syntax highlight server-side.
 There's a nuxt module but I'd like to try having better code splitting and only syntax highlight in the actual article page.
 
 Previous blog uses highlight.js with the `atom-one-dark` theme.
+
+## The tags problem
+The client-only blog used to fetch the tags once when loading, for every single client.
+
+It now feels quite inefficient knowing my tags (more like categories, really) do not change often.
+
+The new plan will be saving them as json in `/data` and just use that.
+
+Maybe the build process can attempt to update them.
+
+For now I'll just use curl from the data directory:
+```
+curl https://api.dkvz.eu/tags > tags.json
+```
