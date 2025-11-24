@@ -11,6 +11,12 @@
     padding-bottom: 1rem;
   }
 
+  .card-list--small-cards {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.7rem;
+    font-size: 0.65rem;
+  }
+
   .card-list--single {
     grid-template-columns: 1fr;
   }
@@ -99,7 +105,6 @@
   .card__body {
     flex: 1;
     padding: var(--card-padding);
-    text-align: justify;
   }
 
   .card__large-img {
@@ -155,9 +160,12 @@
     color: var(--accent-color);
   }
 
+  .card-footer-normal-link {
+    display: block;
+    color: var(--accent-color);
+  }
+
   .card__footer__link:hover {
-    text-transform: uppercase;
-    text-decoration: none;
     color: var(--accent-color-lighter);
     animation: none;
   }
