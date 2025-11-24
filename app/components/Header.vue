@@ -77,7 +77,7 @@ onMounted(() => {
             <NuxtLink to="/contact">Contact</NuxtLink>
           </li>
           <li>
-            <a href="#">Engagez-moi</a>
+            <NuxtLink to="/hireme">Engagez-moi</NuxtLink>
           </li>
         </ul>
         <div class="menu__socials">
