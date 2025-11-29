@@ -624,4 +624,12 @@
     gap: 1.5rem;
   }
 
+  .list-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    /* center, space-around and space-between are nice */
+    justify-content: center;
+    gap: 1rem;
+  }
+
 }

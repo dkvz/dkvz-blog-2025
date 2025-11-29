@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll';
+import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll'
+import tags from '~~/data/tags.json'
 
 const isMenuOpened = ref(false)
 
@@ -68,7 +69,13 @@ onMounted(() => {
             <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/articles/page/1">Articles</NuxtLink>
+            <label for="type-checkbox" role="button">Articles</label>
+            <input type="checkbox" id="type-checkbox" aria-hidden="true">
+            <div class="list-wrap">
+              <NuxtLink v-for="tag in tags"
+                :to="{ name: 'tag-tag-page', params: { page: 1, tag: encodeURIComponent(tag.name) } }">{{ tag.name }}
+              </NuxtLink>
+            </div>
           </li>
           <li>
             <NuxtLink to="/about">A propos</NuxtLink>
