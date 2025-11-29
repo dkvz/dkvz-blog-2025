@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - When the menu is visible we should not do the header transition when scrolling, it hides the menu for a little time
 - The about and hireme pages need more images
 - I should try a wrapping flex layout on the contact page instead of that weird grid
@@ -26,7 +27,6 @@ Just removing the items when done this time around.
 - Test all the dialog stuff on Firefox, not super sure about the positionning antics
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
-- Missing styling for hr
 - I need styling for tables
 - Table of content is a bit too tight
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation

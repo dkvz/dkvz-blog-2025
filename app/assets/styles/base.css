@@ -76,12 +76,14 @@
     top: 50px;
     left: 50%;
     visibility: hidden;
+    opacity: 0;
     padding: 0.6rem;
     background-color: var(--dark-color);
     width: 300px;
     width: calc(100vw - 6.4rem);
     transform: translateX(-50%);
     box-shadow: var(--card-shadow);
+    transition: opacity 0.6s, visibility 1s;
   }
 
   /*
@@ -98,6 +100,7 @@
 
   .toggle-checkbox:checked~.floating-menu {
     visibility: visible;
+    opacity: 1;
   }
 
   .menu {
