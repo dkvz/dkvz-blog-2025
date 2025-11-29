@@ -49,10 +49,6 @@
     z-index: 15;
   }
 
-  #menu-checkbox {
-    visibility: hidden;
-  }
-
   #menu {
     position: fixed;
     z-index: 550;
@@ -74,6 +70,13 @@
     visibility: hidden;
   }
 
+  .floating-menu {
+    position: absolute;
+    top: 50px;
+    visibility: hidden;
+    background-color: var(--dark-color-transp);
+  }
+
   /*
   Selector is overly complicated but I wanted the nav
   element to be closer to the ul with the actual
@@ -84,6 +87,10 @@
     transform: scaleY(1);
     animation: gradient 12s 1s ease infinite;
     transition: transform 0.6s;
+  }
+
+  .toggle-checkbox:checked~.floating-menu {
+    visibility: visible;
   }
 
   .menu {
@@ -100,16 +107,26 @@
     padding: 0;
   }
 
-  .menu__list a {
+  .menu__list a,
+  .menu__list label {
     display: block;
     color: var(--light-color);
     padding: 0.4rem 0.4rem;
+    cursor: pointer;
   }
 
   .menu__list a:hover,
   .menu__list a:active,
-  .menu__list a:focus {
+  .menu__list a:focus,
+  .menu__list label:hover,
+  .menu__list label:active,
+  .menu__list label:focus {
     background-color: var(--dark-color-extra-transp);
+  }
+
+  .menu__list label:active,
+  .menu__list label:hover {
+    animation: zomg 3s infinite;
   }
 
   .menu__socials {

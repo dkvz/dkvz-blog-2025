@@ -147,4 +147,8 @@
     display: none;
   }
 
+  .invisible {
+    visibility: hidden;
+  }
+
 }

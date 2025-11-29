@@ -51,8 +51,8 @@ onMounted(() => {
       </svg>
       <span>{{ menuText }}</span>
     </label>
-    <input @change="onMenuCheckboxChange" v-model="isMenuOpened" aria-hidden="true" type="checkbox" id="menu-checkbox"
-      name="menu-checkbox">
+    <input @change="onMenuCheckboxChange" class="invisible" v-model="isMenuOpened" aria-hidden="true" type="checkbox"
+      id="menu-checkbox" name="menu-checkbox">
     <div id="menu">
       <nav class="menu">
         <div class="section-title">
@@ -68,12 +68,13 @@ onMounted(() => {
           <li>
             <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
           </li>
-          <li>
+          <li style="position: relative;">
             <label for="type-checkbox" role="button">Articles</label>
-            <input type="checkbox" id="type-checkbox" aria-hidden="true">
-            <div class="list-wrap">
-              <NuxtLink v-for="tag in tags"
-                :to="{ name: 'tag-tag-page', params: { page: 1, tag: encodeURIComponent(tag.name) } }">{{ tag.name }}
+            <input type="checkbox" class="toggle-checkbox" id="type-checkbox" aria-hidden="true">
+            <div class="list-wrap floating-menu">
+              <NuxtLink v-for="tag in tags" :key="tag.id"
+                :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: encodeURIComponent(tag.name) } }">
+                {{ tag.name }}
               </NuxtLink>
             </div>
           </li>
