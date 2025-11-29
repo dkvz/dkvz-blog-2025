@@ -28,8 +28,12 @@ const onMenuCheckboxChange = () => {
   window.addEventListener("keydown", escMenuCallback)
 }
 
-const onMenuItemClick = () => {
-  isMenuOpened.value = false
+const onMenuItemClick = (e: any) => {
+  // Don't hide the menu if we're clicking on the articles 
+  // button that show the article tags / catergories
+  if (e.target.tagName !== "LABEL" && e.target.tagName !== "INPUT") {
+    isMenuOpened.value = false
+  }
 }
 
 onMounted(() => {
@@ -51,8 +55,8 @@ onMounted(() => {
       </svg>
       <span>{{ menuText }}</span>
     </label>
-    <input @change="onMenuCheckboxChange" class="invisible" v-model="isMenuOpened" aria-hidden="true" type="checkbox"
-      id="menu-checkbox" name="menu-checkbox">
+    <input @change="onMenuCheckboxChange" class="invisible" v-model="isMenuOpened" type="checkbox" id="menu-checkbox"
+      name="menu-checkbox">
     <div id="menu">
       <nav class="menu">
         <div class="section-title">
@@ -68,10 +72,11 @@ onMounted(() => {
           <li>
             <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
           </li>
-          <li style="position: relative;">
-            <label for="type-checkbox" role="button">Articles</label>
-            <input type="checkbox" class="toggle-checkbox" id="type-checkbox" aria-hidden="true">
-            <div class="list-wrap floating-menu">
+          <li class="relative">
+            <label for="type-checkbox" role="button" aria-controls="article-types">Articles</label>
+            <input type="checkbox" class="toggle-checkbox" id="type-checkbox">
+            <div class="list-wrap floating-menu" id="article-types">
+              <NuxtLink to="/articles/page/1">Tous les articles</NuxtLink>
               <NuxtLink v-for="tag in tags" :key="tag.id"
                 :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: encodeURIComponent(tag.name) } }">
                 {{ tag.name }}
