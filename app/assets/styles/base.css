@@ -125,6 +125,12 @@
     cursor: pointer;
   }
 
+  .menu__list label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .menu__list a:hover,
   .menu__list a:active,
   .menu__list a:focus,

@@ -3,8 +3,9 @@ import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll'
 import tags from '~~/data/tags.json'
 
 const isMenuOpened = ref(false)
-
+const typeCheckbox = useTemplateRef("type-checkbox")
 const header = useTemplateRef("header")
+
 const {
   isSticky,
   startDynamicHeader,
@@ -31,8 +32,14 @@ const onMenuCheckboxChange = () => {
 const onMenuItemClick = (e: any) => {
   // Don't hide the menu if we're clicking on the articles 
   // button that show the article tags / catergories
-  if (e.target.tagName !== "LABEL" && e.target.tagName !== "INPUT") {
+  if (e.target.tagName === "A") {
     isMenuOpened.value = false
+    // Also close the article tags submenu.
+    // Why am I doing it with a template ref this time?
+    // It's easier than the vue way.
+    if (typeCheckbox.value !== null) {
+      typeCheckbox.value.checked = false
+    }
   }
 }
 
@@ -73,8 +80,10 @@ onMounted(() => {
             <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
           </li>
           <li class="relative">
-            <label for="type-checkbox" role="button" aria-controls="article-types">Articles</label>
-            <input type="checkbox" class="toggle-checkbox" id="type-checkbox">
+            <label for="type-checkbox" role="button" aria-controls="article-types"><span>Articles</span><span>|</span>
+              <Icon name="uil:angle-down" />
+            </label>
+            <input ref="type-checkbox" type="checkbox" class="toggle-checkbox" id="type-checkbox">
             <div class="list-wrap floating-menu" id="article-types">
               <NuxtLink to="/articles/page/1"><b>Tous les articles</b></NuxtLink>
               <NuxtLink v-for="tag in tags" :key="tag.id"
