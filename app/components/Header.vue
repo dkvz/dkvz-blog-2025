@@ -50,8 +50,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <aside class="header" :class="{ 'header--sticky': isSticky }" :style="{ opacity: opacity, transform: transform }"
-    ref="header">
+  <aside class="header" :class="{ 'header--sticky': isSticky }"
+    :style="isMenuOpened ? {} : { opacity: opacity, transform: transform }" ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" :class="{ open: isMenuOpened }" tabindex="0" role="button" aria-controls="menu"
       aria-label="Afficher ou fermer le menu" for="menu-checkbox">
