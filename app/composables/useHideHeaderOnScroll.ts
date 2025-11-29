@@ -1,6 +1,6 @@
 import type { ShallowRef } from "vue"
 
-interface useHideHeaderOnScrollOptions {
+interface UseHideHeaderOnScrollOptions {
   stickyFactor?: number,
 }
 
@@ -9,7 +9,7 @@ interface useHideHeaderOnScrollOptions {
 // elements. Or at least Typescript is telling me so.
 export const useHideHeaderOnScroll = (
   headerElement: Readonly<ShallowRef<HTMLElement | null>>,
-  options?: useHideHeaderOnScrollOptions
+  options?: UseHideHeaderOnScrollOptions
 ) => {
   if (!options) options = {}
   // stickyFactor is how many times the height of the header has
