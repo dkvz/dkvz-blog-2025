@@ -72,9 +72,11 @@
 
   .floating-menu {
     position: absolute;
+    font-size: 1rem;
     top: 50px;
     left: 50%;
     visibility: hidden;
+    padding: 0.6rem;
     background-color: var(--dark-color-transp);
     width: 300px;
     width: calc(100vw - 6.4rem);
