@@ -76,9 +76,9 @@ onMounted(() => {
             <label for="type-checkbox" role="button" aria-controls="article-types">Articles</label>
             <input type="checkbox" class="toggle-checkbox" id="type-checkbox">
             <div class="list-wrap floating-menu" id="article-types">
-              <NuxtLink to="/articles/page/1">Tous les articles</NuxtLink>
+              <NuxtLink to="/articles/page/1"><b>Tous les articles</b></NuxtLink>
               <NuxtLink v-for="tag in tags" :key="tag.id"
-                :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: encodeURIComponent(tag.name) } }">
+                :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: tag.name } }">
                 {{ tag.name }}
               </NuxtLink>
             </div>
