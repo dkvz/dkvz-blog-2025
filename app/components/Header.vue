@@ -32,6 +32,8 @@ const onMenuCheckboxChange = () => {
 const onMenuItemClick = (e: any) => {
   // Don't hide the menu if we're clicking on the articles 
   // button that show the article tags / catergories
+  // TODO: Check for the tag name is finicky because I use 
+  // different tags...I sould use an attribute instead.
   if (e.target.tagName === "A") {
     isMenuOpened.value = false
     // Also close the article tags submenu.
@@ -50,7 +52,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <aside class="header" :class="{ 'header--sticky': isSticky }"
+  <aside class="header" :class="{ 'header--sticky': isSticky || isMenuOpened }"
     :style="isMenuOpened ? {} : { opacity: opacity, transform: transform }" ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" :class="{ open: isMenuOpened }" tabindex="0" role="button" aria-controls="menu"
@@ -85,7 +87,9 @@ onMounted(() => {
             </label>
             <input ref="type-checkbox" type="checkbox" class="toggle-checkbox" id="type-checkbox">
             <div class="list-wrap floating-menu" id="article-types">
-              <NuxtLink to="/articles/page/1"><b>Tous les articles</b></NuxtLink>
+              <b>
+                <NuxtLink to="/articles/page/1">Tous les articles</NuxtLink>
+              </b>
               <NuxtLink v-for="tag in tags" :key="tag.id"
                 :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: tag.name } }">
                 {{ tag.name }}

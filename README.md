@@ -11,7 +11,6 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 Just removing the items when done this time around.
 
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
-- When the menu is visible we should not do the header transition when scrolling, it hides the menu for a little time
 - The about and hireme pages need more images
 - I should try a wrapping flex layout on the contact page instead of that weird grid
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
