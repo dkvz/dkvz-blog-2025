@@ -24,6 +24,12 @@ const escMenuCallback = (e: any) => {
   }
 }
 
+const closeTagsMenu = () => {
+  if (typeCheckbox.value !== null) {
+    typeCheckbox.value.checked = false
+  }
+}
+
 const onMenuCheckboxChange = () => {
   // Bind Esc on the whole window to close the menu
   window.addEventListener("keydown", escMenuCallback)
@@ -32,16 +38,12 @@ const onMenuCheckboxChange = () => {
 const onMenuItemClick = (e: any) => {
   // Don't hide the menu if we're clicking on the articles 
   // button that show the article tags / catergories
-  // TODO: Check for the tag name is finicky because I use 
-  // different tags...I sould use an attribute instead.
-  if (e.target.tagName === "A") {
+  if (e.target.getAttribute("data-close") !== null) {
     isMenuOpened.value = false
     // Also close the article tags submenu.
     // Why am I doing it with a template ref this time?
     // It's easier than the vue way.
-    if (typeCheckbox.value !== null) {
-      typeCheckbox.value.checked = false
-    }
+    closeTagsMenu()
   }
 }
 
@@ -73,13 +75,13 @@ onMounted(() => {
         </div>
         <ul class="menu__list" @click="onMenuItemClick">
           <li>
-            <NuxtLink to="/">Accueil</NuxtLink>
+            <NuxtLink to="/" data-close>Accueil</NuxtLink>
           </li>
           <li>
-            <a href="#">Rechercher</a>
+            <a href="#" data-close>Rechercher</a>
           </li>
           <li>
-            <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
+            <NuxtLink to="/breves/page/1" data-close>Brèves</NuxtLink>
           </li>
           <li class="relative">
             <label for="type-checkbox" role="button" aria-controls="article-types"><span>Articles</span><span>|</span>
@@ -88,22 +90,22 @@ onMounted(() => {
             <input ref="type-checkbox" type="checkbox" class="toggle-checkbox" id="type-checkbox">
             <div class="list-wrap floating-menu" id="article-types">
               <b>
-                <NuxtLink to="/articles/page/1">Tous les articles</NuxtLink>
+                <NuxtLink to="/articles/page/1" data-close>Tous les articles</NuxtLink>
               </b>
-              <NuxtLink v-for="tag in tags" :key="tag.id"
+              <NuxtLink v-for="tag in tags" :key="tag.id" data-close
                 :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: tag.name } }">
                 {{ tag.name }}
               </NuxtLink>
             </div>
           </li>
           <li>
-            <NuxtLink to="/about">A propos</NuxtLink>
+            <NuxtLink to="/about" data-close>A propos</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/contact">Contact</NuxtLink>
+            <NuxtLink to="/contact" data-close>Contact</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/hireme">Engagez-moi</NuxtLink>
+            <NuxtLink to="/hireme" data-close>Engagez-moi</NuxtLink>
           </li>
         </ul>
         <div class="menu__socials">

@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Clicking outside of the tags menu should close it ; The esc binding on the menu should also close it
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - The about and hireme pages need more images
 - I should try a wrapping flex layout on the contact page instead of that weird grid
