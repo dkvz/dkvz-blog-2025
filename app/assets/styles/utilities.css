@@ -147,4 +147,12 @@
     display: none;
   }
 
+  .invisible {
+    visibility: hidden;
+  }
+
+  .relative {
+    position: relative;
+  }
+
 }

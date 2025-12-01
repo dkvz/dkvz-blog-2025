@@ -184,6 +184,11 @@
       font-size: 0.7rem;
     }
 
+    .floating-menu {
+      width: 580px;
+      font-size: 1.2rem;
+    }
+
   }
 
   /** Ultra small screens **/
@@ -218,6 +223,11 @@
       grid-template-columns: repeat(3, 1fr);
       font-size: 1rem;
     }
+
+    .floating-menu {
+      width: 350px;
+    }
+
 
   }
 
