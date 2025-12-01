@@ -24,8 +24,6 @@ const placeholderTag = "HR"
 onMounted(async () => {
   if (contentDiv.value !== null) {
 
-    console.log("Processing article content client-side...")
-
     const artImgs = contentDiv.value.querySelectorAll(".article-image")
 
     const imgObserver = new IntersectionObserver((entries: any, observer) => {

@@ -448,6 +448,10 @@
     background-color: var(--lighter-gray);
   }
 
+  .article-toc ul {
+    line-height: 1.4rem;
+  }
+
   .article-toc__title {
     font-size: 1.3rem;
   }

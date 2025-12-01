@@ -16,9 +16,6 @@ export const validateTag = (route: RouteLocationNormalizedGeneric): boolean => {
   return false
 }
 
-export const validateTagPage = (route: RouteLocationNormalizedGeneric): boolean =>
-  validateTag(route) && validatePageNumber(route)
-
 export const validateArticleType = (route: RouteLocationNormalizedGeneric): boolean => {
   if (!route.params.articleType) return false
   const articleType = route.params.articleType.toString()
