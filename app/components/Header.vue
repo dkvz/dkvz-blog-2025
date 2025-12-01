@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll';
+import { useHideHeaderOnScroll } from '~/composables/useHideHeaderOnScroll'
+import tags from '~~/data/tags.json'
 
 const isMenuOpened = ref(false)
-
+const typeCheckbox = useTemplateRef("type-checkbox")
 const header = useTemplateRef("header")
+const menuDiv = useTemplateRef("menu-div")
+
 const {
   isSticky,
   startDynamicHeader,
@@ -18,7 +21,15 @@ const menuText = computed(() => isMenuOpened.value ? "Fermer" : "Menu")
 const escMenuCallback = (e: any) => {
   if (e.key === 'Escape') {
     window.removeEventListener("keydown", escMenuCallback)
+    closeTagsMenu()
     isMenuOpened.value = false
+  }
+}
+
+const closeTagsMenu = () => {
+  if (typeCheckbox.value !== null) {
+    typeCheckbox.value.checked = false
+    menuDiv.value?.removeEventListener("click", closeTagsMenu)
   }
 }
 
@@ -27,10 +38,27 @@ const onMenuCheckboxChange = () => {
   window.addEventListener("keydown", escMenuCallback)
 }
 
-const onMenuItemClick = () => {
-  isMenuOpened.value = false
+const onMenuItemClick = (e: any) => {
+  // Don't hide the menu if we're clicking on the articles 
+  // button that show the article tags / catergories
+  if (e.target.getAttribute("data-close") !== null) {
+    isMenuOpened.value = false
+    // Also close the article tags submenu.
+    // Why am I doing it with a template ref this time?
+    // It's easier than the vue way.
+    closeTagsMenu()
+  }
 }
 
+const onArticleTypesCheckboxChange = (e: any) => {
+  // Bind clicking outside the panel to close it
+  if (e.target.checked === true) {
+    menuDiv.value?.addEventListener("click", closeTagsMenu)
+  }
+}
+
+// TODO: I believe this should be in the composable itself, 
+// alongside something to clean it up when unmounted
 onMounted(() => {
   startDynamicHeader()
 })
@@ -38,8 +66,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <aside class="header" :class="{ 'header--sticky': isSticky }" :style="{ opacity: opacity, transform: transform }"
-    ref="header">
+  <aside class="header" :class="{ 'header--sticky': isSticky || isMenuOpened }"
+    :style="isMenuOpened ? {} : { opacity: opacity, transform: transform }" ref="header">
     <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
     <label class="menu-btn input" :class="{ open: isMenuOpened }" tabindex="0" role="button" aria-controls="menu"
       aria-label="Afficher ou fermer le menu" for="menu-checkbox">
@@ -50,34 +78,48 @@ onMounted(() => {
       </svg>
       <span>{{ menuText }}</span>
     </label>
-    <input @change="onMenuCheckboxChange" v-model="isMenuOpened" aria-hidden="true" type="checkbox" id="menu-checkbox"
+
+    <input @change="onMenuCheckboxChange" class="invisible" v-model="isMenuOpened" type="checkbox" id="menu-checkbox"
       name="menu-checkbox">
-    <div id="menu">
+    <div id="menu" ref="menu-div">
       <nav class="menu">
         <div class="section-title">
           <h1 class="section-title__big-title">Menu</h1>
         </div>
         <ul class="menu__list" @click="onMenuItemClick">
           <li>
-            <NuxtLink to="/">Accueil</NuxtLink>
+            <NuxtLink to="/" data-close>Accueil</NuxtLink>
           </li>
           <li>
-            <a href="#">Rechercher</a>
+            <a href="#" data-close>Rechercher</a>
           </li>
           <li>
-            <NuxtLink to="/breves/page/1">Brèves</NuxtLink>
+            <NuxtLink to="/breves/page/1" data-close>Brèves</NuxtLink>
+          </li>
+          <li class="relative">
+            <label for="type-checkbox" role="button" aria-controls="article-types"><span>Articles</span><span>|</span>
+              <Icon name="uil:angle-down" />
+            </label>
+            <input @change="onArticleTypesCheckboxChange" ref="type-checkbox" type="checkbox" class="toggle-checkbox"
+              id="type-checkbox">
+            <div class="list-wrap floating-menu" id="article-types">
+              <b>
+                <NuxtLink to="/articles/page/1" data-close>Tous les articles</NuxtLink>
+              </b>
+              <NuxtLink v-for="tag in tags" :key="tag.id" data-close
+                :to="{ name: 'tag-tag-page-page', params: { page: 1, tag: tag.name } }">
+                {{ tag.name }}
+              </NuxtLink>
+            </div>
           </li>
           <li>
-            <NuxtLink to="/articles/page/1">Articles</NuxtLink>
+            <NuxtLink to="/about" data-close>A propos</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/about">A propos</NuxtLink>
+            <NuxtLink to="/contact" data-close>Contact</NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/contact">Contact</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/hireme">Engagez-moi</NuxtLink>
+            <NuxtLink to="/hireme" data-close>Engagez-moi</NuxtLink>
           </li>
         </ul>
         <div class="menu__socials">
@@ -96,6 +138,7 @@ onMounted(() => {
         </div>
       </nav>
     </div>
+
   </aside>
   <header class="hero">
     <div class="hero__inner">
