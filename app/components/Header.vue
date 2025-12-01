@@ -5,6 +5,7 @@ import tags from '~~/data/tags.json'
 const isMenuOpened = ref(false)
 const typeCheckbox = useTemplateRef("type-checkbox")
 const header = useTemplateRef("header")
+const menuDiv = useTemplateRef("menu-div")
 
 const {
   isSticky,
@@ -20,6 +21,7 @@ const menuText = computed(() => isMenuOpened.value ? "Fermer" : "Menu")
 const escMenuCallback = (e: any) => {
   if (e.key === 'Escape') {
     window.removeEventListener("keydown", escMenuCallback)
+    closeTagsMenu()
     isMenuOpened.value = false
   }
 }
@@ -27,6 +29,7 @@ const escMenuCallback = (e: any) => {
 const closeTagsMenu = () => {
   if (typeCheckbox.value !== null) {
     typeCheckbox.value.checked = false
+    menuDiv.value?.removeEventListener("click", closeTagsMenu)
   }
 }
 
@@ -47,6 +50,15 @@ const onMenuItemClick = (e: any) => {
   }
 }
 
+const onArticleTypesCheckboxChange = (e: any) => {
+  // Bind clicking outside the panel to close it
+  if (e.target.checked === true) {
+    menuDiv.value?.addEventListener("click", closeTagsMenu)
+  }
+}
+
+// TODO: I believe this should be in the composable itself, 
+// alongside something to clean it up when unmounted
 onMounted(() => {
   startDynamicHeader()
 })
@@ -66,9 +78,10 @@ onMounted(() => {
       </svg>
       <span>{{ menuText }}</span>
     </label>
+
     <input @change="onMenuCheckboxChange" class="invisible" v-model="isMenuOpened" type="checkbox" id="menu-checkbox"
       name="menu-checkbox">
-    <div id="menu">
+    <div id="menu" ref="menu-div">
       <nav class="menu">
         <div class="section-title">
           <h1 class="section-title__big-title">Menu</h1>
@@ -87,7 +100,8 @@ onMounted(() => {
             <label for="type-checkbox" role="button" aria-controls="article-types"><span>Articles</span><span>|</span>
               <Icon name="uil:angle-down" />
             </label>
-            <input ref="type-checkbox" type="checkbox" class="toggle-checkbox" id="type-checkbox">
+            <input @change="onArticleTypesCheckboxChange" ref="type-checkbox" type="checkbox" class="toggle-checkbox"
+              id="type-checkbox">
             <div class="list-wrap floating-menu" id="article-types">
               <b>
                 <NuxtLink to="/articles/page/1" data-close>Tous les articles</NuxtLink>
@@ -124,6 +138,7 @@ onMounted(() => {
         </div>
       </nav>
     </div>
+
   </aside>
   <header class="hero">
     <div class="hero__inner">
