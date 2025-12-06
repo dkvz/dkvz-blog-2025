@@ -10,25 +10,22 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Do I use quote-card anywhere else?
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - The about and hireme pages need more images
 - I should try a wrapping flex layout on the contact page instead of that weird grid
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
-- Combine validators like I did on the `[page]` page for articles
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
-- I got problems with text justified in cards, it shouldn't be
 - Check the myriad todos inside the code
 - Shorts on larger screens would look better by wrapping more tightly, not sure how to do it
-- Remove the possible console logs for syntax highlighting errors
 - For some reason the intersection placeholder doesn't trigger in dev mode half or the time, sometimes seems to get stuck disabled - Maybe I have to watch the placeholder ref or something?
 - My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
 - Test all the dialog stuff on Firefox, not super sure about the positionning antics
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - I need styling for tables
-- Table of content is a bit too tight
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Isn't the spinner too big on mobile?
@@ -39,17 +36,14 @@ Just removing the items when done this time around.
 - Is there something to lower animation load on low spec machines? I've head of a property doing something like that
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
-- Implement the title template and title antics
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Shadows shouldn't become bright white on dark mode I think it's a design faux pas
 - HTML comments in pages should be removed at some point.
-- Footer links leave an empty spot on the right on medium screen, should space it better?
 - Create the go to top button (could use `btn-highlight`)
 - Add icons to every menu entry - Make sure it works on mobile screens
-- Can I put the article tags back into the menu? Maybe as an accordion?
 - The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
 - Delete the fake article I created at some point from the backend using the delete endpoint
 

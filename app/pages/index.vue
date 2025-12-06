@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 useHead({
   bodyAttrs: {
     class: "bg-gradient"
@@ -20,10 +21,6 @@ useHead({
       <button class="btn cta-buttons__btn">Lire mes articles</button>
       <button class="btn cta-buttons__btn">Lire mes brèves</button>
     </div>
-  </div>
-
-  <div class="content-card quote-card">
-    La citation aléatoire serait ici. Sur un plus grand écran on pourrait le mettre côte-à-côte avec les brèves
   </div>
 
   <div class="content-card content-card--transp content-card--l-margin">

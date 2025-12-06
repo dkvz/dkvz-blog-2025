@@ -2,7 +2,7 @@
 import { siteInfo } from '~~/data/site-info'
 
 definePageMeta({
-  validate: validateTagPage,
+  validate: (r) => validatePageNumber(r) && validateTag(r),
 })
 
 const route = useRoute()
