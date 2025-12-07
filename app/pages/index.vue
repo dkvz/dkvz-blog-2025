@@ -5,6 +5,11 @@ useHead({
     class: "bg-gradient"
   }
 })
+
+const cardListS = useTemplateRef("card-list-s")
+const cardListA = useTemplateRef("card-list-a")
+useCardRevealAnimations([cardListA, cardListS])
+
 </script>
 
 <template>
@@ -28,7 +33,7 @@ useHead({
       <h2 class="section-title__title">Dernières brèves</h2>
     </div>
 
-    <div class="card-list">
+    <div class="card-list" ref="card-list-s">
 
       <div class="card card--hoverable card-short">
         <div class="card__header">
@@ -73,7 +78,7 @@ useHead({
       <h2 class="section-title__title">Derniers articles</h2>
     </div>
 
-    <div class="card-list card-list--single">
+    <div class="card-list card-list--single" ref="card-list-a">
 
       <div class="card card--hoverable">
         <div class="card__header card--no-overflow">
