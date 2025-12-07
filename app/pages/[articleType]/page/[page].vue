@@ -17,6 +17,9 @@ const articleType = route.params.articleType ?
   route.params.articleType.toString() : siteInfo.articleRootUrl
 const isShorts = articleType === siteInfo.shortRootUrl
 
+const articleList = useTemplateRef("card-list-a")
+const shortList = useTemplateRef("card-list-s")
+
 // A bit convoluted due to multiple refactoring of routing antics
 const {
   urlPart,
@@ -49,6 +52,16 @@ const {
   page
 })
 
+if (import.meta.client) {
+  watch(shortList, (l) => {
+    l !== null && registerCardRevealObservers([l])
+  })
+  watch(articleList, (l) => {
+    console.log("resetting the observers...")
+    l !== null && registerCardRevealObservers([l])
+  })
+}
+
 </script>
 
 <template>
@@ -68,7 +81,7 @@ const {
 
     <template v-else>
 
-      <div v-if="isShorts" class="card-list">
+      <div v-if="isShorts" class="card-list" ref="card-list-s">
 
         <ShortCard v-for="article in articles" :key="article.id" :id="article.id" :date="article.date"
           :summary="article.summary" :thumb-image="article.thumbImage" :title="article.title">
@@ -76,7 +89,7 @@ const {
 
       </div>
 
-      <div v-else class="card-list card-list--single">
+      <div v-else class="card-list card-list--single" ref="card-list-a">
 
         <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
           :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"

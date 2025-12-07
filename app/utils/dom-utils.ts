@@ -1,8 +1,6 @@
 // Code here is only relevant to client side, 
 // maybe it should be a plugin or something.
 
-import type { ShallowRef } from "vue"
-
 /** Reveal animation on cards **/
 const revealOptions = {
   // It's actually the default (replace with scrolling element):
@@ -33,17 +31,12 @@ const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
 
 // Look for element with the "card" class and register
 // intersectionObserver on them
-export const useCardRevealAnimations = (containers: Readonly<ShallowRef<HTMLElement | null>>[]) => {
-  onMounted(() => {
-    if (containers.length > 0) {
-      const revealObserver = new IntersectionObserver(onScrollReveal, revealOptions)
-      for (const container of containers) {
-        if (container.value !== null) {
-          const cards = container.value.querySelectorAll('.card')
-          cards.forEach(c => revealObserver.observe(c))
-        }
-      }
+export const registerCardRevealObservers = (containers: HTMLElement[]) => {
+  if (containers.length > 0) {
+    const revealObserver = new IntersectionObserver(onScrollReveal, revealOptions)
+    for (const container of containers) {
+      const cards = container.querySelectorAll('.card')
+      cards.forEach(c => revealObserver.observe(c))
     }
-  })
+  }
 }
-

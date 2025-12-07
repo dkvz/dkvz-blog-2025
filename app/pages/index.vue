@@ -8,7 +8,9 @@ useHead({
 
 const cardListS = useTemplateRef("card-list-s")
 const cardListA = useTemplateRef("card-list-a")
-useCardRevealAnimations([cardListA, cardListS])
+
+// We need the actual data from the API before applying
+// the animations.
 
 </script>
 
