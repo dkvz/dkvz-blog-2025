@@ -57,7 +57,6 @@ if (import.meta.client) {
     l !== null && registerCardRevealObservers([l])
   })
   watch(articleList, (l) => {
-    console.log("resetting the observers...")
     l !== null && registerCardRevealObservers([l])
   })
 }

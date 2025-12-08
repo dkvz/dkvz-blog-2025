@@ -14,6 +14,7 @@ const page = route.params.page !== undefined ?
   parseInt(route.params.page.toString()) : 1
 const maxItems = siteInfo.maxArticles
 const { isOrderAsc, handleToggleOrder } = useOrderToggle()
+const articleList = useTemplateRef("article-list")
 
 useHead({
   bodyAttrs: {
@@ -33,6 +34,12 @@ const {
   page,
   tag
 })
+
+if (import.meta.client) {
+  watch(articleList, (l) => {
+    l !== null && registerCardRevealObservers([l])
+  })
+}
 
 </script>
 
@@ -54,7 +61,7 @@ const {
       <LoadingSpinner></LoadingSpinner>
     </div>
 
-    <div v-else class="card-list card-list--single">
+    <div v-else class="card-list card-list--single" ref="article-list">
 
       <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
         :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
