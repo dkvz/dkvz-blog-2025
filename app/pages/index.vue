@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteInfo } from '~~/data/site-info';
+
 
 useHead({
   bodyAttrs: {
@@ -11,6 +13,25 @@ const cardListA = useTemplateRef("card-list-a")
 
 // We need the actual data from the API before applying
 // the animations.
+
+const articlesStart = ref(0)
+const shortsStart = ref(0)
+
+const { data: articles, status: statusArticles } = await useDkvzApi<Article[]>(
+  () => `/articles-starting-from/${articlesStart}?max=2`,
+  {
+    deep: false,
+    lazy: true
+  }
+)
+
+const { data: shorts, status: statusShorts } = await useDkvzApi<Article[]>(
+  () => `/shorts-starting-from/${shortsStart}?max=2`,
+  {
+    deep: false,
+    lazy: true
+  }
+)
 
 </script>
 
@@ -25,8 +46,8 @@ const cardListA = useTemplateRef("card-list-a")
             aria-label="Rechercher" />
         </label>
       </form>
-      <button class="btn cta-buttons__btn">Lire mes articles</button>
-      <button class="btn cta-buttons__btn">Lire mes brèves</button>
+      <NuxtLink to="/articles/page/1" class="btn cta-buttons__btn">Lire mes articles</NuxtLink>
+      <NuxtLink to="/breves/page/1" class="btn cta-buttons__btn">Lire mes brèves</NuxtLink>
     </div>
   </div>
 
