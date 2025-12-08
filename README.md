@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Code extracts with &lt; etc appear to not display them as HTML entities
 - Do I use quote-card anywhere else?
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
@@ -26,6 +27,7 @@ Just removing the items when done this time around.
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - I need styling for tables
+- Need styling for videos
 - Evaluate things like reading time and ToC from within the useFetch so we keep the spinner around during computation
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Isn't the spinner too big on mobile?

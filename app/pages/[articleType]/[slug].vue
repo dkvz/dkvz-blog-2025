@@ -196,7 +196,7 @@ const loadMoreComments = async () => {
 
 <template>
   <article v-if="status === 'pending'" class="content-card content-card--page-card">
-    <LoadingSpinner></LoadingSpinner>
+    <LoadingSpinner />
   </article>
 
   <article v-else-if="data && status === 'success'" class="content-card content-card--page-card">
@@ -254,7 +254,7 @@ const loadMoreComments = async () => {
       </ClientOnly>
 
       <div class="card" v-if="commentsLoading">
-        <LoadingSpinner></LoadingSpinner>
+        <LoadingSpinner />
       </div>
 
     </section>

@@ -75,7 +75,7 @@ if (import.meta.client) {
     </div>
 
     <div v-if="status === 'pending'">
-      <LoadingSpinner></LoadingSpinner>
+      <LoadingSpinner />
     </div>
 
     <template v-else>

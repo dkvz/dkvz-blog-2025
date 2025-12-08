@@ -58,7 +58,7 @@ if (import.meta.client) {
     </div>
 
     <div v-if="status === 'pending'">
-      <LoadingSpinner></LoadingSpinner>
+      <LoadingSpinner />
     </div>
 
     <div v-else class="card-list card-list--single" ref="article-list">
