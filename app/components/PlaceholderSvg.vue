@@ -40,7 +40,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <noscript data-allow-mismatch="children">
+  <noscript data-allow-mismatch="children" class="flex-center h-full">
     <img :class="props.imgClass" :src="props.src" :alt="props.alt">
   </noscript>
   <div v-if="!loaded" ref="svg-slot" class="_js-only flex-center h-full">

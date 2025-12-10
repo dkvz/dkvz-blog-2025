@@ -6,6 +6,7 @@
 @layer base {
 
   .btn {
+    display: block;
     background-color: var(--light-gray-color);
     color: var(--dark-color);
     text-align: center;

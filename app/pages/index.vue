@@ -72,10 +72,19 @@ if (import.meta.client) {
         <LoadingSpinner />
       </div>
 
-      <button class="btn card-list__btn" aria-label="Charger d'autres brèves" title="Charger d'autres brèves...">
+      <button class="btn card-list__btn _js-only" aria-label="Charger d'autres brèves"
+        title="Charger d'autres brèves...">
         <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
           aria-hidden="true">
       </button>
+
+      <noscript data-allow-mismatch="children" class="card-list__btn">
+        <NuxtLink class="btn" aria-label="Charger d'autres brèves" title="Charger d'autres brèves..."
+          to="/breves/page/1">
+          <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+            aria-hidden="true">
+        </NuxtLink>
+      </noscript>
 
     </div>
   </div>
@@ -96,10 +105,19 @@ if (import.meta.client) {
         <LoadingSpinner />
       </div>
 
-      <button class="btn card-list__btn" aria-label="Charger d'autres articles" title="Charger d'autres articles...">
+      <button class="btn card-list__btn _js-only" aria-label="Charger d'autres articles"
+        title="Charger d'autres articles...">
         <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
           aria-hidden="true">
       </button>
+
+      <noscript data-allow-mismatch="children" class="card-list__btn">
+        <NuxtLink class="btn" aria-label="Charger d'autres articles" title="Charger d'autres articles..."
+          to="/articles/page/1">
+          <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+            aria-hidden="true">
+        </NuxtLink>
+      </noscript>
 
     </div>
   </div>
