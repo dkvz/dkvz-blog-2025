@@ -17,18 +17,18 @@ interface ArticleTypeParams {
 export const paramsForArticleType = (isShort: boolean): ArticleTypeParams => {
   if (isShort) {
     return {
-      urlPart: "breves",
+      urlPart: siteInfo.shortRootUrl,
       descriptionSingular: "brève",
       descriptionPlural: "brèves",
-      apiDescription: "shorts"
+      apiDescription: siteInfo.shortApiDescription
     }
   }
 
   return {
-    urlPart: "articles",
+    urlPart: siteInfo.articleRootUrl,
     descriptionSingular: "article",
     descriptionPlural: "articles",
-    apiDescription: "articles"
+    apiDescription: siteInfo.articleRootUrl
   }
 }
 

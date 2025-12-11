@@ -7,6 +7,7 @@ export const siteInfo = {
   title: "Blog des gens compliqués",
   // No leading slash for these, we add them when needed:
   shortRootUrl: "breves",
+  shortApiDescription: "shorts",
   articleRootUrl: "articles",
   maxComments: 10,
   maxArticles: 8,

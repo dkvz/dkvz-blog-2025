@@ -9,7 +9,7 @@ export interface UseFetchArticlesOptions {
   articleType: string,
   page: number,
   maxItems: number,
-  isOrderAsc: Ref<boolean>,
+  isOrderAsc: Ref<boolean> | undefined,
   tag?: string
 }
 
@@ -28,7 +28,7 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
   const url = computed(
     () => {
       const start = (opts.page - 1) * opts.maxItems
-      const order = opts.isOrderAsc.value ? "asc" : "desc"
+      const order = (opts.isOrderAsc && opts.isOrderAsc.value) ? "asc" : "desc"
 
       let url = `/${opts.articleType}-starting-from/${start}?max=${opts.maxItems}&order=${order}`
       if (opts.tag) {

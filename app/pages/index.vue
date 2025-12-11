@@ -5,6 +5,72 @@ useHead({
     class: "bg-gradient"
   }
 })
+
+// Hardcoding this here for now
+const maxArticlesOrShorts = 2
+
+const shortList = useTemplateRef("card-list-s")
+const articleList = useTemplateRef("card-list-a")
+
+// We need the actual data from the API before applying
+// the animations.
+
+const articlesStart = ref(0)
+const shortsStart = ref(0)
+const articles = ref<Article[]>([])
+const shorts = ref<Article[]>([])
+
+const { data: newArticles, status: statusArticles } = await useDkvzApi<Article[]>(
+  () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
+  {
+    deep: false,
+    lazy: true
+  }
+)
+
+const { data: newShorts, status: statusShorts } = await useDkvzApi<Article[]>(
+  () => `/shorts-starting-from/${shortsStart.value}?max=${maxArticlesOrShorts}`,
+  {
+    deep: false,
+    lazy: true
+  }
+)
+
+watch(newArticles, (items) => {
+  // Not creating a new array here, not sure if that works
+  if (items !== undefined) articles.value.push(...items)
+}, {
+  // Watch will not run on server unless immediate is true
+  immediate: true
+})
+
+// Some repeat code going on around here
+watch(newShorts, (items) => {
+  if (items !== undefined) shorts.value.push(...items)
+}, {
+  immediate: true
+})
+
+if (import.meta.client) {
+  watch(shortList, (l) => {
+    l !== null && registerCardRevealObservers([l])
+  })
+  watch(articleList, (l) => {
+    l !== null && registerCardRevealObservers([l])
+  })
+}
+
+// Dynamically add shorts or articles
+const loadMoreContent = (short: boolean) => {
+  // TODO: What happens when the endpoint responds with
+  // a 404?
+  if (short) {
+    shortsStart.value = shortsStart.value + maxArticlesOrShorts
+  } else {
+    articlesStart.value = articlesStart.value + maxArticlesOrShorts
+  }
+}
+
 </script>
 
 <template>
@@ -18,8 +84,8 @@ useHead({
             aria-label="Rechercher" />
         </label>
       </form>
-      <button class="btn cta-buttons__btn">Lire mes articles</button>
-      <button class="btn cta-buttons__btn">Lire mes brèves</button>
+      <NuxtLink to="/articles/page/1" class="btn cta-buttons__btn">Lire mes articles</NuxtLink>
+      <NuxtLink to="/breves/page/1" class="btn cta-buttons__btn">Lire mes brèves</NuxtLink>
     </div>
   </div>
 
@@ -28,42 +94,29 @@ useHead({
       <h2 class="section-title__title">Dernières brèves</h2>
     </div>
 
-    <div class="card-list">
+    <div class="card-list" ref="card-list-s">
 
-      <div class="card card--hoverable card-short">
-        <div class="card__header">
-          <img class="card__large-img" src="https://dkvz.eu/assets/shorts/shorts_linux2.png">
-          <div class="card__date-pill">22/11 2019</div>
-        </div>
-        <div class="card__body">
-          <h1>Card test</h1>
-          <p>Lorem ipsum machin bidule.</p>
-          <p>Encore une ligne.</p>
-        </div>
-        <div class="card__footer">
-          <a class="card__footer__link" href="#">Lire la suite...</a>
-        </div>
+      <ShortCard v-if="statusShorts === 'success'" v-for="short in shorts" :date="short.date" :key="short.id"
+        :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage" :title="short.title">
+      </ShortCard>
+
+      <div v-else-if="statusShorts === 'pending'" class="card-list__btn">
+        <LoadingSpinner />
       </div>
 
-      <div class="card card--hoverable card-short">
-        <div class="card__header">
-          <img class="card__large-img" src="https://dkvz.eu/assets/shorts/shorts_linux1.png">
-          <div class="card__date-pill">31/12 2020</div>
-        </div>
-        <div class="card__body">
-          <h1>Another card</h1>
-          <p>Lorem ipsum machin bidule.</p>
-          <p>Encore une ligne.</p>
-        </div>
-        <div class="card__footer">
-          <a class="card__footer__link" href="#">Lire la suite...</a>
-        </div>
-      </div>
-
-      <button class="btn card-list__btn" aria-label="Charger d'autres brèves" title="Charger d'autres brèves...">
+      <button @click="loadMoreContent(true)" class="btn card-list__btn _js-only" aria-label="Charger d'autres brèves"
+        title="Charger d'autres brèves...">
         <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
           aria-hidden="true">
       </button>
+
+      <noscript data-allow-mismatch="children" class="card-list__btn">
+        <NuxtLink class="btn" aria-label="Charger d'autres brèves" title="Charger d'autres brèves..."
+          to="/breves/page/1">
+          <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+            aria-hidden="true">
+        </NuxtLink>
+      </noscript>
 
     </div>
   </div>
@@ -73,67 +126,30 @@ useHead({
       <h2 class="section-title__title">Derniers articles</h2>
     </div>
 
-    <div class="card-list card-list--single">
+    <div class="card-list card-list--single" ref="card-list-a">
 
-      <div class="card card--hoverable">
-        <div class="card__header card--no-overflow">
-          <div class="card__info">
-            <h1>Un vraiment très très long titre d'article</h1>
-            <div class="simple-row">
-              <Icon name="uil:calendar" alt="Publié le" size="1.2em" />
-              <span>11/12/2020 11:20:11</span>
-            </div>
-          </div>
-          <!-- <div class="card__date-pill">22/11 2019</div> -->
-          <img class="card__img" src="~/assets/img/js_logo_110.png" alt="Un logo">
-        </div>
-        <div class="card__body card--border-top">
-          <p>Lorem ipsum machin bidule.</p>
-          <p>Encore une ligne.</p>
-        </div>
-        <div class="card__footer">
-          <a class="btn btn-icon" title="Ouvrir l'article...">
-            Suite
-            <Icon name="uil:external-link-alt" />
-          </a>
-          <a class="btn btn-icon">
-            0
-            <Icon name="uil:comment" />
-          </a>
-        </div>
+      <ArticleCard v-if="statusArticles === 'success'" v-for="article in articles" :key="article.id" :id="article.id"
+        :article-url="article.articleURL" :comments-count="article.commentsCount" :date="article.date"
+        :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title">
+      </ArticleCard>
+
+      <div v-else-if="statusArticles === 'pending'" class="card-list__btn">
+        <LoadingSpinner />
       </div>
 
-      <div class="card card--hoverable">
-        <div class="card__header card--no-overflow">
-          <div class="card__info">
-            <h1>Moyen long titre</h1>
-            <div class="simple-row">
-              <Icon name="uil:calendar" alt="Publié le" size="1.2em" />
-              <span>11/12/2020 11:20:11</span>
-            </div>
-          </div>
-          <img class="card__img" src="~/assets/img/php_logo_110.png" alt="Un logo">
-        </div>
-        <div class="card__body card--border-top">
-          <p>Lorem ipsum machin bidule.</p>
-          <p>Encore une ligne.</p>
-        </div>
-        <div class="card__footer">
-          <a class="btn btn-icon">
-            Suite
-            <Icon name="uil:external-link-alt" />
-          </a>
-          <a class="btn btn-icon">
-            0
-            <Icon name="uil:comment" />
-          </a>
-        </div>
-      </div>
-
-      <button class="btn card-list__btn" aria-label="Charger d'autres brèves" title="Charger d'autres articles...">
+      <button @click="loadMoreContent(false)" class="btn card-list__btn _js-only" aria-label="Charger d'autres articles"
+        title="Charger d'autres articles...">
         <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
           aria-hidden="true">
       </button>
+
+      <noscript data-allow-mismatch="children" class="card-list__btn">
+        <NuxtLink class="btn" aria-label="Charger d'autres articles" title="Charger d'autres articles..."
+          to="/articles/page/1">
+          <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+            aria-hidden="true">
+        </NuxtLink>
+      </noscript>
 
     </div>
   </div>

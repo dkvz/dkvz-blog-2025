@@ -76,7 +76,7 @@ const handleSelfClose = () => emit("close")
 
 <template>
   <GenericDialog :open="open" :modal="true" @close="handleSelfClose">
-    <LoadingSpinner v-if="loading"></LoadingSpinner>
+    <LoadingSpinner v-if="loading" />
 
     <template v-else="loading">
       <!--<form method="dialog">
