@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- When navigating using the JS router the page slide in animation doesn't seem to run
 - Code extracts with &lt; etc appear to not display them as HTML entities
 - Do I use quote-card anywhere else?
 - When the menu is open we could lower the opacity of the permanently-sticky header

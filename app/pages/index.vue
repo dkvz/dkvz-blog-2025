@@ -5,6 +5,9 @@ useHead({
   }
 })
 
+// Hardcoding this here for now
+const maxArticlesOrShorts = 2
+
 const shortList = useTemplateRef("card-list-s")
 const articleList = useTemplateRef("card-list-a")
 
@@ -15,7 +18,7 @@ const articlesStart = ref(0)
 const shortsStart = ref(0)
 
 const { data: articles, status: statusArticles } = await useDkvzApi<Article[]>(
-  () => `/articles-starting-from/${articlesStart.value}?max=2`,
+  () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
   {
     deep: false,
     lazy: true
@@ -23,7 +26,7 @@ const { data: articles, status: statusArticles } = await useDkvzApi<Article[]>(
 )
 
 const { data: shorts, status: statusShorts } = await useDkvzApi<Article[]>(
-  () => `/shorts-starting-from/${shortsStart.value}?max=2`,
+  () => `/shorts-starting-from/${shortsStart.value}?max=${maxArticlesOrShorts}`,
   {
     deep: false,
     lazy: true
@@ -37,6 +40,17 @@ if (import.meta.client) {
   watch(articleList, (l) => {
     l !== null && registerCardRevealObservers([l])
   })
+}
+
+// Dynamically add shorts or articles
+const loadMoreContent = (short: boolean) => {
+  // TODO: What happens when the endpoint responds with
+  // a 404?
+  if (short) {
+    shortsStart.value = shortsStart.value + maxArticlesOrShorts
+  } else {
+    articlesStart.value = articlesStart.value + maxArticlesOrShorts
+  }
 }
 
 </script>
@@ -72,7 +86,7 @@ if (import.meta.client) {
         <LoadingSpinner />
       </div>
 
-      <button class="btn card-list__btn _js-only" aria-label="Charger d'autres brèves"
+      <button @click="loadMoreContent(true)" class="btn card-list__btn _js-only" aria-label="Charger d'autres brèves"
         title="Charger d'autres brèves...">
         <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
           aria-hidden="true">
@@ -105,7 +119,7 @@ if (import.meta.client) {
         <LoadingSpinner />
       </div>
 
-      <button class="btn card-list__btn _js-only" aria-label="Charger d'autres articles"
+      <button @click="loadMoreContent(false)" class="btn card-list__btn _js-only" aria-label="Charger d'autres articles"
         title="Charger d'autres articles...">
         <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
           aria-hidden="true">
