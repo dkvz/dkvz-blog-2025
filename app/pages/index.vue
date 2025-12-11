@@ -16,8 +16,10 @@ const articleList = useTemplateRef("card-list-a")
 
 const articlesStart = ref(0)
 const shortsStart = ref(0)
+const articles = ref<Article[]>([])
+const shorts = ref<Article[]>([])
 
-const { data: articles, status: statusArticles } = await useDkvzApi<Article[]>(
+const { data: newArticles, status: statusArticles } = await useDkvzApi<Article[]>(
   () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
   {
     deep: false,
@@ -25,13 +27,28 @@ const { data: articles, status: statusArticles } = await useDkvzApi<Article[]>(
   }
 )
 
-const { data: shorts, status: statusShorts } = await useDkvzApi<Article[]>(
+const { data: newShorts, status: statusShorts } = await useDkvzApi<Article[]>(
   () => `/shorts-starting-from/${shortsStart.value}?max=${maxArticlesOrShorts}`,
   {
     deep: false,
     lazy: true
   }
 )
+
+watch(newArticles, (items) => {
+  // Not creating a new array here, not sure if that works
+  if (items !== undefined) articles.value.push(...items)
+}, {
+  // Watch will not run on server unless immediate is true
+  immediate: true
+})
+
+// Some repeat code going on around here
+watch(newShorts, (items) => {
+  if (items !== undefined) shorts.value.push(...items)
+}, {
+  immediate: true
+})
 
 if (import.meta.client) {
   watch(shortList, (l) => {
