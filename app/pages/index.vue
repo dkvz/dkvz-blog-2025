@@ -36,21 +36,34 @@ const { data: newShorts, status: statusShorts } = await useDkvzApi<Article[]>(
   }
 )
 
-watch(newArticles, (items) => {
-  // Not creating a new array here, not sure if that works
-  if (items !== undefined) articles.value.push(...items)
-}, {
+// I just found out about typeof
+const updateArticlesOrShorts = async (
+  items: Article[] | undefined,
+  list: typeof articleList,
+  isShorts: boolean
+) => {
+  if (items !== undefined) {
+    if (isShorts) shorts.value.push(...items)
+    else articles.value.push(...items)
+    await nextTick()
+    if (import.meta.client) {
+      // Will be null on the first render
+      list.value !== null && registerCardRevealObservers([list.value])
+    }
+  }
+}
+
+watch(newArticles, (items) => updateArticlesOrShorts(items, articleList, false), {
   // Watch will not run on server unless immediate is true
   immediate: true
 })
 
-// Some repeat code going on around here
-watch(newShorts, (items) => {
-  if (items !== undefined) shorts.value.push(...items)
-}, {
+watch(newShorts, (items) => updateArticlesOrShorts(items, shortList, true), {
   immediate: true
 })
 
+// This is necessary for the first hydration to get
+// the reveal animation.
 if (import.meta.client) {
   watch(shortList, (l) => {
     l !== null && registerCardRevealObservers([l])
