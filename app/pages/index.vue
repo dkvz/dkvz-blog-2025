@@ -62,7 +62,15 @@ const updateArticlesOrShorts = async (
 
     if (import.meta.client) {
       // Will be null on the first render
-      list.value !== null && registerCardRevealObservers([list.value], true)
+      if (list.value !== null) {
+        // Try to devise a way to determine the element to
+        // scroll to before we register the observers.
+        // It should be the first item with transition set 
+        // to true.
+        const els = list.value.querySelectorAll('[data-transition="true"]')
+        if (els[0]) els[0].scrollIntoView()
+        registerCardRevealObservers([list.value], true)
+      }
     }
   }
 }
