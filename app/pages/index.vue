@@ -45,15 +45,11 @@ const updateArticlesOrShorts = async (
     // because of my transitions antics.
     // This is ugly and I have no idea how to make it better.
     const currentItems = isShorts ? shorts.value : articles.value
-    const newItems = currentItems.map(i => {
-      return {
-        ...i, transition: false
-      }
-    }).concat(items.map(i => {
-      return {
-        ...i, transition: true
-      }
-    }))
+    const newItems = currentItems.map(i => ({
+      ...i, transition: false
+    })).concat(items.map(i => ({
+      ...i, transition: true
+    })))
     if (isShorts) {
       shorts.value = newItems
     } else {
