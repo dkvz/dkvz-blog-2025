@@ -12,13 +12,10 @@ const maxArticlesOrShorts = 2
 const shortList = useTemplateRef("card-list-s")
 const articleList = useTemplateRef("card-list-a")
 
-// We need the actual data from the API before applying
-// the animations.
-
 const articlesStart = ref(0)
 const shortsStart = ref(0)
-const articles = ref<Article[]>([])
-const shorts = ref<Article[]>([])
+const articles = ref<UIArticle[]>([])
+const shorts = ref<UIArticle[]>([])
 
 const { data: newArticles, status: statusArticles } = await useDkvzApi<Article[]>(
   () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
@@ -36,21 +33,59 @@ const { data: newShorts, status: statusShorts } = await useDkvzApi<Article[]>(
   }
 )
 
-watch(newArticles, (items) => {
-  // Not creating a new array here, not sure if that works
-  if (items !== undefined) articles.value.push(...items)
-}, {
+// I just found out about typeof
+const updateArticlesOrShorts = async (
+  items: UIArticle[] | undefined,
+  list: typeof articleList,
+  isShorts: boolean
+) => {
+  if (items !== undefined) {
+    // Pretty sure I have to do the good old
+    // "recreate the entire array" here, mostly
+    // because of my transitions antics.
+    // This is ugly and I have no idea how to make it better.
+    const currentItems = isShorts ? shorts.value : articles.value
+    const newItems = currentItems.map(i => ({
+      ...i, transition: false
+    })).concat(items.map(i => ({
+      ...i, transition: true
+    })))
+    if (isShorts) {
+      shorts.value = newItems
+    } else {
+      articles.value = newItems
+    }
+
+    // This magic thing waits for the DOM to be updated, so that
+    // I get access to the nodes using the template refs.
+    await nextTick()
+
+    if (import.meta.client) {
+      // Will be null on the first render
+      if (list.value !== null) {
+        // Try to devise a way to determine the element to
+        // scroll to before we register the observers.
+        // It should be the first item with transition set 
+        // to true.
+        const els = list.value.querySelectorAll('[data-transition="true"]')
+        if (els[0]) els[0].scrollIntoView()
+        registerCardRevealObservers([list.value], true)
+      }
+    }
+  }
+}
+
+watch(newArticles, (items) => updateArticlesOrShorts(items, articleList, false), {
   // Watch will not run on server unless immediate is true
   immediate: true
 })
 
-// Some repeat code going on around here
-watch(newShorts, (items) => {
-  if (items !== undefined) shorts.value.push(...items)
-}, {
+watch(newShorts, (items) => updateArticlesOrShorts(items, shortList, true), {
   immediate: true
 })
 
+// This is necessary for the first hydration to get
+// the reveal animation.
 if (import.meta.client) {
   watch(shortList, (l) => {
     l !== null && registerCardRevealObservers([l])
@@ -67,6 +102,7 @@ const loadMoreContent = (short: boolean) => {
   if (short) {
     shortsStart.value = shortsStart.value + maxArticlesOrShorts
   } else {
+    // We could just load +1 here, I'll keep the +2 for the moment
     articlesStart.value = articlesStart.value + maxArticlesOrShorts
   }
 }
@@ -97,7 +133,8 @@ const loadMoreContent = (short: boolean) => {
     <div class="card-list" ref="card-list-s">
 
       <ShortCard v-if="statusShorts === 'success'" v-for="short in shorts" :date="short.date" :key="short.id"
-        :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage" :title="short.title">
+        :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage" :title="short.title"
+        :data-transition="short.transition">
       </ShortCard>
 
       <div v-else-if="statusShorts === 'pending'" class="card-list__btn">
@@ -130,7 +167,8 @@ const loadMoreContent = (short: boolean) => {
 
       <ArticleCard v-if="statusArticles === 'success'" v-for="article in articles" :key="article.id" :id="article.id"
         :article-url="article.articleURL" :comments-count="article.commentsCount" :date="article.date"
-        :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title">
+        :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
+        :data-transition="article.transition">
       </ArticleCard>
 
       <div v-else-if="statusArticles === 'pending'" class="card-list__btn">

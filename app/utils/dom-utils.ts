@@ -15,6 +15,8 @@ const revealOptions = {
   threshold: 0.03,
 }
 
+const transitionAttr = "data-transition"
+
 const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
   let inViewCount = 0
   for (const entry of entries) {
@@ -31,12 +33,16 @@ const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
 
 // Look for element with the "card" class and register
 // intersectionObserver on them
-export const registerCardRevealObservers = (containers: HTMLElement[]) => {
+export const registerCardRevealObservers = (containers: HTMLElement[], dataTransitionOnly: boolean = false) => {
   if (containers.length > 0) {
     const revealObserver = new IntersectionObserver(onScrollReveal, revealOptions)
     for (const container of containers) {
       const cards = container.querySelectorAll('.card')
-      cards.forEach(c => revealObserver.observe(c))
+      cards.forEach(c => {
+        if (!dataTransitionOnly || (dataTransitionOnly && c.getAttribute(transitionAttr) === "true")) {
+          revealObserver.observe(c)
+        }
+      })
     }
   }
 }

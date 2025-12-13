@@ -28,6 +28,10 @@ declare global {
     toc: string
   }
 
+  interface UIArticle extends Article {
+    transition?: boolean
+  }
+
   interface Comment {
     id: number,
     author: string,
