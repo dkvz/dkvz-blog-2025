@@ -15,7 +15,7 @@ const revealOptions = {
   threshold: 0.03,
 }
 
-const transitionedAttr = "data-transitioned"
+const transitionAttr = "data-transition"
 
 const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
   let inViewCount = 0
@@ -26,8 +26,6 @@ const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
       observer.unobserve(tg)
       tg.style.animationDelay = (inViewCount * 0.15) + 's'
       tg.classList.add('scale-up')
-      // Mark the element as having already done this transition:
-      tg.setAttribute(transitionedAttr, "true")
       inViewCount++
     }
   }
@@ -35,14 +33,13 @@ const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
 
 // Look for element with the "card" class and register
 // intersectionObserver on them
-export const registerCardRevealObservers = (containers: HTMLElement[]) => {
+export const registerCardRevealObservers = (containers: HTMLElement[], dataTransitionOnly: boolean = false) => {
   if (containers.length > 0) {
     const revealObserver = new IntersectionObserver(onScrollReveal, revealOptions)
     for (const container of containers) {
       const cards = container.querySelectorAll('.card')
       cards.forEach(c => {
-        // Check if we already transitioned that element:
-        if (c.getAttribute(transitionedAttr) === null) {
+        if (!dataTransitionOnly || (dataTransitionOnly && c.getAttribute(transitionAttr) === "true")) {
           revealObserver.observe(c)
         }
       })

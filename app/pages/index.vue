@@ -12,13 +12,10 @@ const maxArticlesOrShorts = 2
 const shortList = useTemplateRef("card-list-s")
 const articleList = useTemplateRef("card-list-a")
 
-// We need the actual data from the API before applying
-// the animations.
-
 const articlesStart = ref(0)
 const shortsStart = ref(0)
-const articles = ref<Article[]>([])
-const shorts = ref<Article[]>([])
+const articles = ref<UIArticle[]>([])
+const shorts = ref<UIArticle[]>([])
 
 const { data: newArticles, status: statusArticles } = await useDkvzApi<Article[]>(
   () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
@@ -38,17 +35,35 @@ const { data: newShorts, status: statusShorts } = await useDkvzApi<Article[]>(
 
 // I just found out about typeof
 const updateArticlesOrShorts = async (
-  items: Article[] | undefined,
+  items: UIArticle[] | undefined,
   list: typeof articleList,
   isShorts: boolean
 ) => {
   if (items !== undefined) {
-    if (isShorts) shorts.value.push(...items)
-    else articles.value.push(...items)
+    // Pretty sure I have to do the good old
+    // "recreate the entire array" here, mostly
+    // because of my transitions antics.
+    // This is ugly and I have no idea how to make it better.
+    const currentItems = isShorts ? shorts.value : articles.value
+    const newItems = currentItems.map(i => {
+      return {
+        ...i, transition: false
+      }
+    }).concat(items.map(i => {
+      return {
+        ...i, transition: true
+      }
+    }))
+    if (isShorts) {
+      shorts.value = newItems
+    } else {
+      articles.value = newItems
+    }
+
     await nextTick()
     if (import.meta.client) {
       // Will be null on the first render
-      list.value !== null && registerCardRevealObservers([list.value])
+      list.value !== null && registerCardRevealObservers([list.value], true)
     }
   }
 }
@@ -110,7 +125,8 @@ const loadMoreContent = (short: boolean) => {
     <div class="card-list" ref="card-list-s">
 
       <ShortCard v-if="statusShorts === 'success'" v-for="short in shorts" :date="short.date" :key="short.id"
-        :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage" :title="short.title">
+        :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage" :title="short.title"
+        :data-transition="short.transition">
       </ShortCard>
 
       <div v-else-if="statusShorts === 'pending'" class="card-list__btn">
@@ -143,7 +159,8 @@ const loadMoreContent = (short: boolean) => {
 
       <ArticleCard v-if="statusArticles === 'success'" v-for="article in articles" :key="article.id" :id="article.id"
         :article-url="article.articleURL" :comments-count="article.commentsCount" :date="article.date"
-        :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title">
+        :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
+        :data-transition="article.transition">
       </ArticleCard>
 
       <div v-else-if="statusArticles === 'pending'" class="card-list__btn">
