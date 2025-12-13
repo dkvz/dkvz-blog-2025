@@ -56,7 +56,10 @@ const updateArticlesOrShorts = async (
       articles.value = newItems
     }
 
+    // This magic thing waits for the DOM to be updated, so that
+    // I get access to the nodes using the template refs.
     await nextTick()
+
     if (import.meta.client) {
       // Will be null on the first render
       list.value !== null && registerCardRevealObservers([list.value], true)
