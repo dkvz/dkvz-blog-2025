@@ -94,6 +94,7 @@ const loadMoreContent = (short: boolean) => {
   if (short) {
     shortsStart.value = shortsStart.value + maxArticlesOrShorts
   } else {
+    // We could just load +1 here, I'll keep the +2 for the moment
     articlesStart.value = articlesStart.value + maxArticlesOrShorts
   }
 }
