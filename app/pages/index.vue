@@ -97,8 +97,6 @@ if (import.meta.client) {
 
 // Dynamically add shorts or articles
 const loadMoreContent = (short: boolean) => {
-  // TODO: What happens when the endpoint responds with
-  // a 404?
   if (short) {
     shortsStart.value = shortsStart.value + maxArticlesOrShorts
   } else {
@@ -132,9 +130,9 @@ const loadMoreContent = (short: boolean) => {
 
     <div class="card-list" ref="card-list-s">
 
-      <ShortCard v-if="statusShorts === 'success'" v-for="short in shorts" :date="short.date" :key="short.id"
-        :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage" :title="short.title"
-        :data-transition="short.transition">
+      <ShortCard v-if="statusShorts === 'success' || statusShorts === 'error'" v-for="short in shorts"
+        :date="short.date" :key="short.id" :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage"
+        :title="short.title" :data-transition="short.transition">
       </ShortCard>
 
       <div v-else-if="statusShorts === 'pending'" class="card-list__btn">
@@ -165,9 +163,9 @@ const loadMoreContent = (short: boolean) => {
 
     <div class="card-list card-list--single" ref="card-list-a">
 
-      <ArticleCard v-if="statusArticles === 'success'" v-for="article in articles" :key="article.id" :id="article.id"
-        :article-url="article.articleURL" :comments-count="article.commentsCount" :date="article.date"
-        :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
+      <ArticleCard v-if="statusArticles === 'success' || statusArticles === 'error'" v-for="article in articles"
+        :key="article.id" :id="article.id" :article-url="article.articleURL" :comments-count="article.commentsCount"
+        :date="article.date" :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
         :data-transition="article.transition">
       </ArticleCard>
 

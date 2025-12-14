@@ -49,6 +49,7 @@ Just removing the items when done this time around.
 - Add icons to every menu entry - Make sure it works on mobile screens
 - The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
 - Delete the fake article I created at some point from the backend using the delete endpoint
+- I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
