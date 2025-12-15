@@ -123,7 +123,7 @@ const loadMoreContent = (short: boolean) => {
     </div>
   </div>
 
-  <div class="content-card content-card--transp content-card--l-margin">
+  <div class="content-card content-card--transp content-card--l-margin trans-left">
     <div class="section-title">
       <h2 class="section-title__title">Dernières brèves</h2>
     </div>
@@ -156,7 +156,7 @@ const loadMoreContent = (short: boolean) => {
     </div>
   </div>
 
-  <div class="content-card content-card--transp">
+  <div class="content-card content-card--transp trans-left">
     <div class="section-title">
       <h2 class="section-title__title">Derniers articles</h2>
     </div>

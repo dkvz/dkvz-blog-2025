@@ -1,7 +1,7 @@
 <template>
   <Header />
 
-  <main class="trans-left main">
+  <main class="main">
 
     <slot />
 

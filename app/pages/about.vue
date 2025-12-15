@@ -10,7 +10,7 @@ useHead({
 </script>
 
 <template>
-  <article class="content-card content-card--page-card">
+  <article class="content-card content-card--page-card trans-left">
     <h2>C'est quoi ce blog?</h2>
     <p>Il y a les choses importantes, puis les choses moins importantes.</p>
     <p>Puis il y a vous et moi, et des questions. Beaucoup de questions.</p>

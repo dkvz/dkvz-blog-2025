@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <dialog :class="{ 'modal-dialog': modal }" ref="dialog">
+  <dialog class="trans-top" :class="{ 'modal-dialog': modal }" ref="dialog">
     <slot></slot>
   </dialog>
 </template>

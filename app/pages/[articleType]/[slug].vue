@@ -195,11 +195,11 @@ const loadMoreComments = async () => {
 </script>
 
 <template>
-  <article v-if="status === 'pending'" class="content-card content-card--page-card">
+  <article v-if="status === 'pending'" class="content-card content-card--page-card trans-left">
     <LoadingSpinner />
   </article>
 
-  <article v-else-if="data && status === 'success'" class="content-card content-card--page-card">
+  <article v-else-if="data && status === 'success'" class="content-card content-card--page-card trans-left">
     <div class="article-header">
       <h1 class="article-header__title" v-html="data.title"></h1>
       <div class="article-header__desc mt-2">
@@ -228,7 +228,7 @@ const loadMoreComments = async () => {
       <div v-html="data.articleExtras.toc"></div>
     </div>
 
-    <ArticleContent :content="data.content"></ArticleContent>
+    <ArticleContent :content="data.content" />
 
     <section id="comment-section" class="card-list card-list--single">
 
