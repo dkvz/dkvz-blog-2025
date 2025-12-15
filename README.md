@@ -20,8 +20,6 @@ Just removing the items when done this time around.
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - Check the myriad todos inside the code
 - Shorts on larger screens would look better by wrapping more tightly, not sure how to do it
-- My dialogs need some animating, [the MDN article has info about it](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
-- Test all the dialog stuff on Firefox, not super sure about the positionning antics
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - I need styling for tables
