@@ -64,7 +64,7 @@ if (import.meta.client) {
 </script>
 
 <template>
-  <div class="content-card content-card--transp content-card--page-card">
+  <div class="content-card content-card--transp content-card--page-card trans-left">
 
     <div class="section-title two-items-grid">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>

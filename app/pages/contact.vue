@@ -10,7 +10,7 @@ useHead({
 </script>
 
 <template>
-  <article class="content-card content-card--page-card content-card--transp">
+  <article class="content-card content-card--page-card content-card--transp trans-left">
 
     <div class="section-title mb-4">
       <h1 class="section-title__title">Comment me contacter?</h1>
