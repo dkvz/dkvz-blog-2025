@@ -50,6 +50,8 @@ const updateArticlesOrShorts = async (
     })).concat(items.map(i => ({
       ...i, transition: true
     })))
+
+    const notInitial = newItems.length > maxArticlesOrShorts
     if (isShorts) {
       shorts.value = newItems
     } else {
@@ -67,8 +69,10 @@ const updateArticlesOrShorts = async (
         // scroll to before we register the observers.
         // It should be the first item with transition set 
         // to true.
-        const els = list.value.querySelectorAll('[data-transition="true"]')
-        if (els[0]) els[0].scrollIntoView()
+        if (notInitial) {
+          const els = list.value.querySelectorAll('[data-transition="true"]')
+          if (els[0]) els[0].scrollIntoView()
+        }
         registerCardRevealObservers([list.value], true)
       }
     }
