@@ -31,7 +31,6 @@ Just removing the items when done this time around.
 - No idea what to use as local() src for my fonts
 - Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
-- Shadows shouldn't become bright white on dark mode I think it's a design faux pas
 - HTML comments in pages should be removed at some point.
 - Create the go to top button (could use `btn-highlight`)
 - Add icons to every menu entry - Make sure it works on mobile screens

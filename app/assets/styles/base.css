@@ -8,6 +8,10 @@
     box-shadow: var(--ui-shadow);
   }
 
+  .image-legend {
+    padding: 8px;
+  }
+
   .spinner {
     width: 100%;
     display: flex;
