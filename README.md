@@ -10,7 +10,6 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
-- Do I use quote-card anywhere else?
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - The about and hireme pages need more images
@@ -18,11 +17,9 @@ Just removing the items when done this time around.
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - Check the myriad todos inside the code
-- Shorts on larger screens would look better by wrapping more tightly, not sure how to do it
 - The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - I need styling for tables
-- Need styling for videos
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Are unused CSS classes still included in the bundle?
@@ -41,6 +38,8 @@ Just removing the items when done this time around.
 - The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
 - Delete the fake article I created at some point from the backend using the delete endpoint
 - I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
+- I should remove or comment out the quote-card style
+- Test if videos actually work in prod
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

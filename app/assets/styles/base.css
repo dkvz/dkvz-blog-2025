@@ -595,7 +595,8 @@
     height: 28px;
   }
 
-  .responsive-img {
+  .responsive-img,
+  .responsive-video {
     height: auto;
     max-width: 100%;
   }
