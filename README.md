@@ -24,7 +24,6 @@ Just removing the items when done this time around.
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Are unused CSS classes still included in the bundle?
 - Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal) - Test if it also happens in prod
-- Should I add "will-change" where relevant?
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Create woff or woff2 versions of the fonts?
