@@ -10,6 +10,7 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## TODO
 Just removing the items when done this time around.
 
+- Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - The about and hireme pages need more images
@@ -18,7 +19,6 @@ Just removing the items when done this time around.
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - Check the myriad todos inside the code
 - It's a backend issue but the post dates for comments are wrong
-- I need styling for tables
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Are unused CSS classes still included in the bundle?

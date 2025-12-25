@@ -1,0 +1,63 @@
+@layer base {
+
+  tr,
+  td,
+  th {
+    padding: 0.3rem;
+  }
+
+  table.responsive-table {
+    font-size: 1rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: flex;
+    width: 100%;
+  }
+
+  /* thead */
+  table.responsive-table thead {
+    display: block;
+    border: 0;
+    border-right: 4px solid var(--dark-color);
+    /* Will look horrendous on browser without
+      fit-content support */
+    min-width: fit-content;
+  }
+
+  /* th */
+  table.responsive-table th {
+    display: block;
+    text-align: right;
+  }
+
+  /* tbody */
+  table.responsive-table tbody {
+    display: block;
+    overflow-x: auto;
+    position: relative;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  /* tr */
+  table.responsive-table thead tr {
+    display: block;
+    padding-right: 1rem;
+  }
+
+  table.responsive-table tbody tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  table.responsive-table tbody tr:nth-child(even) {
+    background-color: var(--light-gray-color);
+  }
+
+  /* td */
+  table.responsive-table td {
+    display: block;
+    min-height: 1.25em;
+  }
+
+}
