@@ -29,6 +29,7 @@
   --primary-color: #8AADF4;
   --accent-color: #F5BDE6;
   --accent-color-lighter: rgb(139, 213, 202);
+  --ui-shadow: 0px 0px 4px 4px var(--light-gray-color);
 
   --text-shadow-2: 0px 0px 8px var(--primary-color);
 

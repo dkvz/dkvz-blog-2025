@@ -230,7 +230,7 @@ const loadMoreComments = async () => {
 
     <ArticleContent :content="data.content" />
 
-    <section id="comment-section" class="card-list card-list--single">
+    <section id="comment-section" class="card-list card-list--single mt-4">
 
       <div class="content-card">
         <h2 class="comments__title">Commentaires</h2>

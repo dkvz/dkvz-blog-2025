@@ -22,20 +22,24 @@
     margin-top: 0.4rem;
   }
 
-  .p-1 {
-    padding: 0.4rem;
-  }
-
   .mt-2 {
     margin-top: 0.8rem;
   }
 
-  .p-2 {
-    padding: 0.8rem;
-  }
-
   .mt-3 {
     margin-top: 1.2rem;
+  }
+
+  .mt-4 {
+    margin-top: 1.6rem;
+  }
+
+  .p-1 {
+    padding: 0.4rem;
+  }
+
+  .p-2 {
+    padding: 0.8rem;
   }
 
   .p-3 {

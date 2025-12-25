@@ -193,6 +193,39 @@
       line-height: 1.8rem;
     }
 
+    /** Table stuff **/
+    table.responsive-table {
+      display: table;
+      font-size: 1.15rem;
+    }
+
+    table.responsive-table tbody tr,
+    table.responsive-table thead tr {
+      display: table-row;
+    }
+
+    table.responsive-table th {
+      text-align: initial;
+      padding-bottom: 0.6rem;
+    }
+
+    table.responsive-table td,
+    table.responsive-table th {
+      display: table-cell;
+    }
+
+    table.responsive-table tbody {
+      display: table-row-group;
+    }
+
+    table.responsive-table thead {
+      display: table-header-group;
+      border-right: 0;
+      border-bottom: 1px solid var(--dark-color);
+    }
+
+    /* End of the table stuff */
+
   }
 
   /** Ultra small screens **/
