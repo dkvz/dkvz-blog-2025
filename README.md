@@ -17,7 +17,6 @@ Just removing the items when done this time around.
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - Check the myriad todos inside the code
-- The comment dialog should not resize when the warning message appears
 - It's a backend issue but the post dates for comments are wrong
 - I need styling for tables
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
