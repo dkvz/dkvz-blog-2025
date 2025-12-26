@@ -7,6 +7,13 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Static generation
+Nitro has to be able to crawl every single link, and there shouldn't be any loop. Otherwise we have to declare every single route to generate and I'd like to avoid that.
+
+At the moment it will fail when encountering 404 errors so I have to either fix all of my dead links or add entries to the `ignore` section of the `nitro.prerender` section of `nuxt.config.ts`.
+
+That process is not very robust but the only "workaround" is to completely disable prerender errors. Apprently [an issue](https://github.com/nitrojs/nitro/issues/1569) is still open about it.
+
 ## TODO
 Just removing the items when done this time around.
 
