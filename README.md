@@ -14,6 +14,9 @@ At the moment it will fail when encountering 404 errors so I have to either fix 
 
 That process is not very robust but the only "workaround" is to completely disable prerender errors. Apprently [an issue](https://github.com/nitrojs/nitro/issues/1569) is still open about it.
 
+A few things require configuration at the front HTTP server level:
+- 404 and generic errror page - Check that it works with static assets
+
 ## TODO
 Just removing the items when done this time around.
 
