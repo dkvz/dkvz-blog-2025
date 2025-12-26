@@ -26,17 +26,13 @@ Just removing the items when done this time around.
 - The about and hireme pages need more images
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
-- Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - Check the myriad todos inside the code
-- Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
-- Are unused CSS classes still included in the bundle?
-- Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal) - Test if it also happens in prod
+- Are unused CSS classes still included in the bundle? -> They are. How can we tree-shake the CSS? [Check this out](https://purgecss.com/guides/nuxt.html)
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
-- Does the build process minify CSS?
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - HTML comments in pages should be removed at some point.
 - Create the go to top button (could use `btn-highlight`)
