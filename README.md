@@ -7,6 +7,16 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Static generation
+Nitro has to be able to crawl every single link, and there shouldn't be any loop. Otherwise we have to declare every single route to generate and I'd like to avoid that.
+
+At the moment it will fail when encountering 404 errors so I have to either fix all of my dead links or add entries to the `ignore` section of the `nitro.prerender` section of `nuxt.config.ts`.
+
+That process is not very robust but the only "workaround" is to completely disable prerender errors. Apprently [an issue](https://github.com/nitrojs/nitro/issues/1569) is still open about it.
+
+A few things require configuration at the front HTTP server level:
+- 404 and generic errror page - Check that it works with static assets
+
 ## TODO
 Just removing the items when done this time around.
 
@@ -18,7 +28,6 @@ Just removing the items when done this time around.
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Test the redirect from `/tag/<SOME_TAG>` to the same URL with /page/1 at the end when using static generation - We may have to configure it on the reverse proxy?
 - Check the myriad todos inside the code
-- It's a backend issue but the post dates for comments are wrong
 - Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Are unused CSS classes still included in the bundle?
