@@ -24,8 +24,7 @@ useHead({
 })
 
 const {
-  articles,
-  lastPage,
+  articleResponse,
   status
 } = await useFetchArticles({
   articleType: 'articles',
@@ -63,7 +62,7 @@ if (import.meta.client) {
 
     <div v-else class="card-list card-list--single" ref="article-list">
 
-      <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
+      <ArticleCard v-for="article in articleResponse.articles" :key="article.id" :article-url="article.articleURL"
         :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
         :thumb-image="article.thumbImage" :title="article.title">
       </ArticleCard>
@@ -71,7 +70,7 @@ if (import.meta.client) {
     </div>
 
     <div class="flex-end">
-      <Paginator :base-url="baseUrl" :last-page="lastPage" :page="page">
+      <Paginator :base-url="baseUrl" :last-page="articleResponse.lastPage" :page="page">
       </Paginator>
     </div>
 

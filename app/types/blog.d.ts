@@ -28,6 +28,11 @@ declare global {
     toc: string
   }
 
+  interface ArticleResponse {
+    articles: Article[],
+    lastPage: number | null
+  }
+
   interface UIArticle extends Article {
     transition?: boolean
   }

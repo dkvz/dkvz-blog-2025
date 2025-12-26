@@ -14,16 +14,16 @@ export interface UseFetchArticlesOptions {
 }
 
 export interface UseFetchArticlesResponse {
-  articles: Ref<Article[] | undefined>,
+  articleResponse: Ref<ArticleResponse>,
   status: Ref<AsyncDataRequestStatus>,
-  lastPage: Ref<number | null>
 }
 
 export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<UseFetchArticlesResponse> => {
   // Required to be state because the client doesn't re-run the fetch 
   // the first time and thus doesn't know about the last page from that
   // request.
-  const lastPage = useState<number | null>("lastPage", () => null)
+  // Well in the end it doesn't work with static generation
+  // const lastPage = useState<number | null>("lastPage", () => null)
 
   const url = computed(
     () => {
@@ -40,14 +40,22 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
     }
   )
 
-  const { data: articles, status, error } = await useDkvzApi<Article[]>(
+  const { data, status, error } = await useDkvzApi<ArticleResponse>(
     url,
     {
       lazy: true,
       deep: false,
       // The last page is a header from the response because 
       // I wanted this to be a challenge.
+      // It led to having the following crazy response replacement
+      // or the last page doesn't work with static generation.
       onResponse({ response }) {
+        const data = response._data as Article[] | undefined
+        const result: ArticleResponse = {
+          articles: data || [],
+          lastPage: null
+        }
+
         const link = response.headers.get("link")
         if (link) {
           // We could have multiple ones in the response.
@@ -59,11 +67,15 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
               // Attempt to extract the last offset from it:
               const lp = extractLastPageFromLink(l)
               // Being past the last page will redirect to a 404 page
-              lastPage.value = Math.floor(lp / opts.maxItems) + 1
+              // lastPage.value = Math.floor(lp / opts.maxItems) + 1
+              result.lastPage = Math.floor(lp / opts.maxItems) + 1
+              console.log("Got new lastPage: ", result.lastPage)
               break;
             }
           }
         }
+
+        response._data = result
       }
     }
   )
@@ -96,8 +108,7 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
   })
 
   return {
-    lastPage,
-    articles,
+    articleResponse: data,
     status
   }
 }

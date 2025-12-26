@@ -20,6 +20,7 @@ A few things require configuration at the front HTTP server level:
 ## TODO
 Just removing the items when done this time around.
 
+- Pagination sometimes shows the "?" last page when visiting the statically generated build - Does it really work? Also lastPage is kept the same when going from articles to short for some reason
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"

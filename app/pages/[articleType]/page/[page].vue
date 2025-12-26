@@ -42,8 +42,7 @@ useHead({
 })
 
 const {
-  articles,
-  lastPage,
+  articleResponse,
   status
 } = await useFetchArticles({
   articleType: articleTypeApiDesc,
@@ -82,15 +81,15 @@ if (import.meta.client) {
 
       <div v-if="isShorts" class="card-list" ref="card-list-s">
 
-        <ShortCard v-for="article in articles" :key="article.id" :id="article.id" :date="article.date"
-          :summary="article.summary" :thumb-image="article.thumbImage" :title="article.title">
+        <ShortCard v-for="article in articleResponse.articles" :key="article.id" :id="article.id" :date="article.date"
+          types :summary="article.summary" :thumb-image="article.thumbImage" :title="article.title">
         </ShortCard>
 
       </div>
 
       <div v-else class="card-list card-list--single" ref="card-list-a">
 
-        <ArticleCard v-for="article in articles" :key="article.id" :article-url="article.articleURL"
+        <ArticleCard v-for="article in articleResponse.articles" :key="article.id" :article-url="article.articleURL"
           :comments-count="article.commentsCount" :date="article.date" :summary="article.summary"
           :thumb-image="article.thumbImage" :title="article.title">
         </ArticleCard>
@@ -100,7 +99,7 @@ if (import.meta.client) {
     </template>
 
     <div class="flex-end">
-      <Paginator :base-url="urlPart" :last-page="lastPage" :page="page">
+      <Paginator :base-url="urlPart" :last-page="articleResponse.lastPage" :page="page">
       </Paginator>
     </div>
 
