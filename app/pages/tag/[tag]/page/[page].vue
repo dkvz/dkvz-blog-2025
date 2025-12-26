@@ -26,7 +26,8 @@ useHead({
 const {
   articles,
   lastPage,
-  status
+  status,
+  refresh
 } = await useFetchArticles({
   articleType: 'articles',
   maxItems,
@@ -34,6 +35,11 @@ const {
   page,
   tag
 })
+// Necessary for static generation to force fetching
+// the actual lastPage client-side
+if (lastPage.value === null) {
+  refresh()
+}
 
 if (import.meta.client) {
   watch(articleList, (l) => {
