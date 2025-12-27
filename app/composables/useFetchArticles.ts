@@ -16,14 +16,17 @@ export interface UseFetchArticlesOptions {
 export interface UseFetchArticlesResponse {
   articles: Ref<Article[] | undefined>,
   status: Ref<AsyncDataRequestStatus>,
-  lastPage: Ref<number | null>
+  lastPage: Ref<number | null>,
+  refresh: () => Promise<void>
 }
 
 export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<UseFetchArticlesResponse> => {
   // Required to be state because the client doesn't re-run the fetch 
   // the first time and thus doesn't know about the last page from that
   // request.
-  const lastPage = useState<number | null>("lastPage", () => null)
+  // TODO: Not sure I need all of that naming antics for the caching
+  // of that state value
+  const lastPage = useState<number | null>(`lastPage-${opts.articleType}-${opts.tag ? opts.tag : ''}`, () => null)
 
   const url = computed(
     () => {
@@ -40,7 +43,7 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
     }
   )
 
-  const { data: articles, status, error } = await useDkvzApi<Article[]>(
+  const { data: articles, status, error, refresh } = await useDkvzApi<Article[]>(
     url,
     {
       lazy: true,
@@ -98,6 +101,7 @@ export const useFetchArticles = async (opts: UseFetchArticlesOptions): Promise<U
   return {
     lastPage,
     articles,
-    status
+    status,
+    refresh
   }
 }

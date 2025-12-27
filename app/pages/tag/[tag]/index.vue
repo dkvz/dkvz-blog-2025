@@ -12,7 +12,7 @@ const route = useRoute()
 // But it can be an array for some reason so here we are
 const tag = (route.params.tag || "").toString()
 
-const baseUrl = `tag/${encodeURIComponent(tag.toString())}`
+const baseUrl = `tag/${tag.toString()}`
 await navigateTo(`/${baseUrl}/page/1`)
 </script>
 

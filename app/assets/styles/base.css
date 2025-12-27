@@ -76,6 +76,7 @@
 
   .floating-menu {
     position: absolute;
+    z-index: 5;
     font-size: 1rem;
     top: 50px;
     left: 50%;
@@ -121,16 +122,27 @@
     padding: 0;
   }
 
+  /*
+  * The whole label div thing is too convoluted, 
+  * should find a better way (grid?)
+  * */
+
   .menu__list a,
-  .menu__list label {
-    display: block;
+  .menu__list label,
+  .menu__list label div {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     color: var(--light-color);
     padding: 0.4rem 0.4rem;
     cursor: pointer;
   }
 
+  .menu__list label div {
+    padding: 0;
+  }
+
   .menu__list label {
-    display: flex;
     align-items: center;
     justify-content: space-between;
   }

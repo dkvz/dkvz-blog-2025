@@ -88,17 +88,33 @@ onMounted(() => {
         </div>
         <ul class="menu__list" @click="onMenuItemClick">
           <li>
-            <NuxtLink to="/" data-close>Accueil</NuxtLink>
+            <NuxtLink to="/" data-close>
+              <Icon name="uil:home-alt" />
+              Accueil
+            </NuxtLink>
           </li>
           <li>
-            <a href="#" data-close>Rechercher</a>
+            <NuxtLink to="/search" data-close>
+              <Icon name="uil:search" />
+              Rechercher
+            </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/breves/page/1" data-close>Brèves</NuxtLink>
+            <NuxtLink to="/breves/page/1" data-close>
+              <Icon name="uil:comment-alt-lines" />
+              Brèves
+            </NuxtLink>
           </li>
           <li class="relative">
-            <label for="type-checkbox" role="button" aria-controls="article-types"><span>Articles</span><span>|</span>
-              <Icon name="uil:angle-down" />
+            <label for="type-checkbox" role="button" aria-controls="article-types">
+              <div>
+                <Icon name="uil:book-open" />
+                <span>Articles</span>
+              </div>
+              <div>
+                <span>|</span>
+                <Icon name="uil:angle-down" />
+              </div>
             </label>
             <input @change="onArticleTypesCheckboxChange" ref="type-checkbox" type="checkbox" class="toggle-checkbox"
               id="type-checkbox">
@@ -113,13 +129,22 @@ onMounted(() => {
             </div>
           </li>
           <li>
-            <NuxtLink to="/about" data-close>A propos</NuxtLink>
+            <NuxtLink to="/about" data-close>
+              <Icon name="uil:question-circle" />
+              A propos
+            </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/contact" data-close>Contact</NuxtLink>
+            <NuxtLink to="/contact" data-close>
+              <Icon name="uil:mailbox" />
+              Contact
+            </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/hireme" data-close>Engagez-moi</NuxtLink>
+            <NuxtLink to="/hireme" data-close>
+              <Icon name="uil:euro" />
+              Engagez-moi
+            </NuxtLink>
           </li>
         </ul>
         <div class="menu__socials">

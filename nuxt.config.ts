@@ -6,6 +6,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/icon', '@nuxtjs/color-mode'],
+  nitro: {
+    prerender: {
+      ignore: [
+        '/stuff',
+        '/wp-content'
+      ]
+    }
+  },
   app: {
     head: {
       // title is set in app.vue

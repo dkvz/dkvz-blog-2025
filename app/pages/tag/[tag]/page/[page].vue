@@ -9,7 +9,7 @@ const route = useRoute()
 // The tag has been validated as non empty string above
 // But it can be an array for some reason so here we are
 const tag = (route.params.tag || "").toString()
-const baseUrl = `tag/${encodeURIComponent(tag.toString())}`
+const baseUrl = `tag/${tag.toString()}`
 const page = route.params.page !== undefined ?
   parseInt(route.params.page.toString()) : 1
 const maxItems = siteInfo.maxArticles
@@ -26,7 +26,8 @@ useHead({
 const {
   articles,
   lastPage,
-  status
+  status,
+  refresh
 } = await useFetchArticles({
   articleType: 'articles',
   maxItems,
@@ -34,6 +35,11 @@ const {
   page,
   tag
 })
+// Necessary for static generation to force fetching
+// the actual lastPage client-side
+if (lastPage.value === null) {
+  refresh()
+}
 
 if (import.meta.client) {
   watch(articleList, (l) => {
