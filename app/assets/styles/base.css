@@ -122,8 +122,14 @@
     padding: 0;
   }
 
+  /*
+  * The whole label div thing is too convoluted, 
+  * should find a better way (grid?)
+  * */
+
   .menu__list a,
-  .menu__list label {
+  .menu__list label,
+  .menu__list label div {
     display: flex;
     align-items: center;
     gap: 0.4rem;
@@ -132,10 +138,14 @@
     cursor: pointer;
   }
 
-  /* .menu__list label { */
-  /*   align-items: center; */
-  /*   justify-content: space-between; */
-  /* } */
+  .menu__list label div {
+    padding: 0;
+  }
+
+  .menu__list label {
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .menu__list a:hover,
   .menu__list a:active,

@@ -107,12 +107,14 @@ onMounted(() => {
           </li>
           <li class="relative">
             <label for="type-checkbox" role="button" aria-controls="article-types">
-              <Icon name="uil:book-open" />
-              <span>Articles</span>
-              <span>|</span>
-              <span>
+              <div>
+                <Icon name="uil:book-open" />
+                <span>Articles</span>
+              </div>
+              <div>
+                <span>|</span>
                 <Icon name="uil:angle-down" />
-              </span>
+              </div>
             </label>
             <input @change="onArticleTypesCheckboxChange" ref="type-checkbox" type="checkbox" class="toggle-checkbox"
               id="type-checkbox">
