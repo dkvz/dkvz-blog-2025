@@ -20,7 +20,6 @@ A few things require configuration at the front HTTP server level:
 ## TODO
 Just removing the items when done this time around.
 
-- Word wrap is needed for comments, check [that article](http://localhost:3000/articles/taille_du_soleil#comment-section)
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"

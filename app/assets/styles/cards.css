@@ -186,7 +186,7 @@
   }
 
   .comment-text {
-    white-space: pre;
+    white-space: pre-wrap;
     /* pre-line only displays line feeds and not spaces:
     white-space: pre-line;
     */
