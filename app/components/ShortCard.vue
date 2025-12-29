@@ -5,9 +5,6 @@ import { siteInfo } from '~~/data/site-info'
 // But the HTML was too different and I didn't feel 
 // like having 10000 v-ifs.
 
-// TODO: What happens if there is no thumb image, does it work?
-// Does the title arg work on NuxtLink?
-
 // Should have some alt for the image, wasn't in my plans
 // initially.
 const props = defineProps<{
@@ -16,9 +13,20 @@ const props = defineProps<{
   summary: string,
   thumbImage?: string,
   date?: string,
+  // Computed from the id when absent
+  articleUrl?: string
 }>()
 
-const url = computed(() => `/${siteInfo.shortRootUrl}/${props.id.toString()}`)
+const url = computed(() => {
+  // The "search results" use articleUrl.
+  if (props.articleUrl) {
+    // Check if we got a int in there:
+    const isArticle = isNaN(parseInt(props.articleUrl))
+    return isArticle ? `/${siteInfo.articleRootUrl}/${props.articleUrl}` :
+      `/${siteInfo.shortRootUrl}/${props.articleUrl}`
+  }
+  return `/${siteInfo.shortRootUrl}/${props.id.toString()}`
+})
 
 const shorterDate = computed(() => props.date ? shortDate(props.date) : undefined)
 </script>
