@@ -15,12 +15,12 @@ const props = defineProps<{
   title: string,
   summary: string,
   thumbImage?: string,
-  date: string,
+  date?: string,
 }>()
 
 const url = computed(() => `/${siteInfo.shortRootUrl}/${props.id.toString()}`)
 
-const shorterDate = computed(() => shortDate(props.date))
+const shorterDate = computed(() => props.date ? shortDate(props.date) : undefined)
 </script>
 
 
@@ -28,11 +28,11 @@ const shorterDate = computed(() => shortDate(props.date))
   <article class="card card--hoverable card-short">
     <div class="card__header">
       <img v-if="thumbImage" class="card__large-img" :src="thumbImage">
-      <div class="card__date-pill">{{ shorterDate }}</div>
+      <div class="card__date-pill" v-if="shorterDate">{{ shorterDate }}</div>
     </div>
     <div class="card__body">
       <h1 v-html="title"></h1>
-      <div v-html="summary"></div>
+      <div v-html="summary" class="mt-2"></div>
     </div>
     <div class="card__footer">
       <NuxtLink class="card__footer__link" :to="url" title="Lire la suite...">Lire la suite...</NuxtLink>

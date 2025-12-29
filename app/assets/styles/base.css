@@ -478,6 +478,11 @@
     width: 250px;
   }
 
+  .search-big {
+    max-width: 600px;
+    margin: 2rem auto 2rem auto;
+  }
+
   .search__label {
     width: 100%;
     border: 3px solid var(--dark-color);

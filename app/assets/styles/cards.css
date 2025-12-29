@@ -39,7 +39,7 @@
 
   /* Has to be here for cascade priority reasons */
   .card-short {
-    border-bottom-right-radius: 10%;
+    border-bottom-right-radius: 26px;
   }
 
   .card__header {
