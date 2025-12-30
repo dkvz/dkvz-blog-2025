@@ -27,7 +27,7 @@ Just removing the items when done this time around.
 
 - The menu could keep the same colors for dark and light mode
 - I could show the amount of results for the searches
-- Some search results create horizontal scrolling due to crazy long lines, should force wrap or something
+- Add card reveal effect on search results
 - Search result cards should have a second "open" link at the right like on the current site
 - Search results should not use v-html for the content, or should they?
 - Add some error message when the API is down on the index page

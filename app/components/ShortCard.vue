@@ -40,7 +40,7 @@ const shorterDate = computed(() => props.date ? shortDate(props.date) : undefine
     </div>
     <div class="card__body">
       <h1 v-html="title"></h1>
-      <div v-html="summary" class="mt-2"></div>
+      <div v-html="summary" class="mt-2 wrap-anywhere"></div>
     </div>
     <div class="card__footer">
       <NuxtLink class="card__footer__link" :to="url" title="Lire la suite...">Lire la suite...</NuxtLink>

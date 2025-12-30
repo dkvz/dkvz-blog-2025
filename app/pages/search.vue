@@ -9,10 +9,10 @@ useHead({
 
 const search = ref<string | undefined>()
 
-const handleItemsFound = (count: number) => {
-  console.log(`search returned ${count} items`)
-}
-
+// const handleItemsFound = (count: number) => {
+//   console.log(`search returned ${count} items`)
+// }
+//
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const handleItemsFound = (count: number) => {
 
   <article v-if="search" class="content-card content-card--transp">
 
-    <SearchPanel :search="search" @items-found="handleItemsFound" />
+    <SearchPanel :search="search" />
 
   </article>
 

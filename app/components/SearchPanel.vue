@@ -8,9 +8,11 @@ const props = defineProps<{
   search?: string,
 }>()
 
-const emit = defineEmits<{
-  (e: "itemsFound", count: number): void
-}>()
+// In the end I don't use the event for anything 
+// so I removed it:
+// const emit = defineEmits<{
+//   (e: "itemsFound", count: number): void
+// }>()
 
 const config = useAppConfig()
 
@@ -38,7 +40,7 @@ watch(() => props.search, async (newSearch) => {
         }
       )
       searchResults.value = resp
-      emit("itemsFound", resp.length)
+      // emit("itemsFound", resp.length)
       // Attempt to scroll to the container element:
       // if (container.value) container.value.scrollIntoView()
     } catch (ex) {
@@ -46,7 +48,7 @@ watch(() => props.search, async (newSearch) => {
       console.log("Error fetching search results for ", terms, ex)
       searchResults.value = []
       // Should probably be another event
-      emit("itemsFound", 0)
+      // emit("itemsFound", 0)
     } finally {
       loading.value = false
     }

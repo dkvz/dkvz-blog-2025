@@ -159,4 +159,7 @@
     position: relative;
   }
 
+  .wrap-anywhere {
+    overflow-wrap: anywhere;
+  }
 }
