@@ -7,6 +7,11 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Configuration
+I got config items in multiple spaces:
+- `app/app.config.ts` - Holds the API URL, might be the public one or localhost-something.
+- `data/site-info.ts` - Should have all the remaining config items.
+
 ## Static generation
 Nitro has to be able to crawl every single link, and there shouldn't be any loop. Otherwise we have to declare every single route to generate and I'd like to avoid that.
 
@@ -20,12 +25,12 @@ A few things require configuration at the front HTTP server level:
 ## TODO
 Just removing the items when done this time around.
 
-- Make a better "rien trouvé" message in SearchPanel
 - The menu could keep the same colors for dark and light mode
 - I could show the amount of results for the searches
 - Some search results create horizontal scrolling due to crazy long lines, should force wrap or something
 - Search result cards should have a second "open" link at the right like on the current site
 - Search results should not use v-html for the content, or should they?
+- Add some error message when the API is down on the index page
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
