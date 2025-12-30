@@ -22,6 +22,7 @@ const errorMsg = ref<string | undefined>(undefined)
 // I need the container to scroll to it when new 
 // results appear.
 // const container = useTemplateRef("container")
+const resultsList = useTemplateRef("results-list")
 
 watch(() => props.search, async (newSearch) => {
   if (!loading.value && newSearch !== undefined) {
@@ -55,6 +56,10 @@ watch(() => props.search, async (newSearch) => {
   }
 })
 
+watch(resultsList, (l) => {
+  l !== null && registerCardRevealObservers([l])
+})
+
 </script>
 
 <template>
@@ -67,7 +72,7 @@ watch(() => props.search, async (newSearch) => {
       <div v-if="searchResults.length < 1" class="main-title flex-center gap-4">
         <Icon name="uil:emoji" /> RIEN TROUVÉ
       </div>
-      <div v-else class="card-list card-list--single">
+      <div v-else class="card-list card-list--single" ref="results-list">
         <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id" />
       </div>
     </template>
