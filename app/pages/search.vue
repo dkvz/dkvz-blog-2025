@@ -18,7 +18,7 @@ const search = ref<string | undefined>()
 <template>
   <article class="content-card content-card--page-card content-card--transp trans-left">
     <div class="section-title">
-      <h2 class="section-title__title">Recherche de contenu</h2>
+      <h2 class="section-title__title">Recherche de trucs</h2>
     </div>
 
     <ClientOnly fallback="La recherche sur mon site requiert JavaScript activé.">
