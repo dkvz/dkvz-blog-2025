@@ -39,7 +39,7 @@
 
   /* Has to be here for cascade priority reasons */
   .card-short {
-    border-bottom-right-radius: 10%;
+    border-bottom-right-radius: 26px;
   }
 
   .card__header {
@@ -51,7 +51,7 @@
     align-items: center;
   }
 
-  .comment-card__info {
+  .card-info-h {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,6 +105,7 @@
   .card__body {
     flex: 1;
     padding: var(--card-padding);
+    line-height: 1.1em;
   }
 
   .card__large-img {
@@ -127,6 +128,7 @@
     margin: 0;
     margin-top: 0.3rem;
     font-size: 1.3rem;
+    line-height: 1.5;
   }
 
   .card__header h1::after,
@@ -142,7 +144,11 @@
   .card__body h1 {
     margin: 0;
     font-size: 1.3rem;
+    line-height: 1.3;
   }
+
+  /* There's a .card__footer style in base making it 
+  * flex with space-between.  */
 
   .card--border-top,
   .card__footer {
@@ -156,7 +162,7 @@
   .card__footer__link {
     text-transform: uppercase;
     text-decoration: none;
-    font-size: 0.82rem;
+    font-size: 0.87rem;
     color: var(--accent-color);
   }
 
@@ -179,7 +185,7 @@
   }
 
   .card__info>div,
-  .comment-card__info>div {
+  .card-info-h>div {
     padding: var(--card-padding);
     color: var(--grayed-color);
     /*border-top: 4px solid var(--accent-color);*/
@@ -194,6 +200,10 @@
 
   .card-list--single .card {
     margin-top: 2rem;
+  }
+
+  .card-list--single .card-short {
+    margin-top: 0;
   }
 
   /* Horrible hack that looks bad */

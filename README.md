@@ -7,6 +7,11 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Configuration
+I got config items in multiple spaces:
+- `app/app.config.ts` - Holds the API URL, might be the public one or localhost-something.
+- `data/site-info.ts` - Should have all the remaining config items.
+
 ## Static generation
 Nitro has to be able to crawl every single link, and there shouldn't be any loop. Otherwise we have to declare every single route to generate and I'd like to avoid that.
 
@@ -20,6 +25,11 @@ A few things require configuration at the front HTTP server level:
 ## TODO
 Just removing the items when done this time around.
 
+- The spinner is way too big on the search page and causes reflow
+- When searching from index page, allow "back" to bring the regular index - Not sure how to do this
+- The menu could keep the same colors for dark and light mode
+- I could show the amount of results for the searches
+- Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
@@ -27,16 +37,8 @@ Just removing the items when done this time around.
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Check the myriad todos inside the code
-<<<<<<< HEAD
-- It's a backend issue but the post dates for comments are wrong
-- Test visiting two articles and going back then forward in history - I see weird big black and white boxes in dev mode (might not be in the prod build)
-- Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
-- Are unused CSS classes still included in the bundle?
-- Do I set a background color as fallback somewhere? Force scrolling up or down in Firefox is showing white (might be normal) - Test if it also happens in prod
-=======
 - Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Are unused CSS classes still included in the bundle? -> They are. How can we tree-shake the CSS? [Check this out](https://purgecss.com/guides/nuxt.html)
->>>>>>> dev
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
 - Create woff or woff2 versions of the fonts?
@@ -49,6 +51,7 @@ Just removing the items when done this time around.
 - I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
 - I should remove or comment out the quote-card style
 - Test if videos actually work in prod
+- Add some error message when the API is down on the index page
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

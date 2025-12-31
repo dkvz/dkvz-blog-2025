@@ -24,7 +24,6 @@ const formData = reactive({
 })
 
 const submitForm = async () => {
-  // TODO: Reset the fields on success
   message.value = ""
 
   // Post object:
@@ -78,7 +77,7 @@ const handleSelfClose = () => emit("close")
   <GenericDialog :open="open" :modal="true" @close="handleSelfClose">
     <LoadingSpinner v-if="loading" />
 
-    <template v-else="loading">
+    <template v-else>
       <!--<form method="dialog">
       <button aria-label="close" class="btn" style="float: right">X</button>
       </form>-->

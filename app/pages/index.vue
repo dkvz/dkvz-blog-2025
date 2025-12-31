@@ -16,6 +16,7 @@ const articlesStart = ref(0)
 const shortsStart = ref(0)
 const articles = ref<UIArticle[]>([])
 const shorts = ref<UIArticle[]>([])
+const search = ref<string | undefined>()
 
 const { data: newArticles, status: statusArticles } = await useDkvzApi<Article[]>(
   () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
@@ -115,10 +116,10 @@ const loadMoreContent = (short: boolean) => {
   <div class="content-card cta content-card--transp">
 
     <div class="cta-buttons">
-      <form class="search">
+      <form class="search _js-only">
         <label class="search__label">
           <Icon name="uil:search" class="search__img" mode="css" />
-          <input name="search-input" class="input search__input" type="text" placeholder="Rechercher"
+          <input name="search-input" v-model="search" class="input search__input" type="text" placeholder="Rechercher"
             aria-label="Rechercher" />
         </label>
       </form>
@@ -127,70 +128,77 @@ const loadMoreContent = (short: boolean) => {
     </div>
   </div>
 
-  <div class="content-card content-card--transp content-card--l-margin trans-left">
-    <div class="section-title">
-      <h2 class="section-title__title">Dernières brèves</h2>
-    </div>
+  <section v-if="search" class="content-card content-card--transp trans-left">
+    <SearchPanel :search="search" />
+  </section>
 
-    <div class="card-list" ref="card-list-s">
-
-      <ShortCard v-if="statusShorts === 'success' || statusShorts === 'error'" v-for="short in shorts"
-        :date="short.date" :key="short.id" :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage"
-        :title="short.title" :data-transition="short.transition">
-      </ShortCard>
-
-      <div v-else-if="statusShorts === 'pending'" class="card-list__btn">
-        <LoadingSpinner />
+  <section v-else class="trans-left">
+    <div class="content-card content-card--transp content-card--l-margin">
+      <div class="section-title">
+        <h2 class="section-title__title">Dernières brèves</h2>
       </div>
 
-      <button @click="loadMoreContent(true)" class="btn card-list__btn _js-only" aria-label="Charger d'autres brèves"
-        title="Charger d'autres brèves...">
-        <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
-          aria-hidden="true">
-      </button>
+      <div class="card-list" ref="card-list-s">
 
-      <noscript data-allow-mismatch="children" class="card-list__btn">
-        <NuxtLink class="btn" aria-label="Charger d'autres brèves" title="Charger d'autres brèves..."
-          to="/breves/page/1">
+        <ShortCard v-if="statusShorts === 'success' || statusShorts === 'error'" v-for="short in shorts"
+          :date="short.date" :key="short.id" :id="short.id" :summary="short.summary" :thumbImage="short.thumbImage"
+          :title="short.title" :data-transition="short.transition">
+        </ShortCard>
+
+        <div v-else-if="statusShorts === 'pending'" class="card-list__btn">
+          <LoadingSpinner />
+        </div>
+
+        <button @click="loadMoreContent(true)" class="btn card-list__btn _js-only" aria-label="Charger d'autres brèves"
+          title="Charger d'autres brèves...">
           <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
             aria-hidden="true">
-        </NuxtLink>
-      </noscript>
+        </button>
 
+        <noscript data-allow-mismatch="children" class="card-list__btn">
+          <NuxtLink class="btn" aria-label="Charger d'autres brèves" title="Charger d'autres brèves..."
+            to="/breves/page/1">
+            <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+              aria-hidden="true">
+          </NuxtLink>
+        </noscript>
+
+      </div>
     </div>
-  </div>
 
-  <div class="content-card content-card--transp trans-left">
-    <div class="section-title">
-      <h2 class="section-title__title">Derniers articles</h2>
-    </div>
-
-    <div class="card-list card-list--single" ref="card-list-a">
-
-      <ArticleCard v-if="statusArticles === 'success' || statusArticles === 'error'" v-for="article in articles"
-        :key="article.id" :id="article.id" :article-url="article.articleURL" :comments-count="article.commentsCount"
-        :date="article.date" :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
-        :data-transition="article.transition">
-      </ArticleCard>
-
-      <div v-else-if="statusArticles === 'pending'" class="card-list__btn">
-        <LoadingSpinner />
+    <div class="content-card content-card--transp">
+      <div class="section-title">
+        <h2 class="section-title__title">Derniers articles</h2>
       </div>
 
-      <button @click="loadMoreContent(false)" class="btn card-list__btn _js-only" aria-label="Charger d'autres articles"
-        title="Charger d'autres articles...">
-        <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
-          aria-hidden="true">
-      </button>
+      <div class="card-list card-list--single" ref="card-list-a">
 
-      <noscript data-allow-mismatch="children" class="card-list__btn">
-        <NuxtLink class="btn" aria-label="Charger d'autres articles" title="Charger d'autres articles..."
-          to="/articles/page/1">
+        <ArticleCard v-if="statusArticles === 'success' || statusArticles === 'error'" v-for="article in articles"
+          :key="article.id" :id="article.id" :article-url="article.articleURL" :comments-count="article.commentsCount"
+          :date="article.date" :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
+          :data-transition="article.transition">
+        </ArticleCard>
+
+        <div v-else-if="statusArticles === 'pending'" class="card-list__btn">
+          <LoadingSpinner />
+        </div>
+
+        <button @click="loadMoreContent(false)" class="btn card-list__btn _js-only"
+          aria-label="Charger d'autres articles" title="Charger d'autres articles...">
           <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
             aria-hidden="true">
-        </NuxtLink>
-      </noscript>
+        </button>
 
+        <noscript data-allow-mismatch="children" class="card-list__btn">
+          <NuxtLink class="btn" aria-label="Charger d'autres articles" title="Charger d'autres articles..."
+            to="/articles/page/1">
+            <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+              aria-hidden="true">
+          </NuxtLink>
+        </noscript>
+
+      </div>
     </div>
-  </div>
+  </section>
+
 </template>
