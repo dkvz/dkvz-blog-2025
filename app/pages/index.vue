@@ -16,6 +16,7 @@ const articlesStart = ref(0)
 const shortsStart = ref(0)
 const articles = ref<UIArticle[]>([])
 const shorts = ref<UIArticle[]>([])
+const search = ref<string | undefined>()
 
 const { data: newArticles, status: statusArticles } = await useDkvzApi<Article[]>(
   () => `/articles-starting-from/${articlesStart.value}?max=${maxArticlesOrShorts}`,
@@ -118,7 +119,7 @@ const loadMoreContent = (short: boolean) => {
       <form class="search _js-only">
         <label class="search__label">
           <Icon name="uil:search" class="search__img" mode="css" />
-          <input name="search-input" class="input search__input" type="text" placeholder="Rechercher"
+          <input name="search-input" v-model="search" class="input search__input" type="text" placeholder="Rechercher"
             aria-label="Rechercher" />
         </label>
       </form>
@@ -127,7 +128,11 @@ const loadMoreContent = (short: boolean) => {
     </div>
   </div>
 
-  <section class="trans-left">
+  <section v-if="search" class="content-card content-card--transp trans-left">
+    <SearchPanel :search="search" />
+  </section>
+
+  <section v-else class="trans-left">
     <div class="content-card content-card--transp content-card--l-margin">
       <div class="section-title">
         <h2 class="section-title__title">Dernières brèves</h2>

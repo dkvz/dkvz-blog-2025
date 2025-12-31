@@ -25,6 +25,8 @@ A few things require configuration at the front HTTP server level:
 ## TODO
 Just removing the items when done this time around.
 
+- The spinner is way too big on the search page and causes reflow
+- When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - The menu could keep the same colors for dark and light mode
 - I could show the amount of results for the searches
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
