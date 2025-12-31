@@ -84,10 +84,6 @@
       font-size: 1.2rem;
     }
 
-    .card__body {
-      line-height: 0.9em;
-    }
-
     .footer-sections {
       flex-direction: row;
       align-self: stretch;

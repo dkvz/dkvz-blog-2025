@@ -21,7 +21,8 @@ const search = ref<string | undefined>()
       <h2 class="section-title__title">Recherche de trucs</h2>
     </div>
 
-    <ClientOnly fallback="La recherche sur mon site requiert JavaScript activé.">
+    <ClientOnly
+      fallback="La recherche sur mon site requiert JavaScript activé. Vous pouvez toujours utiliser un moteur de recherche.">
       <div class="search-big">
         <label class="search__label">
           <Icon name="uil:search" class="search__img" mode="css" />

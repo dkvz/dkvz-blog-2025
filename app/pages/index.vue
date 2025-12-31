@@ -160,37 +160,40 @@ const loadMoreContent = (short: boolean) => {
     </div>
   </div>
 
-  <div class="content-card content-card--transp trans-left">
-    <div class="section-title">
-      <h2 class="section-title__title">Derniers articles</h2>
-    </div>
-
-    <div class="card-list card-list--single" ref="card-list-a">
-
-      <ArticleCard v-if="statusArticles === 'success' || statusArticles === 'error'" v-for="article in articles"
-        :key="article.id" :id="article.id" :article-url="article.articleURL" :comments-count="article.commentsCount"
-        :date="article.date" :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
-        :data-transition="article.transition">
-      </ArticleCard>
-
-      <div v-else-if="statusArticles === 'pending'" class="card-list__btn">
-        <LoadingSpinner />
+  <section>
+    <div class="content-card content-card--transp trans-left">
+      <div class="section-title">
+        <h2 class="section-title__title">Derniers articles</h2>
       </div>
 
-      <button @click="loadMoreContent(false)" class="btn card-list__btn _js-only" aria-label="Charger d'autres articles"
-        title="Charger d'autres articles...">
-        <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
-          aria-hidden="true">
-      </button>
+      <div class="card-list card-list--single" ref="card-list-a">
 
-      <noscript data-allow-mismatch="children" class="card-list__btn">
-        <NuxtLink class="btn" aria-label="Charger d'autres articles" title="Charger d'autres articles..."
-          to="/articles/page/1">
+        <ArticleCard v-if="statusArticles === 'success' || statusArticles === 'error'" v-for="article in articles"
+          :key="article.id" :id="article.id" :article-url="article.articleURL" :comments-count="article.commentsCount"
+          :date="article.date" :thumb-image="article.thumbImage" :summary="article.summary" :title="article.title"
+          :data-transition="article.transition">
+        </ArticleCard>
+
+        <div v-else-if="statusArticles === 'pending'" class="card-list__btn">
+          <LoadingSpinner />
+        </div>
+
+        <button @click="loadMoreContent(false)" class="btn card-list__btn _js-only"
+          aria-label="Charger d'autres articles" title="Charger d'autres articles...">
           <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
             aria-hidden="true">
-        </NuxtLink>
-      </noscript>
+        </button>
 
+        <noscript data-allow-mismatch="children" class="card-list__btn">
+          <NuxtLink class="btn" aria-label="Charger d'autres articles" title="Charger d'autres articles..."
+            to="/articles/page/1">
+            <img class="invertable--img" src="~/assets/img/triangle_down.svg" height="10px" alt="Flèche vers le bas"
+              aria-hidden="true">
+          </NuxtLink>
+        </noscript>
+
+      </div>
     </div>
-  </div>
+  </section>
+
 </template>
