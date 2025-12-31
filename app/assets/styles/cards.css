@@ -51,7 +51,7 @@
     align-items: center;
   }
 
-  .comment-card__info {
+  .card-info-h {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -182,7 +182,7 @@
   }
 
   .card__info>div,
-  .comment-card__info>div {
+  .card-info-h>div {
     padding: var(--card-padding);
     color: var(--grayed-color);
     /*border-top: 4px solid var(--accent-color);*/

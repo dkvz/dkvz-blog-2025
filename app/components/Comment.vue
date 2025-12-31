@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <div class="card">
     <div class="comment-card__header">
-      <div class="comment-card__info">
+      <div class="card-info-h">
         <h1>#{{ id }}</h1>
         <div class="btn-icon">
           <img src="~/assets/img/user_duder.svg" class="icon__medium invertable--img"
