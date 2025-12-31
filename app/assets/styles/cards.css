@@ -105,6 +105,7 @@
   .card__body {
     flex: 1;
     padding: var(--card-padding);
+    line-height: 1.1em;
   }
 
   .card__large-img {
@@ -127,6 +128,7 @@
     margin: 0;
     margin-top: 0.3rem;
     font-size: 1.3rem;
+    line-height: 1.5em;
   }
 
   .card__header h1::after,
@@ -142,6 +144,7 @@
   .card__body h1 {
     margin: 0;
     font-size: 1.3rem;
+    line-height: 1.3em;
   }
 
   /* There's a .card__footer style in base making it 

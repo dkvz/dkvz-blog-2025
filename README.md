@@ -26,11 +26,9 @@ A few things require configuration at the front HTTP server level:
 Just removing the items when done this time around.
 
 - The menu could keep the same colors for dark and light mode
-- The line height seems way too tight on shorts and article cards
 - I could show the amount of results for the searches
 - Open link at bottom of ShortCard could have larger text on all screens
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
-- Add some error message when the API is down on the index page
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
@@ -52,6 +50,7 @@ Just removing the items when done this time around.
 - I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
 - I should remove or comment out the quote-card style
 - Test if videos actually work in prod
+- Add some error message when the API is down on the index page
 
 ## Running the project
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
