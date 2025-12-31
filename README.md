@@ -27,7 +27,6 @@ Just removing the items when done this time around.
 
 - The menu could keep the same colors for dark and light mode
 - I could show the amount of results for the searches
-- Search result cards have a massive gap between them for some reason
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
