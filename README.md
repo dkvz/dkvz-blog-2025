@@ -26,9 +26,10 @@ A few things require configuration at the front HTTP server level:
 Just removing the items when done this time around.
 
 - The menu could keep the same colors for dark and light mode
+- The line height seems way too tight on shorts and article cards
 - I could show the amount of results for the searches
 - Search result cards should have a second "open" link at the right like on the current site
-- Search results should not use v-html for the content, or should they?
+- Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
 - Add some error message when the API is down on the index page
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header

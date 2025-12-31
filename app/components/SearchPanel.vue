@@ -73,7 +73,8 @@ watch(resultsList, (l) => {
         <Icon name="uil:emoji" /> RIEN TROUVÉ
       </div>
       <div v-else class="card-list card-list--single" ref="results-list">
-        <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id" />
+        <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id"
+          :disableHtml="true" />
       </div>
     </template>
   </div>
