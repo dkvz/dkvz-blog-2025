@@ -64,7 +64,10 @@ watch(resultsList, (l) => {
 
 <template>
   <div>
-    <LoadingSpinner v-if="loading" />
+    <div v-if="loading">
+      <LoadingSpinner fixed />
+      <p>Chargement...</p>
+    </div>
     <template v-else>
       <div v-if="errorMsg" class="simple-row flex-center warn">
         <Icon name="uil:exclamation-triangle" size="2.1rem" /> {{ errorMsg }}

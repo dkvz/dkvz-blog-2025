@@ -19,6 +19,15 @@
     justify-content: center;
   }
 
+  .float-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+    width: 300px;
+  }
+
   .to-reveal {
     opacity: 0.1;
     transition: opacity 0.5s;
