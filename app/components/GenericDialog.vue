@@ -23,10 +23,17 @@ watch(() => props.open, (newVal) => {
 })
 
 onMounted(() => {
-  dialog.value?.addEventListener("cancel", () => {
-    // Cancel button or Esc has been pressed
-    emit("close")
-  })
+  if (dialog.value) {
+    dialog.value.addEventListener("cancel", () => {
+      // Cancel button or Esc has been pressed
+      emit("close")
+    })
+    // We need to show the dialog now if open is true,
+    // the watch won't proc for an initial value of open.
+    if (props.open) {
+      props.modal ? dialog.value.showModal() : dialog.value.show()
+    }
+  }
 })
 </script>
 
