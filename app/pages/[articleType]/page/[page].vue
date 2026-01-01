@@ -103,6 +103,8 @@ if (import.meta.client) {
 
       </div>
 
+      <GotoTop />
+
     </template>
 
     <div class="flex-end">
