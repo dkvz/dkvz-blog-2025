@@ -81,6 +81,7 @@ watch(resultsList, (l) => {
         </div>
         <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id"
           :disableHtml="true" />
+        <GotoTop v-if="searchResults.length > 4" />
       </div>
     </template>
   </div>

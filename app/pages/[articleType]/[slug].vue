@@ -275,5 +275,7 @@ const loadMoreComments = async () => {
       </div>
     </GenericDialog>
 
+    <GotoTop />
+
   </article>
 </template>

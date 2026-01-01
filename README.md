@@ -29,6 +29,7 @@ A few things require configuration at the front HTTP server level:
 Just removing the items when done this time around.
 
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
+- Components meant for client side only can be named using .client.vue, maybe I should do that?
 - The menu could keep the same colors for dark and light mode
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
 - Syntax highlight theme could be chosen closer to theme color in dark mode
@@ -45,7 +46,6 @@ Just removing the items when done this time around.
 - No idea what to use as local() src for my fonts
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - HTML comments in pages should be removed at some point.
-- Create the go to top button (could use `btn-highlight`)
 - The title generating function should be in siteInfo and not in app.vue so I can also use it in error.vue which is doing its own title generation
 - Delete the fake article I created at some point from the backend using the delete endpoint
 - I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
