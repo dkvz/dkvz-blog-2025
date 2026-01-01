@@ -30,7 +30,7 @@ Just removing the items when done this time around.
 
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
-- The menu could keep the same colors for dark and light mode
+- The menu could keep the same colors for dark and light mode OR revert which one is which
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
