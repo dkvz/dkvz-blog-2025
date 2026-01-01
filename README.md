@@ -7,6 +7,9 @@ There's a good chance I'll be using static generation to avoid having to keep a 
 
 I use a `dev` branch for this project, main sometimes gets squashed merges from there.
 
+## Static assets
+This repo doesn't have most of my website's static assets, referenced in the `/wp-content` or `/stuff` directories.
+
 ## Configuration
 I got config items in multiple spaces:
 - `app/app.config.ts` - Holds the API URL, might be the public one or localhost-something.
@@ -31,7 +34,6 @@ Just removing the items when done this time around.
 - Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
-- The about and hireme pages need more images
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Check the myriad todos inside the code

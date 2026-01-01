@@ -42,6 +42,11 @@ useHead({
         Utilisé actuellement et avec carrément <b>deux</b> étoiles sur Github. Et ouais.</li>
     </ul>
 
+    <div class="card-panel z-depth-3 article-image center-image" style="max-width: 800px">
+      <iframe src="/wp-content/stuff/bandit/index.html" style="max-width: 800px; width: 100%;" height="600"></iframe>
+      <div class="image-legend">Je sais pas ce que ça fait ici</div>
+    </div>
+
     <h2>Tu crois que les gens lisent vraiment tes articles de 80 pages?</h2>
     <p>Non. Je n'écris pas spécialement pour être lu.</p>
     <p>Mes motivations sont multiples, en particulier apprendre des nouvelles choses, cristalliser les connaissances —
