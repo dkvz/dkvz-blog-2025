@@ -25,10 +25,19 @@ That process is not very robust but the only "workaround" is to completely disab
 A few things require configuration at the front HTTP server level:
 - 404 and generic errror page - Check that it works with static assets
 - Copy rss.xml to website root
+- Download or link sitemap.xml
+- Link the actual `wp-content` and `stuff`
+
+Procedure for generating on server:
+- Run `npx nuxi generate`
+- Move `.output/public` to the new static serving directory
+- Perform operations listed above
 
 ## TODO
 Just removing the items when done this time around.
 
+- Social icons in menu have no links and bluesky should replace twitter
+- Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
@@ -46,7 +55,6 @@ Just removing the items when done this time around.
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Delete the fake article I created at some point from the backend using the delete endpoint
 - I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
-- Test if videos actually work in prod
 - Add some error message when the API is down on the index page
 
 ## Running the project
