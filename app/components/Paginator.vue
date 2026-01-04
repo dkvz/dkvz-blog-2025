@@ -13,7 +13,6 @@ const props = defineProps<{
 </script>
 
 <template>
-  <!-- TODO: Could use icons instead of chars -->
   <div id="pagination" class="grid-flow-col gap-4 pagination">
     <NuxtLink title="Page précédente" v-if="page > 1" :to="{ path: `/${baseUrl}/page/${page - 1}` }">
       &lt;

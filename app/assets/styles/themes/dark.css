@@ -45,9 +45,9 @@
       background: linear-gradient(to right, rgb(69, 71, 90) 0%, var(--light-gray-color) 100%);
     }
 
-    .quote-card {
-      background-color: var(--dark-color-quote);
-    }
+    /* .quote-card { */
+    /*   background-color: var(--dark-color-quote); */
+    /* } */
 
     .invertable--img {
       filter: invert();

@@ -637,12 +637,12 @@
     max-width: 100%;
   }
 
-  .quote-card {
-    padding: 1rem;
-    font-style: italic;
-    color: var(--secondary-color);
-    background-color: var(--dark-color);
-  }
+  /* .quote-card { */
+  /*   padding: 1rem; */
+  /*   font-style: italic; */
+  /*   color: var(--secondary-color); */
+  /*   background-color: var(--dark-color); */
+  /* } */
 
   .text-muted {
     color: var(--grayed-color);
