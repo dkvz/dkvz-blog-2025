@@ -24,6 +24,7 @@ That process is not very robust but the only "workaround" is to completely disab
 
 A few things require configuration at the front HTTP server level:
 - 404 and generic errror page - Check that it works with static assets
+- Copy rss.xml to website root
 
 ## TODO
 Just removing the items when done this time around.
