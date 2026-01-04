@@ -37,7 +37,6 @@ Just removing the items when done this time around.
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Check the myriad todos inside the code
-- Need to check all of my snippets and the CSS classes they're using to recreate or adapt everything
 - Are unused CSS classes still included in the bundle? -> They are. How can we tree-shake the CSS? [Check this out](https://purgecss.com/guides/nuxt.html)
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition
