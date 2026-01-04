@@ -36,7 +36,6 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Social icons in menu have no links and bluesky should replace twitter
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
@@ -188,4 +187,16 @@ Maybe the build process can attempt to update them.
 For now I'll just use curl from the data directory:
 ```
 curl https://api.dkvz.eu/tags > tags.json
+```
+
+## Old stuff
+
+### Social icons
+
+The old Youtube SVG:
+```html
+<a href="#" title="Mon compte Youtube"><svg class="socials" viewBox="0 0 576 512">
+<path
+d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+</svg></a>
 ```
