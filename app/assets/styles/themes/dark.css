@@ -49,6 +49,37 @@
     /*   background-color: var(--dark-color-quote); */
     /* } */
 
+    #menu {
+      color: var(--dark-color);
+      background-color: var(--light-color-transp);
+      background-image: linear-gradient(var(--light-color-transp), var(--secondary-color-transp));
+      background-image: url('~/assets/img/pat_shrimp.png'), linear-gradient(var(--light-color-transp) 70%, var(--secondary-color-transp) 130%);
+      border-color: var(--light-color);
+    }
+
+    .menu__list a,
+    .menu__list label,
+    .menu__list label div {
+      color: var(--dark-color);
+    }
+
+    .menu__list a:hover,
+    .menu__list a:active,
+    .menu__list a:focus,
+    .menu__list label:hover,
+    .menu__list label:active,
+    .menu__list label:focus {
+      background-color: var(--light-color-transp);
+    }
+
+    svg.socials {
+      fill: var(--dark-color);
+    }
+
+    .floating-menu {
+      background-color: var(--light-color);
+    }
+
     .invertable--img {
       filter: invert();
     }
@@ -163,7 +194,6 @@
     .toggle-indicator {
       border-color: var(--light-gray-color);
     }
-
 
   }
 
