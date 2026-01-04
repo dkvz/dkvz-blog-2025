@@ -32,7 +32,6 @@ Just removing the items when done this time around.
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
-- Syntax highlight theme could be chosen closer to theme color in dark mode
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?

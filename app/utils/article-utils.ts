@@ -1,6 +1,11 @@
 import { codeToHtml } from "shiki"
 
-const shikiThemeDark = "catppuccin-mocha"
+// Too funky
+// const shikiThemeDark = "catppuccin-mocha"
+// Looks good
+// const shikiThemeDark = "dracula"
+// Also looks good
+const shikiThemeDark = "kanagawa-wave"
 const shikiThemeLight = "catppuccin-latte"
 
 // Semi-arbitrary measure of how many words per minute a human
