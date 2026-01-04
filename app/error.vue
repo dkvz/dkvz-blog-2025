@@ -10,7 +10,7 @@ useHead({
   bodyAttrs: {
     class: "bg-gradient"
   },
-  title: `Erreur | ${siteInfo.title}`
+  title: siteInfo.titleTemplate("Erreur")
 })
 
 // Output the error in dev mode, in the non-404 case.

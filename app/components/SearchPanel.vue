@@ -77,7 +77,7 @@ watch(resultsList, (l) => {
       </div>
       <div v-else class="card-list card-list--single" ref="results-list">
         <div>
-          Trouvé {{ searchResults.length }} résultats
+          Trouvé {{ searchResults.length }} résultats (max 15)
         </div>
         <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id"
           :disableHtml="true" />

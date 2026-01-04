@@ -68,7 +68,7 @@ onMounted(() => {
 <template>
   <aside class="header" :class="{ 'header--sticky': isSticky || isMenuOpened }"
     :style="isMenuOpened ? {} : { opacity: opacity, transform: transform }" ref="header">
-    <a class="header__title" href="/">Le BdGC <span class="text text-smaller">de DkVZ</span></a>
+    <NuxtLink class="header__title" to="/">Le BdGC <span class="text text-smaller">de DkVZ</span></NuxtLink>
     <label class="menu-btn input" :class="{ open: isMenuOpened }" tabindex="0" role="button" aria-controls="menu"
       aria-label="Afficher ou fermer le menu" for="menu-checkbox">
       <svg class="menu-btn__icon" viewBox="0 0 7 7">
