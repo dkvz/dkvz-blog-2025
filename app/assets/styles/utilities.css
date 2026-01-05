@@ -3,6 +3,7 @@
   .center-image {
     margin: 0 auto;
     text-align: center;
+    display: block;
   }
 
   /* A bit weird but copy pasted from old PoC */
