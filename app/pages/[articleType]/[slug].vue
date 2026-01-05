@@ -144,6 +144,8 @@ watch(data, (newData) => {
     }
 
   }
+}, {
+  immediate: true
 })
 
 const openCommentForm = (open: boolean) => {
