@@ -10,6 +10,8 @@ I use a `dev` branch for this project, main sometimes gets squashed merges from 
 ## Static assets
 This repo doesn't have most of my website's static assets, referenced in the `/wp-content` or `/stuff` directories.
 
+A few of these items are necessary for static generation because I need Nuxt to crawl all links and it will just die on any dead links for some reason and there doesn't seem to be a way to just disable that check and not all errors.
+
 ## Configuration
 I got config items in multiple spaces:
 - `app/app.config.ts` - Holds the API URL, might be the public one or localhost-something.
@@ -23,21 +25,22 @@ At the moment it will fail when encountering 404 errors so I have to either fix 
 That process is not very robust but the only "workaround" is to completely disable prerender errors. Apprently [an issue](https://github.com/nitrojs/nitro/issues/1569) is still open about it.
 
 A few things require configuration at the front HTTP server level:
-- 404 and generic errror page - Check that it works with static assets
-- Copy rss.xml to website root
-- Download or link sitemap.xml
-- Link the actual `wp-content` and `stuff`
+- 404 has to be configured to be /404.html
 
 Procedure for generating on server:
 - Run `npx nuxi generate`
 - Move `.output/public` to the new static serving directory
-- Perform operations listed above
+- Copy rss.xml to website root
+- Download or link sitemap.xml
+- Link the actual `wp-content` and `stuff`
 
 ## TODO
 Just removing the items when done this time around.
 
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
+- Test social media integration
+- Think of a way to integrate img-lightbox - change all the images? Test article?
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
