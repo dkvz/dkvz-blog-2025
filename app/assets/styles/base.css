@@ -366,6 +366,10 @@
     line-height: 1.5;
   }
 
+  .content-card--page-card img-lightbox {
+    width: 100%;
+  }
+
   .card__body>div {
     line-height: 1.3;
   }

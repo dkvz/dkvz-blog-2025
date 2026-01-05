@@ -38,6 +38,8 @@ Procedure for generating on server:
 Just removing the items when done this time around.
 
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
+- An image immediately following another image in an article has no margin to space them
+- Test floating images, they might not work
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Test social media integration
 - Think of a way to integrate img-lightbox - change all the images? Test article?

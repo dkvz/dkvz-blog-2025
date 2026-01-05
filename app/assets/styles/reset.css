@@ -120,4 +120,9 @@ https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling
     background-color: var(--primary-color);
   }
 
+  table ul,
+  table ol {
+    margin: 0;
+  }
+
 }

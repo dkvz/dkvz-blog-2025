@@ -1,3 +1,3 @@
 export default defineAppConfig({
-  dkvzApiUrl: "http://localhost:9001"
+  dkvzApiUrl: "https://api.dkvz.eu"
 })
