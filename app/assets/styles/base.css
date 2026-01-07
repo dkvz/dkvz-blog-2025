@@ -362,7 +362,8 @@
     line-height: 1.75;
   }
 
-  .content-card--page-card li {
+  .content-card--page-card li,
+  .card__body li {
     line-height: 1.5;
   }
 
