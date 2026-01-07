@@ -39,10 +39,8 @@ Just removing the items when done this time around.
 
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - An image immediately following another image in an article has no margin to space them
-- Test floating images, they might not work
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Test social media integration
-- Think of a way to integrate img-lightbox - change all the images? Test article?
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
@@ -119,7 +117,9 @@ I'll keep some of the initial BEM styling but new styles shouldn't follow any sp
 
 ## Article snippets to remember
 
-### New image snippet
+### Image snippets
+The following can replace the old "short image" code, but the old code also works and is compatible with the older frontend versions (they ignore img-lightbox).
+
 ```html
 <div class="center-image">
     <img-lightbox class="article-image">
