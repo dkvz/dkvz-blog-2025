@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { siteInfo } from '~~/data/site-info'
 
-// TODO: What happens if there is no thumb image, does it work?
-// Does the title arg work on NuxtLink?
-
 // Should have some alt for the image, wasn't in my plans
 // initially.
 const props = defineProps<{

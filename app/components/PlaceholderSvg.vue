@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// TODO: This component will not react to a new src getting applied.
+// WARN: This component will not react to a new src getting applied.
 
 const props = defineProps<{
   src: string,

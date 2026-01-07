@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// TODO: 
-// - Might also need to change the button padding or icon size on small screens
-
 const colorMode = useColorMode()
 
 const toggleTheme = () => {

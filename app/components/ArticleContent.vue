@@ -101,8 +101,6 @@ onMounted(async () => {
     //   }
     //   if (c.textContent !== null) {
     //     const html = await codeToHtml(c.textContent, opts)
-    //     // TODO: We actually need to get the pre sibling, and replace its 
-    //     // outer HTML
     //     c.innerHTML = html
     //   }
     // }
