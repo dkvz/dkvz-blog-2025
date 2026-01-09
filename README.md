@@ -37,6 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
+- Syntax highlighter also needs to replace &nbsp;
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
