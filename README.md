@@ -37,6 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
+- When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Syntax highlighter also needs to replace &nbsp;
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - I got big chunks (lol) - Should I do something about it?
