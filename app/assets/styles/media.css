@@ -246,10 +246,16 @@
 
     .cta {
       width: 100%;
+      min-width: initial;
+      margin-top: 130px;
     }
 
     svg.socials {
       height: 24px;
+    }
+
+    .search {
+      min-width: initial;
     }
 
   }

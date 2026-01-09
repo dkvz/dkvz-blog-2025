@@ -37,7 +37,6 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Menu is too tall on mobile, doesn't seem to use the viewport height
 - CTA is too high on mobile when the screen isn't tall
 - Go to top button is hidden by the bottom bar on my mobile brave browser
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom

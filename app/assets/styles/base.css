@@ -21,7 +21,7 @@
   }
 
   .image-row img {
-    height: 150px;
+    height: 120px;
   }
 
   .spinner {
@@ -95,7 +95,7 @@
     transition: visibility 0s linear 0.6s, transform 0.6s;
     transform: scaleY(0);
     transform-origin: top center;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 150px);
     visibility: hidden;
   }
 
@@ -517,7 +517,7 @@
 
   .search {
     display: flex;
-    width: 250px;
+    min-width: 250px;
   }
 
   .search-big {
