@@ -29,8 +29,17 @@ onMounted(async () => {
     const imgObserver = new IntersectionObserver((entries: any, observer) => {
       for (const en of entries) {
         if (en.isIntersecting) {
-          en.target.style.opacity = en.intersectionRatio
-          if (en.intersectionRatio === 1) {
+          // If the screen is smaller than the image, we need to reveal
+          // it fully when intersection is about 0.45.
+          let targetOpacity = 0
+          if (en.boundingClientRect.height >= en.intersectionRect.height) {
+            targetOpacity = en.intersectionRatio / 0.45
+            if (targetOpacity > 1) targetOpacity = 1
+          } else {
+            targetOpacity = en.intersectionRatio
+          }
+          en.target.style.opacity = targetOpacity
+          if (targetOpacity === 1) {
             observer.unobserve(en.target)
           }
         }
