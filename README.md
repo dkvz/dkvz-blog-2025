@@ -37,8 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Menu could be a bit higher on mobile
-- Go to top button is hidden by the bottom bar on my mobile brave browser
+- Text is a bit too small on mobile - Am I missing that viewport initial scale thingy?
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
 - When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Syntax highlighter also needs to replace &nbsp;

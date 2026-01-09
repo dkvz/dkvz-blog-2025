@@ -197,6 +197,10 @@
       height: initial;
     }
 
+    .fixed-action-btn {
+      right: 22px;
+    }
+
     /** Table stuff **/
     table.responsive-table {
       display: table;
@@ -256,6 +260,10 @@
 
     .search {
       min-width: initial;
+    }
+
+    #menu {
+      top: 75px;
     }
 
   }
