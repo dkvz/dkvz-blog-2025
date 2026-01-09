@@ -95,6 +95,7 @@
     transition: visibility 0s linear 0.6s, transform 0.6s;
     transform: scaleY(0);
     transform-origin: top center;
+    max-height: calc(100vh - 120px);
     visibility: hidden;
   }
 
