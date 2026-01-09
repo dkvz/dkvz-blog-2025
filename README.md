@@ -41,6 +41,7 @@ Just removing the items when done this time around.
 - Menu is too tall on mobile, doesn't seem to use the viewport height
 - CTA is too high on mobile when the screen isn't tall
 - Go to top button is hidden by the bottom bar on my mobile brave browser
+- Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
 - When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Syntax highlighter also needs to replace &nbsp;
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
