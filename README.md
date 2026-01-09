@@ -37,6 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
+- Clicking img-lightbox from an article or short card opens the overlay in that card only
 - Text is a bit too small on mobile - Am I missing that viewport initial scale thingy?
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
 - When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
