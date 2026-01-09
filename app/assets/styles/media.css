@@ -245,9 +245,9 @@
     }
 
     .cta {
-      width: 100%;
       min-width: initial;
       margin-top: 130px;
+      padding: 1rem;
     }
 
     svg.socials {
@@ -274,7 +274,6 @@
     .floating-menu {
       width: 350px;
     }
-
 
   }
 
