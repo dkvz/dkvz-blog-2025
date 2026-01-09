@@ -5,5 +5,7 @@ export const capitalizeFirst = (str: string): string => {
 }
 
 export const unescapeTagEntities = (str: string): string => {
-  return str.replaceAll("&lt;", "<").replaceAll("&gt;", ">")
+  return str.replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&nbsp;", " ")
 }
