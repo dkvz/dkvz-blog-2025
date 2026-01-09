@@ -37,7 +37,6 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Spinner is too big on mobile on the search page
 - Menu is too tall on mobile, doesn't seem to use the viewport height
 - CTA is too high on mobile when the screen isn't tall
 - Go to top button is hidden by the bottom bar on my mobile brave browser

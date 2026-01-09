@@ -72,7 +72,7 @@ watch(resultsList, (l) => {
       <div v-if="errorMsg" class="simple-row flex-center warn">
         <Icon name="uil:exclamation-triangle" size="2.1rem" /> {{ errorMsg }}
       </div>
-      <div v-if="searchResults.length < 1" class="main-title flex-center gap-4">
+      <div v-else-if="searchResults.length < 1" class="main-title flex-center gap-4">
         <Icon name="uil:emoji" /> RIEN TROUVÉ
       </div>
       <div v-else class="card-list card-list--single" ref="results-list">

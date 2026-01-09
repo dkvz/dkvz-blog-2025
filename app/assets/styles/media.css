@@ -193,6 +193,10 @@
       line-height: 1.8rem;
     }
 
+    .spinner.float-center img {
+      height: initial;
+    }
+
     /** Table stuff **/
     table.responsive-table {
       display: table;
