@@ -2,6 +2,9 @@
 // maybe it should be a plugin or something.
 
 /** Reveal animation on cards **/
+
+const revealClass = "scale-up"
+
 const revealOptions = {
   // It's actually the default (replace with scrolling element):
   root: document,
@@ -25,7 +28,14 @@ const onScrollReveal: IntersectionObserverCallback = (entries, observer) => {
       const tg = entry.target as HTMLElement
       observer.unobserve(tg)
       tg.style.animationDelay = (inViewCount * 0.15) + 's'
-      tg.classList.add('scale-up')
+      tg.classList.add(revealClass)
+      // Need to add an event to remove the class because the 
+      // opacity from the end of the animation is creating
+      // a stacking context which messes up with img-lightbox's
+      // overlay.
+      tg.addEventListener("animationend", (e: any) => {
+        e.target.classList.remove(revealClass)
+      })
       inViewCount++
     }
   }
