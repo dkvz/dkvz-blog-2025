@@ -13,6 +13,8 @@ for (let i = 1; i <= steps; i++) {
   revThres.push(incr * i)
 }
 
+const toRevealClass = "to-reveal"
+
 const requiresPlaceholder = (node: Element) =>
   node.tagName === "H1" || node.tagName === "H2"
 // Has to be uppercase for browser API reasons of the past:
@@ -38,9 +40,12 @@ onMounted(async () => {
           } else {
             targetOpacity = en.intersectionRatio
           }
-          en.target.style.opacity = targetOpacity
           if (targetOpacity === 1) {
+            en.target.classList.remove(toRevealClass)
+            en.target.style.opacity = ""
             observer.unobserve(en.target)
+          } else {
+            en.target.style.opacity = targetOpacity
           }
         }
       }
@@ -49,7 +54,7 @@ onMounted(async () => {
     )
 
     for (const img of artImgs) {
-      img.classList.add("to-reveal")
+      img.classList.add(toRevealClass)
       imgObserver.observe(img)
     }
 
