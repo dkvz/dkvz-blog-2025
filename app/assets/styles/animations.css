@@ -51,6 +51,13 @@
   .animation-placeholder {
     /* Still works with intersection observer */
     visibility: hidden;
+    /* 
+    * This used to be position absolute with huge height
+    * But we can't use position relative on the parent because 
+    * of the img-lightbox overlay.
+    * However I don't think this was actually needed in any way.
+    * As with all things in life.
+    * */
     /* height: 16em; */
     width: 80%;
   }
