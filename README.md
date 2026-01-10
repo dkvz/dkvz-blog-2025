@@ -38,6 +38,7 @@ Procedure for generating on server:
 Just removing the items when done this time around.
 
 - Search has to scroll to the top of the results, most important for mobile but test every screen size
+- Make the menu close when clicking outside
 - Fix for image reveal didn't really work, feels like they all reveal way too fast now
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
