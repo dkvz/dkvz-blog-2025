@@ -128,11 +128,11 @@ const loadMoreContent = (short: boolean) => {
     </div>
   </div>
 
-  <div v-if="search" class="content-card content-card--transp trans-left">
+  <section v-if="search" class="content-card content-card--transp trans-left">
     <SearchPanel :search="search" />
-  </div>
+  </section>
 
-  <div v-else class="trans-left">
+  <section v-else class="trans-left">
     <div class="content-card content-card--transp content-card--l-margin">
       <div class="section-title">
         <h2 class="section-title__title">Dernières brèves</h2>
@@ -199,6 +199,6 @@ const loadMoreContent = (short: boolean) => {
 
       </div>
     </div>
-  </div>
+  </section>
 
 </template>
