@@ -39,6 +39,7 @@ Just removing the items when done this time around.
 
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
+- Time to update the low-rez short images to new ones
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
 - My fix for img reveal and images larger than the viewport might not actually work for images with a gigantic height compared to the viewport (to test)
 - When manually scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
