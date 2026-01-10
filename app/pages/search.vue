@@ -8,16 +8,18 @@ useHead({
 })
 
 const search = ref<string | undefined>()
+const sectionTitle = useTemplateRef("section-title")
 
-// const handleItemsFound = (count: number) => {
-//   console.log(`search returned ${count} items`)
-// }
-//
+const handleItemsFound = (count: number) => {
+  if (count > 0 && sectionTitle.value !== null) {
+    sectionTitle.value.scrollIntoView()
+  }
+}
 </script>
 
 <template>
   <article class="content-card content-card--page-card content-card--transp trans-left">
-    <div class="section-title">
+    <div class="section-title" ref="section-title">
       <h2 class="section-title__title">Recherche de trucs</h2>
     </div>
 
@@ -35,7 +37,7 @@ const search = ref<string | undefined>()
 
   <article v-if="search" class="content-card content-card--transp">
 
-    <SearchPanel :search="search" />
+    <SearchPanel :search="search" @items-found="handleItemsFound" />
 
   </article>
 
