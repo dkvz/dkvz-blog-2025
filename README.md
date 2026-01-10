@@ -37,10 +37,10 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- For some reason the comment form text area is huge on mobile, should have a max-height
 - When search is started from home page, clicking home in the menu doesn't do anything
+- When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
-- When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
+- When manually scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - Related to img-lightbox: the hourglass is way too big (takes all of the image size, should have a max)
 - Show the current version of the site somewhere
@@ -49,7 +49,6 @@ Just removing the items when done this time around.
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
 - An image immediately following another image in an article has no margin to space them
-- When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Test social media integration
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
@@ -57,16 +56,16 @@ Just removing the items when done this time around.
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side show the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
-- The calls to `useState` in `[page].vue` might not work with static generation - Is the sort order kept between pages? Should try using query in NuxtLink
 - Check the myriad todos inside the code
 - Are unused CSS classes still included in the bundle? -> They are. How can we tree-shake the CSS? [Check this out](https://purgecss.com/guides/nuxt.html)
 - At some point an overlay was drawn when the menu was open, should we bring that back?
-- I need a blur transition for PlaceholderSvg, can probably be done using transition
+- I need a blur transition for PlaceholderSvg, can probably be done using transition - Make it somewhat slow (but not too slow)
 - Create woff or woff2 versions of the fonts?
 - No idea what to use as local() src for my fonts
 - We should make dark mode preference work without JS by adding the relevant media query and duplicating a bunch of styles and variables
 - Delete the fake article I created at some point from the backend using the delete endpoint
 - I think that's fine but loading to the very end of articles or shorts on the index leads to the button showing the spinner but not adding any article and not showing that it's the end of it
+- Test the "print" media query
 - Add some error message when the API is down on the index page
 
 ## Running the project

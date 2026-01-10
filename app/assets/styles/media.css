@@ -35,6 +35,10 @@
       width: 630px;
     }
 
+    .modal-dialog {
+      min-height: 480px;
+    }
+
     .btn {
       font-size: 1.2rem;
     }
