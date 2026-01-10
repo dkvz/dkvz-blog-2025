@@ -53,7 +53,7 @@
       color: var(--dark-color);
       background-color: var(--light-color-transp);
       background-image: linear-gradient(var(--light-color-transp), var(--secondary-color-transp));
-      background-image: url('~/assets/img/pat_shrimp.png'), linear-gradient(var(--light-color-transp) 70%, var(--secondary-color-transp) 130%);
+      background-image: url('~/assets/img/pat_shrimp.webp'), linear-gradient(var(--light-color-transp) 70%, var(--secondary-color-transp) 130%);
       border-color: var(--light-color);
     }
 

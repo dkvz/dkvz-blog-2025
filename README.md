@@ -40,6 +40,7 @@ Just removing the items when done this time around.
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
+- My fix for img reveal and images larger than the viewport might not actually work for images with a gigantic height compared to the viewport (to test)
 - When manually scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - Related to img-lightbox: the hourglass is way too big (takes all of the image size, should have a max)
