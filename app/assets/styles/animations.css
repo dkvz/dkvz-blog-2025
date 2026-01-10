@@ -51,8 +51,7 @@
   .animation-placeholder {
     /* Still works with intersection observer */
     visibility: hidden;
-    position: absolute;
-    height: 16em;
+    /* height: 16em; */
     width: 80%;
   }
 
