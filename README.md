@@ -37,6 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
+- For some reason the comment form text area is huge on mobile, should have a max-height
 - When search is started from home page, clicking home in the menu doesn't do anything
 - Text is a bit too small on mobile - Am I missing that viewport initial scale thingy?
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
@@ -45,6 +46,7 @@ Just removing the items when done this time around.
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - Related to img-lightbox: the hourglass is way too big (takes all of the image size, should have a max)
 - Show the current version of the site somewhere
+- The site isn't really mobile first, it's semi-mobile first with a media query for "ultra-small" that I use a lot
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
