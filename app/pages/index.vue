@@ -11,6 +11,7 @@ const maxArticlesOrShorts = 2
 
 const shortList = useTemplateRef("card-list-s")
 const articleList = useTemplateRef("card-list-a")
+const cta = useTemplateRef("cta")
 
 const articlesStart = ref(0)
 const shortsStart = ref(0)
@@ -110,12 +111,19 @@ const loadMoreContent = (short: boolean) => {
   }
 }
 
+const handleSearchResults = (count: number) => {
+  if (count > 0 && cta.value !== null) {
+    // cta.value.scrollIntoView()
+    window.scrollTo(0, 70)
+  }
+}
+
 </script>
 
 <template>
   <div class="content-card cta content-card--transp">
 
-    <div class="cta-buttons">
+    <div class="cta-buttons" ref="cta">
       <form class="search _js-only">
         <label class="search__label">
           <Icon name="uil:search" class="search__img" mode="css" />
@@ -129,7 +137,7 @@ const loadMoreContent = (short: boolean) => {
   </div>
 
   <section v-if="search" class="content-card content-card--transp trans-left">
-    <SearchPanel :search="search" />
+    <SearchPanel :search="search" @itemsFound="handleSearchResults" />
   </section>
 
   <section v-else class="trans-left">
