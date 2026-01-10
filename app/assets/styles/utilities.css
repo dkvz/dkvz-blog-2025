@@ -106,7 +106,7 @@
   }
 
   .bg-gradient-clouds {
-    background-image: url('../img/clouds3.jpg');
+    /* background-image: url('../img/clouds3.jpg'); */
     background-repeat: repeat-y;
     background-size: contain;
     /* Lighter version:
