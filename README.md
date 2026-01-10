@@ -39,10 +39,8 @@ Just removing the items when done this time around.
 
 - For some reason the comment form text area is huge on mobile, should have a max-height
 - When search is started from home page, clicking home in the menu doesn't do anything
-- Text is a bit too small on mobile - Am I missing that viewport initial scale thingy?
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
 - When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
-- Syntax highlighter also needs to replace &nbsp;
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - Related to img-lightbox: the hourglass is way too big (takes all of the image size, should have a max)
 - Show the current version of the site somewhere
