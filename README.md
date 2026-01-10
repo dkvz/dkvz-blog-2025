@@ -43,6 +43,7 @@ Just removing the items when done this time around.
 - When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Syntax highlighter also needs to replace &nbsp;
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
+- Show the current version of the site somewhere
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
