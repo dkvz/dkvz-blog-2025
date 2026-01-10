@@ -36,7 +36,7 @@ const shorterDate = computed(() => props.date ? shortDate(props.date) : undefine
 
 
 <template>
-  <article class="card card--hoverable card-short">
+  <article class="card card--hoverable card-short relative">
     <div class="card__header">
       <img v-if="thumbImage" class="card__large-img" :src="thumbImage">
       <div class="card__date-pill" v-if="shorterDate">{{ shorterDate }}</div>

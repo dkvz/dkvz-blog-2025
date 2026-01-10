@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="card">
+  <div class="card relative">
     <div class="comment-card__header">
       <div class="card-info-h">
         <h1>#{{ id }}</h1>
