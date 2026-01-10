@@ -37,12 +37,12 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Clicking img-lightbox from an article or short card opens the overlay in that card only
 - When search is started from home page, clicking home in the menu doesn't do anything
 - Text is a bit too small on mobile - Am I missing that viewport initial scale thingy?
 - Clicking on a "going to comments" button for a big article doesn't work, scroll stops somewhere not at the bottom
 - When scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Syntax highlighter also needs to replace &nbsp;
+- Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
