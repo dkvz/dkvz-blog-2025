@@ -77,7 +77,7 @@ export const shortDate = (d: string): string => {
 
   const lastSlash = spl[0].lastIndexOf("/")
   if (lastSlash > 0) {
-    return spl[0].substring(0, lastSlash) + spl[0].substring(lastSlash + 1)
+    return `${spl[0].substring(0, lastSlash)} ${spl[0].substring(lastSlash + 1)}`
   }
 
   return spl[0]
