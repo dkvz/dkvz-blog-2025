@@ -34,7 +34,7 @@ const url = computed(() => `/${siteInfo.articleRootUrl}/${props.articleUrl}`)
         Suite
         <Icon name="uil:external-link-alt" />
       </NuxtLink>
-      <NuxtLink :to="{ path: url, hash: '#comment-section' }" class="btn btn-icon">
+      <NuxtLink :to="{ path: url, hash: '#bottom' }" class="btn btn-icon">
         {{ commentsCount }}
         <Icon name="uil:comment" />
       </NuxtLink>

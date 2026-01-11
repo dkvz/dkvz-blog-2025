@@ -7,7 +7,7 @@
 
   </main>
 
-  <footer class="footer-wrapper">
+  <footer class="footer-wrapper" id="bottom">
     <div class="footer">
       <div class="footer-sections">
         <section>
