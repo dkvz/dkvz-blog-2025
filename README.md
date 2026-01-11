@@ -39,6 +39,8 @@ Just removing the items when done this time around.
 
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
+- The old "bandit manchot" embedded on the about page doesn't look good on mobile, we need small screen styling for it
+- Add redirections server side and document them somewhere around here
 - Time to update the low-rez short images to new ones
 - My fix for img reveal and images larger than the viewport might not actually work for images with a gigantic height compared to the viewport (to test)
 - Fix for image reveal didn't really work, feels like they all reveal way too fast now
