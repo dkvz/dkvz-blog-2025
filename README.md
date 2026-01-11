@@ -37,7 +37,6 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Pagination should scroll to content - Test with JS disabled too
 - Fix for image reveal didn't really work, feels like they all reveal way too fast now
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
