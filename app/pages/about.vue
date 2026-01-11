@@ -26,7 +26,9 @@ useHead({
 
     <p>On compte déjà plusieurs itérations (<b>qui fonctionnent toujours!</b>), par exemple:</p>
     <ul>
-      <li>IL MANQUE LE LIEN LOL</li>
+      <li><a href="https://oldsite-2018.dkvz.eu" target="_blank">La version "sans framework"</a> &mdash; J'en suis pas
+        hyper
+        fier mais ça m'aura appris beaucoup sur les API de base de manipulation du DOM</li>
       <li><a href="https://oldsite.dkvz.eu" target="_blank">La version Polymer</a> (me demandez pas ce que c'est
         Polymer)</li>
     </ul>
