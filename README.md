@@ -37,7 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Make the menu close when clicking outside
+- Pagination should scroll to content - Cannot be done with a hash apparently or maybe has to be combined with JS scrolling
 - Fix for image reveal didn't really work, feels like they all reveal way too fast now
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
@@ -47,6 +47,7 @@ Just removing the items when done this time around.
 - When manually scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - Related to img-lightbox: the hourglass is way too big (takes all of the image size, should have a max)
+- If img-lightbox can query for "document.body" we could use it to toggle a global backdrop
 - Show the current version of the site somewhere
 - The site isn't really mobile first, it's semi-mobile first with a media query for "ultra-small" that I use a lot
 - Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
