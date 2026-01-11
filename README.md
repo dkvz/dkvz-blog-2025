@@ -49,7 +49,7 @@ Just removing the items when done this time around.
 - If img-lightbox can query for "document.body" we could use it to toggle a global backdrop
 - Show the current version of the site somewhere
 - The site isn't really mobile first, it's semi-mobile first with a media query for "ultra-small" that I use a lot
-- Smooth scrolling is being weird when navigating client-side from a page already scrolled a good bit, then opening an article from there
+- Removed smooth scrolling at some point (commented out in `reset.css`) - Gotta decide if we need it back
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
 - An image immediately following another image in an article has no margin to space them

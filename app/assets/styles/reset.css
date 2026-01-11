@@ -38,7 +38,7 @@
   html,
   body {
     scrollbar-color: var(--primary-color) var(--light-color);
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 
   body {
