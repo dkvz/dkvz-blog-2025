@@ -19,6 +19,8 @@ const isShorts = articleType === siteInfo.shortRootUrl
 
 const articleList = useTemplateRef("card-list-a")
 const shortList = useTemplateRef("card-list-s")
+// I need this to scroll to content in PWA mode
+const pageTop = useTemplateRef("page-top")
 
 // A bit convoluted due to multiple refactoring of routing antics
 const {
@@ -58,12 +60,25 @@ if (lastPage.value === null) {
   refresh()
 }
 
+const scrollToContent = () => {
+  // Only do it if hash is "#page-top" in router
+  if (route.hash === "#page-top" && pageTop.value !== null) {
+    pageTop.value.scrollIntoView()
+  }
+}
+
 if (import.meta.client) {
   watch(shortList, (l) => {
-    l !== null && registerCardRevealObservers([l])
+    if (l !== null) {
+      registerCardRevealObservers([l])
+      scrollToContent()
+    }
   })
   watch(articleList, (l) => {
-    l !== null && registerCardRevealObservers([l])
+    if (l !== null) {
+      registerCardRevealObservers([l])
+      scrollToContent()
+    }
   })
 }
 
@@ -72,7 +87,7 @@ if (import.meta.client) {
 <template>
   <div class="content-card content-card--transp content-card--page-card trans-left">
 
-    <div class="section-title two-items-grid">
+    <div class="section-title two-items-grid" id="page-top" ref="page-top">
       <h2 class="section-title__title">{{ capitalizedArticleType }}</h2>
       <ToggleButton @change="handleToggleOrder" :value="isOrderAsc" class="_js-only"
         description="Basculer l'ordre des articles par dates de publication décroissante ou croissante"
@@ -108,7 +123,7 @@ if (import.meta.client) {
     </template>
 
     <div class="flex-end">
-      <Paginator :base-url="urlPart" :last-page="lastPage" :page="page">
+      <Paginator :base-url="urlPart" :last-page="lastPage" :page="page" hash="#page-top">
       </Paginator>
     </div>
 

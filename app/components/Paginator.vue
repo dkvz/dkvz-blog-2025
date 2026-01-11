@@ -7,24 +7,25 @@
 const props = defineProps<{
   baseUrl: string,
   page: number,
-  lastPage: number | null
+  lastPage: number | null,
+  hash?: string
 }>()
 
 </script>
 
 <template>
   <div id="pagination" class="grid-flow-col gap-4 pagination">
-    <NuxtLink title="Page précédente" v-if="page > 1" :to="{ path: `/${baseUrl}/page/${page - 1}` }">
+    <NuxtLink title="Page précédente" v-if="page > 1" :to="{ path: `/${baseUrl}/page/${page - 1}`, hash: hash }">
       &lt;
     </NuxtLink>
     <span>{{ page }}</span>
     <span>/</span>
     <span v-if="lastPage === null">?</span>
-    <NuxtLink title="Se rendre à la dernière page" v-else :to="{ path: `/${baseUrl}/page/${lastPage}` }">
+    <NuxtLink title="Se rendre à la dernière page" v-else :to="{ path: `/${baseUrl}/page/${lastPage}`, hash: hash }">
       {{ lastPage }}
     </NuxtLink>
     <NuxtLink title="Page suivante" v-if="lastPage === null || page < lastPage"
-      :to="{ path: `/${baseUrl}/page/${page + 1}` }">
+      :to="{ path: `/${baseUrl}/page/${page + 1}`, hash: hash }">
       &gt;
     </NuxtLink>
   </div>
