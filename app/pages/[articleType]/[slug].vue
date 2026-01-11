@@ -98,7 +98,7 @@ watch(error, (err) => {
 // related to updating the article-related data here
 // instead of having 100000 tests for data.value being
 // truthy.
-watch(data, (newData) => {
+watch(data, async (newData) => {
   if (newData) {
     useHead({
       link: [
@@ -138,7 +138,11 @@ watch(data, (newData) => {
 
       if (route.hash) {
         // Current URL has a hash in it
-        console.log(`Current URL has a hash, attempt scrolling to it: ${route.hash}`)
+        // We can't scroll to it with default browser behavior 
+        // because the element doesn't exist when the page loads.
+        // It does work on the server-rendered pages.
+        // setTimeout(() => location.href = route.hash)
+        await nextTick()
         location.href = route.hash
       }
     }
