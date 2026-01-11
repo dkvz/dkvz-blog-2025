@@ -14,7 +14,9 @@ const page = route.params.page !== undefined ?
   parseInt(route.params.page.toString()) : 1
 const maxItems = siteInfo.maxArticles
 const { isOrderAsc, handleToggleOrder } = useOrderToggle()
+
 const articleList = useTemplateRef("article-list")
+const pageTop = useTemplateRef("page-top")
 
 useHead({
   bodyAttrs: {
@@ -41,9 +43,19 @@ if (lastPage.value === null) {
   refresh()
 }
 
+const scrollToContent = () => {
+  // Only do it if hash is "#page-top" in router
+  if (route.hash === "#page-top" && pageTop.value !== null) {
+    pageTop.value.scrollIntoView()
+  }
+}
+
 if (import.meta.client) {
   watch(articleList, (l) => {
-    l !== null && registerCardRevealObservers([l])
+    if (l !== null) {
+      registerCardRevealObservers([l])
+      scrollToContent()
+    }
   })
 }
 
@@ -52,7 +64,7 @@ if (import.meta.client) {
 <template>
   <div class="content-card content-card--transp content-card--page-card trans-left">
 
-    <div class="section-title two-items-grid">
+    <div class="section-title two-items-grid" id="page-top" ref="page-top">
       <div>
         <h2 class="section-title__title">Articles</h2>
         <h3>{{ tag }}</h3>
@@ -77,7 +89,7 @@ if (import.meta.client) {
     </div>
 
     <div class="flex-end">
-      <Paginator :base-url="baseUrl" :last-page="lastPage" :page="page">
+      <Paginator :base-url="baseUrl" :last-page="lastPage" :page="page" hash="#page-top">
       </Paginator>
     </div>
 
