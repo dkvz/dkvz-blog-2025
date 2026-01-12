@@ -37,7 +37,6 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
-- Date pills are wrong again on mobile, year is split up for some reason
 - Clicking the "Articles" item on the menu while the submenu is open should close the submenu
 - Social media integration seems to fetch the wrong image, tested trying to post a short
 - "Small images" do not get the reveal effect at all?
