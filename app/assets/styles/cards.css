@@ -65,7 +65,7 @@
     background-color: var(--accent-color);
     color: var(--light-color);
     padding: 0.8rem;
-    word-break: break-all;
+    /* word-break: break-all; */
     width: 65px;
     height: 65px;
     text-align: center;
