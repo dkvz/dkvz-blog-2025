@@ -39,6 +39,7 @@ Just removing the items when done this time around.
 
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
+- Probably need a more distinct styling for image-legend for when it sits alone next an iframe, example in https://dkvz.eu/breves/41 for the Youtube video at the end
 - Add redirections server side and document them somewhere around here
 - Time to update the low-rez short images to new ones
 - My fix for img reveal and images larger than the viewport might not actually work for images with a gigantic height compared to the viewport (to test)
