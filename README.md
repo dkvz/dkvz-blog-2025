@@ -38,7 +38,6 @@ Procedure for generating on server:
 Just removing the items when done this time around.
 
 - Clicking the "Articles" item on the menu while the submenu is open should close the submenu
-- Social media integration seems to fetch the wrong image, tested trying to post a short
 - "Small images" do not get the reveal effect at all?
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this

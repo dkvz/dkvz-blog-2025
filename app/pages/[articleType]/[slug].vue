@@ -126,8 +126,9 @@ watch(data, async (newData) => {
         articleAuthor: [newData.author],
       }
 
+      console.log("thumb image server side: ", newData.thumbImage)
       if (newData.thumbImage) {
-        seoMeta.ogImage = newData.thumbImage
+        seoMeta.ogImageUrl = newData.thumbImage
         seoMeta.twitterImage = newData.thumbImage
       }
 

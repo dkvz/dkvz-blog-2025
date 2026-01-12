@@ -55,7 +55,6 @@ export default defineNuxtConfig({
         { name: "application-name", content: "Blog dkvz.eu" },
         {
           property: "og:image",
-          name: "image",
           content: `${siteInfo.url}/assets/touch/chrome-splashscreen-icon-384x384.png`
         },
         { property: "og:type", content: "website" },
