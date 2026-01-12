@@ -38,6 +38,7 @@ Procedure for generating on server:
 Just removing the items when done this time around.
 
 - Social media integration seems to fetch the wrong image, tested trying to post a short
+- "Small images" do not get the reveal effect at all?
 - When search is started from home page, clicking home in the menu doesn't do anything
 - When searching from index page, allow "back" to bring the regular index - Not sure how to do this
 - Probably need a more distinct styling for image-legend for when it sits alone next an iframe, example in https://dkvz.eu/breves/41 for the Youtube video at the end
