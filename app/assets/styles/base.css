@@ -665,6 +665,16 @@
     max-width: 100%;
   }
 
+  /* One of the previous fronts had this
+  * really weird "video-container" style 
+  * applied to iframes. I have to re-create
+  * it here. */
+  .video-container iframe,
+  .responsive-iframe iframe {
+    width: 100%;
+    min-height: 430px;
+  }
+
   /* .quote-card { */
   /*   padding: 1rem; */
   /*   font-style: italic; */

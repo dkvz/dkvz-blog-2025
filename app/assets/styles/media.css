@@ -205,6 +205,11 @@
       right: 22px;
     }
 
+    .video-container iframe,
+    .responsive-iframe iframe {
+      min-height: 550px;
+    }
+
     /** Table stuff **/
     table.responsive-table {
       display: table;
