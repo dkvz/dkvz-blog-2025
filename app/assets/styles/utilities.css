@@ -125,7 +125,7 @@
     justify-content: flex-end;
   }
 
-  /* With tailwing this also requires the 
+  /* With tailwind this also requires the 
   * grid class. Also doesn't have the align-items */
   .grid-flow-col {
     display: grid;

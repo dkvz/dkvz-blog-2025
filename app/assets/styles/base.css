@@ -225,9 +225,6 @@
 
   .hero__mid {
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 1;
   }
 
@@ -494,11 +491,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     flex-wrap: wrap;
-  }
-
-  .article-header__desc>* {
-    margin-right: 0.5rem;
   }
 
   .article-toc {

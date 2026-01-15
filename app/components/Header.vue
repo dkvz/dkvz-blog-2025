@@ -195,7 +195,7 @@ onMounted(() => {
         </svg>
       </PlaceholderSvg>
     </div>
-    <div class="hero__mid">
+    <div class="hero__mid flex-center">
       <h1 class="main-title">Blog des Gens <span class="main-title__highlight">Compliqués</span></h1>
     </div>
     <div class="hero__bottom">
