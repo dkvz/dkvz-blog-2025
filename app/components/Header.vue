@@ -54,6 +54,8 @@ const onArticleTypesCheckboxChange = (e: any) => {
   // Bind clicking outside the panel to close it
   if (e.target.checked === true) {
     menuDiv.value?.addEventListener("click", closeTagsMenu)
+  } else {
+    menuDiv.value?.removeEventListener("click", closeTagsMenu)
   }
 }
 
