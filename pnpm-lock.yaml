@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@dkvz/img-lightbox':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.1.2
+        version: 1.1.2
       '@nuxt/icon':
         specifier: 2.0.0
         version: 2.0.0(magicast@0.3.5)(vite@7.1.7(@types/node@24.3.0)(jiti@2.6.0)(terser@5.44.0)(yaml@2.8.1))(vue@3.5.22(typescript@5.9.2))
@@ -196,8 +196,8 @@ packages:
       '@csstools/css-parser-algorithms': ^3.0.5
       '@csstools/css-tokenizer': ^3.0.4
 
-  '@dkvz/img-lightbox@1.1.0':
-    resolution: {integrity: sha512-btzi0ED1p5ZgKqD3KyYdLnoWQWQ6eqawR05CLQuWB8pXM+eqBIEZWornK4a3aYEdN5fqqvSjHrBvkOquVsRH7g==}
+  '@dkvz/img-lightbox@1.1.2':
+    resolution: {integrity: sha512-TSjLKpD2UmJOymxRCShPxRcfOiq488w2GhRqGRX1I36v8THFR26aH/M0cphnUH3SfnoG/ME6LZeys1jpA/1clw==}
 
   '@emnapi/core@1.5.0':
     resolution: {integrity: sha512-sbP8GzB1WDzacS8fgNPpHlp6C9VZe+SJP3F90W9rLemaQj2PzIuTEl1qDOYQf58YIpyjViI24y9aPWCjEzY2cg==}
@@ -3697,7 +3697,7 @@ snapshots:
       '@csstools/css-parser-algorithms': 3.0.5(@csstools/css-tokenizer@3.0.4)
       '@csstools/css-tokenizer': 3.0.4
 
-  '@dkvz/img-lightbox@1.1.0': {}
+  '@dkvz/img-lightbox@1.1.2': {}
 
   '@emnapi/core@1.5.0':
     dependencies:
