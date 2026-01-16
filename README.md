@@ -37,6 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
+- Used to have a class called "image-row" but it no longer works due to img-lightbox being there, see profit taker article
 - Clicking the "Articles" item on the menu while the submenu is open should close the submenu
 - "Small images" do not get the reveal effect at all?
 - When search is started from home page, clicking home in the menu doesn't do anything
