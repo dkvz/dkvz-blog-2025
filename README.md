@@ -61,6 +61,7 @@ Just removing the items when done this time around.
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?
 - Check the myriad todos inside the code
 - Are unused CSS classes still included in the bundle? -> They are. How can we tree-shake the CSS? [Check this out](https://purgecss.com/guides/nuxt.html)
+- Some of the CSS might be split from the main bundle to only load on article pages
 - At some point an overlay was drawn when the menu was open, should we bring that back?
 - I need a blur transition for PlaceholderSvg, can probably be done using transition - Make it somewhat slow (but not too slow)
 - Create woff or woff2 versions of the fonts?
