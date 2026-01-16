@@ -620,6 +620,7 @@
   }
 
   .comment-form-title {
+    margin-top: 0.45rem;
     color: var(--light-color);
   }
 
