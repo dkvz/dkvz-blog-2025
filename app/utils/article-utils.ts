@@ -108,15 +108,14 @@ export const syntaxHighlight = async (text: string): Promise<string> => {
       // May have to "unescape" more in the future.
       const code = unescapeTagEntities(m[2])
 
-      // TODO: We have to do something with shiki errors, a non existing
-      // language will generate one.
       try {
         const html = await codeToHtml(code, opts)
         // Splice that into the string:
         text = text.substring(0, m.index + extraChars) + html + text.substring(m.index + extraChars + m[0].length)
         extraChars += (html.length - m[0].length)
       } catch (ex) {
-        // Nothing here for now
+        // Non-existing language generate an error with shiki.
+        // I ignore it for now.
       }
     }
   }
