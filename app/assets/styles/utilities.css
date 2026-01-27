@@ -1,7 +1,8 @@
 @layer utilities {
 
   .center-image {
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     display: block;
   }

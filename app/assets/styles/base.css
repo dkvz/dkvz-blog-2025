@@ -6,6 +6,8 @@
 @layer base {
   .article-image {
     box-shadow: var(--ui-shadow);
+    margin-top: 1em;
+    margin-bottom: 1rem;
   }
 
   .image-legend {

@@ -53,7 +53,6 @@ Just removing the items when done this time around.
 - The site isn't really mobile first, it's semi-mobile first with a media query for "ultra-small" that I use a lot
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
-- An image immediately following another image in an article has no margin to space them
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
 - Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?

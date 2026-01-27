@@ -93,6 +93,7 @@ https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling
     margin: 1.5em 0;
     padding: 0.5em 10px;
     quotes: "\201C" "\201D";
+    clear: both;
   }
 
   blockquote:before {
