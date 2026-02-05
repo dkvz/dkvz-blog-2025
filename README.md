@@ -13,7 +13,7 @@ This repo doesn't have most of my website's static assets, referenced in the `/w
 A few of these items are necessary for static generation because I need Nuxt to crawl all links and it will just die on any dead links for some reason and there doesn't seem to be a way to just disable that check and not all errors.
 
 ## Configuration
-I got config items in multiple spaces:
+I got config items in multiple places:
 - `app/app.config.ts` - Holds the API URL, might be the public one or localhost-something.
 - `data/site-info.ts` - Should have all the remaining config items.
 
