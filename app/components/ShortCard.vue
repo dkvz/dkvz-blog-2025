@@ -15,9 +15,6 @@ const props = defineProps<{
   date?: string,
   // Computed from the id when absent
   articleUrl?: string,
-  // Enables HTML in the summary
-  // Shouldn't be enabled for search results
-  disableHtml?: boolean
 }>()
 
 const url = computed(() => {
@@ -43,8 +40,7 @@ const shorterDate = computed(() => props.date ? shortDate(props.date) : undefine
     </div>
     <div class="card__body">
       <h1 v-html="title"></h1>
-      <div v-if="disableHtml" class="mt-2 wrap-anywhere">{{ summary }}</div>
-      <div v-else v-html="summary" class="mt-2 wrap-anywhere"></div>
+      <div v-html="summary" class="mt-2 wrap-anywhere"></div>
     </div>
     <div class="card__footer">
       <NuxtLink class="card__footer__link w-full card-info-h" :to="url" title="Lire la suite...">
