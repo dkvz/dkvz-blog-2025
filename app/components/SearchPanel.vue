@@ -23,7 +23,7 @@ const errorMsg = ref<string | undefined>(undefined)
 const resultsList = useTemplateRef("results-list")
 
 watch(() => props.search, async (newSearch) => {
-  if (!loading.value && newSearch !== undefined) {
+  if (newSearch !== undefined) {
     const terms = newSearch.trim().split(" ")
     if (terms.length < 1) return
 
