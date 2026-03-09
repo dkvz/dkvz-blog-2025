@@ -37,6 +37,10 @@
 
 @layer theme {
 
+  html.dark-mode {
+    background-color: var(--light-gray-color);
+  }
+
   .dark-mode {
 
     .bg-gradient {

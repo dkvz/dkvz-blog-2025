@@ -46,7 +46,6 @@ Just removing the items when done this time around.
 - Time to update the low-rez short images to new ones
 - My fix for img reveal and images larger than the viewport might not actually work for images with a gigantic height compared to the viewport (to test)
 - Fix for image reveal didn't really work, feels like they all reveal way too fast now
-- When manually scrolling past the top or bottom, I still see white strips appearing. Is there a background color not working right somewhere?
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - If img-lightbox can query for "document.body" we could use it to toggle a global backdrop
 - Show the current version of the site somewhere
