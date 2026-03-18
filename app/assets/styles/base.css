@@ -22,8 +22,13 @@
     flex-wrap: wrap;
   }
 
-  .image-row img {
+  .image-row>img,
+  .image-row>img-lightbox {
     height: 120px;
+  }
+
+  .content-card--page-card .image-row>img-lightbox {
+    width: auto;
   }
 
   .spinner {
