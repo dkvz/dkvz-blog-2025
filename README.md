@@ -37,6 +37,7 @@ Procedure for generating on server:
 ## TODO
 Just removing the items when done this time around.
 
+- All the links from the search page point to the "shorts" URL
 - Used to have a class called "image-row" but it no longer works due to img-lightbox being there, see profit taker article
 - Clicking the "Articles" item on the menu while the submenu is open should close the submenu
 - "Small images" do not get the reveal effect at all?
