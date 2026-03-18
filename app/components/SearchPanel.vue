@@ -77,7 +77,8 @@ watch(resultsList, (l) => {
         <div>
           Trouvé {{ searchResults.length }} résultats (max 15)
         </div>
-        <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id" />
+        <ShortCard v-for="s in searchResults" :key="s.id" :title="s.title" :summary="s.snippet" :id="s.id"
+          :articleUrl="s.articleURL" />
         <GotoTop v-if="searchResults.length > 4" />
       </div>
     </template>
