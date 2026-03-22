@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const { public: { appVersion } } = useRuntimeConfig()
+</script>
+
 <template>
   <Header />
 
@@ -14,6 +18,7 @@
           <h1>Blog dkvz.eu</h1>
           <p>© 2026+ dkvz.eu</p>
           <p>I probably won't sue you</p>
+          <p>v{{ appVersion }}</p>
         </section>
         <section>
           <h1>Liens</h1>

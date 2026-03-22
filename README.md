@@ -5,7 +5,7 @@ I'll be using the Rest API still, keeping the older versions of the blog compati
 
 There's a good chance I'll be using static generation to avoid having to keep a useless Node process around on my server.
 
-I use a `dev` branch for this project, main sometimes gets squashed merges from there.
+I use a `dev` branch for this project, main sometimes gets merges from there.
 
 ## Static assets
 This repo doesn't have most of my website's static assets, referenced in the `/wp-content` or `/stuff` directories.
@@ -34,6 +34,17 @@ Procedure for generating on server:
 - Download or link sitemap.xml
 - Link the actual `wp-content` and `stuff`
 
+## Warnings about browserlist being old
+At some point warnings will pop about the local browser list being too old.
+
+Since I use pnpm, the proposed solution doesn't apply.
+
+These two commands seemingly are a proper workaround:
+```
+pnpm up --no-save caniuse-lite
+pnpm up --no-save baseline-browser-mapping
+```
+
 ## TODO
 Just removing the items when done this time around.
 
@@ -47,13 +58,11 @@ Just removing the items when done this time around.
 - Fix for image reveal didn't really work, feels like they all reveal way too fast now
 - Related to img-lightbox but if we change it to use a dialog element we can remove the animationend event added in `dom-utils.ts` for the card reveal animation
 - If img-lightbox can query for "document.body" we could use it to toggle a global backdrop
-- Show the current version of the site somewhere
 - The site isn't really mobile first, it's semi-mobile first with a media query for "ultra-small" that I use a lot
 - I got big chunks (lol) - Should I do something about it?
 - Think we're supposed to use disconnect on an intersection observer on unmounting
 - Components meant for client side only can be named using .client.vue, maybe I should do that?
 - In the menu, the background highlight on hover is invisible on the floating tags submenu
-- Instead of not using v-html for search results ShortCard I should sanitize most tags on the backend, looks like a is already removed?
 - When the menu is open we could lower the opacity of the permanently-sticky header
 - Navigating to a non-existing tag using a NuxtLink client-side shows the spinner forever (it works fine with SSR -> Show the 404 page) - Might not be an issue "in prod"
 - Got h1 elements for article and short cards titles - Didn't I decide to have only one h1 per page? Do we care?

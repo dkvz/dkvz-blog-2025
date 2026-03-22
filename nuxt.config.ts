@@ -6,6 +6,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/icon', '@nuxtjs/color-mode'],
+  runtimeConfig: {
+    public: {
+      appVersion: process.env.npm_package_version,
+    }
+  },
   nitro: {
     prerender: {
       ignore: [
