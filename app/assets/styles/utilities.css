@@ -158,6 +158,10 @@
     visibility: hidden;
   }
 
+  .collapse {
+    visibility: collapse;
+  }
+
   .relative {
     position: relative;
   }

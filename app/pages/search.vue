@@ -35,7 +35,7 @@ const handleItemsFound = (count: number) => {
     </ClientOnly>
   </article>
 
-  <article v-if="search" class="content-card content-card--transp">
+  <article class="content-card content-card--transp" :class="{ 'collapse': !search }">
 
     <SearchPanel :search="search" @items-found="handleItemsFound" />
 
