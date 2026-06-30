@@ -136,11 +136,11 @@ const handleSearchResults = (count: number) => {
     </div>
   </div>
 
-  <section v-if="search" class="content-card content-card--transp trans-left">
+  <section class="content-card content-card--transp trans-left" :class="{ 'hidden': !search }">
     <SearchPanel :search="search" @itemsFound="handleSearchResults" />
   </section>
 
-  <section v-else class="trans-left">
+  <section v-if="!search" class="trans-left">
     <div class="content-card content-card--transp content-card--l-margin">
       <div class="section-title">
         <h2 class="section-title__title">Dernières brèves</h2>

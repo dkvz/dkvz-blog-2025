@@ -150,16 +150,13 @@
     margin-right: 0.5rem;
   }
 
-  .only-on-dark {
+  .only-on-dark,
+  .hidden {
     display: none;
   }
 
   .invisible {
     visibility: hidden;
-  }
-
-  .collapse {
-    visibility: collapse;
   }
 
   .relative {

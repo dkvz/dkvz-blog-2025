@@ -35,7 +35,7 @@ const handleItemsFound = (count: number) => {
     </ClientOnly>
   </article>
 
-  <article class="content-card content-card--transp" :class="{ 'collapse': !search }">
+  <article class="content-card content-card--transp" :class="{ 'hidden': !search }">
 
     <SearchPanel :search="search" @items-found="handleItemsFound" />
 
